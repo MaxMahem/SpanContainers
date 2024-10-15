@@ -1,6 +1,5 @@
 #include <array>
 
-#include <gmock/gmock.h>
 #include <gtest/gtest.h>
 
 #include "internal\BufferSelector.h"
@@ -8,25 +7,19 @@
 
 namespace SpanContainers::Tests {
 
-using namespace SpanContainers::internal;
-
 constexpr std::size_t TEST_EXTENT = 10;
 
 TEST(BufferSelectorTest, BufferSelectorStackAllocation) 
 {
-    using SelectedBufferType = BufferSelector<int, TEST_EXTENT>::BufferType<>;
-
-    bool isStackAllocated = std::is_same_v<SelectedBufferType, std::array<int, TEST_EXTENT>>;
-
+    using SelectedBufferType = internal::BufferSelector<int, TEST_EXTENT>::BufferType<>;
+    bool isStackAllocated = std::is_same<SelectedBufferType, std::array<int, TEST_EXTENT>>::value;
     EXPECT_TRUE(isStackAllocated);
 }
 
 TEST(BufferSelectorTest, BufferSelectorHeapAllocation) 
 {
-    using SelectedBufferType = BufferSelector<int, TEST_EXTENT>::BufferType<5>;
-
-    bool isHeapAllocated = std::is_same_v<SelectedBufferType, HeapArray<int, TEST_EXTENT>>;
-
+    using SelectedBufferType = internal::BufferSelector<int, TEST_EXTENT>::BufferType<5>;
+    bool isHeapAllocated = std::is_same<SelectedBufferType, internal::HeapArray<int, TEST_EXTENT>>::value;
     EXPECT_TRUE(isHeapAllocated);
 }
 

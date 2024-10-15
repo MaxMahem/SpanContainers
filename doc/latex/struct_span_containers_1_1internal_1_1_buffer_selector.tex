@@ -1,0 +1,60 @@
+\doxysection{Span\+Containers\+::internal\+::Buffer\+Selector\texorpdfstring{$<$}{<} T, Extent \texorpdfstring{$>$}{>} Struct Template Reference}
+\hypertarget{struct_span_containers_1_1internal_1_1_buffer_selector}{}\label{struct_span_containers_1_1internal_1_1_buffer_selector}\index{SpanContainers::internal::BufferSelector$<$ T, Extent $>$@{SpanContainers::internal::BufferSelector$<$ T, Extent $>$}}
+
+
+helper struct fr selecting buffer type.  
+
+
+
+
+{\ttfamily \#include $<$Buffer\+Selector.\+h$>$}
+
+\doxysubsubsection*{Public Types}
+\begin{DoxyCompactItemize}
+\item 
+{\footnotesize template$<$std\+::size\+\_\+t Max\+Stack\+Size = 256$>$ }\\using \mbox{\hyperlink{struct_span_containers_1_1internal_1_1_buffer_selector_a232c8115a7ff239803cc9a01be984904}{Buffer\+Type}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\subsubsection*{template$<$typename T, std\+::size\+\_\+t Extent$>$\newline
+struct Span\+Containers\+::internal\+::\+Buffer\+Selector$<$ T, Extent $>$}
+helper struct fr selecting buffer type. 
+
+
+\begin{DoxyTemplParams}{Template Parameters}
+{\em T} & The type of the element in the buffer. \\
+\hline
+{\em Extent} & The number of elements in the type. \\
+\hline
+\end{DoxyTemplParams}
+
+
+\doxysubsection{Member Typedef Documentation}
+\Hypertarget{struct_span_containers_1_1internal_1_1_buffer_selector_a232c8115a7ff239803cc9a01be984904}\index{SpanContainers::internal::BufferSelector$<$ T, Extent $>$@{SpanContainers::internal::BufferSelector$<$ T, Extent $>$}!BufferType@{BufferType}}
+\index{BufferType@{BufferType}!SpanContainers::internal::BufferSelector$<$ T, Extent $>$@{SpanContainers::internal::BufferSelector$<$ T, Extent $>$}}
+\doxysubsubsection{\texorpdfstring{BufferType}{BufferType}}
+{\footnotesize\ttfamily \label{struct_span_containers_1_1internal_1_1_buffer_selector_a232c8115a7ff239803cc9a01be984904} 
+template$<$typename T , std\+::size\+\_\+t Extent$>$ \\
+template$<$std\+::size\+\_\+t Max\+Stack\+Size = 256$>$ \\
+using \mbox{\hyperlink{struct_span_containers_1_1internal_1_1_buffer_selector}{Span\+Containers\+::internal\+::\+Buffer\+Selector}}$<$ T, Extent $>$\+::\+Buffer\+Type}
+
+{\bfseries Initial value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\ std::conditional\_t<}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ Extent\ *\ \textcolor{keyword}{sizeof}(T)\ <=\ MaxStackSize,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ std::array<T,\ Extent>,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ internal::HeapArray<T,\ Extent>}
+\DoxyCodeLine{\ \ \ \ >}
+
+\end{DoxyCode}
+Type alais for selecting a buffer type. 
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Max\+Stack\+Size} & The maximum size in bytes to allocate on the stack \\
+\hline
+\end{DoxyTemplParams}
+
+
+The documentation for this struct was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+lib/internal/Buffer\+Selector.\+h\end{DoxyCompactItemize}

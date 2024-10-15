@@ -1,0 +1,22 @@
+\doxysection{Exception\+Formatter.\+h}
+\hypertarget{_exception_formatter_8h_source}{}\label{_exception_formatter_8h_source}\index{C:/Users/maxma/source/repos/SpanContainers/lib/Errors/ExceptionFormatter.h@{C:/Users/maxma/source/repos/SpanContainers/lib/Errors/ExceptionFormatter.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00002\ }
+\DoxyCodeLine{00003\ \textcolor{preprocessor}{\#include\ <format>}}
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ <stdexcept>}}
+\DoxyCodeLine{00005\ }
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#include\ "{}internal/FormattableException.h"{}}}
+\DoxyCodeLine{00007\ }
+\DoxyCodeLine{00010\ \textcolor{keyword}{template}\ <SpanContainers::\textcolor{keywordtype}{int}ernal::FormattableException\ Exception>}
+\DoxyCodeLine{00011\ \textcolor{keyword}{struct\ }std::formatter<Exception>\ :\ std::formatter<std::string\_view>}
+\DoxyCodeLine{00012\ \{}
+\DoxyCodeLine{00018\ \ \ \ \ \textcolor{keyword}{template}\ <\textcolor{keyword}{typename}\ FormatContext>}
+\DoxyCodeLine{00019\ \ \ \ \ \textcolor{keyword}{auto}\ \mbox{\hyperlink{structstd_1_1formatter_3_01_exception_01_4_a8becbbb95feb8ec41d19a71861960056}{format}}(\textcolor{keyword}{const}\ Exception\&\ exception,\ FormatContext\&\ ctx)\textcolor{keyword}{\ const}}
+\DoxyCodeLine{00020\ \textcolor{keyword}{\ \ \ \ }\{}
+\DoxyCodeLine{00021\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ std::format\_to(ctx.out(),\ \textcolor{stringliteral}{"{}\{\}:\ \{\}"{}},\ Exception::EXCEPTION\_NAME,\ exception.what());}
+\DoxyCodeLine{00022\ \ \ \ \ \}}
+\DoxyCodeLine{00023\ \};}
+
+\end{DoxyCode}

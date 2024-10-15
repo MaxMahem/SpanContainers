@@ -1,0 +1,22 @@
+\doxysection{Span\+Container\+Formatter.\+h}
+\hypertarget{_span_container_formatter_8h_source}{}\label{_span_container_formatter_8h_source}\index{C:/Users/maxma/source/repos/SpanContainers/lib/SpanContainerFormatter.h@{C:/Users/maxma/source/repos/SpanContainers/lib/SpanContainerFormatter.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#include\ <concepts>}}
+\DoxyCodeLine{00003\ \textcolor{preprocessor}{\#include\ <format>}}
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ <string>}}
+\DoxyCodeLine{00005\ }
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#include\ "{}internal/FormattableSpanContainer.h"{}}}
+\DoxyCodeLine{00007\ }
+\DoxyCodeLine{00010\ \textcolor{keyword}{template}\ <SpanContainers::\textcolor{keywordtype}{int}ernal::FormattableSpanContainer\ Container>}
+\DoxyCodeLine{00011\ \textcolor{keyword}{struct\ }std::formatter<Container>\ :\ std::formatter<std::string\_view>}
+\DoxyCodeLine{00012\ \{}
+\DoxyCodeLine{00018\ \ \ \ \ \textcolor{keyword}{template}\ <\textcolor{keyword}{typename}\ FormatContext>}
+\DoxyCodeLine{00019\ \ \ \ \ \textcolor{keyword}{auto}\ \mbox{\hyperlink{structstd_1_1formatter_3_01_container_01_4_a68e146df537b5c3ae0623ed167beb298}{format}}(\textcolor{keyword}{const}\ Container\&\ container,\ FormatContext\&\ ctx)\textcolor{keyword}{\ const}}
+\DoxyCodeLine{00020\ \textcolor{keyword}{\ \ \ \ }\{}
+\DoxyCodeLine{00021\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ std::format\_to(ctx.out(),\ \textcolor{stringliteral}{"{}\{\}[\{\}/\{\}]"{}},\ Container::TYPE\_NAME,\ container.size(),\ container.capacity());}
+\DoxyCodeLine{00022\ \ \ \ \ \}}
+\DoxyCodeLine{00023\ \};}
+
+\end{DoxyCode}

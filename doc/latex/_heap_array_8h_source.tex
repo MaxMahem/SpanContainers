@@ -1,0 +1,20 @@
+\doxysection{Heap\+Array.\+h}
+\hypertarget{_heap_array_8h_source}{}\label{_heap_array_8h_source}\index{C:/Users/maxma/source/repos/SpanContainers/lib/internal/HeapArray.h@{C:/Users/maxma/source/repos/SpanContainers/lib/internal/HeapArray.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#include\ <array>}}
+\DoxyCodeLine{00003\ \textcolor{preprocessor}{\#include\ <memory>}}
+\DoxyCodeLine{00004\ }
+\DoxyCodeLine{00006\ \textcolor{keyword}{namespace\ }\mbox{\hyperlink{namespace_span_containers_1_1internal}{SpanContainers::internal}}\ \{}
+\DoxyCodeLine{00007\ }
+\DoxyCodeLine{00011\ \textcolor{keyword}{template}\ <\textcolor{keyword}{typename}\ T,\ std::\textcolor{keywordtype}{size\_t}\ Extent>}
+\DoxyCodeLine{00012\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{struct_span_containers_1_1internal_1_1_heap_array}{HeapArray}}\ \{}
+\DoxyCodeLine{00014\ \ \ \ \ std::unique\_ptr<std::array<T,\ Extent>>\ \mbox{\hyperlink{struct_span_containers_1_1internal_1_1_heap_array_a70f419c1ad4504f6b78109791a83cf2f}{ptr}}\ =\ std::make\_unique<std::array<T,\ Extent>>();}
+\DoxyCodeLine{00015\ }
+\DoxyCodeLine{00018\ \ \ \ \ [[nodiscard]]\ \textcolor{keyword}{constexpr}\ \textcolor{keyword}{operator}\ std::span<T,\ Extent>()\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ std::span(*\mbox{\hyperlink{struct_span_containers_1_1internal_1_1_heap_array_a70f419c1ad4504f6b78109791a83cf2f}{ptr}});\ \}}
+\DoxyCodeLine{00019\ \};}
+\DoxyCodeLine{00020\ }
+\DoxyCodeLine{00021\ \}}
+
+\end{DoxyCode}

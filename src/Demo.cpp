@@ -4,7 +4,9 @@
 #include "SpanDequeue.h"
 #include "SpanQueue.h"
 #include "SpanStack.h"
-#include "SpanContainerFormat.h"
+#include "SpanHeap.h"
+#include "SpanContainerFormatter.h"
+#include "Errors/ExceptionFormatter.h"
 
 using namespace SpanContainers;
 
@@ -50,9 +52,55 @@ void demoContainer(Container& container, auto pushFunc, auto popFunc, auto getFu
 int main() {
     constexpr size_t SIZE = 10;
 
+    {
+        auto buffer = SpanHeap<int, SIZE>::BufferType<1>();
+        SpanHeap<int, SIZE> sh{ buffer };
+        std::vector<int> numbers({ 1, 32, 43, 94, 55, 76, 17, 38, 49, 10 });
+        for (const auto& number : numbers) {
+            sh.push(number);
+        }
+        std::cout << std::format("{} front: {}\n", sh, sh.back());
+        sh.pop_back();
+        std::cout << std::format("{} front: {}\n\n", sh, sh.back());
+    }
+
+    {
+        auto buffer = SpanHeap<int, 100>::BufferType<1>();
+        SpanHeap<int, 100> sh{ buffer };
+        std::vector<int> numbers({ 1, 32, 43, 94, 55 });
+        sh.try_push_range(numbers);
+        for(int i = 0; i<9; ++i) {
+            sh.try_push_range({76, 17, 38, 49, 10});
+        }
+        std::cout << std::format("{} front: {}\n", sh, sh.back());
+
+        sh.try_pop_back();
+        std::cout << std::format("{} front: {}\n\n", sh, sh.back());
+    }
+
+    {
+        auto buffer = SpanDequeue<int, SIZE>::BufferType<1>();
+        SpanDequeue<int, SIZE> sq{ buffer };
+        std::vector<int> numbers({ 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 });
+        for (const auto& number : numbers) {
+            sq.try_push_back(number);
+        }
+        std::cout << std::format("{} front: {}, back: {}\n\n", sq, sq.front(), sq.back());
+    }
+
+    std::cout << "SpanStack - push_back, pop_back, LIFO" << '\n';
+    {
+        auto buffer = SpanStack<int, SIZE>::BufferType<>();
+        SpanStack<int, SIZE> ss(buffer);
+        demoContainer(ss,
+            [](auto& c, int val) { c.push_back(val); },
+            [](auto& c) { c.pop_back(); },
+            [](auto& c) { return c.back(); });
+    }
+
     std::cout << "SpanDequeue - push_front, pop_back, FIFO" << '\n';
     {
-        auto buffer = SpanDequeue<int, SIZE>::BufferType<>();
+        auto buffer = SpanDequeue<int, SIZE>::BufferType<1>();
         SpanDequeue<int, SIZE> sq(buffer);
         demoContainer(sq,
             [](auto& c, int val) { c.push_front(val); },
@@ -60,7 +108,7 @@ int main() {
             [](auto& c) { return c.back(); });
     }
 
-    std::cout << "SpanDequeue - push_front, pop_front, FILO" << '\n';
+    std::cout << "SpanDequeue - push_front, pop_front, LIFO" << '\n';
     {
         auto buffer = SpanDequeue<int, SIZE>::BufferType<>();
         SpanDequeue<int, SIZE> sq(buffer);
@@ -70,24 +118,25 @@ int main() {
             [](auto& c) { return c.front(); });
     }
 
-    std::cout << "SpanStack - push_back, pop_back, FILO" << '\n';
-    {
-        auto buffer = SpanStack<int, SIZE>::BufferType<>();
-        SpanStack<int, SIZE> ss(buffer);
-        demoContainer(ss,
-            [](auto& c, const auto& val) { c.push_back(val); },
-            [](auto& c) { c.pop_back(); },
-            [](auto& c) { return c.back(); });
-    }
-
     std::cout << "SpanQueue - push_back, pop_front, FIFO" << '\n';
     {
-        auto buffer = SpanQueue<int, SIZE>::BufferType<>();
+        SpanQueue<int, SIZE>::BufferType<> buffer{};
         SpanQueue<int, SIZE> sq(buffer);
         demoContainer(sq,
             [](auto& c, const auto& val) { c.push_back(val); },
             [](auto& c) { c.pop_front(); },
             [](auto& c) { return c.front(); });
+    }
+
+    std::cout << "SpanHeap - push_back, pop_back, Sorted" << '\n';
+    {
+        SpanHeap<int, SIZE>::BufferType<> buffer{};
+        SpanHeap<int, 10, std::greater<int>> sh(buffer);
+        //SpanHeap<int, SIZE, std::greater<int>> sh(buffer);
+        demoContainer(sh,
+            [](auto& c, const auto& val) { c.push(val); },
+            [](auto& c) { c.pop_back(); },
+            [](auto& c) { return c.back(); });
     }
 
     return 0;
@@ -127,5 +176,5 @@ int main() {
 //    for (auto elem : buffer) { std::cout << elem << " "; }
 //    std::cout << "\n";
 //
-//	return 0;
+//    return 0;
 //}

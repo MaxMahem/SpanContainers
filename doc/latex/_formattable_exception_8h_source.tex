@@ -1,0 +1,20 @@
+\doxysection{Formattable\+Exception.\+h}
+\hypertarget{_formattable_exception_8h_source}{}\label{_formattable_exception_8h_source}\index{C:/Users/maxma/source/repos/SpanContainers/lib/internal/FormattableException.h@{C:/Users/maxma/source/repos/SpanContainers/lib/internal/FormattableException.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00002\ }
+\DoxyCodeLine{00003\ \textcolor{preprocessor}{\#include\ <format>}}
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ <stdexcept>}}
+\DoxyCodeLine{00005\ }
+\DoxyCodeLine{00006\ \textcolor{keyword}{namespace\ }\mbox{\hyperlink{namespace_span_containers_1_1internal}{SpanContainers::internal}}\ \{}
+\DoxyCodeLine{00007\ }
+\DoxyCodeLine{00010\ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ Exception>}
+\DoxyCodeLine{00011\ \textcolor{keyword}{concept\ }\mbox{\hyperlink{concept_span_containers_1_1internal_1_1_formattable_exception}{FormattableException}}\ =\ \textcolor{keyword}{requires}(Exception\ container)\ \{}
+\DoxyCodeLine{00012\ \ \ \ \ \{\ Exception::EXCEPTION\_NAME\ \}\ -\/>\ std::convertible\_to<std::string\_view>;}
+\DoxyCodeLine{00013\ \ \ \ \ \{\ container.what()\ \}\ -\/>\ std::convertible\_to<std::string>;}
+\DoxyCodeLine{00014\ \};}
+\DoxyCodeLine{00015\ }
+\DoxyCodeLine{00016\ \}}
+
+\end{DoxyCode}

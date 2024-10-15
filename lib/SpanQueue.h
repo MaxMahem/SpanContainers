@@ -1,16 +1,26 @@
 #pragma once
 
-#include "ContainerErrors.h"
+#include <algorithm>
+#include <cstddef>
+#include <ranges>
+#include <string_view>
+#include <type_traits>
+
 #include "internal/SpanContainer.h"
+#include "internal/PushPopTraits/PushBackTrait.h"
+#include "internal/PushPopTraits/PopFrontTrait.h"
 
 
 namespace SpanContainers {
 
 /// @brief Represents a span-based, fixed size container with Queue like access.
 /// @tparam T The type of the item in the container.
-/// @tparam Extent The maximum number of elements in the container.
+/// @tparam Extent The size/maximum number of elements in the container.
 template <typename T, std::size_t Extent>
-class SpanQueue : public internal::SpanContainer<T, Extent> {
+class SpanQueue : public internal::SpanContainer<T, Extent>,
+                  public internal::PushBackTrait<SpanQueue<T, Extent>, T>,
+                  public internal::PopFrontTrait<SpanQueue<T, Extent>, T>
+{
     using SpanContainer = internal::SpanContainer<T, Extent>;
 
     using SpanContainer::span;
@@ -39,65 +49,76 @@ public:
 
     using SpanContainer::empty;
     using SpanContainer::full;
-    using SpanContainer::capacity;
-    using SpanContainer::size;
 
-    /// @brief Gets a refrence to the item at the front of the container.
-    /// @return A refrence to the item at the front of the container.
-    /// @throws EmptyContainerError if the container is empty
-    [[nodiscard]] constexpr reference front()
-    {
-        if (pointer front = try_front()) { return *front; }
-        throw EmptyContainerError();
-    }
-
-    /// @brief Gets a const refrence to the item at the front of the container.
-    /// @return The item at the front of the container.
-    /// @throws EmptyContainerError if the container is empty
-    [[nodiscard]] constexpr const_reference front() const
-    {
-        if (const_pointer front = try_front()) { return *front; }
-        throw EmptyContainerError();
-    }
+    using internal::PopFrontTrait<SpanQueue<T, Extent>, T>::try_pop_front;
 
     /// @brief Gets a pointer to the item at the front of the container.
     /// @return A pointer to the item at the front of the container, or nullptr if empty.
-    [[nodiscard]] constexpr pointer try_front() noexcept { return !empty() ? &span[read] : nullptr; }
+    [[nodiscard]] constexpr pointer try_front() const noexcept { return !empty() ? &span[read] : nullptr; }
 
-    /// @brief Gets a const pointer to the item at the front of the container.
-    /// @return A const pointer to the item at the front of the container, or nullptr if empty.
-    [[nodiscard]] constexpr const_pointer try_front() const { return !empty() ? &span[read] : nullptr; }
-
-    /// @brief Puts value at the back of the container.
-    /// @param value The item to place at the back of the container.
-    /// @throws FullContainerError if the stack capcity is exceeded
-    void push_back(const T& item) { if (!try_push_back(item)) { throw FullContainerError(capacity()); } }
-
-    /// @brief Tries to put value at the back of the container.
-    /// @param value The item to place at the back of the container.
-    /// @return true if value was placed at the back of the stack; false otherwise.
-    bool try_push_back(const T& item) noexcept
+    /// @brief Tries to assign value at the back of the container.
+    /// @param value The item to move to the back of the container.
+    /// @return true if value was placed at the back of the container; false otherwise.
+    template <typename U> requires std::assignable_from<T&, U&&>
+    constexpr bool try_push_back(U&& value) noexcept(std::is_nothrow_assignable<T, U>::value)
     {
         if (full()) { return false; }
-        span[write] = item;
-        write = (write + 1) % capacity();
+        span[write] = std::forward<U>(value);
+        write = (write + 1) % Extent;
         ++count;
         return true;
     }
 
-    /// @brief Removes the item from the front of the stack.
-    /// @throws EmptyContainerError if the container is empty
-    void pop_front() { if (!try_pop_front()) { throw EmptyContainerError(); } }
-
-    /// @brief Tries to remove the item from the front of the stack.
-    /// @return true if an item was removed; false if the stack is empty.
-    bool try_pop_front()
+    /// @brief Tries to constructs a new element in place at the back of the container from args.
+    /// @tparam ...Args The type of the arguments
+    /// @param ...args The arguments used to construct the element.
+    /// @return true if the element was constructed in placed at the back of the container; false otherwise.
+    template<typename... Args> requires std::is_trivially_destructible<T>::value && std::constructible_from<T, Args&&...>
+    constexpr bool try_emplace_back(Args&&... args)
     {
-        if (empty()) { return false; }
-        --count;
-        read = (read + 1) % capacity();
+        if (full()) { return false; }
+        new (&span[write]) T(std::forward<Args>(args)...);
+        write = (write + 1) % Extent;
+        ++count;
         return true;
     }
+
+    template<std::ranges::input_range Range = std::initializer_list<T>>
+    constexpr bool try_push_back_range(Range&& values) requires std::convertible_to<std::ranges::range_value_t<Range>, T>
+    {
+        const auto rangeSize = std::ranges::size(values);
+        const auto newCount = count + rangeSize;
+        if (newCount > Extent) { return false; }
+        const auto spaceAtEnd = Extent - write;
+        constexpr bool isRvalue = std::is_rvalue_reference<Range&&>::value;
+
+        const auto mid = values.begin() + spaceAtEnd;
+
+        if constexpr (isRvalue) { 
+            std::ranges::move(values.begin(), mid, span.begin() + write); 
+            std::ranges::move(mid, values.end(), span.begin());
+        }
+        else { 
+            std::ranges::copy(values.begin(), mid, span.begin() + write); 
+            std::ranges::copy(mid, values.end(), span.begin());
+        }
+        write = (write + rangeSize) % Extent;;  // Wrap around to the front
+        count = newCount;
+        return true;
+    }
+
+    /// @brief Tries to remove n items from the front of the container.
+    /// @return true if n items were removed; false if n is greater than the current size.
+    constexpr bool try_pop_front(size_type n) noexcept
+    {
+        if (n > count) { return false; }
+        count -= n;
+        read = (read + n) % Extent;
+        return true;
+    }
+
+    /// @brief Clears all items from the container.
+    constexpr void clear() noexcept { count = write = read = 0; }
 };
 
 }

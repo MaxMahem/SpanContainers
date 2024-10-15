@@ -1,0 +1,37 @@
+\doxysection{Span\+Container\+Concept.\+h}
+\hypertarget{_span_container_concept_8h_source}{}\label{_span_container_concept_8h_source}\index{lib/internal/SpanContainerConcept.h@{lib/internal/SpanContainerConcept.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#include\ <concepts>}}
+\DoxyCodeLine{00003\ }
+\DoxyCodeLine{00005\ \textcolor{keyword}{namespace\ }\mbox{\hyperlink{namespace_span_containers}{SpanContainers}}\ \{}
+\DoxyCodeLine{00006\ }
+\DoxyCodeLine{00008\ \textcolor{keyword}{namespace\ }internal\ \{}
+\DoxyCodeLine{00009\ }
+\DoxyCodeLine{00012\ \textcolor{keyword}{template}\ <\textcolor{keyword}{typename}\ Container>}
+\DoxyCodeLine{00013\ \textcolor{keyword}{concept\ }\mbox{\hyperlink{concept_span_containers_1_1internal_1_1_span_container_concept}{SpanContainerConcept}}\ =\ \textcolor{keyword}{requires}(Container\ container)\ \{}
+\DoxyCodeLine{00014\ \ \ \ \ \textcolor{keyword}{typename}\ Container::span\_type;}
+\DoxyCodeLine{00015\ \ \ \ \ \textcolor{keyword}{typename}\ Container::element\_type;}
+\DoxyCodeLine{00016\ \ \ \ \ \textcolor{keyword}{typename}\ Container::value\_type;}
+\DoxyCodeLine{00017\ \ \ \ \ \textcolor{keyword}{typename}\ Container::size\_type;}
+\DoxyCodeLine{00018\ \ \ \ \ \textcolor{keyword}{typename}\ Container::pointer;}
+\DoxyCodeLine{00019\ \ \ \ \ \textcolor{keyword}{typename}\ Container::const\_pointer;}
+\DoxyCodeLine{00020\ \ \ \ \ \textcolor{keyword}{typename}\ Container::reference;}
+\DoxyCodeLine{00021\ \ \ \ \ \textcolor{keyword}{typename}\ Container::const\_reference;}
+\DoxyCodeLine{00022\ }
+\DoxyCodeLine{00023\ \ \ \ \ \textcolor{keyword}{requires}\ \textcolor{keyword}{requires}(\textcolor{keyword}{typename}\ Container::span\_type\ span)\ \{\ Container(span);\ \};}
+\DoxyCodeLine{00024\ }
+\DoxyCodeLine{00025\ \ \ \ \ \{\ container.clear()\ \}\ \textcolor{keyword}{noexcept};}
+\DoxyCodeLine{00026\ \ \ \ \ \{\ container.size()\ \}\ \textcolor{keyword}{noexcept}\ -\/>\ std::same\_as<typename\ Container::size\_type>;}
+\DoxyCodeLine{00027\ \ \ \ \ \{\ Container::capacity()\ \}\ \textcolor{keyword}{noexcept}\ -\/>\ std::same\_as<typename\ Container::size\_type>;}
+\DoxyCodeLine{00028\ \ \ \ \ \{\ container.empty()\ \}\ \textcolor{keyword}{noexcept}\ -\/>\ std::same\_as<bool>;}
+\DoxyCodeLine{00029\ \ \ \ \ \{\ container.full()\ \}\ \textcolor{keyword}{noexcept}\ -\/>\ std::same\_as<bool>;}
+\DoxyCodeLine{00030\ \ \ \ \ \{\ container.data()\ \}\ \textcolor{keyword}{noexcept}\ -\/>\ std::same\_as<typename\ Container::span\_type>;}
+\DoxyCodeLine{00031\ \};}
+\DoxyCodeLine{00032\ }
+\DoxyCodeLine{00033\ \}}
+\DoxyCodeLine{00034\ }
+\DoxyCodeLine{00035\ \}}
+
+\end{DoxyCode}

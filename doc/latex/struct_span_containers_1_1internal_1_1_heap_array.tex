@@ -1,0 +1,58 @@
+\doxysection{Span\+Containers\+::internal\+::Heap\+Array\texorpdfstring{$<$}{<} T, Extent \texorpdfstring{$>$}{>} Struct Template Reference}
+\hypertarget{struct_span_containers_1_1internal_1_1_heap_array}{}\label{struct_span_containers_1_1internal_1_1_heap_array}\index{SpanContainers::internal::HeapArray$<$ T, Extent $>$@{SpanContainers::internal::HeapArray$<$ T, Extent $>$}}
+
+
+helper struct for creating heap-\/allocated std\+::arrays.  
+
+
+
+
+{\ttfamily \#include $<$Heap\+Array.\+h$>$}
+
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+constexpr \mbox{\hyperlink{struct_span_containers_1_1internal_1_1_heap_array_a8b15fce391e8d0815945b70b51577ea3}{operator std\+::span$<$ T, Extent $>$}} () const
+\begin{DoxyCompactList}\small\item\em converts this \doxylink{struct_span_containers_1_1internal_1_1_heap_array}{Heap\+Array} into a std\+::span \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{struct_span_containers_1_1internal_1_1_heap_array_a70f419c1ad4504f6b78109791a83cf2f}\label{struct_span_containers_1_1internal_1_1_heap_array_a70f419c1ad4504f6b78109791a83cf2f} 
+std\+::unique\+\_\+ptr$<$ std\+::array$<$ T, Extent $>$ $>$ {\bfseries ptr} = std\+::make\+\_\+unique$<$std\+::array$<$T, Extent$>$$>$()
+\begin{DoxyCompactList}\small\item\em unique ptr to heap allocated std\+::array. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\subsubsection*{template$<$typename T, std\+::size\+\_\+t Extent$>$\newline
+struct Span\+Containers\+::internal\+::\+Heap\+Array$<$ T, Extent $>$}
+helper struct for creating heap-\/allocated std\+::arrays. 
+
+
+\begin{DoxyTemplParams}{Template Parameters}
+{\em T} & The type of the element in the buffer. \\
+\hline
+{\em Extent} & The number of elements in the type. \\
+\hline
+\end{DoxyTemplParams}
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{struct_span_containers_1_1internal_1_1_heap_array_a8b15fce391e8d0815945b70b51577ea3}\index{SpanContainers::internal::HeapArray$<$ T, Extent $>$@{SpanContainers::internal::HeapArray$<$ T, Extent $>$}!operator std::span$<$ T, Extent $>$@{operator std::span$<$ T, Extent $>$}}
+\index{operator std::span$<$ T, Extent $>$@{operator std::span$<$ T, Extent $>$}!SpanContainers::internal::HeapArray$<$ T, Extent $>$@{SpanContainers::internal::HeapArray$<$ T, Extent $>$}}
+\doxysubsubsection{\texorpdfstring{operator std::span$<$ T, Extent $>$()}{operator std::span< T, Extent >()}}
+{\footnotesize\ttfamily \label{struct_span_containers_1_1internal_1_1_heap_array_a8b15fce391e8d0815945b70b51577ea3} 
+template$<$typename T , std\+::size\+\_\+t Extent$>$ \\
+\mbox{\hyperlink{struct_span_containers_1_1internal_1_1_heap_array}{Span\+Containers\+::internal\+::\+Heap\+Array}}$<$ T, Extent $>$\+::operator std\+::span$<$ T, Extent $>$ (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [nodiscard]}, {\ttfamily [constexpr]}}
+
+
+
+converts this \doxylink{struct_span_containers_1_1internal_1_1_heap_array}{Heap\+Array} into a std\+::span 
+
+\begin{DoxyNote}{Note}
+in C++23 this will work in constexpr 
+\end{DoxyNote}
+
+
+The documentation for this struct was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/\+Users/maxma/source/repos/\+Span\+Containers/lib/internal/Heap\+Array.\+h\end{DoxyCompactItemize}

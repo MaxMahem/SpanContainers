@@ -1,0 +1,218 @@
+\doxysection{Span\+Containers\+::internal\+::Span\+Container\texorpdfstring{$<$}{<} T, Extent \texorpdfstring{$>$}{>} Class Template Reference}
+\hypertarget{class_span_containers_1_1internal_1_1_span_container}{}\label{class_span_containers_1_1internal_1_1_span_container}\index{SpanContainers::internal::SpanContainer$<$ T, Extent $>$@{SpanContainers::internal::SpanContainer$<$ T, Extent $>$}}
+
+
+Base type for Span containers, holding common behavior.  
+
+
+
+
+{\ttfamily \#include $<$Span\+Container.\+h$>$}
+
+Inheritance diagram for Span\+Containers\+::internal\+::Span\+Container\texorpdfstring{$<$}{<} T, Extent \texorpdfstring{$>$}{>}\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=1.739130cm]{class_span_containers_1_1internal_1_1_span_container}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Types}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_span_containers_1_1internal_1_1_span_container_acbf0783599d1034a54f66e1ce270e39f}\label{class_span_containers_1_1internal_1_1_span_container_acbf0783599d1034a54f66e1ce270e39f} 
+using {\bfseries span\+\_\+type} = std\+::span$<$T, Extent$>$
+\item 
+\Hypertarget{class_span_containers_1_1internal_1_1_span_container_a22869b80b5a5ec719f8097bd9d5faaa2}\label{class_span_containers_1_1internal_1_1_span_container_a22869b80b5a5ec719f8097bd9d5faaa2} 
+using {\bfseries element\+\_\+type} = span\+\_\+type\+::element\+\_\+type
+\item 
+\Hypertarget{class_span_containers_1_1internal_1_1_span_container_a34698b5872c3f13cc4840496c95396bb}\label{class_span_containers_1_1internal_1_1_span_container_a34698b5872c3f13cc4840496c95396bb} 
+using {\bfseries value\+\_\+type} = span\+\_\+type\+::value\+\_\+type
+\item 
+\Hypertarget{class_span_containers_1_1internal_1_1_span_container_a5884bfe0250b794adfc54d7c1e0df70c}\label{class_span_containers_1_1internal_1_1_span_container_a5884bfe0250b794adfc54d7c1e0df70c} 
+using {\bfseries size\+\_\+type} = span\+\_\+type\+::size\+\_\+type
+\item 
+\Hypertarget{class_span_containers_1_1internal_1_1_span_container_aeaa664707f34abfa1c5def991d6a2ca0}\label{class_span_containers_1_1internal_1_1_span_container_aeaa664707f34abfa1c5def991d6a2ca0} 
+using {\bfseries pointer} = span\+\_\+type\+::pointer
+\item 
+\Hypertarget{class_span_containers_1_1internal_1_1_span_container_aae9ff6b9bfea8d03125109afd903b81e}\label{class_span_containers_1_1internal_1_1_span_container_aae9ff6b9bfea8d03125109afd903b81e} 
+using {\bfseries const\+\_\+pointer} = span\+\_\+type\+::const\+\_\+pointer
+\item 
+\Hypertarget{class_span_containers_1_1internal_1_1_span_container_ac9edea5dc17ba0270973b9093c5a5f67}\label{class_span_containers_1_1internal_1_1_span_container_ac9edea5dc17ba0270973b9093c5a5f67} 
+using {\bfseries reference} = span\+\_\+type\+::reference
+\item 
+\Hypertarget{class_span_containers_1_1internal_1_1_span_container_a64abb80b5fdc009b32d3c1d603fcb8a0}\label{class_span_containers_1_1internal_1_1_span_container_a64abb80b5fdc009b32d3c1d603fcb8a0} 
+using {\bfseries const\+\_\+reference} = span\+\_\+type\+::const\+\_\+reference
+\item 
+{\footnotesize template$<$std\+::size\+\_\+t Max\+Stack\+Size = 256$>$ }\\using \mbox{\hyperlink{class_span_containers_1_1internal_1_1_span_container_a46e4f3e4ed3050a088056fccb00a76aa}{Buffer\+Type}} = \mbox{\hyperlink{namespace_span_containers_1_1internal_struct_span_containers_1_1internal_1_1_buffer_selector}{Buffer\+Selector}}$<$T, Extent$>$\+::\+Buffer\+Type$<$Max\+Stack\+Size$>$
+\begin{DoxyCompactList}\small\item\em Defines an appropriately sized buffer to be allocated on the heap or stack. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_span_containers_1_1internal_1_1_span_container_ac31b9adb4f213f8f12f5dd58e8dffaeb}\label{class_span_containers_1_1internal_1_1_span_container_ac31b9adb4f213f8f12f5dd58e8dffaeb} 
+constexpr {\bfseries Span\+Container} () noexcept=default
+\begin{DoxyCompactList}\small\item\em Default constructor for empty container. \end{DoxyCompactList}\item 
+{\footnotesize template$<$typename Buffer $>$ \newline
+requires std\+::is\+\_\+lvalue\+\_\+reference\+\_\+v$<$Buffer\&$>$ \&\& std\+::is\+\_\+constructible\+\_\+v$<$span\+\_\+type, Buffer\&$>$}\\constexpr \mbox{\hyperlink{class_span_containers_1_1internal_1_1_span_container_a7f483dfa24b80da71262eeaf59f1f8dc}{Span\+Container}} (Buffer \&buffer) noexcept
+\begin{DoxyCompactList}\small\item\em Constructs a new container wrapping buffer. \end{DoxyCompactList}\item 
+\Hypertarget{class_span_containers_1_1internal_1_1_span_container_a7ba85597b571c4484fec9c123c08fa9a}\label{class_span_containers_1_1internal_1_1_span_container_a7ba85597b571c4484fec9c123c08fa9a} 
+{\bfseries Span\+Container} (span\+\_\+type \&\&)=delete
+\item 
+constexpr size\+\_\+type \mbox{\hyperlink{class_span_containers_1_1internal_1_1_span_container_a137e5e887756180fad653799515b225b}{size}} () const noexcept
+\begin{DoxyCompactList}\small\item\em Gets the current size of the container. \end{DoxyCompactList}\item 
+constexpr bool \mbox{\hyperlink{class_span_containers_1_1internal_1_1_span_container_a3919cb46d780c978a8f3e04f61291d26}{empty}} () const noexcept
+\begin{DoxyCompactList}\small\item\em Gets if the container is empty or not. \end{DoxyCompactList}\item 
+constexpr bool \mbox{\hyperlink{class_span_containers_1_1internal_1_1_span_container_a62bdcb19c7b8f204d141c3abd6ff6b76}{full}} () const noexcept
+\begin{DoxyCompactList}\small\item\em Gets if the container is full or not. \end{DoxyCompactList}\item 
+constexpr span\+\_\+type \mbox{\hyperlink{class_span_containers_1_1internal_1_1_span_container_a6adcfa5c633a685bef25e8e8300e2e00}{data}} () const noexcept
+\begin{DoxyCompactList}\small\item\em Gets the underlying span. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static consteval size\+\_\+type \mbox{\hyperlink{class_span_containers_1_1internal_1_1_span_container_a4f8d412fd122d11ca3c0f9d3351e5f61}{capacity}} () noexcept
+\begin{DoxyCompactList}\small\item\em Gets the capacity of the container. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_span_containers_1_1internal_1_1_span_container_a0e264b02900eed12541aa0e6d794bfd5}\label{class_span_containers_1_1internal_1_1_span_container_a0e264b02900eed12541aa0e6d794bfd5} 
+span\+\_\+type {\bfseries span}
+\begin{DoxyCompactList}\small\item\em the underlying container. \end{DoxyCompactList}\item 
+\Hypertarget{class_span_containers_1_1internal_1_1_span_container_a14bbacf4b0597e3f514a05971b483cad}\label{class_span_containers_1_1internal_1_1_span_container_a14bbacf4b0597e3f514a05971b483cad} 
+size\+\_\+type {\bfseries count} = 0
+\begin{DoxyCompactList}\small\item\em the number of items in the container. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\subsubsection*{template$<$typename T, std\+::size\+\_\+t Extent$>$\newline
+class Span\+Containers\+::internal\+::\+Span\+Container$<$ T, Extent $>$}
+Base type for Span containers, holding common behavior. 
+
+
+\begin{DoxyTemplParams}{Template Parameters}
+{\em T} & The type of the item in the container. \\
+\hline
+{\em Extent} & The size/maximum number of elements in the container. \\
+\hline
+\end{DoxyTemplParams}
+
+
+\doxysubsection{Member Typedef Documentation}
+\Hypertarget{class_span_containers_1_1internal_1_1_span_container_a46e4f3e4ed3050a088056fccb00a76aa}\index{SpanContainers::internal::SpanContainer$<$ T, Extent $>$@{SpanContainers::internal::SpanContainer$<$ T, Extent $>$}!BufferType@{BufferType}}
+\index{BufferType@{BufferType}!SpanContainers::internal::SpanContainer$<$ T, Extent $>$@{SpanContainers::internal::SpanContainer$<$ T, Extent $>$}}
+\doxysubsubsection{\texorpdfstring{BufferType}{BufferType}}
+{\footnotesize\ttfamily \label{class_span_containers_1_1internal_1_1_span_container_a46e4f3e4ed3050a088056fccb00a76aa} 
+template$<$typename T , std\+::size\+\_\+t Extent$>$ \\
+template$<$std\+::size\+\_\+t Max\+Stack\+Size = 256$>$ \\
+using \mbox{\hyperlink{class_span_containers_1_1internal_1_1_span_container}{Span\+Containers\+::internal\+::\+Span\+Container}}$<$ T, Extent $>$\+::\+Buffer\+Type = \mbox{\hyperlink{namespace_span_containers_1_1internal_struct_span_containers_1_1internal_1_1_buffer_selector}{Buffer\+Selector}}$<$T, Extent$>$\+::\+Buffer\+Type$<$Max\+Stack\+Size$>$}
+
+
+
+Defines an appropriately sized buffer to be allocated on the heap or stack. 
+
+If the span would be larger than Max\+Stack\+Size, returns a stack allocated std\+::array; otherwise, returns a structure wrapping a heap allocated std\+::array. 
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Max\+Stack\+Size} & the maximum size, in bytes, to allocate on the stack. \\
+\hline
+\end{DoxyTemplParams}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{class_span_containers_1_1internal_1_1_span_container_a7f483dfa24b80da71262eeaf59f1f8dc}\index{SpanContainers::internal::SpanContainer$<$ T, Extent $>$@{SpanContainers::internal::SpanContainer$<$ T, Extent $>$}!SpanContainer@{SpanContainer}}
+\index{SpanContainer@{SpanContainer}!SpanContainers::internal::SpanContainer$<$ T, Extent $>$@{SpanContainers::internal::SpanContainer$<$ T, Extent $>$}}
+\doxysubsubsection{\texorpdfstring{SpanContainer()}{SpanContainer()}}
+{\footnotesize\ttfamily \label{class_span_containers_1_1internal_1_1_span_container_a7f483dfa24b80da71262eeaf59f1f8dc} 
+template$<$typename T , std\+::size\+\_\+t Extent$>$ \\
+template$<$typename Buffer $>$ \newline
+requires std\+::is\+\_\+lvalue\+\_\+reference\+\_\+v$<$Buffer\&$>$ \&\& std\+::is\+\_\+constructible\+\_\+v$<$span\+\_\+type, Buffer\&$>$\\
+\mbox{\hyperlink{class_span_containers_1_1internal_1_1_span_container}{Span\+Containers\+::internal\+::\+Span\+Container}}$<$ T, Extent $>$\+::\+Span\+Container (\begin{DoxyParamCaption}\item[{Buffer \&}]{buffer}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [constexpr]}, {\ttfamily [noexcept]}}
+
+
+
+Constructs a new container wrapping buffer. 
+
+
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Buffer} & the type of the underlying buffer to use. Must be an lvalue able to construct a std\+::span \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}{Parameters}
+{\em buffer} & The underlying buffer to wrap. \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_span_containers_1_1internal_1_1_span_container_a4f8d412fd122d11ca3c0f9d3351e5f61}\index{SpanContainers::internal::SpanContainer$<$ T, Extent $>$@{SpanContainers::internal::SpanContainer$<$ T, Extent $>$}!capacity@{capacity}}
+\index{capacity@{capacity}!SpanContainers::internal::SpanContainer$<$ T, Extent $>$@{SpanContainers::internal::SpanContainer$<$ T, Extent $>$}}
+\doxysubsubsection{\texorpdfstring{capacity()}{capacity()}}
+{\footnotesize\ttfamily \label{class_span_containers_1_1internal_1_1_span_container_a4f8d412fd122d11ca3c0f9d3351e5f61} 
+template$<$typename T , std\+::size\+\_\+t Extent$>$ \\
+static consteval size\+\_\+type \mbox{\hyperlink{class_span_containers_1_1internal_1_1_span_container}{Span\+Containers\+::internal\+::\+Span\+Container}}$<$ T, Extent $>$\+::capacity (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}, {\ttfamily [consteval]}, {\ttfamily [noexcept]}}
+
+
+
+Gets the capacity of the container. 
+
+\begin{DoxyReturn}{Returns}
+The capcity of the container. 
+\end{DoxyReturn}
+\Hypertarget{class_span_containers_1_1internal_1_1_span_container_a6adcfa5c633a685bef25e8e8300e2e00}\index{SpanContainers::internal::SpanContainer$<$ T, Extent $>$@{SpanContainers::internal::SpanContainer$<$ T, Extent $>$}!data@{data}}
+\index{data@{data}!SpanContainers::internal::SpanContainer$<$ T, Extent $>$@{SpanContainers::internal::SpanContainer$<$ T, Extent $>$}}
+\doxysubsubsection{\texorpdfstring{data()}{data()}}
+{\footnotesize\ttfamily \label{class_span_containers_1_1internal_1_1_span_container_a6adcfa5c633a685bef25e8e8300e2e00} 
+template$<$typename T , std\+::size\+\_\+t Extent$>$ \\
+span\+\_\+type \mbox{\hyperlink{class_span_containers_1_1internal_1_1_span_container}{Span\+Containers\+::internal\+::\+Span\+Container}}$<$ T, Extent $>$\+::data (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [constexpr]}, {\ttfamily [noexcept]}}
+
+
+
+Gets the underlying span. 
+
+\begin{DoxyReturn}{Returns}
+the underlying span. 
+\end{DoxyReturn}
+\Hypertarget{class_span_containers_1_1internal_1_1_span_container_a3919cb46d780c978a8f3e04f61291d26}\index{SpanContainers::internal::SpanContainer$<$ T, Extent $>$@{SpanContainers::internal::SpanContainer$<$ T, Extent $>$}!empty@{empty}}
+\index{empty@{empty}!SpanContainers::internal::SpanContainer$<$ T, Extent $>$@{SpanContainers::internal::SpanContainer$<$ T, Extent $>$}}
+\doxysubsubsection{\texorpdfstring{empty()}{empty()}}
+{\footnotesize\ttfamily \label{class_span_containers_1_1internal_1_1_span_container_a3919cb46d780c978a8f3e04f61291d26} 
+template$<$typename T , std\+::size\+\_\+t Extent$>$ \\
+bool \mbox{\hyperlink{class_span_containers_1_1internal_1_1_span_container}{Span\+Containers\+::internal\+::\+Span\+Container}}$<$ T, Extent $>$\+::empty (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [constexpr]}, {\ttfamily [noexcept]}}
+
+
+
+Gets if the container is empty or not. 
+
+\begin{DoxyReturn}{Returns}
+true if the container is empty; false otherwise. 
+\end{DoxyReturn}
+\Hypertarget{class_span_containers_1_1internal_1_1_span_container_a62bdcb19c7b8f204d141c3abd6ff6b76}\index{SpanContainers::internal::SpanContainer$<$ T, Extent $>$@{SpanContainers::internal::SpanContainer$<$ T, Extent $>$}!full@{full}}
+\index{full@{full}!SpanContainers::internal::SpanContainer$<$ T, Extent $>$@{SpanContainers::internal::SpanContainer$<$ T, Extent $>$}}
+\doxysubsubsection{\texorpdfstring{full()}{full()}}
+{\footnotesize\ttfamily \label{class_span_containers_1_1internal_1_1_span_container_a62bdcb19c7b8f204d141c3abd6ff6b76} 
+template$<$typename T , std\+::size\+\_\+t Extent$>$ \\
+bool \mbox{\hyperlink{class_span_containers_1_1internal_1_1_span_container}{Span\+Containers\+::internal\+::\+Span\+Container}}$<$ T, Extent $>$\+::full (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [constexpr]}, {\ttfamily [noexcept]}}
+
+
+
+Gets if the container is full or not. 
+
+\begin{DoxyReturn}{Returns}
+true if the container is full; false otherwise. 
+\end{DoxyReturn}
+\Hypertarget{class_span_containers_1_1internal_1_1_span_container_a137e5e887756180fad653799515b225b}\index{SpanContainers::internal::SpanContainer$<$ T, Extent $>$@{SpanContainers::internal::SpanContainer$<$ T, Extent $>$}!size@{size}}
+\index{size@{size}!SpanContainers::internal::SpanContainer$<$ T, Extent $>$@{SpanContainers::internal::SpanContainer$<$ T, Extent $>$}}
+\doxysubsubsection{\texorpdfstring{size()}{size()}}
+{\footnotesize\ttfamily \label{class_span_containers_1_1internal_1_1_span_container_a137e5e887756180fad653799515b225b} 
+template$<$typename T , std\+::size\+\_\+t Extent$>$ \\
+size\+\_\+type \mbox{\hyperlink{class_span_containers_1_1internal_1_1_span_container}{Span\+Containers\+::internal\+::\+Span\+Container}}$<$ T, Extent $>$\+::size (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [constexpr]}, {\ttfamily [noexcept]}}
+
+
+
+Gets the current size of the container. 
+
+\begin{DoxyReturn}{Returns}
+The current size of the container. 
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/\+Users/maxma/source/repos/\+Span\+Containers/lib/internal/Span\+Container.\+h\end{DoxyCompactItemize}

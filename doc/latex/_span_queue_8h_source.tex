@@ -1,0 +1,92 @@
+\doxysection{Span\+Queue.\+h}
+\hypertarget{_span_queue_8h_source}{}\label{_span_queue_8h_source}\index{C:/Users/maxma/source/repos/SpanContainers/lib/SpanQueue.h@{C:/Users/maxma/source/repos/SpanContainers/lib/SpanQueue.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00002\ }
+\DoxyCodeLine{00003\ \textcolor{preprocessor}{\#include\ "{}Errors/EmptyContainerError.h"{}}}
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ "{}Errors/FullContainerError.h"{}}}
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ "{}internal/SpanContainer.h"{}}}
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#include\ "{}internal/PushPopTraits/PushBackTrait.h"{}}}
+\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#include\ "{}internal/PushPopTraits/PopFrontTrait.h"{}}}
+\DoxyCodeLine{00008\ }
+\DoxyCodeLine{00009\ }
+\DoxyCodeLine{00010\ \textcolor{keyword}{namespace\ }SpanContainers\ \{}
+\DoxyCodeLine{00011\ }
+\DoxyCodeLine{00015\ \textcolor{keyword}{template}\ <\textcolor{keyword}{typename}\ T,\ std::\textcolor{keywordtype}{size\_t}\ Extent>}
+\DoxyCodeLine{00016\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_span_containers_1_1_span_queue}{SpanQueue}}\ :\ \textcolor{keyword}{public}\ \mbox{\hyperlink{class_span_containers_1_1internal_1_1_span_container}{internal::SpanContainer}}<T,\ Extent>,}
+\DoxyCodeLine{00017\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{public}\ \mbox{\hyperlink{class_span_containers_1_1internal_1_1_push_back_trait}{internal::PushBackTrait}}<SpanQueue<T,\ Extent>,\ T>,}
+\DoxyCodeLine{00018\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{public}\ \mbox{\hyperlink{class_span_containers_1_1internal_1_1_pop_front_trait}{internal::PopFrontTrait}}<SpanQueue<T,\ Extent>,\ T>}
+\DoxyCodeLine{00019\ \{}
+\DoxyCodeLine{00020\ \ \ \ \ \textcolor{keyword}{using\ }\mbox{\hyperlink{class_span_containers_1_1internal_1_1_span_container}{SpanContainer}}\ =\ \mbox{\hyperlink{class_span_containers_1_1internal_1_1_span_container}{internal::SpanContainer<T,\ Extent>}};}
+\DoxyCodeLine{00021\ }
+\DoxyCodeLine{00022\ \ \ \ \ \textcolor{keyword}{using\ }\mbox{\hyperlink{class_span_containers_1_1internal_1_1_span_container_a0e264b02900eed12541aa0e6d794bfd5}{SpanContainer::span}};}
+\DoxyCodeLine{00023\ \ \ \ \ \textcolor{keyword}{using\ }\mbox{\hyperlink{class_span_containers_1_1internal_1_1_span_container_a14bbacf4b0597e3f514a05971b483cad}{SpanContainer::count}};}
+\DoxyCodeLine{00024\ }
+\DoxyCodeLine{00025\ \textcolor{keyword}{protected}:}
+\DoxyCodeLine{00027\ \ \ \ \ SpanContainer::size\_type\ \mbox{\hyperlink{class_span_containers_1_1_span_queue_a488dc1251f3992392df90289255a0684}{read}}\ =\ 0;}
+\DoxyCodeLine{00028\ }
+\DoxyCodeLine{00030\ \ \ \ \ SpanContainer::size\_type\ \mbox{\hyperlink{class_span_containers_1_1_span_queue_a4c876e1501b0c3477cdb8fc891af98d4}{write}}\ =\ 0;}
+\DoxyCodeLine{00031\ }
+\DoxyCodeLine{00032\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00033\ \ \ \ \ \textcolor{keyword}{using\ }SpanContainer::element\_type;}
+\DoxyCodeLine{00034\ \ \ \ \ \textcolor{keyword}{using\ }SpanContainer::size\_type;}
+\DoxyCodeLine{00035\ \ \ \ \ \textcolor{keyword}{using\ }SpanContainer::pointer;}
+\DoxyCodeLine{00036\ \ \ \ \ \textcolor{keyword}{using\ }SpanContainer::const\_pointer;}
+\DoxyCodeLine{00037\ \ \ \ \ \textcolor{keyword}{using\ }SpanContainer::reference;}
+\DoxyCodeLine{00038\ \ \ \ \ \textcolor{keyword}{using\ }SpanContainer::const\_reference;}
+\DoxyCodeLine{00039\ }
+\DoxyCodeLine{00041\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{constexpr}\ std::string\_view\ \mbox{\hyperlink{class_span_containers_1_1_span_queue_a6c52e6d9d8ca92f622528e955395ed46}{TYPE\_NAME}}\ =\ \textcolor{stringliteral}{"{}SpanQueue"{}};}
+\DoxyCodeLine{00042\ }
+\DoxyCodeLine{00043\ \ \ \ \ \textcolor{keyword}{using\ }\mbox{\hyperlink{class_span_containers_1_1internal_1_1_span_container_ac31b9adb4f213f8f12f5dd58e8dffaeb}{SpanContainer::SpanContainer}};}
+\DoxyCodeLine{00044\ \ \ \ \ \textcolor{keyword}{using\ }SpanContainer::operator=;}
+\DoxyCodeLine{00045\ }
+\DoxyCodeLine{00046\ \ \ \ \ \textcolor{keyword}{using\ }\mbox{\hyperlink{class_span_containers_1_1internal_1_1_span_container_a3919cb46d780c978a8f3e04f61291d26}{SpanContainer::empty}};}
+\DoxyCodeLine{00047\ \ \ \ \ \textcolor{keyword}{using\ }\mbox{\hyperlink{class_span_containers_1_1internal_1_1_span_container_a62bdcb19c7b8f204d141c3abd6ff6b76}{SpanContainer::full}};}
+\DoxyCodeLine{00048\ \ \ \ \ \textcolor{keyword}{using\ }\mbox{\hyperlink{class_span_containers_1_1internal_1_1_span_container_a4f8d412fd122d11ca3c0f9d3351e5f61}{SpanContainer::capacity}};}
+\DoxyCodeLine{00049\ \ \ \ \ \textcolor{keyword}{using\ }\mbox{\hyperlink{class_span_containers_1_1internal_1_1_span_container_a137e5e887756180fad653799515b225b}{SpanContainer::size}};}
+\DoxyCodeLine{00050\ }
+\DoxyCodeLine{00053\ \ \ \ \ [[nodiscard]]\ \textcolor{keyword}{constexpr}\ pointer\ \mbox{\hyperlink{class_span_containers_1_1_span_queue_af78f36f9fc3a83b6e575497d733fccfb}{try\_front}}()\ const\ noexcept\ \{\ \textcolor{keywordflow}{return}\ !\mbox{\hyperlink{class_span_containers_1_1_span_queue_a3919cb46d780c978a8f3e04f61291d26}{empty}}()\ ?\ \&span[\mbox{\hyperlink{class_span_containers_1_1_span_queue_a488dc1251f3992392df90289255a0684}{read}}]\ :\ \textcolor{keyword}{nullptr};\ \}}
+\DoxyCodeLine{00054\ }
+\DoxyCodeLine{00058\ \ \ \ \ \textcolor{keyword}{constexpr}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_span_containers_1_1_span_queue_a0eba17a9b0193542372fabaa02ee8d7e}{try\_push\_back}}(\textcolor{keyword}{const}\ T\&\ item)\ \textcolor{keyword}{noexcept}(std::is\_nothrow\_assignable<T,\ const\ T\&>::value)}
+\DoxyCodeLine{00059\ \ \ \ \ \{}
+\DoxyCodeLine{00060\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{class_span_containers_1_1_span_queue_a62bdcb19c7b8f204d141c3abd6ff6b76}{full}}())\ \{\ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};\ \}}
+\DoxyCodeLine{00061\ \ \ \ \ \ \ \ \ span[\mbox{\hyperlink{class_span_containers_1_1_span_queue_a4c876e1501b0c3477cdb8fc891af98d4}{write}}]\ =\ item;}
+\DoxyCodeLine{00062\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_span_containers_1_1_span_queue_a4c876e1501b0c3477cdb8fc891af98d4}{write}}\ =\ (\mbox{\hyperlink{class_span_containers_1_1_span_queue_a4c876e1501b0c3477cdb8fc891af98d4}{write}}\ +\ 1)\ \%\ \mbox{\hyperlink{class_span_containers_1_1_span_queue_a4f8d412fd122d11ca3c0f9d3351e5f61}{capacity}}();}
+\DoxyCodeLine{00063\ \ \ \ \ \ \ \ \ ++count;}
+\DoxyCodeLine{00064\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{true};}
+\DoxyCodeLine{00065\ \ \ \ \ \}}
+\DoxyCodeLine{00066\ }
+\DoxyCodeLine{00070\ \ \ \ \ \textcolor{keyword}{constexpr}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_span_containers_1_1_span_queue_ab3eebfa9b8ee16bfa4dacc9bbb43af84}{try\_push\_back}}(element\_type\&\&\ value)\ \textcolor{keyword}{noexcept}(std::is\_nothrow\_assignable<T,\ T\&\&>::value)}
+\DoxyCodeLine{00071\ \ \ \ \ \{}
+\DoxyCodeLine{00072\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{class_span_containers_1_1_span_queue_a62bdcb19c7b8f204d141c3abd6ff6b76}{full}}())\ \{\ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};\ \}}
+\DoxyCodeLine{00073\ \ \ \ \ \ \ \ \ span[\mbox{\hyperlink{class_span_containers_1_1_span_queue_a4c876e1501b0c3477cdb8fc891af98d4}{write}}]\ =\ std::move(value);}
+\DoxyCodeLine{00074\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_span_containers_1_1_span_queue_a4c876e1501b0c3477cdb8fc891af98d4}{write}}\ =\ (\mbox{\hyperlink{class_span_containers_1_1_span_queue_a4c876e1501b0c3477cdb8fc891af98d4}{write}}\ +\ 1)\ \%\ \mbox{\hyperlink{class_span_containers_1_1_span_queue_a4f8d412fd122d11ca3c0f9d3351e5f61}{capacity}}();}
+\DoxyCodeLine{00075\ \ \ \ \ \ \ \ \ ++count;}
+\DoxyCodeLine{00076\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{true};}
+\DoxyCodeLine{00077\ \ \ \ \ \}}
+\DoxyCodeLine{00078\ }
+\DoxyCodeLine{00083\ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{typename}...\ Args>\ \textcolor{keyword}{requires}\ std::is\_trivially\_destructible<T>::value}
+\DoxyCodeLine{00084\ \ \ \ \ \textcolor{keyword}{constexpr}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_span_containers_1_1_span_queue_aa5b0518de91fc9b7c7403454333404f8}{try\_emplace\_back}}(Args\&\&...\ args)}
+\DoxyCodeLine{00085\ \ \ \ \ \{}
+\DoxyCodeLine{00086\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{class_span_containers_1_1_span_queue_a62bdcb19c7b8f204d141c3abd6ff6b76}{full}}())\ \{\ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};\ \}}
+\DoxyCodeLine{00087\ \ \ \ \ \ \ \ \ \textcolor{keyword}{new}\ (\&span[\mbox{\hyperlink{class_span_containers_1_1_span_queue_a4c876e1501b0c3477cdb8fc891af98d4}{write}}])\ T(std::forward<Args>(args)...);}
+\DoxyCodeLine{00088\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_span_containers_1_1_span_queue_a4c876e1501b0c3477cdb8fc891af98d4}{write}}\ =\ (\mbox{\hyperlink{class_span_containers_1_1_span_queue_a4c876e1501b0c3477cdb8fc891af98d4}{write}}\ +\ 1)\ \%\ \mbox{\hyperlink{class_span_containers_1_1_span_queue_a4f8d412fd122d11ca3c0f9d3351e5f61}{capacity}}();}
+\DoxyCodeLine{00089\ \ \ \ \ \ \ \ \ ++count;}
+\DoxyCodeLine{00090\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{true};}
+\DoxyCodeLine{00091\ \ \ \ \ \}}
+\DoxyCodeLine{00092\ }
+\DoxyCodeLine{00095\ \ \ \ \ \textcolor{keyword}{constexpr}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_span_containers_1_1_span_queue_a0b1dcd366a94937e858fb1da5983d80d}{try\_pop\_front}}()\ noexcept}
+\DoxyCodeLine{00096\ \ \ \ \ \{}
+\DoxyCodeLine{00097\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{class_span_containers_1_1_span_queue_a3919cb46d780c978a8f3e04f61291d26}{empty}}())\ \{\ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};\ \}}
+\DoxyCodeLine{00098\ \ \ \ \ \ \ \ \ -\/-\/count;}
+\DoxyCodeLine{00099\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_span_containers_1_1_span_queue_a488dc1251f3992392df90289255a0684}{read}}\ =\ (\mbox{\hyperlink{class_span_containers_1_1_span_queue_a488dc1251f3992392df90289255a0684}{read}}\ +\ 1)\ \%\ \mbox{\hyperlink{class_span_containers_1_1_span_queue_a4f8d412fd122d11ca3c0f9d3351e5f61}{capacity}}();}
+\DoxyCodeLine{00100\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{true};}
+\DoxyCodeLine{00101\ \ \ \ \ \}}
+\DoxyCodeLine{00102\ }
+\DoxyCodeLine{00104\ \ \ \ \ \textcolor{keyword}{constexpr}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_span_containers_1_1_span_queue_a40d5e10a0eee51674080525e284042d4}{clear}}()\ noexcept\ \{\ count\ =\ \mbox{\hyperlink{class_span_containers_1_1_span_queue_a4c876e1501b0c3477cdb8fc891af98d4}{write}}\ =\ \mbox{\hyperlink{class_span_containers_1_1_span_queue_a488dc1251f3992392df90289255a0684}{read}}\ =\ 0;\ \}}
+\DoxyCodeLine{00105\ \};}
+\DoxyCodeLine{00106\ }
+\DoxyCodeLine{00107\ \}}
+
+\end{DoxyCode}

@@ -1,0 +1,90 @@
+\doxysection{Span\+Containers\+::internal\+::Push\+Front\+Trait\texorpdfstring{$<$}{<} Derived, T \texorpdfstring{$>$}{>} Class Template Reference}
+\hypertarget{class_span_containers_1_1internal_1_1_push_front_trait}{}\label{class_span_containers_1_1internal_1_1_push_front_trait}\index{SpanContainers::internal::PushFrontTrait$<$ Derived, T $>$@{SpanContainers::internal::PushFrontTrait$<$ Derived, T $>$}}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+constexpr void \mbox{\hyperlink{class_span_containers_1_1internal_1_1_push_front_trait_a03704aff7e56a63d169814ff778a0747}{push\+\_\+front}} (const const\+\_\+reference value)
+\begin{DoxyCompactList}\small\item\em Puts value at the front of the container. \end{DoxyCompactList}\item 
+constexpr void \mbox{\hyperlink{class_span_containers_1_1internal_1_1_push_front_trait_af48fefe59d7f6513793916c2c9861287}{push\+\_\+front}} (element\+\_\+type \&\&value)
+\begin{DoxyCompactList}\small\item\em Moves value to the front of the container. \end{DoxyCompactList}\item 
+{\footnotesize template$<$typename... Args$>$ \newline
+requires std\+::is\+\_\+trivially\+\_\+destructible$<$T$>$\+::value}\\constexpr void \mbox{\hyperlink{class_span_containers_1_1internal_1_1_push_front_trait_a19c072c13e6c9915bb0fa2f5f6cde97d}{emplace\+\_\+front}} (Args \&\&... args)
+\begin{DoxyCompactList}\small\item\em Constructs a new element in place at the front of the container from args. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_span_containers_1_1internal_1_1_push_front_trait_a19c072c13e6c9915bb0fa2f5f6cde97d}\index{SpanContainers::internal::PushFrontTrait$<$ Derived, T $>$@{SpanContainers::internal::PushFrontTrait$<$ Derived, T $>$}!emplace\_front@{emplace\_front}}
+\index{emplace\_front@{emplace\_front}!SpanContainers::internal::PushFrontTrait$<$ Derived, T $>$@{SpanContainers::internal::PushFrontTrait$<$ Derived, T $>$}}
+\doxysubsubsection{\texorpdfstring{emplace\_front()}{emplace\_front()}}
+{\footnotesize\ttfamily \label{class_span_containers_1_1internal_1_1_push_front_trait_a19c072c13e6c9915bb0fa2f5f6cde97d} 
+template$<$typename Derived , typename T $>$ \\
+template$<$typename... Args$>$ \newline
+requires std\+::is\+\_\+trivially\+\_\+destructible$<$T$>$\+::value\\
+void \mbox{\hyperlink{class_span_containers_1_1internal_1_1_push_front_trait}{Span\+Containers\+::internal\+::\+Push\+Front\+Trait}}$<$ Derived, T $>$\+::emplace\+\_\+front (\begin{DoxyParamCaption}\item[{Args \&\&...}]{args}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [constexpr]}}
+
+
+
+Constructs a new element in place at the front of the container from args. 
+
+
+\begin{DoxyTemplParams}{Template Parameters}
+{\em ...\+Args} & The type of the arguments \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}{Parameters}
+{\em ...\+args} & The arguments used to construct the element. \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em \doxylink{class_span_containers_1_1_full_container_error}{Full\+Container\+Error}} & if the container capcity is exceeded \\
+\hline
+\end{DoxyExceptions}
+\Hypertarget{class_span_containers_1_1internal_1_1_push_front_trait_a03704aff7e56a63d169814ff778a0747}\index{SpanContainers::internal::PushFrontTrait$<$ Derived, T $>$@{SpanContainers::internal::PushFrontTrait$<$ Derived, T $>$}!push\_front@{push\_front}}
+\index{push\_front@{push\_front}!SpanContainers::internal::PushFrontTrait$<$ Derived, T $>$@{SpanContainers::internal::PushFrontTrait$<$ Derived, T $>$}}
+\doxysubsubsection{\texorpdfstring{push\_front()}{push\_front()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily \label{class_span_containers_1_1internal_1_1_push_front_trait_a03704aff7e56a63d169814ff778a0747} 
+template$<$typename Derived , typename T $>$ \\
+void \mbox{\hyperlink{class_span_containers_1_1internal_1_1_push_front_trait}{Span\+Containers\+::internal\+::\+Push\+Front\+Trait}}$<$ Derived, T $>$\+::push\+\_\+front (\begin{DoxyParamCaption}\item[{const const\+\_\+reference}]{value}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [constexpr]}}
+
+
+
+Puts value at the front of the container. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em value} & The item to place at the front of the container. \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em \doxylink{class_span_containers_1_1_full_container_error}{Full\+Container\+Error}} & if the container capacity is exceeded \\
+\hline
+\end{DoxyExceptions}
+\Hypertarget{class_span_containers_1_1internal_1_1_push_front_trait_af48fefe59d7f6513793916c2c9861287}\index{SpanContainers::internal::PushFrontTrait$<$ Derived, T $>$@{SpanContainers::internal::PushFrontTrait$<$ Derived, T $>$}!push\_front@{push\_front}}
+\index{push\_front@{push\_front}!SpanContainers::internal::PushFrontTrait$<$ Derived, T $>$@{SpanContainers::internal::PushFrontTrait$<$ Derived, T $>$}}
+\doxysubsubsection{\texorpdfstring{push\_front()}{push\_front()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily \label{class_span_containers_1_1internal_1_1_push_front_trait_af48fefe59d7f6513793916c2c9861287} 
+template$<$typename Derived , typename T $>$ \\
+void \mbox{\hyperlink{class_span_containers_1_1internal_1_1_push_front_trait}{Span\+Containers\+::internal\+::\+Push\+Front\+Trait}}$<$ Derived, T $>$\+::push\+\_\+front (\begin{DoxyParamCaption}\item[{element\+\_\+type \&\&}]{value}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [constexpr]}}
+
+
+
+Moves value to the front of the container. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em value} & The item to place at the front of the container. \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em \doxylink{class_span_containers_1_1_full_container_error}{Full\+Container\+Error}} & if the container capacity is exceeded \\
+\hline
+\end{DoxyExceptions}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/\+Users/maxma/source/repos/\+Span\+Containers/lib/internal/\+Push\+Pop\+Traits/Push\+Front\+Trait.\+h\end{DoxyCompactItemize}

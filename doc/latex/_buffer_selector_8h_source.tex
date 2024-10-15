@@ -1,0 +1,24 @@
+\doxysection{Buffer\+Selector.\+h}
+\hypertarget{_buffer_selector_8h_source}{}\label{_buffer_selector_8h_source}\index{C:/Users/maxma/source/repos/SpanContainers/lib/internal/BufferSelector.h@{C:/Users/maxma/source/repos/SpanContainers/lib/internal/BufferSelector.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#include\ <array>}}
+\DoxyCodeLine{00003\ }
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ "{}HeapArray.h"{}}}
+\DoxyCodeLine{00005\ }
+\DoxyCodeLine{00007\ \textcolor{keyword}{namespace\ }\mbox{\hyperlink{namespace_span_containers_1_1internal}{SpanContainers::internal}}\ \{}
+\DoxyCodeLine{00008\ }
+\DoxyCodeLine{00012\ \textcolor{keyword}{template}\ <\textcolor{keyword}{typename}\ T,\ std::\textcolor{keywordtype}{size\_t}\ Extent>}
+\DoxyCodeLine{00013\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{namespace_span_containers_1_1internal_struct_span_containers_1_1internal_1_1_buffer_selector}{BufferSelector}}\ \{}
+\DoxyCodeLine{00016\ \ \ \ \ \textcolor{keyword}{template}\ <std::\textcolor{keywordtype}{size\_t}\ MaxStackSize\ =\ 256>}
+\DoxyCodeLine{00017\ \ \ \ \ \textcolor{keyword}{using\ }\mbox{\hyperlink{namespace_span_containers_1_1internal_a232c8115a7ff239803cc9a01be984904}{BufferType}}\ =\ std::conditional\_t<}
+\DoxyCodeLine{00018\ \ \ \ \ \ \ \ \ Extent\ *\ \textcolor{keyword}{sizeof}(T)\ <=\ MaxStackSize,}
+\DoxyCodeLine{00019\ \ \ \ \ \ \ \ \ std::array<T,\ Extent>,}
+\DoxyCodeLine{00020\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{struct_span_containers_1_1internal_1_1_heap_array}{internal::HeapArray<T,\ Extent>}}}
+\DoxyCodeLine{00021\ \ \ \ \ >;}
+\DoxyCodeLine{00022\ \};}
+\DoxyCodeLine{00023\ }
+\DoxyCodeLine{00024\ \}}
+
+\end{DoxyCode}

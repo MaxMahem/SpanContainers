@@ -1,0 +1,64 @@
+\doxysection{Span\+Containers\+::internal Namespace Reference}
+\hypertarget{namespace_span_containers_1_1internal}{}\label{namespace_span_containers_1_1internal}\index{SpanContainers::internal@{SpanContainers::internal}}
+
+
+Internal namespace for implementation details.  
+
+
+\doxysubsubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{namespace_span_containers_1_1internal_struct_span_containers_1_1internal_1_1_buffer_selector}{Buffer\+Selector}}
+\begin{DoxyCompactList}\small\item\em helper struct fr selecting buffer type.  \mbox{\hyperlink{namespace_span_containers_1_1internal_struct_span_containers_1_1internal_1_1_buffer_selector}{More...}}\end{DoxyCompactList}\item 
+struct \mbox{\hyperlink{struct_span_containers_1_1internal_1_1_heap_array}{Heap\+Array}}
+\begin{DoxyCompactList}\small\item\em helper struct for creating heap-\/allocated std\+::arrays. \end{DoxyCompactList}\item 
+class \mbox{\hyperlink{class_span_containers_1_1internal_1_1_pop_back_trait}{Pop\+Back\+Trait}}
+\item 
+class \mbox{\hyperlink{class_span_containers_1_1internal_1_1_pop_front_trait}{Pop\+Front\+Trait}}
+\item 
+class \mbox{\hyperlink{class_span_containers_1_1internal_1_1_push_back_trait}{Push\+Back\+Trait}}
+\item 
+class \mbox{\hyperlink{class_span_containers_1_1internal_1_1_push_front_trait}{Push\+Front\+Trait}}
+\item 
+class \mbox{\hyperlink{class_span_containers_1_1internal_1_1_span_container}{Span\+Container}}
+\begin{DoxyCompactList}\small\item\em Base type for Span containers, holding common behavior. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Concepts}
+\begin{DoxyCompactItemize}
+\item 
+concept \mbox{\hyperlink{concept_span_containers_1_1internal_1_1_formattable_exception}{Formattable\+Exception}}
+\begin{DoxyCompactList}\small\item\em Represents an exception type that has the properties necessary for formatting. \end{DoxyCompactList}\item 
+concept \mbox{\hyperlink{concept_span_containers_1_1internal_1_1_formattable_span_container}{Formattable\+Span\+Container}}
+\begin{DoxyCompactList}\small\item\em Concept for assisting in formatting a Span\+Container. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Internal namespace for implementation details. 
+
+\doxysubsection{Class Documentation}
+\index{SpanContainers::internal::BufferSelector@{SpanContainers::internal::BufferSelector}}\label{struct_span_containers_1_1internal_1_1_buffer_selector}
+\Hypertarget{namespace_span_containers_1_1internal_struct_span_containers_1_1internal_1_1_buffer_selector}
+\doxysubsubsection{struct Span\+Containers\+::internal\+::Buffer\+Selector}
+\subsubsection*{template$<$typename T, std\+::size\+\_\+t Extent$>$\newline
+struct Span\+Containers\+::internal\+::\+Buffer\+Selector$<$ T, Extent $>$}
+helper struct fr selecting buffer type. 
+
+
+\begin{DoxyTemplParams}{Template Parameters}
+{\em T} & The type of the element in the buffer. \\
+\hline
+{\em Extent} & The number of elements in the type. \\
+\hline
+\end{DoxyTemplParams}
+\begin{DoxyFields}{Class Members}
+\mbox{\Hypertarget{namespace_span_containers_1_1internal_a232c8115a7ff239803cc9a01be984904}\label{namespace_span_containers_1_1internal_a232c8115a7ff239803cc9a01be984904}} 
+typedef conditional\_t$<$ Extent \texorpdfstring{$\ast$}{*}sizeof(T)$<$=MaxStackSize, array$<$ T, Extent $>$, \mbox{\hyperlink{struct_span_containers_1_1internal_1_1_heap_array}{HeapArray}}$<$ T, Extent $>$ $>$&
+BufferType&
+Type alais for selecting a buffer type. 
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Max\+Stack\+Size} & The maximum size in bytes to allocate on the stack \\
+\hline
+\end{DoxyTemplParams}
+\\
+\hline
+
+\end{DoxyFields}

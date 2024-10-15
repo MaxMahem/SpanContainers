@@ -25,8 +25,7 @@ include(FetchContent)
 #   GIT_REPOSITORY https://github.com/google/googletest.git
 #   GIT_TAG main
 # )
-FetchContent_Declare(
-  googletest
+FetchContent_Declare(googletest
   URL https://github.com/google/googletest/releases/download/v1.15.2/googletest-1.15.2.tar.gz
   DOWNLOAD_EXTRACT_TIMESTAMP true
 )
@@ -37,11 +36,13 @@ FetchContent_MakeAvailable(googletest)
 enable_testing()
 
 add_executable(SpanContainerTests
-	"tests/BufferSelectorTests.cc"
-	"tests/HeapArrayTests.cc"
-	"tests/SpanContainerTests.cc"
-	"tests/SpanContainerTypesTest.cc"
-	"tests/SpanQueueTests.cc" 
+    "tests/BufferSelectorTests.cc"
+    "tests/HeapArrayTests.cc"
+    "tests/SpanContainerTests.cc"
+    "tests/SpanDequeueTests.cc"
+    "tests/SpanHeapTests.cc"
+    "tests/SpanStackTests.cc"
+    "tests/SpanQueueTests.cc"
 )
 target_link_libraries(SpanContainerTests GTest::gtest_main GTest::gmock_main)
 target_include_directories(SpanContainerTests PRIVATE "lib")

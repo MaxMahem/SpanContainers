@@ -1,0 +1,69 @@
+\doxysection{std\+::formatter\texorpdfstring{$<$}{<} Container \texorpdfstring{$>$}{>} Struct Template Reference}
+\hypertarget{structstd_1_1formatter_3_01_container_01_4}{}\label{structstd_1_1formatter_3_01_container_01_4}\index{std::formatter$<$ Container $>$@{std::formatter$<$ Container $>$}}
+
+
+A formatter for span containers.  
+
+
+
+
+{\ttfamily \#include $<$Span\+Container\+Formatter.\+h$>$}
+
+Inheritance diagram for std\+::formatter\texorpdfstring{$<$}{<} Container \texorpdfstring{$>$}{>}\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{structstd_1_1formatter_3_01_container_01_4}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+{\footnotesize template$<$typename Format\+Context $>$ }\\auto \mbox{\hyperlink{structstd_1_1formatter_3_01_container_01_4_a68e146df537b5c3ae0623ed167beb298}{format}} (const Container \&container, Format\+Context \&ctx) const
+\begin{DoxyCompactList}\small\item\em formats a container \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\subsubsection*{template$<$\mbox{\hyperlink{concept_span_containers_1_1internal_1_1_formattable_span_container}{Span\+Containers\+::internal\+::\+Formattable\+Span\+Container}} Container$>$\newline
+struct std\+::formatter$<$ Container $>$}
+A formatter for span containers. 
+
+
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Container} & The type of the container. \\
+\hline
+\end{DoxyTemplParams}
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{structstd_1_1formatter_3_01_container_01_4_a68e146df537b5c3ae0623ed167beb298}\index{std::formatter$<$ Container $>$@{std::formatter$<$ Container $>$}!format@{format}}
+\index{format@{format}!std::formatter$<$ Container $>$@{std::formatter$<$ Container $>$}}
+\doxysubsubsection{\texorpdfstring{format()}{format()}}
+{\footnotesize\ttfamily \label{structstd_1_1formatter_3_01_container_01_4_a68e146df537b5c3ae0623ed167beb298} 
+template$<$\mbox{\hyperlink{concept_span_containers_1_1internal_1_1_formattable_span_container}{Span\+Containers\+::internal\+::\+Formattable\+Span\+Container}} Container$>$ \\
+template$<$typename Format\+Context $>$ \\
+auto std\+::formatter$<$ Container $>$\+::format (\begin{DoxyParamCaption}\item[{const Container \&}]{container}{, }\item[{Format\+Context \&}]{ctx}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+formats a container 
+
+
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Format\+Context} & the Format\+Context for this format \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}{Parameters}
+{\em container} & the container to format \\
+\hline
+{\em ctx} & the formatting context to format to \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+the formatting context with the formatted container appended 
+\end{DoxyReturn}
+
+
+The documentation for this struct was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/\+Users/maxma/source/repos/\+Span\+Containers/lib/Span\+Container\+Formatter.\+h\end{DoxyCompactItemize}

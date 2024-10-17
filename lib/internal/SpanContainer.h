@@ -56,11 +56,11 @@ public:
 
     /// @brief Gets if the container is empty or not.
     /// @return true if the container is empty; false otherwise.
-    constexpr bool empty() const noexcept { return size() == 0; }
+    constexpr bool empty() const noexcept { return count <= 0; }
 
     /// @brief Gets if the container is full or not.
     /// @return true if the container is full; false otherwise.
-    constexpr bool full() const noexcept { return size() >= capacity(); }
+    constexpr bool full() const noexcept { return count >= Extent; }
 
     /// @brief Gets the underlying span.
     /// @return the underlying span.

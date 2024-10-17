@@ -1,6 +1,7 @@
 #pragma once
 
 #include <algorithm>
+#include <cassert>
 #include <cstddef>
 #include <ranges>
 #include <string_view>
@@ -47,7 +48,11 @@ public:
 
     /// @brief Gets a reference to the item at the front of the container without a bounds check.
     /// @return A reference to the item at the front of the container.
-    [[nodiscard]] constexpr reference unsafe_front() const noexcept { return span[read]; }
+    [[nodiscard]] constexpr reference unsafe_front() const noexcept 
+    {
+        assert(count > 0 && "Container is empty.");
+        return span[read]; 
+    }
 
     /// @brief Assigns value to the back of the container, without bounds checks.
     /// @tparam U The type of the value.
@@ -55,6 +60,7 @@ public:
     template <typename U> requires std::assignable_from<T&, U&&>
     constexpr void unsafe_push_back(U&& value) noexcept(std::is_nothrow_assignable<T&, U&&>::value)
     {
+        assert(count < Extent && "Container is full.");
         span[write] = std::forward<U>(value);
         write = (write + 1) % Extent;
         ++count;
@@ -88,6 +94,7 @@ public:
     /// @brief Remove n items from the front of the container, without bounds check.
     constexpr void unsafe_pop_front(size_type n) noexcept
     {
+        assert(count - n >= 0 && "Not enough items to pop.");
         count -= n;
         read = (read + n) % Extent;
     }

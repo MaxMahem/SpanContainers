@@ -57,7 +57,7 @@ public:
             std::array<T, TestSize> buffer{};
             SpanStack<T, TestSize> spanStack{ buffer };
 
-            for (T number : randomData) { spanStack.push_back(number); }
+            std::ranges::copy(randomData, std::back_inserter(spanStack));
 
             auto rit = randomData.rbegin();
             while (!spanStack.empty()) { 
@@ -117,7 +117,7 @@ public:
             std::vector<T> vector{};
             vector.reserve(TestSize);
 
-            for (T number : randomData) { vector.push_back(number); }
+            std::ranges::copy(randomData, std::back_inserter(vector));
             
             auto rit = randomData.rbegin();
             while (!vector.empty()) {
@@ -131,12 +131,7 @@ public:
 //BENCHMARK_TEMPLATE_F(PushPopFixture, SpanStack_Array_256,  int, 256)(benchmark::State& state)  { this->SpanStackArrayPushPop(state); }
 //BENCHMARK_TEMPLATE_F(PushPopFixture, SpanStack_Array_512,  int, 512)(benchmark::State& state)  { this->SpanStackArrayPushPop(state); }
 //BENCHMARK_TEMPLATE_F(PushPopFixture, SpanStack_Array_1024, int, 1024)(benchmark::State& state) { this->SpanStackArrayPushPop(state); }
-//BENCHMARK_TEMPLATE_F(PushPopFixture, SpanStack_Array_2048, int, 2048)(benchmark::State& state) { this->SpanStackArrayPushPop(state); }
-//
-//BENCHMARK_TEMPLATE_F(PushPopFixture, SpanStack_ArrayEmplace_256,  int, 256)(benchmark::State& state)  { this->SpanStackArrayEmplacePop(state); }
-//BENCHMARK_TEMPLATE_F(PushPopFixture, SpanStack_ArrayEmplace_512,  int, 512)(benchmark::State& state)  { this->SpanStackArrayEmplacePop(state); }
-//BENCHMARK_TEMPLATE_F(PushPopFixture, SpanStack_ArrayEmplace_1024, int, 1024)(benchmark::State& state) { this->SpanStackArrayEmplacePop(state); }
-//BENCHMARK_TEMPLATE_F(PushPopFixture, SpanStack_ArrayEmplace_2048, int, 2048)(benchmark::State& state) { this->SpanStackArrayPushPop(state); }
+BENCHMARK_TEMPLATE_F(PushPopFixture, SpanStack_Array_2048, std::int64_t, 2048)(benchmark::State& state) { this->SpanStackArrayPushPop(state); }
 
 //BENCHMARK_TEMPLATE_F(PushPopFixture, SpanStack_ArrayUnsafe_256,  int, 256)(benchmark::State& state)  { this->SpanStackArrayUnsafePushPop(state); }
 //BENCHMARK_TEMPLATE_F(PushPopFixture, SpanStack_ArrayUnsafe_512,  int, 512)(benchmark::State& state)  { this->SpanStackArrayUnsafePushPop(state); }

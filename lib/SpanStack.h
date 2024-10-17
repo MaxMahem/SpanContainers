@@ -1,6 +1,7 @@
 #pragma once
 
 #include <algorithm>
+#include <cassert>
 #include <cstddef>
 #include <ranges>
 #include <string_view>
@@ -40,7 +41,11 @@ public:
 
     /// @brief Gets a reference to the last item in the container without a bounds check.
     /// @return A reference to the last item in the container.
-    [[nodiscard]] constexpr reference unsafe_back() const noexcept { return span[count - 1]; }
+    [[nodiscard]] constexpr reference unsafe_back() const noexcept 
+    { 
+        assert(count > 0 && "Container is empty.");
+        return span[count - 1]; 
+    }
 
     /// @brief Assigns value to the back of the container, without bounds checks.
     /// @tparam U The type of the value.
@@ -48,29 +53,34 @@ public:
     template <typename U> requires std::assignable_from<T&, U&&>
     constexpr void unsafe_push_back(U&& value) noexcept(std::is_nothrow_assignable<T&, U&&>::value)
     {
+        assert(count < Extent && "Container is full.");
         span[count++] = std::forward<U>(value);
     }
 
-    /// @brief Tries to assign the values to the back of the container.
+    /// @brief Tries to assign values to the back of the container.
     /// @tparam Range The type of the range that contains the values.
-    /// @return true if value was placed at the back of the container; false if not enough room for all values.
+    /// @return true if values were placed at the back of the container; false if not enough room for all values.
     template<std::ranges::input_range Range = std::initializer_list<T>>
     constexpr bool try_push_back_range(Range&& values) requires std::convertible_to<std::ranges::range_value_t<Range>, T>
     {
         const auto newCount = count + std::ranges::size(values);
         if (newCount > Extent) { return false; }
-        constexpr bool isRvalue = std::is_rvalue_reference<Range&&>::value;
 
+        constexpr bool isRvalue = std::is_rvalue_reference<Range&&>::value;
         if constexpr (isRvalue) { std::ranges::move(values, span.begin() + count); }
         else                    { std::ranges::copy(values, span.begin() + count); }
-        count = newCount;
-            
+
+        count = newCount;    
         return true;
     }
 
     /// @brief Removes n items from the back of the container without a bounds check.
     /// @param n the number of items to remove.
-    constexpr void unsafe_pop_back(size_type n) noexcept { count -= n; }
+    constexpr void unsafe_pop_back(size_type n) noexcept 
+    { 
+        assert(count - n >= 0 && "Not enough items to pop.");
+        count -= n; 
+    }
 
     /// @brief Clears all items from the container.
     constexpr void clear() noexcept { count = 0; }

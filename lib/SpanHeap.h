@@ -1,6 +1,7 @@
 #pragma once
 
 #include <algorithm>
+#include <cassert>
 #include <cstddef>
 #include <concepts>
 #include <string_view>
@@ -68,7 +69,11 @@ public:
 
     /// @brief Gets a reference to the last item in the container, without bounds check.
     /// @return A reference to the last item in the container.
-    [[nodiscard]] constexpr reference unsafe_back() const noexcept { return span[0]; }
+    [[nodiscard]] constexpr reference unsafe_back() const noexcept 
+    {
+        assert(count > 0 && "Container is empty.");
+        return span[0]; 
+    }
 
     /// @brief Assigns value to an element of the container.
     /// @tparam U the type of the value to assign to the container. Must be assignable to T.
@@ -76,6 +81,7 @@ public:
     template <typename U> requires std::assignable_from<T&, U&&>
     constexpr void unsafe_push(U&& value) noexcept(std::is_nothrow_assignable<T, U>::value)
     {
+        assert(count < Extent && "Container is full.");
         span[count++] = std::forward<U>(value);
         std::push_heap(span.begin(), span.begin() + count, comparer);
     }
@@ -111,6 +117,7 @@ public:
     /// @param n The number of items to remove from the back of the container.
     constexpr void unsafe_pop_back(size_type n) noexcept
     {
+        assert(count - n >= 0 && "Not enough items to pop.");
         auto newCount = count - n;
         if (n > CalculateMakeThreshold()) {
             std::make_heap(span.begin(), span.begin() + count, comparer);

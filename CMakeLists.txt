@@ -15,8 +15,7 @@ target_sources(Demo PUBLIC FILE_SET CXX_MODULES)
 target_include_directories(Demo PRIVATE "lib")
 set_property(TARGET Demo PROPERTY CXX_STANDARD 20)
 
-# GTest
-
+#### GTest
 #find_package(GTest REQUIRED)
 
 include(FetchContent)
@@ -49,3 +48,19 @@ target_include_directories(SpanContainerTests PRIVATE "lib")
 
 include(GoogleTest)
 gtest_discover_tests(SpanContainerTests)
+
+#### Google benchmark
+#find_package(benchmark REQUIRED)
+#FetchContent_Declare(googletest
+#  URL https://github.com/google/benchmark/archive/refs/tags/v1.9.0.tar.gz
+#  DOWNLOAD_EXTRACT_TIMESTAMP true
+#)
+FetchContent_Declare(Benchmarks
+        GIT_REPOSITORY https://github.com/google/benchmark.git
+        GIT_TAG main
+)
+FetchContent_MakeAvailable(Benchmarks)
+add_executable(Benchmarks "benchmarks/Benchmarks.cpp")
+set_property(TARGET Benchmarks PROPERTY CXX_STANDARD 20)
+target_link_libraries(Benchmarks benchmark::benchmark)
+target_include_directories(Benchmarks PRIVATE "lib")

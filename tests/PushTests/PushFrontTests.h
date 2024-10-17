@@ -23,7 +23,6 @@ TYPED_TEST_P(PushFrontTests, WhenNotFullTryPushReturnsTrue)
 {
     ASSERT_FALSE(this->emptyContainer.full());
     ASSERT_TRUE(this->emptyContainer.try_push_front(1));
-    ASSERT_TRUE(this->emptyContainer.try_emplace_front(1));
 }
 
 TYPED_TEST_P(PushFrontTests, WhenFullClearEmptiesContainer)
@@ -35,13 +34,11 @@ TYPED_TEST_P(PushFrontTests, WhenFullClearEmptiesContainer)
 TYPED_TEST_P(PushFrontTests, WhenFullPushFrontThrows)
 {
     ASSERT_THROW(this->fullContainer.push_front(6),     FullContainerError);
-    ASSERT_THROW(this->fullContainer.emplace_front(6),  FullContainerError);
 }
 
 TYPED_TEST_P(PushFrontTests, WhenFullTryPushFrontReturnsFalse)
 {
     ASSERT_FALSE(this->fullContainer.try_push_front(6));
-    ASSERT_FALSE(this->fullContainer.try_emplace_front(6));
 }
 
 TYPED_TEST_P(PushFrontTests, PushIncrementsSize)

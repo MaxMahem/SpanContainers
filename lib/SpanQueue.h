@@ -34,12 +34,8 @@ protected:
     SpanContainer::size_type write = 0;
 
 public:
-    using SpanContainer::element_type;
     using SpanContainer::size_type;
-    using SpanContainer::pointer;
-    using SpanContainer::const_pointer;
     using SpanContainer::reference;
-    using SpanContainer::const_reference;
 
     /// @brief the name of this type.
     static constexpr std::string_view TYPE_NAME = "SpanQueue";
@@ -47,41 +43,23 @@ public:
     using SpanContainer::SpanContainer;
     using SpanContainer::operator=;
 
-    using SpanContainer::empty;
-    using SpanContainer::full;
+    using internal::PopFrontTrait<SpanQueue<T, Extent>, T>::unsafe_pop_front;
 
-    using internal::PopFrontTrait<SpanQueue<T, Extent>, T>::try_pop_front;
+    /// @brief Gets a reference to the item at the front of the container without a bounds check.
+    /// @return A reference to the item at the front of the container.
+    [[nodiscard]] constexpr reference unsafe_front() const noexcept { return span[read]; }
 
-    /// @brief Gets a pointer to the item at the front of the container.
-    /// @return A pointer to the item at the front of the container, or nullptr if empty.
-    [[nodiscard]] constexpr pointer try_front() const noexcept { return !empty() ? &span[read] : nullptr; }
-
-    /// @brief Tries to assign value at the back of the container.
-    /// @param value The item to move to the back of the container.
-    /// @return true if value was placed at the back of the container; false otherwise.
+    /// @brief Assigns value to the back of the container, without bounds checks.
+    /// @tparam U The type of the value.
+    /// @param value The item to assign.
     template <typename U> requires std::assignable_from<T&, U&&>
-    constexpr bool try_push_back(U&& value) noexcept(std::is_nothrow_assignable<T, U>::value)
+    constexpr void unsafe_push_back(U&& value) noexcept(std::is_nothrow_assignable<T&, U&&>::value)
     {
-        if (full()) { return false; }
         span[write] = std::forward<U>(value);
         write = (write + 1) % Extent;
         ++count;
-        return true;
     }
 
-    /// @brief Tries to constructs a new element in place at the back of the container from args.
-    /// @tparam ...Args The type of the arguments
-    /// @param ...args The arguments used to construct the element.
-    /// @return true if the element was constructed in placed at the back of the container; false otherwise.
-    template<typename... Args> requires std::is_trivially_destructible<T>::value && std::constructible_from<T, Args&&...>
-    constexpr bool try_emplace_back(Args&&... args)
-    {
-        if (full()) { return false; }
-        new (&span[write]) T(std::forward<Args>(args)...);
-        write = (write + 1) % Extent;
-        ++count;
-        return true;
-    }
 
     template<std::ranges::input_range Range = std::initializer_list<T>>
     constexpr bool try_push_back_range(Range&& values) requires std::convertible_to<std::ranges::range_value_t<Range>, T>
@@ -107,14 +85,11 @@ public:
         return true;
     }
 
-    /// @brief Tries to remove n items from the front of the container.
-    /// @return true if n items were removed; false if n is greater than the current size.
-    constexpr bool try_pop_front(size_type n) noexcept
+    /// @brief Remove n items from the front of the container, without bounds check.
+    constexpr void unsafe_pop_front(size_type n) noexcept
     {
-        if (n > count) { return false; }
         count -= n;
         read = (read + n) % Extent;
-        return true;
     }
 
     /// @brief Clears all items from the container.

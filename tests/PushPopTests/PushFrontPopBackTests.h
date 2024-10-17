@@ -29,6 +29,11 @@ TYPED_TEST_P(PushFrontPopBackTests, PopDecrementsSize)
     for (auto popMethod : this->PopFuncs) { this->TestPopDecrement(this->push, popMethod); }
 }
 
+TYPED_TEST_P(PushFrontPopBackTests, PopNDecrementsSizeByN)
+{
+    for (auto popNMethod : this->PopNFuncs) { this->TestPopNDecrement(this->push, popNMethod); }
+}
+
 TYPED_TEST_P(PushFrontPopBackTests, PushPopIsFIFO)
 {
     for (auto& pushMethod : this->PushFuncs) {
@@ -47,6 +52,11 @@ TYPED_TEST_P(PushFrontPopBackTests, PushPopAfterClearIsFIFO)
     EXPECT_THAT(values, ::testing::ElementsAreArray(NUMBER_FILL));
 }
 
-REGISTER_TYPED_TEST_SUITE_P(PushFrontPopBackTests, PopDecrementsSize, PushPopIsFIFO, PushPopAfterClearIsFIFO);
+REGISTER_TYPED_TEST_SUITE_P(PushFrontPopBackTests, 
+    PopDecrementsSize, 
+    PopNDecrementsSizeByN,
+    PushPopIsFIFO, 
+    PushPopAfterClearIsFIFO
+);
 
 }

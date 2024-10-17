@@ -9,24 +9,26 @@
 namespace SpanContainers::internal {
 
 template <typename Derived, typename T> struct PushStraightTrait {
-    /// @brief Assigns value to the container.
-    /// @param value The item to place at the back of the container.
+    /// @brief Assigns value to an element of the container.
+    /// @tparam U the type of the value to assign to the container. Must be assignable to T.
+    /// @param value The item to place in the container.
     /// @throws FullContainerError if the container capacity is exceeded
     template <typename U> constexpr void push(U&& value) requires std::assignable_from<T&, U&&>
     {
-        auto& derived = static_cast<Derived&>(*this);
-        if (!derived.try_push(std::forward<U>(value))) { throw FullContainerError(derived); }
+        if (!try_push(std::forward<U>(value))) { throw FullContainerError(static_cast<Derived&>(*this)); }
     }
 
-    /// @brief Constructs a new element in place in the container from args.
-    /// @tparam ...Args The type of the arguments
-    /// @param ...args The arguments used to construct the element.
-    /// @throws FullContainerError if the container capcity is exceeded
-    template<typename... Args> requires std::is_trivially_destructible<T>::value && std::constructible_from<T, Args&&...>
-    constexpr void emplace(Args&&... args)
+    /// @brief Tries to assign value to an element of the container.
+    /// @tparam U the type of the value to assign to the container. Must be assignable to T.
+    /// @param value The item to assign to an element of the container.
+    /// @return true if value was assigned a value within the container; false otherwise.
+    template <typename U> requires std::assignable_from<T&, U&&>
+    constexpr bool try_push(U&& value) noexcept(std::is_nothrow_assignable<T&, U&&>::value)
     {
         auto& derived = static_cast<Derived&>(*this);
-        if (!derived.try_emplace(std::forward<Args...>(args...))) { throw FullContainerError(derived); }
+        if (derived.full()) { return false; }
+        derived.unsafe_push(std::forward<U>(value));
+        return true;
     }
 };
 

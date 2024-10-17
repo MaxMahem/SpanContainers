@@ -2,7 +2,6 @@
 #include <type_traits>
 #include <utility>
 
-#include "Errors/EmptyContainerError.h"
 #include "Errors/FullContainerError.h"
 
 namespace SpanContainers::internal {
@@ -13,19 +12,20 @@ template <typename Derived, typename T> struct PushBackTrait {
     /// @throws FullContainerError if the container capacity is exceeded
     template <typename U> constexpr void push_back(U&& value) requires std::assignable_from<T&, U&&>
     {
-        auto& derived = static_cast<Derived&>(*this);
-        if (!derived.try_push_back(std::forward<U>(value))) { throw FullContainerError(derived); }
+        if (!try_push_back(std::forward<U>(value))) { throw FullContainerError(static_cast<Derived&>(*this)); }
     }
 
-    /// @brief Constructs a new element in place at the back of the container from args.
-    /// @tparam ...Args The type of the arguments
-    /// @param ...args The arguments used to construct the element.
-    /// @throws FullContainerError if the container capcity is exceeded
-    template<typename... Args> requires std::is_trivially_destructible<T>::value && std::constructible_from<T, Args&&...>
-    constexpr void emplace_back(Args&&... args)
+    /// @brief Tries to assign value at the back of the container.
+    /// @tparam U the type of the value to assign to the container. Must be assignable to T.
+    /// @param value The item to move to the back of the container.
+    /// @return true if value was placed at the back of the container; false otherwise.
+    template <typename U> requires std::assignable_from<T&, U&&>
+    constexpr bool try_push_back(U&& value) noexcept(std::is_nothrow_assignable<T&, U&&>::value)
     {
         auto& derived = static_cast<Derived&>(*this);
-        if (!derived.try_emplace_back(std::forward<Args...>(args...))) { throw FullContainerError(derived); }
+        if (derived.full()) { return false; }
+        derived.unsafe_push_back(std::forward<U>(value));
+        return true;
     }
 };
 

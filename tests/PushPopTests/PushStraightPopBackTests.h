@@ -18,14 +18,19 @@ using namespace SpanContainers;
 /// @tparam Container the type of the container.
 template <typename Container>
 class PushStraightPopBackTests : public PushPopTestFixture<Container>, 
-                         public PopBackFuncs<Container>, 
-                         public PushStraightFuncs<Container> { };
+                                 public PopBackFuncs<Container>, 
+                                 public PushStraightFuncs<Container> { };
 
 TYPED_TEST_SUITE_P(PushStraightPopBackTests);
 
 TYPED_TEST_P(PushStraightPopBackTests, PopDecrementsSize)
 {
     for (auto popMethod : this->PopFuncs) { this->TestPopDecrement(this->push, popMethod); }
+}
+
+TYPED_TEST_P(PushStraightPopBackTests, PopNDecrementsSizeByN)
+{
+    for (auto popNMethod : this->PopNFuncs) { this->TestPopNDecrement(this->push, popNMethod); }
 }
 
 TYPED_TEST_P(PushStraightPopBackTests, PushPopIsLIFO)
@@ -46,6 +51,11 @@ TYPED_TEST_P(PushStraightPopBackTests, PushPopAfterClearIsLIFO)
     EXPECT_THAT(values, ::testing::ElementsAreArray(NUMBER_FILL_REVERSE));
 }
 
-REGISTER_TYPED_TEST_SUITE_P(PushStraightPopBackTests, PopDecrementsSize, PushPopIsLIFO, PushPopAfterClearIsLIFO);
+REGISTER_TYPED_TEST_SUITE_P(PushStraightPopBackTests, 
+    PopDecrementsSize, 
+    PopNDecrementsSizeByN,
+    PushPopIsLIFO, 
+    PushPopAfterClearIsLIFO
+);
 
 }

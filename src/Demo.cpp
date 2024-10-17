@@ -53,7 +53,7 @@ int main() {
     constexpr size_t SIZE = 10;
 
     {
-        auto buffer = SpanHeap<int, SIZE>::BufferType<1>();
+        SpanHeap<int, SIZE>::BufferType<1> buffer{};
         SpanHeap<int, SIZE> sh{ buffer };
         std::vector<int> numbers({ 1, 32, 43, 94, 55, 76, 17, 38, 49, 10 });
         for (const auto& number : numbers) {

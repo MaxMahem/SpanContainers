@@ -25,7 +25,6 @@ TYPED_TEST_P(PushStraightTests, WhenNotFullTryPushReturnsTrue)
 {
     ASSERT_FALSE(this->emptyContainer.full());
     ASSERT_TRUE(this->emptyContainer.try_push(1));
-    ASSERT_TRUE(this->emptyContainer.try_emplace(1));
 }
 
 TYPED_TEST_P(PushStraightTests, WhenFullClearEmptiesContainer)
@@ -34,17 +33,9 @@ TYPED_TEST_P(PushStraightTests, WhenFullClearEmptiesContainer)
     ASSERT_THAT(this->fullContainer, ::testing::IsEmpty());
 }
 
-TYPED_TEST_P(PushStraightTests, WhenFullPushThrows)
-{
-    ASSERT_THROW(this->fullContainer.push(6),     FullContainerError);
-    ASSERT_THROW(this->fullContainer.emplace(6),  FullContainerError);
-}
+TYPED_TEST_P(PushStraightTests, WhenFullPushThrows) { ASSERT_THROW(this->fullContainer.push(6), FullContainerError); }
 
-TYPED_TEST_P(PushStraightTests, WhenFullTryPushReturnsFalse)
-{
-    ASSERT_FALSE(this->fullContainer.try_push(6));
-    ASSERT_FALSE(this->fullContainer.try_emplace(6));
-}
+TYPED_TEST_P(PushStraightTests, WhenFullTryPushReturnsFalse) { ASSERT_FALSE(this->fullContainer.try_push(6)); }
 
 TYPED_TEST_P(PushStraightTests, PushIncrementsSize)
 {

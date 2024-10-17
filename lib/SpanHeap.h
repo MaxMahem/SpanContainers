@@ -56,7 +56,7 @@ public:
     using SpanContainer::capacity;
     using SpanContainer::size;
 
-    using internal::PopBackTrait<SpanHeap<T, Extent, Comparer>, T>::try_pop_back;
+    using internal::PopBackTrait<SpanHeap<T, Extent, Comparer>, T>::unsafe_pop_back;
 
     /// @brief Constructs a new SpanHeap using comparer and wrapping buffer.
     /// @tparam Buffer the type of the underlying buffer to use. Must be an lvalue able to construct a std::span 
@@ -66,20 +66,18 @@ public:
     requires std::is_lvalue_reference_v<Buffer&>&& std::is_constructible_v<span_type, Buffer&>
     constexpr SpanHeap(Buffer& buffer, Comparer comparer) noexcept : span(buffer), comparer(comparer) { }
 
-    /// @brief Gets a pointer to the last item in the container.
-    /// @return An pointer to the last item in the container or nullptr if empty.
-    [[nodiscard]] constexpr pointer try_back() const noexcept { return !empty() ? &span[0] : nullptr; }
+    /// @brief Gets a reference to the last item in the container, without bounds check.
+    /// @return A reference to the last item in the container.
+    [[nodiscard]] constexpr reference unsafe_back() const noexcept { return span[0]; }
 
-    /// @brief Tries to assign value to the back of the container.
-    /// @param value The item to move to the back of the container.
-    /// @return true if value was placed in the container; false if not enough room for all values.
+    /// @brief Assigns value to an element of the container.
+    /// @tparam U the type of the value to assign to the container. Must be assignable to T.
+    /// @param value The item to assign to an element of the container.
     template <typename U> requires std::assignable_from<T&, U&&>
-    constexpr bool try_push(U&& value) noexcept(std::is_nothrow_assignable<T, U>::value)
+    constexpr void unsafe_push(U&& value) noexcept(std::is_nothrow_assignable<T, U>::value)
     {
-        if (full()) { return false; }
         span[count++] = std::forward<U>(value);
         std::push_heap(span.begin(), span.begin() + count, comparer);
-        return true;
     }
 
     /// @brief Tries to assign the values to the container.
@@ -109,25 +107,10 @@ public:
         return true;
     }
 
-    /// @brief Tries to constructs a new element in place in the container from args.
-    /// @tparam ...Args The type of the arguments
-    /// @param ...args The arguments used to construct the element.
-    /// @return true if the element was constructed in placed at the back of the container; false otherwise.
-    template<typename... Args> requires std::is_trivially_destructible<T>::value && std::constructible_from<T, Args&&...>
-    constexpr bool try_emplace(Args&&... args) 
+    /// @brief Removes n items from the back of the container without a bounds check.
+    /// @param n The number of items to remove from the back of the container.
+    constexpr void unsafe_pop_back(size_type n) noexcept
     {
-        if (full()) { return false; }
-        new (&span[count]) T(std::forward<Args>(args)...);
-        ++count;
-        std::push_heap(span.begin(), span.begin() + count, comparer);
-        return true;
-    }
-
-    /// @brief Tries to remove n items from the back of the container.
-    /// @return true if n items were removed; false if n is greater than size.
-    constexpr bool try_pop_back(size_type n)
-    {
-        if (n > count) { return false; }
         auto newCount = count - n;
         if (n > CalculateMakeThreshold()) {
             std::make_heap(span.begin(), span.begin() + count, comparer);
@@ -136,7 +119,6 @@ public:
         else {
             for (; n > 0; n--) { std::pop_heap(span.begin(), span.begin() + count--, comparer); }
         }
-        return true;
     }
 
     /// @brief Clears all items from the container.

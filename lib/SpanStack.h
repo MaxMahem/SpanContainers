@@ -27,12 +27,8 @@ class SpanStack : public internal::SpanContainer<T, Extent>,
     using SpanContainer::count;
 
 public:
-    using SpanContainer::element_type;
     using SpanContainer::size_type;
-    using SpanContainer::pointer;
-    using SpanContainer::const_pointer;
     using SpanContainer::reference;
-    using SpanContainer::const_reference;
 
     /// @brief the name of this type.
     static constexpr std::string_view TYPE_NAME = "SpanStack";
@@ -40,36 +36,19 @@ public:
     using SpanContainer::SpanContainer;
     using SpanContainer::operator=;
 
-    using SpanContainer::empty;
-    using SpanContainer::full;
+    using internal::PopBackTrait<SpanStack<T, Extent>, T>::unsafe_pop_back;
 
-    using internal::PopBackTrait<SpanStack<T, Extent>, T>::try_pop_back;
+    /// @brief Gets a reference to the last item in the container without a bounds check.
+    /// @return A reference to the last item in the container.
+    [[nodiscard]] constexpr reference unsafe_back() const noexcept { return span[count - 1]; }
 
-    /// @brief Gets a pointer to the last item in the container.
-    /// @return An pointer to the last item in the container or nullptr if empty.
-    [[nodiscard]] constexpr pointer try_back() const noexcept { return !empty() ? &span[count - 1] : nullptr; }
-
-    /// @brief Tries to assign value at the back of the container.
-    /// @param value The item to move to the back of the container.
-    /// @return true if value was placed at the back of the container; false otherwise.
+    /// @brief Assigns value to the back of the container, without bounds checks.
+    /// @tparam U The type of the value.
+    /// @param value The item to assign.
     template <typename U> requires std::assignable_from<T&, U&&>
-    constexpr bool try_push_back(U&& value) noexcept(std::is_nothrow_assignable<T&, U&&>::value)
+    constexpr void unsafe_push_back(U&& value) noexcept(std::is_nothrow_assignable<T&, U&&>::value)
     {
-        if (full()) { return false; }
         span[count++] = std::forward<U>(value);
-        return true;
-    }
-
-    /// @brief Tries to constructs a new element in place at the back of the container from args.
-    /// @tparam ...Args The type of the arguments
-    /// @param ...args The arguments used to construct the element.
-    /// @return true if the element was constructed in placed at the back of the container; false otherwise.
-    template<typename... Args> requires std::is_trivially_destructible<T>::value && std::constructible_from<T, Args&&...>
-    constexpr bool try_emplace_back(Args&&... args) 
-    {
-        if (full()) { return false; }
-        new (&span[count++]) T(std::forward<Args>(args)...);
-        return true;
     }
 
     /// @brief Tries to assign the values to the back of the container.
@@ -89,14 +68,9 @@ public:
         return true;
     }
 
-    /// @brief Tries to remove n items from the back of the container.
-    /// @return true if n items were removed; false if n is greater than size.
-    constexpr bool try_pop_back(size_type n) noexcept
-    {
-        if (n > count) { return false; }
-        count -= n;
-        return true;
-    }
+    /// @brief Removes n items from the back of the container without a bounds check.
+    /// @param n the number of items to remove.
+    constexpr void unsafe_pop_back(size_type n) noexcept { count -= n; }
 
     /// @brief Clears all items from the container.
     constexpr void clear() noexcept { count = 0; }

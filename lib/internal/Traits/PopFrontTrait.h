@@ -24,7 +24,7 @@ public:
     /// @throws EmptyContainerError if the container is empty and UseExceptions is true.
     [[nodiscard]] constexpr reference front() const noexcept(!UseExceptions)
     {
-        if (UseExceptions) { if (asDerived().empty()) { throw EmptyContainerError(); } }
+        if constexpr (UseExceptions) { if (asDerived().empty()) { throw EmptyContainerError(); } }
         return asDerived().unsafe_front();
     }
 

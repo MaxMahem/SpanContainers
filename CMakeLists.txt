@@ -9,14 +9,13 @@ endif()
 set(CMAKE_CXX_STANDARD 20)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
-# disable Module scan for unix makefiles
-if(CMAKE_GENERATOR STREQUAL "Unix Makefiles")
-    set(CMAKE_CXX_SCAN_FOR_MODULES OFF)
-endif()
+# disable Module scan for now
+# set(CMAKE_CXX_SCAN_FOR_MODULES OFF)
 
 project ("Demo")
 add_executable (Demo "src/Demo.cpp")
-target_sources(Demo PUBLIC FILE_SET CXX_MODULES)
+#target_sources(Demo PUBLIC FILE_SET CXX_MODULES)
+target_sources(Demo PUBLIC)
 target_include_directories(Demo PRIVATE "lib")
 set_property(TARGET Demo PROPERTY CXX_STANDARD 20)
 

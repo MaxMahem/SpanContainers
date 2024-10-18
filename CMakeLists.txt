@@ -10,7 +10,7 @@ set(CMAKE_CXX_STANDARD 20)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 # Project name
-project(Demo)
+project(SpanContainers)
 
 # Set the include directories (shared across components)
 set(PROJECT_INCLUDE_DIR "${CMAKE_SOURCE_DIR}/lib")

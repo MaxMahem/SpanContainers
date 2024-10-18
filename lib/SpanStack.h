@@ -18,28 +18,21 @@ namespace SpanContainers {
 /// @brief Represents a span-based, fixed size container with stack/vector like access.
 /// @tparam T The type of the item in the container.
 /// @tparam Extent The size/maximum number of elements in the container.
-template <typename T, std::size_t Extent>
+template <typename T, std::size_t Extent, bool UseExceptions = true>
 class SpanStack : public internal::SpanContainer<T, Extent>,
                   public internal::IndexTrait<SpanStack<T, Extent>, T>,
                   public internal::PushBackTrait<SpanStack<T, Extent>, T>,
                   public internal::PopBackTrait<SpanStack<T, Extent>, T>
 {
-    using SpanContainer = internal::SpanContainer<T, Extent>;
+    friend struct internal::IndexTrait<SpanStack<T, Extent>, T>;
+    friend struct internal::PushBackTrait<SpanStack<T, Extent>, T>;
+    friend struct internal::PopBackTrait<SpanStack<T, Extent>, T>;
 
+    using SpanContainer = internal::SpanContainer<T, Extent>;
     using SpanContainer::span;
     using SpanContainer::count;
-
-public:
     using SpanContainer::size_type;
     using SpanContainer::reference;
-
-    /// @brief the name of this type.
-    static constexpr std::string_view TYPE_NAME = "SpanStack";
-
-    using SpanContainer::SpanContainer;
-    using SpanContainer::operator=;
-
-    using internal::PopBackTrait<SpanStack<T, Extent>, T>::unsafe_pop_back;
 
     /// @brief Gets a reference to the last item in the container without a bounds check.
     /// @return A reference to the last item in the container.
@@ -89,9 +82,16 @@ public:
     /// @param n the number of items to remove.
     constexpr void unsafe_pop_back(size_type n) noexcept 
     { 
-        assert(count - n >= 0 && "Not enough items to pop.");
+        assert(n <= count && "Not enough items to pop.");
         count -= n; 
     }
+
+public:
+    /// @brief the name of this type.
+    static constexpr std::string_view TYPE_NAME = "SpanStack";
+
+    using SpanContainer::SpanContainer;
+    using SpanContainer::operator=;
 
     /// @brief Clears all items from the container.
     constexpr void clear() noexcept { count = 0; }

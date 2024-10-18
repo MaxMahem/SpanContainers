@@ -85,7 +85,7 @@ int main() {
         for (const auto& number : numbers) {
             sq.try_push_back(number);
         }
-        std::cout << std::format("{} front: {}, back: {}\n\n", sq, sq.front(), sq.back());
+        std::cout << std::format("{} front: {}, back: {}\n\n", sq, sq[0], sq.back());
     }
 
     std::cout << "SpanStack - push_back, pop_back, LIFO" << '\n';

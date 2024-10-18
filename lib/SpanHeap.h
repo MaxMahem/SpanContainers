@@ -52,8 +52,6 @@ public:
     using SpanContainer::SpanContainer;
     using SpanContainer::operator=;
 
-    using internal::PopBackTrait<SpanHeap<T, Extent, Comparer>, T>::unsafe_pop_back;
-
     /// @brief Constructs a new SpanHeap using comparer and wrapping buffer.
     /// @tparam Buffer the type of the underlying buffer to use. Must be an lvalue able to construct a std::span 
     /// @param buffer The underlying buffer to wrap.
@@ -112,11 +110,10 @@ public:
     /// @param n The number of items to remove from the back of the container.
     constexpr void unsafe_pop_back(size_type n) noexcept
     {
-        assert(count - n >= 0 && "Not enough items to pop.");
-        auto newCount = count - n;
+        assert(n <= count && "Not enough items to pop.");
         if (n > CalculateMakeThreshold()) {
             std::make_heap(span.begin(), span.begin() + count, comparer);
-            count = newCount;
+            count -= n;
         }
         else {
             for (; n > 0; n--) { std::pop_heap(span.begin(), span.begin() + count--, comparer); }

@@ -21,52 +21,53 @@
 \DoxyCodeLine{00020\ \textcolor{keyword}{template}\ <\textcolor{keyword}{typename}\ T,\ std::\textcolor{keywordtype}{size\_t}\ Extent>}
 \DoxyCodeLine{00021\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_span_containers_1_1_span_dequeue}{SpanDequeue}}\ :\ \textcolor{keyword}{public}\ SpanQueue<T,\ Extent>,}
 \DoxyCodeLine{00022\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{public}\ \mbox{\hyperlink{struct_span_containers_1_1internal_1_1_push_front_trait}{internal::PushFrontTrait}}<SpanDequeue<T,\ Extent>,\ T>,}
-\DoxyCodeLine{00023\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{public}\ \mbox{\hyperlink{class_span_containers_1_1internal_1_1_pop_back_trait}{internal::PopBackTrait}}<SpanDequeue<T,\ Extent>,\ T>}
+\DoxyCodeLine{00023\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{public}\ \mbox{\hyperlink{struct_span_containers_1_1internal_1_1_pop_back_trait}{internal::PopBackTrait}}<SpanDequeue<T,\ Extent>,\ T>}
 \DoxyCodeLine{00024\ \{}
-\DoxyCodeLine{00025\ \ \ \ \ \textcolor{keyword}{using\ }\mbox{\hyperlink{class_span_containers_1_1internal_1_1_span_container}{SpanContainer}}\ =\ \mbox{\hyperlink{class_span_containers_1_1internal_1_1_span_container}{internal::SpanContainer<T,\ Extent>}};}
-\DoxyCodeLine{00026\ \ \ \ \ \textcolor{keyword}{using\ }SpanQueue\ =\ SpanQueue<T,\ Extent>;}
-\DoxyCodeLine{00027\ }
-\DoxyCodeLine{00028\ \ \ \ \ \textcolor{keyword}{using\ }\mbox{\hyperlink{class_span_containers_1_1internal_1_1_span_container_a0e264b02900eed12541aa0e6d794bfd5}{SpanContainer::span}};}
-\DoxyCodeLine{00029\ \ \ \ \ \textcolor{keyword}{using\ }\mbox{\hyperlink{class_span_containers_1_1internal_1_1_span_container_a14bbacf4b0597e3f514a05971b483cad}{SpanContainer::count}};}
-\DoxyCodeLine{00030\ \ \ \ \ \textcolor{keyword}{using\ }\mbox{\hyperlink{class_span_containers_1_1_span_queue_a488dc1251f3992392df90289255a0684}{SpanQueue::read}};\ \ \ \ \ \ \textcolor{comment}{//\ front}}
-\DoxyCodeLine{00031\ \ \ \ \ \textcolor{keyword}{using\ }\mbox{\hyperlink{class_span_containers_1_1_span_queue_a4c876e1501b0c3477cdb8fc891af98d4}{SpanQueue::write}};\ \ \ \ \ \textcolor{comment}{//\ back}}
-\DoxyCodeLine{00032\ }
-\DoxyCodeLine{00035\ \ \ \ \ \textcolor{keyword}{auto}\ \textcolor{keyword}{constexpr}\ previousIndex(\textcolor{keyword}{auto}\ index)\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ index\ ==\ 0\ ?\ Extent\ -\/\ 1\ :\ index\ -\/\ 1;\ \}}
-\DoxyCodeLine{00036\ }
-\DoxyCodeLine{00037\ \textcolor{keyword}{public}:}
-\DoxyCodeLine{00038\ \ \ \ \ \textcolor{keyword}{using\ }SpanContainer::size\_type;}
-\DoxyCodeLine{00039\ \ \ \ \ \textcolor{keyword}{using\ }SpanContainer::reference;}
-\DoxyCodeLine{00040\ }
-\DoxyCodeLine{00042\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{constexpr}\ std::string\_view\ \mbox{\hyperlink{class_span_containers_1_1_span_dequeue_aa932cd9005060e17a865521435567f09}{TYPE\_NAME}}\ =\ \textcolor{stringliteral}{"{}SpanDequeue"{}};}
-\DoxyCodeLine{00043\ }
-\DoxyCodeLine{00044\ \ \ \ \ \textcolor{keyword}{using\ }SpanQueue::SpanQueue;}
-\DoxyCodeLine{00045\ \ \ \ \ \textcolor{keyword}{using\ }SpanQueue::operator=;}
-\DoxyCodeLine{00046\ }
-\DoxyCodeLine{00047\ \ \ \ \ \textcolor{keyword}{using\ }\mbox{\hyperlink{class_span_containers_1_1internal_1_1_pop_back_trait}{internal::PopBackTrait}}<\mbox{\hyperlink{class_span_containers_1_1_span_dequeue}{SpanDequeue<T,\ Extent>}},\ T>\mbox{\hyperlink{class_span_containers_1_1internal_1_1_pop_back_trait_a97357b64a3c26d9e5bc4033d90f88cb8}{::unsafe\_pop\_back}};}
-\DoxyCodeLine{00048\ }
-\DoxyCodeLine{00051\ \ \ \ \ [[nodiscard]]\ \textcolor{keyword}{constexpr}\ reference\ \mbox{\hyperlink{class_span_containers_1_1_span_dequeue_a6aecae2149e2858cefaa72324db82d33}{unsafe\_back}}()\ const\ noexcept\ }
-\DoxyCodeLine{00052\ \ \ \ \ \{}
-\DoxyCodeLine{00053\ \ \ \ \ \ \ \ \ assert(count\ >\ 0\ \&\&\ \textcolor{stringliteral}{"{}Container\ is\ empty."{}});}
-\DoxyCodeLine{00054\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ span[previousIndex(\mbox{\hyperlink{class_span_containers_1_1_span_queue_a4c876e1501b0c3477cdb8fc891af98d4}{write}})];\ }
-\DoxyCodeLine{00055\ \ \ \ \ \}}
-\DoxyCodeLine{00056\ }
-\DoxyCodeLine{00059\ \ \ \ \ \textcolor{keyword}{template}\ <\textcolor{keyword}{typename}\ U>\ \textcolor{keyword}{requires}\ std::assignable\_from<T\&,\ U\&\&>}
-\DoxyCodeLine{00060\ \ \ \ \ \textcolor{keyword}{constexpr}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_span_containers_1_1_span_dequeue_a39ff8e7596849d3f2c5345db5bf0c05a}{unsafe\_push\_front}}(U\&\&\ value)\ \textcolor{keyword}{noexcept}(std::is\_nothrow\_assignable<T,\ T\&\&>::value)}
-\DoxyCodeLine{00061\ \ \ \ \ \{}
-\DoxyCodeLine{00062\ \ \ \ \ \ \ \ \ assert(count\ <\ Extent\ \&\&\ \textcolor{stringliteral}{"{}Container\ is\ full."{}});}
-\DoxyCodeLine{00063\ \ \ \ \ \ \ \ \ ++count;}
-\DoxyCodeLine{00064\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_span_containers_1_1_span_queue_a488dc1251f3992392df90289255a0684}{read}}\ =\ previousIndex(\mbox{\hyperlink{class_span_containers_1_1_span_queue_a488dc1251f3992392df90289255a0684}{read}});}
-\DoxyCodeLine{00065\ \ \ \ \ \ \ \ \ span[\mbox{\hyperlink{class_span_containers_1_1_span_queue_a488dc1251f3992392df90289255a0684}{read}}]\ =\ std::forward<U>(value);}
-\DoxyCodeLine{00066\ \ \ \ \ \}}
-\DoxyCodeLine{00067\ }
-\DoxyCodeLine{00070\ \ \ \ \ \textcolor{keyword}{constexpr}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_span_containers_1_1_span_dequeue_a16399328a91ba6af0693f85388ddc48c}{unsafe\_pop\_back}}(size\_type\ n)\ \textcolor{keyword}{noexcept}}
-\DoxyCodeLine{00071\ \ \ \ \ \{}
-\DoxyCodeLine{00072\ \ \ \ \ \ \ \ \ assert(count\ -\/\ n\ >=\ 0\ \&\&\ \textcolor{stringliteral}{"{}Not\ enough\ items\ to\ pop."{}});}
-\DoxyCodeLine{00073\ \ \ \ \ \ \ \ \ count\ -\/=\ n;}
-\DoxyCodeLine{00074\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_span_containers_1_1_span_queue_a4c876e1501b0c3477cdb8fc891af98d4}{write}}\ =\ (\mbox{\hyperlink{class_span_containers_1_1_span_queue_a4c876e1501b0c3477cdb8fc891af98d4}{write}}\ +\ Extent\ -\/\ n)\ \%\ Extent;}
-\DoxyCodeLine{00075\ \ \ \ \ \}}
-\DoxyCodeLine{00076\ \};}
-\DoxyCodeLine{00077\ }
-\DoxyCodeLine{00078\ \}}
+\DoxyCodeLine{00025\ \ \ \ \ \textcolor{keyword}{friend}\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{struct_span_containers_1_1internal_1_1_index_trait}{internal::IndexTrait}}<\mbox{\hyperlink{class_span_containers_1_1_span_dequeue}{SpanDequeue}}<T,\ Extent>,\ T>;}
+\DoxyCodeLine{00026\ \ \ \ \ \textcolor{keyword}{friend}\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{struct_span_containers_1_1internal_1_1_push_front_trait}{internal::PushFrontTrait}}<\mbox{\hyperlink{class_span_containers_1_1_span_dequeue}{SpanDequeue}}<T,\ Extent>,\ T>;}
+\DoxyCodeLine{00027\ \ \ \ \ \textcolor{keyword}{friend}\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{struct_span_containers_1_1internal_1_1_pop_back_trait}{internal::PopBackTrait}}<\mbox{\hyperlink{class_span_containers_1_1_span_dequeue}{SpanDequeue}}<T,\ Extent>,\ T>;}
+\DoxyCodeLine{00028\ }
+\DoxyCodeLine{00029\ \ \ \ \ \textcolor{keyword}{using\ }\mbox{\hyperlink{class_span_containers_1_1internal_1_1_span_container}{SpanContainer}}\ =\ \mbox{\hyperlink{class_span_containers_1_1internal_1_1_span_container}{internal::SpanContainer<T,\ Extent>}};}
+\DoxyCodeLine{00030\ \ \ \ \ \textcolor{keyword}{using\ }\mbox{\hyperlink{class_span_containers_1_1internal_1_1_span_container_a0e264b02900eed12541aa0e6d794bfd5}{SpanContainer::span}};}
+\DoxyCodeLine{00031\ \ \ \ \ \textcolor{keyword}{using\ }\mbox{\hyperlink{class_span_containers_1_1internal_1_1_span_container_a14bbacf4b0597e3f514a05971b483cad}{SpanContainer::count}};}
+\DoxyCodeLine{00032\ \ \ \ \ \textcolor{keyword}{using\ }SpanContainer::size\_type;}
+\DoxyCodeLine{00033\ \ \ \ \ \textcolor{keyword}{using\ }SpanContainer::reference;}
+\DoxyCodeLine{00034\ }
+\DoxyCodeLine{00035\ \ \ \ \ \textcolor{keyword}{using\ }SpanQueue\ =\ SpanQueue<T,\ Extent>;}
+\DoxyCodeLine{00036\ \ \ \ \ \textcolor{keyword}{using\ }\mbox{\hyperlink{class_span_containers_1_1_span_queue_a488dc1251f3992392df90289255a0684}{SpanQueue::read}};\ \ \ \ \ \ \textcolor{comment}{//\ front}}
+\DoxyCodeLine{00037\ \ \ \ \ \textcolor{keyword}{using\ }\mbox{\hyperlink{class_span_containers_1_1_span_queue_a4c876e1501b0c3477cdb8fc891af98d4}{SpanQueue::write}};\ \ \ \ \ \textcolor{comment}{//\ back}}
+\DoxyCodeLine{00038\ }
+\DoxyCodeLine{00041\ \ \ \ \ \textcolor{keyword}{auto}\ \textcolor{keyword}{constexpr}\ previousIndex(\textcolor{keyword}{auto}\ index)\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ index\ ==\ 0\ ?\ Extent\ -\/\ 1\ :\ index\ -\/\ 1;\ \}}
+\DoxyCodeLine{00042\ }
+\DoxyCodeLine{00045\ \ \ \ \ [[nodiscard]]\ \textcolor{keyword}{constexpr}\ reference\ unsafe\_back()\ \textcolor{keyword}{const}\ \textcolor{keyword}{noexcept}\ }
+\DoxyCodeLine{00046\ \ \ \ \ \{}
+\DoxyCodeLine{00047\ \ \ \ \ \ \ \ \ assert(count\ >\ 0\ \&\&\ \textcolor{stringliteral}{"{}Container\ is\ empty."{}});}
+\DoxyCodeLine{00048\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ span[previousIndex(\mbox{\hyperlink{class_span_containers_1_1_span_queue_a4c876e1501b0c3477cdb8fc891af98d4}{write}})];\ }
+\DoxyCodeLine{00049\ \ \ \ \ \}}
+\DoxyCodeLine{00050\ }
+\DoxyCodeLine{00053\ \ \ \ \ \textcolor{keyword}{template}\ <\textcolor{keyword}{typename}\ U>\ \textcolor{keyword}{requires}\ std::assignable\_from<T\&,\ U\&\&>}
+\DoxyCodeLine{00054\ \ \ \ \ \textcolor{keyword}{constexpr}\ \textcolor{keywordtype}{void}\ unsafe\_push\_front(U\&\&\ value)\ \textcolor{keyword}{noexcept}(std::is\_nothrow\_assignable<T,\ T\&\&>::value)}
+\DoxyCodeLine{00055\ \ \ \ \ \{}
+\DoxyCodeLine{00056\ \ \ \ \ \ \ \ \ assert(count\ <\ Extent\ \&\&\ \textcolor{stringliteral}{"{}Container\ is\ full."{}});}
+\DoxyCodeLine{00057\ \ \ \ \ \ \ \ \ ++count;}
+\DoxyCodeLine{00058\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_span_containers_1_1_span_queue_a488dc1251f3992392df90289255a0684}{read}}\ =\ previousIndex(\mbox{\hyperlink{class_span_containers_1_1_span_queue_a488dc1251f3992392df90289255a0684}{read}});}
+\DoxyCodeLine{00059\ \ \ \ \ \ \ \ \ span[\mbox{\hyperlink{class_span_containers_1_1_span_queue_a488dc1251f3992392df90289255a0684}{read}}]\ =\ std::forward<U>(value);}
+\DoxyCodeLine{00060\ \ \ \ \ \}}
+\DoxyCodeLine{00061\ }
+\DoxyCodeLine{00064\ \ \ \ \ \textcolor{keyword}{constexpr}\ \textcolor{keywordtype}{void}\ unsafe\_pop\_back(size\_type\ n)\ \textcolor{keyword}{noexcept}}
+\DoxyCodeLine{00065\ \ \ \ \ \{}
+\DoxyCodeLine{00066\ \ \ \ \ \ \ \ \ assert(count\ -\/\ n\ >=\ 0\ \&\&\ \textcolor{stringliteral}{"{}Not\ enough\ items\ to\ pop."{}});}
+\DoxyCodeLine{00067\ \ \ \ \ \ \ \ \ count\ -\/=\ n;}
+\DoxyCodeLine{00068\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_span_containers_1_1_span_queue_a4c876e1501b0c3477cdb8fc891af98d4}{write}}\ =\ (\mbox{\hyperlink{class_span_containers_1_1_span_queue_a4c876e1501b0c3477cdb8fc891af98d4}{write}}\ +\ Extent\ -\/\ n)\ \%\ Extent;}
+\DoxyCodeLine{00069\ \ \ \ \ \}}
+\DoxyCodeLine{00070\ }
+\DoxyCodeLine{00071\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00073\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{constexpr}\ std::string\_view\ \mbox{\hyperlink{class_span_containers_1_1_span_dequeue_aa932cd9005060e17a865521435567f09}{TYPE\_NAME}}\ =\ \textcolor{stringliteral}{"{}SpanDequeue"{}};}
+\DoxyCodeLine{00074\ }
+\DoxyCodeLine{00075\ \ \ \ \ \textcolor{keyword}{using\ }SpanQueue::SpanQueue;}
+\DoxyCodeLine{00076\ \ \ \ \ \textcolor{keyword}{using\ }SpanQueue::operator=;}
+\DoxyCodeLine{00077\ \};}
+\DoxyCodeLine{00078\ }
+\DoxyCodeLine{00079\ \}}
 
 \end{DoxyCode}

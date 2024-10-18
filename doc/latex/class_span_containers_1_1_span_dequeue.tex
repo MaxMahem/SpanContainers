@@ -18,12 +18,6 @@ Inheritance diagram for Span\+Containers\+::Span\+Dequeue\texorpdfstring{$<$}{<}
 \doxysubsubsection*{Public Types}
 \begin{DoxyCompactItemize}
 \item 
-\Hypertarget{class_span_containers_1_1_span_dequeue_a5884bfe0250b794adfc54d7c1e0df70c}\label{class_span_containers_1_1_span_dequeue_a5884bfe0250b794adfc54d7c1e0df70c} 
-using {\bfseries size\+\_\+type}
-\item 
-\Hypertarget{class_span_containers_1_1_span_dequeue_ac9edea5dc17ba0270973b9093c5a5f67}\label{class_span_containers_1_1_span_dequeue_ac9edea5dc17ba0270973b9093c5a5f67} 
-using {\bfseries reference}
-\item 
 \Hypertarget{class_span_containers_1_1internal_1_1_span_container_acbf0783599d1034a54f66e1ce270e39f}\label{class_span_containers_1_1internal_1_1_span_container_acbf0783599d1034a54f66e1ce270e39f} 
 using {\bfseries span\+\_\+type} = std\+::span$<$T, Extent$>$
 \item 
@@ -47,36 +41,16 @@ using {\bfseries const\+\_\+reference} = span\+\_\+type\+::const\+\_\+reference
 \doxysubsubsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-constexpr reference \mbox{\hyperlink{class_span_containers_1_1_span_dequeue_a6aecae2149e2858cefaa72324db82d33}{unsafe\+\_\+back}} () const noexcept
-\begin{DoxyCompactList}\small\item\em Gets a reference to the last item in the container without a bounds check. \end{DoxyCompactList}\item 
-{\footnotesize template$<$typename U $>$ \newline
-requires std\+::assignable\+\_\+from$<$T\&, U\&\&$>$}\\constexpr void \mbox{\hyperlink{class_span_containers_1_1_span_dequeue_a39ff8e7596849d3f2c5345db5bf0c05a}{unsafe\+\_\+push\+\_\+front}} (U \&\&value) noexcept(std\+::is\+\_\+nothrow\+\_\+assignable$<$ T, T \&\& $>$\+::value)
-\begin{DoxyCompactList}\small\item\em Assign a value to the front of the container without a capacity check. \end{DoxyCompactList}\item 
-constexpr void \mbox{\hyperlink{class_span_containers_1_1_span_dequeue_a16399328a91ba6af0693f85388ddc48c}{unsafe\+\_\+pop\+\_\+back}} (size\+\_\+type n) noexcept
-\begin{DoxyCompactList}\small\item\em Removes n items from the back of the container without a bounds check. \end{DoxyCompactList}\item 
 {\footnotesize template$<$typename Buffer $>$ \newline
 requires std\+::is\+\_\+lvalue\+\_\+reference\+\_\+v$<$Buffer\&$>$ \&\& std\+::is\+\_\+constructible\+\_\+v$<$span\+\_\+type, Buffer\&$>$}\\constexpr \mbox{\hyperlink{class_span_containers_1_1_span_queue_a7f483dfa24b80da71262eeaf59f1f8dc}{Span\+Container}} (Buffer \&buffer) noexcept
 \begin{DoxyCompactList}\small\item\em Constructs a new container wrapping buffer. \end{DoxyCompactList}\item 
 \Hypertarget{class_span_containers_1_1_span_queue_a7ba85597b571c4484fec9c123c08fa9a}\label{class_span_containers_1_1_span_queue_a7ba85597b571c4484fec9c123c08fa9a} 
 {\bfseries Span\+Container} (span\+\_\+type \&\&)=delete
 \item 
-constexpr reference \mbox{\hyperlink{class_span_containers_1_1_span_queue_ab9221d1174273595dd63636f881a187c}{unsafe\+\_\+front}} () const noexcept
-\begin{DoxyCompactList}\small\item\em Gets a reference to the item at the front of the container without a bounds check. \end{DoxyCompactList}\item 
-constexpr reference \mbox{\hyperlink{class_span_containers_1_1_span_queue_a2af229fd041ec61ed920437c4ba889bd}{unsafe\+\_\+at}} (size\+\_\+type index) const noexcept
-\begin{DoxyCompactList}\small\item\em Gets a reference to the element at index, without a bounds check. \end{DoxyCompactList}\item 
-{\footnotesize template$<$typename U $>$ \newline
-requires std\+::assignable\+\_\+from$<$T\&, U\&\&$>$}\\constexpr void \mbox{\hyperlink{class_span_containers_1_1_span_queue_a4f4ee76427e7bd499f9c1f8c8dc1ada5}{unsafe\+\_\+push\+\_\+back}} (U \&\&value) noexcept(std\+::is\+\_\+nothrow\+\_\+assignable$<$ T \&, U \&\& $>$\+::value)
-\begin{DoxyCompactList}\small\item\em Assigns value to the back of the container, without bounds checks. \end{DoxyCompactList}\item 
 \Hypertarget{class_span_containers_1_1_span_queue_ae00bf961cf189bb72e469d9765ad62fe}\label{class_span_containers_1_1_span_queue_ae00bf961cf189bb72e469d9765ad62fe} 
 {\footnotesize template$<$std\+::ranges\+::input\+\_\+range Range = std\+::initializer\+\_\+list$<$\+T$>$$>$ \newline
 requires std\+::convertible\+\_\+to$<$std\+::ranges\+::range\+\_\+value\+\_\+t$<$Range$>$, T$>$}\\constexpr bool {\bfseries try\+\_\+push\+\_\+back\+\_\+range} (Range \&\&values)
 \item 
-\Hypertarget{class_span_containers_1_1_span_queue_af4a5d30769abb6be0c5b9fd42f87da6f}\label{class_span_containers_1_1_span_queue_af4a5d30769abb6be0c5b9fd42f87da6f} 
-constexpr void {\bfseries unsafe\+\_\+pop\+\_\+front} (size\+\_\+type n) noexcept
-\begin{DoxyCompactList}\small\item\em Remove n items from the front of the container, without bounds check. \end{DoxyCompactList}\item 
-\Hypertarget{class_span_containers_1_1internal_1_1_pop_front_trait_af53ca4672d9bd378016873c5562a6857}\label{class_span_containers_1_1internal_1_1_pop_front_trait_af53ca4672d9bd378016873c5562a6857} 
-constexpr void {\bfseries unsafe\+\_\+pop\+\_\+front} () noexcept
-\begin{DoxyCompactList}\small\item\em Removes an item from the front of the container without a bounds check. \end{DoxyCompactList}\item 
 \Hypertarget{class_span_containers_1_1_span_queue_a40d5e10a0eee51674080525e284042d4}\label{class_span_containers_1_1_span_queue_a40d5e10a0eee51674080525e284042d4} 
 constexpr void {\bfseries clear} () noexcept
 \begin{DoxyCompactList}\small\item\em Clears all items from the container. \end{DoxyCompactList}\item 
@@ -88,45 +62,42 @@ constexpr bool \mbox{\hyperlink{class_span_containers_1_1internal_1_1_span_conta
 \begin{DoxyCompactList}\small\item\em Gets if the container is full or not. \end{DoxyCompactList}\item 
 constexpr span\+\_\+type \mbox{\hyperlink{class_span_containers_1_1internal_1_1_span_container_a6adcfa5c633a685bef25e8e8300e2e00}{data}} () const noexcept
 \begin{DoxyCompactList}\small\item\em Gets the underlying span. \end{DoxyCompactList}\item 
-constexpr reference \mbox{\hyperlink{class_span_containers_1_1internal_1_1_index_trait_ada06eabb7b7e3fc9ec94b0f28b42aed5}{operator\mbox{[}$\,$\mbox{]}}} (size\+\_\+type index) const
+constexpr reference \mbox{\hyperlink{struct_span_containers_1_1internal_1_1_index_trait_ada06eabb7b7e3fc9ec94b0f28b42aed5}{operator\mbox{[}$\,$\mbox{]}}} (size\+\_\+type index) const
 \begin{DoxyCompactList}\small\item\em Gets a reference to the element at index. \end{DoxyCompactList}\item 
-constexpr pointer \mbox{\hyperlink{class_span_containers_1_1internal_1_1_index_trait_a2d79a1361803416b85bc31c09a2d013a}{at}} (size\+\_\+type index) const noexcept
+constexpr pointer \mbox{\hyperlink{struct_span_containers_1_1internal_1_1_index_trait_a2d79a1361803416b85bc31c09a2d013a}{at}} (size\+\_\+type index) const noexcept
 \begin{DoxyCompactList}\small\item\em Gets a pointer to the element at index. \end{DoxyCompactList}\item 
 constexpr void \mbox{\hyperlink{struct_span_containers_1_1internal_1_1_push_back_trait_a8e1cf7d06e78ee535b13e311dc72b148}{push\+\_\+back}} (U \&\&value)
 \begin{DoxyCompactList}\small\item\em Assigns value to the back of the container. \end{DoxyCompactList}\item 
 constexpr bool \mbox{\hyperlink{struct_span_containers_1_1internal_1_1_push_back_trait_a0806b833c26f08891f2e928b562a986f}{try\+\_\+push\+\_\+back}} (U \&\&value) noexcept(std\+::is\+\_\+nothrow\+\_\+assignable$<$ T \&, U \&\& $>$\+::value)
 \begin{DoxyCompactList}\small\item\em Tries to assign value at the back of the container. \end{DoxyCompactList}\item 
-constexpr reference \mbox{\hyperlink{class_span_containers_1_1internal_1_1_pop_front_trait_a014bc338d5c853af6bf85f09f576081e}{front}} () const
+constexpr reference \mbox{\hyperlink{struct_span_containers_1_1internal_1_1_pop_front_trait_a8a6942dd58acb8c267623801169f10bf}{front}} () const noexcept(!Use\+Exceptions)
 \begin{DoxyCompactList}\small\item\em Gets a refrence to the item at the front of the container. \end{DoxyCompactList}\item 
-constexpr pointer \mbox{\hyperlink{class_span_containers_1_1internal_1_1_pop_front_trait_a22d92c40c0f449b35900cf2b008a6bf2}{try\+\_\+front}} () const noexcept
+constexpr pointer \mbox{\hyperlink{struct_span_containers_1_1internal_1_1_pop_front_trait_a22d92c40c0f449b35900cf2b008a6bf2}{try\+\_\+front}} () const noexcept
 \begin{DoxyCompactList}\small\item\em Gets a pointer to the item at the front of the container. \end{DoxyCompactList}\item 
-constexpr void \mbox{\hyperlink{class_span_containers_1_1internal_1_1_pop_front_trait_a163720002b2d5e4c71666d0362a47e14}{pop\+\_\+front}} ()
+constexpr void \mbox{\hyperlink{struct_span_containers_1_1internal_1_1_pop_front_trait_a59ac33b41e19abaa75abcc16a5a5d7b7}{pop\+\_\+front}} () noexcept(!Use\+Exceptions)
 \begin{DoxyCompactList}\small\item\em Removes an item from the front of the container. \end{DoxyCompactList}\item 
-constexpr void \mbox{\hyperlink{class_span_containers_1_1internal_1_1_pop_front_trait_aa9f10d3eea5aacf64c84d26135a3fa71}{pop\+\_\+front}} (size\+\_\+type n)
+constexpr void \mbox{\hyperlink{struct_span_containers_1_1internal_1_1_pop_front_trait_af723ce2656f66557c43e76be176dd843}{pop\+\_\+front}} (size\+\_\+type n) noexcept(!Use\+Exceptions)
 \begin{DoxyCompactList}\small\item\em Removes n items from the front of the container. \end{DoxyCompactList}\item 
-constexpr bool \mbox{\hyperlink{class_span_containers_1_1internal_1_1_pop_front_trait_aa8c6c294633bdef7cff772b318cd14f1}{try\+\_\+pop\+\_\+front}} () noexcept
+constexpr bool \mbox{\hyperlink{struct_span_containers_1_1internal_1_1_pop_front_trait_aa8c6c294633bdef7cff772b318cd14f1}{try\+\_\+pop\+\_\+front}} () noexcept
 \begin{DoxyCompactList}\small\item\em Tries to remove an item from the front of the container. \end{DoxyCompactList}\item 
-constexpr bool \mbox{\hyperlink{class_span_containers_1_1internal_1_1_pop_front_trait_a144e0b01ca125fe61203b43b626ecd8c}{try\+\_\+pop\+\_\+front}} (size\+\_\+type n) noexcept
+constexpr bool \mbox{\hyperlink{struct_span_containers_1_1internal_1_1_pop_front_trait_a144e0b01ca125fe61203b43b626ecd8c}{try\+\_\+pop\+\_\+front}} (size\+\_\+type n) noexcept
 \begin{DoxyCompactList}\small\item\em Tries to remove n items from the front of the container. \end{DoxyCompactList}\item 
 constexpr void \mbox{\hyperlink{struct_span_containers_1_1internal_1_1_push_front_trait_a15e3f53e4c19cf6cdbbcfe3e24210d97}{push\+\_\+front}} (U \&\&value)
 \begin{DoxyCompactList}\small\item\em Assigns value to the front of the container. \end{DoxyCompactList}\item 
 constexpr bool \mbox{\hyperlink{struct_span_containers_1_1internal_1_1_push_front_trait_a519d4ddae9ccac8cccf22277c6998389}{try\+\_\+push\+\_\+front}} (U \&\&value) noexcept(std\+::is\+\_\+nothrow\+\_\+assignable$<$ T \&, U \&\& $>$\+::value)
 \begin{DoxyCompactList}\small\item\em Tries to assign value at the front of the container. \end{DoxyCompactList}\item 
-constexpr reference \mbox{\hyperlink{class_span_containers_1_1internal_1_1_pop_back_trait_a9a1baefbc00e928dc6a2051895457e4d}{back}} () const
+constexpr reference \mbox{\hyperlink{struct_span_containers_1_1internal_1_1_pop_back_trait_a635fbe6fc7cfd5aee71c4a58f89ed3a3}{back}} () const noexcept(!Use\+Exceptions)
 \begin{DoxyCompactList}\small\item\em Gets a refrence to the item at the back of the container. \end{DoxyCompactList}\item 
-constexpr pointer \mbox{\hyperlink{class_span_containers_1_1internal_1_1_pop_back_trait_a1039675e077b05e71a59dd9318d44026}{try\+\_\+back}} () const noexcept
+constexpr pointer \mbox{\hyperlink{struct_span_containers_1_1internal_1_1_pop_back_trait_a1039675e077b05e71a59dd9318d44026}{try\+\_\+back}} () const noexcept
 \begin{DoxyCompactList}\small\item\em Gets a pointer to the item at the back of the container. \end{DoxyCompactList}\item 
-constexpr void \mbox{\hyperlink{class_span_containers_1_1internal_1_1_pop_back_trait_af3d444f05e58c78c10ca284080e31af7}{pop\+\_\+back}} ()
+constexpr void \mbox{\hyperlink{struct_span_containers_1_1internal_1_1_pop_back_trait_aebbe0044f1d9347ec60ec0fb89cf1ee2}{pop\+\_\+back}} () noexcept(!Use\+Exceptions)
 \begin{DoxyCompactList}\small\item\em Removes an item from the back of the container. \end{DoxyCompactList}\item 
-constexpr void \mbox{\hyperlink{class_span_containers_1_1internal_1_1_pop_back_trait_afbec172bc1e718716e4e2392b47e9abc}{pop\+\_\+back}} (size\+\_\+type n)
+constexpr void \mbox{\hyperlink{struct_span_containers_1_1internal_1_1_pop_back_trait_a1de34d69bef973f750d36e40716ceb32}{pop\+\_\+back}} (size\+\_\+type n) noexcept(!Use\+Exceptions)
 \begin{DoxyCompactList}\small\item\em Removes n items from the back of the container. \end{DoxyCompactList}\item 
-constexpr bool \mbox{\hyperlink{class_span_containers_1_1internal_1_1_pop_back_trait_a3270221b30d28bd88683e1bb42b0d0d5}{try\+\_\+pop\+\_\+back}} () noexcept
+constexpr bool \mbox{\hyperlink{struct_span_containers_1_1internal_1_1_pop_back_trait_a3270221b30d28bd88683e1bb42b0d0d5}{try\+\_\+pop\+\_\+back}} () noexcept
 \begin{DoxyCompactList}\small\item\em Tries to remove an item from the back of the container. \end{DoxyCompactList}\item 
-constexpr bool \mbox{\hyperlink{class_span_containers_1_1internal_1_1_pop_back_trait_afac010954c1e67a0b5c0908610e3dbc0}{try\+\_\+pop\+\_\+back}} (size\+\_\+type n) noexcept
-\begin{DoxyCompactList}\small\item\em Tries to remove n items from the back of the container. \end{DoxyCompactList}\item 
-\Hypertarget{class_span_containers_1_1internal_1_1_pop_back_trait_a97357b64a3c26d9e5bc4033d90f88cb8}\label{class_span_containers_1_1internal_1_1_pop_back_trait_a97357b64a3c26d9e5bc4033d90f88cb8} 
-constexpr void {\bfseries unsafe\+\_\+pop\+\_\+back} () noexcept
-\begin{DoxyCompactList}\small\item\em Removes an item from the back of the container without a bounds check. \end{DoxyCompactList}\end{DoxyCompactItemize}
+constexpr bool \mbox{\hyperlink{struct_span_containers_1_1internal_1_1_pop_back_trait_afac010954c1e67a0b5c0908610e3dbc0}{try\+\_\+pop\+\_\+back}} (size\+\_\+type n) noexcept
+\begin{DoxyCompactList}\small\item\em Tries to remove n items from the back of the container. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsubsection*{Static Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
@@ -147,6 +118,18 @@ Span\+Container\+::size\+\_\+type {\bfseries read} = 0
 \Hypertarget{class_span_containers_1_1_span_queue_a4c876e1501b0c3477cdb8fc891af98d4}\label{class_span_containers_1_1_span_queue_a4c876e1501b0c3477cdb8fc891af98d4} 
 Span\+Container\+::size\+\_\+type {\bfseries write} = 0
 \begin{DoxyCompactList}\small\item\em index of the write point \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Friends}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_span_containers_1_1_span_dequeue_a2554e83e5ee34d6b68f24e4aa80d2ae7}\label{class_span_containers_1_1_span_dequeue_a2554e83e5ee34d6b68f24e4aa80d2ae7} 
+struct {\bfseries internal\+::\+Index\+Trait$<$ Span\+Dequeue$<$ T, Extent $>$, T $>$}
+\item 
+\Hypertarget{class_span_containers_1_1_span_dequeue_a53e6ade92a713bd512b1abf8251b15f5}\label{class_span_containers_1_1_span_dequeue_a53e6ade92a713bd512b1abf8251b15f5} 
+struct {\bfseries internal\+::\+Push\+Front\+Trait$<$ Span\+Dequeue$<$ T, Extent $>$, T $>$}
+\item 
+\Hypertarget{class_span_containers_1_1_span_dequeue_a6d0536f4942f1a147f25b9b44c3a3e12}\label{class_span_containers_1_1_span_dequeue_a6d0536f4942f1a147f25b9b44c3a3e12} 
+struct {\bfseries internal\+::\+Pop\+Back\+Trait$<$ Span\+Dequeue$<$ T, Extent $>$, T $>$}
+\end{DoxyCompactItemize}
 
 
 \doxysubsection{Detailed Description}
@@ -184,11 +167,11 @@ If the span would be larger than Max\+Stack\+Size, returns a stack allocated std
 
 
 \doxysubsection{Member Function Documentation}
-\Hypertarget{class_span_containers_1_1internal_1_1_index_trait_a2d79a1361803416b85bc31c09a2d013a}\index{SpanContainers::SpanDequeue$<$ T, Extent $>$@{SpanContainers::SpanDequeue$<$ T, Extent $>$}!at@{at}}
+\Hypertarget{struct_span_containers_1_1internal_1_1_index_trait_a2d79a1361803416b85bc31c09a2d013a}\index{SpanContainers::SpanDequeue$<$ T, Extent $>$@{SpanContainers::SpanDequeue$<$ T, Extent $>$}!at@{at}}
 \index{at@{at}!SpanContainers::SpanDequeue$<$ T, Extent $>$@{SpanContainers::SpanDequeue$<$ T, Extent $>$}}
 \doxysubsubsection{\texorpdfstring{at()}{at()}}
-{\footnotesize\ttfamily \label{class_span_containers_1_1internal_1_1_index_trait_a2d79a1361803416b85bc31c09a2d013a} 
-pointer \mbox{\hyperlink{class_span_containers_1_1internal_1_1_index_trait}{Span\+Containers\+::internal\+::\+Index\+Trait}}$<$ Span\+Queue$<$ T, Extent $>$, T $>$\+::at (\begin{DoxyParamCaption}\item[{size\+\_\+type}]{index}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [nodiscard]}, {\ttfamily [constexpr]}, {\ttfamily [noexcept]}, {\ttfamily [inherited]}}
+{\footnotesize\ttfamily \label{struct_span_containers_1_1internal_1_1_index_trait_a2d79a1361803416b85bc31c09a2d013a} 
+pointer \mbox{\hyperlink{struct_span_containers_1_1internal_1_1_index_trait}{Span\+Containers\+::internal\+::\+Index\+Trait}}$<$ Span\+Queue$<$ T, Extent $>$, T $>$\+::at (\begin{DoxyParamCaption}\item[{size\+\_\+type}]{index}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [nodiscard]}, {\ttfamily [constexpr]}, {\ttfamily [noexcept]}, {\ttfamily [inherited]}}
 
 
 
@@ -202,11 +185,11 @@ Gets a pointer to the element at index.
 \begin{DoxyReturn}{Returns}
 A pointer to the element at index, or nullptr if index is out of bounds. 
 \end{DoxyReturn}
-\Hypertarget{class_span_containers_1_1internal_1_1_pop_back_trait_a9a1baefbc00e928dc6a2051895457e4d}\index{SpanContainers::SpanDequeue$<$ T, Extent $>$@{SpanContainers::SpanDequeue$<$ T, Extent $>$}!back@{back}}
+\Hypertarget{struct_span_containers_1_1internal_1_1_pop_back_trait_a635fbe6fc7cfd5aee71c4a58f89ed3a3}\index{SpanContainers::SpanDequeue$<$ T, Extent $>$@{SpanContainers::SpanDequeue$<$ T, Extent $>$}!back@{back}}
 \index{back@{back}!SpanContainers::SpanDequeue$<$ T, Extent $>$@{SpanContainers::SpanDequeue$<$ T, Extent $>$}}
 \doxysubsubsection{\texorpdfstring{back()}{back()}}
-{\footnotesize\ttfamily \label{class_span_containers_1_1internal_1_1_pop_back_trait_a9a1baefbc00e928dc6a2051895457e4d} 
-reference \mbox{\hyperlink{class_span_containers_1_1internal_1_1_pop_back_trait}{Span\+Containers\+::internal\+::\+Pop\+Back\+Trait}}$<$ \mbox{\hyperlink{class_span_containers_1_1_span_dequeue}{Span\+Dequeue}}$<$ T, Extent $>$, T $>$\+::back (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [nodiscard]}, {\ttfamily [constexpr]}, {\ttfamily [inherited]}}
+{\footnotesize\ttfamily \label{struct_span_containers_1_1internal_1_1_pop_back_trait_a635fbe6fc7cfd5aee71c4a58f89ed3a3} 
+reference \mbox{\hyperlink{struct_span_containers_1_1internal_1_1_pop_back_trait}{Span\+Containers\+::internal\+::\+Pop\+Back\+Trait}}$<$ \mbox{\hyperlink{class_span_containers_1_1_span_dequeue}{Span\+Dequeue}}$<$ T, Extent $>$, T $>$\+::back (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [nodiscard]}, {\ttfamily [constexpr]}, {\ttfamily [noexcept]}, {\ttfamily [inherited]}}
 
 
 
@@ -217,7 +200,7 @@ A refrence to the item at the back of the container.
 \end{DoxyReturn}
 
 \begin{DoxyExceptions}{Exceptions}
-{\em \doxylink{class_span_containers_1_1_empty_container_error}{Empty\+Container\+Error}} & if the container is empty \\
+{\em \doxylink{class_span_containers_1_1_empty_container_error}{Empty\+Container\+Error}} & if the container is empty and Use\+Exceptions is true. \\
 \hline
 \end{DoxyExceptions}
 \Hypertarget{class_span_containers_1_1internal_1_1_span_container_a4f8d412fd122d11ca3c0f9d3351e5f61}\index{SpanContainers::SpanDequeue$<$ T, Extent $>$@{SpanContainers::SpanDequeue$<$ T, Extent $>$}!capacity@{capacity}}
@@ -262,11 +245,11 @@ Gets if the container is empty or not.
 \begin{DoxyReturn}{Returns}
 true if the container is empty; false otherwise. 
 \end{DoxyReturn}
-\Hypertarget{class_span_containers_1_1internal_1_1_pop_front_trait_a014bc338d5c853af6bf85f09f576081e}\index{SpanContainers::SpanDequeue$<$ T, Extent $>$@{SpanContainers::SpanDequeue$<$ T, Extent $>$}!front@{front}}
+\Hypertarget{struct_span_containers_1_1internal_1_1_pop_front_trait_a8a6942dd58acb8c267623801169f10bf}\index{SpanContainers::SpanDequeue$<$ T, Extent $>$@{SpanContainers::SpanDequeue$<$ T, Extent $>$}!front@{front}}
 \index{front@{front}!SpanContainers::SpanDequeue$<$ T, Extent $>$@{SpanContainers::SpanDequeue$<$ T, Extent $>$}}
 \doxysubsubsection{\texorpdfstring{front()}{front()}}
-{\footnotesize\ttfamily \label{class_span_containers_1_1internal_1_1_pop_front_trait_a014bc338d5c853af6bf85f09f576081e} 
-reference \mbox{\hyperlink{class_span_containers_1_1internal_1_1_pop_front_trait}{Span\+Containers\+::internal\+::\+Pop\+Front\+Trait}}$<$ Span\+Queue$<$ T, Extent $>$, T $>$\+::front (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [nodiscard]}, {\ttfamily [constexpr]}, {\ttfamily [inherited]}}
+{\footnotesize\ttfamily \label{struct_span_containers_1_1internal_1_1_pop_front_trait_a8a6942dd58acb8c267623801169f10bf} 
+reference \mbox{\hyperlink{struct_span_containers_1_1internal_1_1_pop_front_trait}{Span\+Containers\+::internal\+::\+Pop\+Front\+Trait}}$<$ Span\+Queue$<$ T, Extent $>$, T $>$\+::front (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [nodiscard]}, {\ttfamily [constexpr]}, {\ttfamily [noexcept]}, {\ttfamily [inherited]}}
 
 
 
@@ -277,7 +260,7 @@ A refrence to the item at the front of the container.
 \end{DoxyReturn}
 
 \begin{DoxyExceptions}{Exceptions}
-{\em \doxylink{class_span_containers_1_1_empty_container_error}{Empty\+Container\+Error}} & if the container is empty \\
+{\em \doxylink{class_span_containers_1_1_empty_container_error}{Empty\+Container\+Error}} & if the container is empty and Use\+Exceptions is true. \\
 \hline
 \end{DoxyExceptions}
 \Hypertarget{class_span_containers_1_1internal_1_1_span_container_a62bdcb19c7b8f204d141c3abd6ff6b76}\index{SpanContainers::SpanDequeue$<$ T, Extent $>$@{SpanContainers::SpanDequeue$<$ T, Extent $>$}!full@{full}}
@@ -294,11 +277,11 @@ Gets if the container is full or not.
 \begin{DoxyReturn}{Returns}
 true if the container is full; false otherwise. 
 \end{DoxyReturn}
-\Hypertarget{class_span_containers_1_1internal_1_1_index_trait_ada06eabb7b7e3fc9ec94b0f28b42aed5}\index{SpanContainers::SpanDequeue$<$ T, Extent $>$@{SpanContainers::SpanDequeue$<$ T, Extent $>$}!operator\mbox{[}\mbox{]}@{operator[]}}
+\Hypertarget{struct_span_containers_1_1internal_1_1_index_trait_ada06eabb7b7e3fc9ec94b0f28b42aed5}\index{SpanContainers::SpanDequeue$<$ T, Extent $>$@{SpanContainers::SpanDequeue$<$ T, Extent $>$}!operator\mbox{[}\mbox{]}@{operator[]}}
 \index{operator\mbox{[}\mbox{]}@{operator[]}!SpanContainers::SpanDequeue$<$ T, Extent $>$@{SpanContainers::SpanDequeue$<$ T, Extent $>$}}
 \doxysubsubsection{\texorpdfstring{operator[]()}{operator[]()}}
-{\footnotesize\ttfamily \label{class_span_containers_1_1internal_1_1_index_trait_ada06eabb7b7e3fc9ec94b0f28b42aed5} 
-reference \mbox{\hyperlink{class_span_containers_1_1internal_1_1_index_trait}{Span\+Containers\+::internal\+::\+Index\+Trait}}$<$ Span\+Queue$<$ T, Extent $>$, T $>$\+::operator\mbox{[}$\,$\mbox{]} (\begin{DoxyParamCaption}\item[{size\+\_\+type}]{index}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [nodiscard]}, {\ttfamily [constexpr]}, {\ttfamily [inherited]}}
+{\footnotesize\ttfamily \label{struct_span_containers_1_1internal_1_1_index_trait_ada06eabb7b7e3fc9ec94b0f28b42aed5} 
+reference \mbox{\hyperlink{struct_span_containers_1_1internal_1_1_index_trait}{Span\+Containers\+::internal\+::\+Index\+Trait}}$<$ Span\+Queue$<$ T, Extent $>$, T $>$\+::operator\mbox{[}$\,$\mbox{]} (\begin{DoxyParamCaption}\item[{size\+\_\+type}]{index}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [nodiscard]}, {\ttfamily [constexpr]}, {\ttfamily [inherited]}}
 
 
 
@@ -314,14 +297,14 @@ A reference to the element at index.
 \end{DoxyReturn}
 
 \begin{DoxyExceptions}{Exceptions}
-{\em std\+::out\+\_\+of\+\_\+range} & If index is out of range. \\
+{\em std\+::out\+\_\+of\+\_\+range} & If index is out of range and Use\+Exceptions is true. \\
 \hline
 \end{DoxyExceptions}
-\Hypertarget{class_span_containers_1_1internal_1_1_pop_back_trait_af3d444f05e58c78c10ca284080e31af7}\index{SpanContainers::SpanDequeue$<$ T, Extent $>$@{SpanContainers::SpanDequeue$<$ T, Extent $>$}!pop\_back@{pop\_back}}
+\Hypertarget{struct_span_containers_1_1internal_1_1_pop_back_trait_aebbe0044f1d9347ec60ec0fb89cf1ee2}\index{SpanContainers::SpanDequeue$<$ T, Extent $>$@{SpanContainers::SpanDequeue$<$ T, Extent $>$}!pop\_back@{pop\_back}}
 \index{pop\_back@{pop\_back}!SpanContainers::SpanDequeue$<$ T, Extent $>$@{SpanContainers::SpanDequeue$<$ T, Extent $>$}}
 \doxysubsubsection{\texorpdfstring{pop\_back()}{pop\_back()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
-{\footnotesize\ttfamily \label{class_span_containers_1_1internal_1_1_pop_back_trait_af3d444f05e58c78c10ca284080e31af7} 
-void \mbox{\hyperlink{class_span_containers_1_1internal_1_1_pop_back_trait}{Span\+Containers\+::internal\+::\+Pop\+Back\+Trait}}$<$ \mbox{\hyperlink{class_span_containers_1_1_span_dequeue}{Span\+Dequeue}}$<$ T, Extent $>$, T $>$\+::pop\+\_\+back (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [constexpr]}, {\ttfamily [inherited]}}
+{\footnotesize\ttfamily \label{struct_span_containers_1_1internal_1_1_pop_back_trait_aebbe0044f1d9347ec60ec0fb89cf1ee2} 
+void \mbox{\hyperlink{struct_span_containers_1_1internal_1_1_pop_back_trait}{Span\+Containers\+::internal\+::\+Pop\+Back\+Trait}}$<$ \mbox{\hyperlink{class_span_containers_1_1_span_dequeue}{Span\+Dequeue}}$<$ T, Extent $>$, T $>$\+::pop\+\_\+back (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [constexpr]}, {\ttfamily [noexcept]}, {\ttfamily [inherited]}}
 
 
 
@@ -334,14 +317,14 @@ Removes an item from the back of the container.
 \end{DoxyParams}
 
 \begin{DoxyExceptions}{Exceptions}
-{\em \doxylink{class_span_containers_1_1_empty_container_error}{Empty\+Container\+Error}} & if the container is empty \\
+{\em \doxylink{class_span_containers_1_1_empty_container_error}{Empty\+Container\+Error}} & if the container is empty and Use\+Exceptions is true. \\
 \hline
 \end{DoxyExceptions}
-\Hypertarget{class_span_containers_1_1internal_1_1_pop_back_trait_afbec172bc1e718716e4e2392b47e9abc}\index{SpanContainers::SpanDequeue$<$ T, Extent $>$@{SpanContainers::SpanDequeue$<$ T, Extent $>$}!pop\_back@{pop\_back}}
+\Hypertarget{struct_span_containers_1_1internal_1_1_pop_back_trait_a1de34d69bef973f750d36e40716ceb32}\index{SpanContainers::SpanDequeue$<$ T, Extent $>$@{SpanContainers::SpanDequeue$<$ T, Extent $>$}!pop\_back@{pop\_back}}
 \index{pop\_back@{pop\_back}!SpanContainers::SpanDequeue$<$ T, Extent $>$@{SpanContainers::SpanDequeue$<$ T, Extent $>$}}
 \doxysubsubsection{\texorpdfstring{pop\_back()}{pop\_back()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
-{\footnotesize\ttfamily \label{class_span_containers_1_1internal_1_1_pop_back_trait_afbec172bc1e718716e4e2392b47e9abc} 
-void \mbox{\hyperlink{class_span_containers_1_1internal_1_1_pop_back_trait}{Span\+Containers\+::internal\+::\+Pop\+Back\+Trait}}$<$ \mbox{\hyperlink{class_span_containers_1_1_span_dequeue}{Span\+Dequeue}}$<$ T, Extent $>$, T $>$\+::pop\+\_\+back (\begin{DoxyParamCaption}\item[{size\+\_\+type}]{n}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [constexpr]}, {\ttfamily [inherited]}}
+{\footnotesize\ttfamily \label{struct_span_containers_1_1internal_1_1_pop_back_trait_a1de34d69bef973f750d36e40716ceb32} 
+void \mbox{\hyperlink{struct_span_containers_1_1internal_1_1_pop_back_trait}{Span\+Containers\+::internal\+::\+Pop\+Back\+Trait}}$<$ \mbox{\hyperlink{class_span_containers_1_1_span_dequeue}{Span\+Dequeue}}$<$ T, Extent $>$, T $>$\+::pop\+\_\+back (\begin{DoxyParamCaption}\item[{size\+\_\+type}]{n}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [constexpr]}, {\ttfamily [noexcept]}, {\ttfamily [inherited]}}
 
 
 
@@ -349,14 +332,14 @@ Removes n items from the back of the container.
 
 
 \begin{DoxyExceptions}{Exceptions}
-{\em std\+::out\+\_\+of\+\_\+range} & if there are less than n items in the container. \\
+{\em std\+::out\+\_\+of\+\_\+range} & if there are less than n items in the container and Use\+Exceptions is true. \\
 \hline
 \end{DoxyExceptions}
-\Hypertarget{class_span_containers_1_1internal_1_1_pop_front_trait_a163720002b2d5e4c71666d0362a47e14}\index{SpanContainers::SpanDequeue$<$ T, Extent $>$@{SpanContainers::SpanDequeue$<$ T, Extent $>$}!pop\_front@{pop\_front}}
+\Hypertarget{struct_span_containers_1_1internal_1_1_pop_front_trait_a59ac33b41e19abaa75abcc16a5a5d7b7}\index{SpanContainers::SpanDequeue$<$ T, Extent $>$@{SpanContainers::SpanDequeue$<$ T, Extent $>$}!pop\_front@{pop\_front}}
 \index{pop\_front@{pop\_front}!SpanContainers::SpanDequeue$<$ T, Extent $>$@{SpanContainers::SpanDequeue$<$ T, Extent $>$}}
 \doxysubsubsection{\texorpdfstring{pop\_front()}{pop\_front()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
-{\footnotesize\ttfamily \label{class_span_containers_1_1internal_1_1_pop_front_trait_a163720002b2d5e4c71666d0362a47e14} 
-void \mbox{\hyperlink{class_span_containers_1_1internal_1_1_pop_front_trait}{Span\+Containers\+::internal\+::\+Pop\+Front\+Trait}}$<$ Span\+Queue$<$ T, Extent $>$, T $>$\+::pop\+\_\+front (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [constexpr]}, {\ttfamily [inherited]}}
+{\footnotesize\ttfamily \label{struct_span_containers_1_1internal_1_1_pop_front_trait_a59ac33b41e19abaa75abcc16a5a5d7b7} 
+void \mbox{\hyperlink{struct_span_containers_1_1internal_1_1_pop_front_trait}{Span\+Containers\+::internal\+::\+Pop\+Front\+Trait}}$<$ Span\+Queue$<$ T, Extent $>$, T $>$\+::pop\+\_\+front (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [constexpr]}, {\ttfamily [noexcept]}, {\ttfamily [inherited]}}
 
 
 
@@ -369,14 +352,14 @@ Removes an item from the front of the container.
 \end{DoxyParams}
 
 \begin{DoxyExceptions}{Exceptions}
-{\em \doxylink{class_span_containers_1_1_empty_container_error}{Empty\+Container\+Error}} & if the container is empty \\
+{\em \doxylink{class_span_containers_1_1_empty_container_error}{Empty\+Container\+Error}} & if the container is empty and Use\+Exceptions is true. \\
 \hline
 \end{DoxyExceptions}
-\Hypertarget{class_span_containers_1_1internal_1_1_pop_front_trait_aa9f10d3eea5aacf64c84d26135a3fa71}\index{SpanContainers::SpanDequeue$<$ T, Extent $>$@{SpanContainers::SpanDequeue$<$ T, Extent $>$}!pop\_front@{pop\_front}}
+\Hypertarget{struct_span_containers_1_1internal_1_1_pop_front_trait_af723ce2656f66557c43e76be176dd843}\index{SpanContainers::SpanDequeue$<$ T, Extent $>$@{SpanContainers::SpanDequeue$<$ T, Extent $>$}!pop\_front@{pop\_front}}
 \index{pop\_front@{pop\_front}!SpanContainers::SpanDequeue$<$ T, Extent $>$@{SpanContainers::SpanDequeue$<$ T, Extent $>$}}
 \doxysubsubsection{\texorpdfstring{pop\_front()}{pop\_front()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
-{\footnotesize\ttfamily \label{class_span_containers_1_1internal_1_1_pop_front_trait_aa9f10d3eea5aacf64c84d26135a3fa71} 
-void \mbox{\hyperlink{class_span_containers_1_1internal_1_1_pop_front_trait}{Span\+Containers\+::internal\+::\+Pop\+Front\+Trait}}$<$ Span\+Queue$<$ T, Extent $>$, T $>$\+::pop\+\_\+front (\begin{DoxyParamCaption}\item[{size\+\_\+type}]{n}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [constexpr]}, {\ttfamily [inherited]}}
+{\footnotesize\ttfamily \label{struct_span_containers_1_1internal_1_1_pop_front_trait_af723ce2656f66557c43e76be176dd843} 
+void \mbox{\hyperlink{struct_span_containers_1_1internal_1_1_pop_front_trait}{Span\+Containers\+::internal\+::\+Pop\+Front\+Trait}}$<$ Span\+Queue$<$ T, Extent $>$, T $>$\+::pop\+\_\+front (\begin{DoxyParamCaption}\item[{size\+\_\+type}]{n}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [constexpr]}, {\ttfamily [noexcept]}, {\ttfamily [inherited]}}
 
 
 
@@ -384,7 +367,7 @@ Removes n items from the front of the container.
 
 
 \begin{DoxyExceptions}{Exceptions}
-{\em std\+::out\+\_\+of\+\_\+range} & if there are less than n items in the container. \\
+{\em std\+::out\+\_\+of\+\_\+range} & if there are less than n items in the container and Use\+Exceptions is true. \\
 \hline
 \end{DoxyExceptions}
 \Hypertarget{struct_span_containers_1_1internal_1_1_push_back_trait_a8e1cf7d06e78ee535b13e311dc72b148}\index{SpanContainers::SpanDequeue$<$ T, Extent $>$@{SpanContainers::SpanDequeue$<$ T, Extent $>$}!push\_back@{push\_back}}
@@ -464,11 +447,11 @@ Constructs a new container wrapping buffer.
 {\em buffer} & The underlying buffer to wrap. \\
 \hline
 \end{DoxyParams}
-\Hypertarget{class_span_containers_1_1internal_1_1_pop_back_trait_a1039675e077b05e71a59dd9318d44026}\index{SpanContainers::SpanDequeue$<$ T, Extent $>$@{SpanContainers::SpanDequeue$<$ T, Extent $>$}!try\_back@{try\_back}}
+\Hypertarget{struct_span_containers_1_1internal_1_1_pop_back_trait_a1039675e077b05e71a59dd9318d44026}\index{SpanContainers::SpanDequeue$<$ T, Extent $>$@{SpanContainers::SpanDequeue$<$ T, Extent $>$}!try\_back@{try\_back}}
 \index{try\_back@{try\_back}!SpanContainers::SpanDequeue$<$ T, Extent $>$@{SpanContainers::SpanDequeue$<$ T, Extent $>$}}
 \doxysubsubsection{\texorpdfstring{try\_back()}{try\_back()}}
-{\footnotesize\ttfamily \label{class_span_containers_1_1internal_1_1_pop_back_trait_a1039675e077b05e71a59dd9318d44026} 
-pointer \mbox{\hyperlink{class_span_containers_1_1internal_1_1_pop_back_trait}{Span\+Containers\+::internal\+::\+Pop\+Back\+Trait}}$<$ \mbox{\hyperlink{class_span_containers_1_1_span_dequeue}{Span\+Dequeue}}$<$ T, Extent $>$, T $>$\+::try\+\_\+back (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [nodiscard]}, {\ttfamily [constexpr]}, {\ttfamily [noexcept]}, {\ttfamily [inherited]}}
+{\footnotesize\ttfamily \label{struct_span_containers_1_1internal_1_1_pop_back_trait_a1039675e077b05e71a59dd9318d44026} 
+pointer \mbox{\hyperlink{struct_span_containers_1_1internal_1_1_pop_back_trait}{Span\+Containers\+::internal\+::\+Pop\+Back\+Trait}}$<$ \mbox{\hyperlink{class_span_containers_1_1_span_dequeue}{Span\+Dequeue}}$<$ T, Extent $>$, T $>$\+::try\+\_\+back (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [nodiscard]}, {\ttfamily [constexpr]}, {\ttfamily [noexcept]}, {\ttfamily [inherited]}}
 
 
 
@@ -477,11 +460,11 @@ Gets a pointer to the item at the back of the container.
 \begin{DoxyReturn}{Returns}
 A pointer to the item at the back of the container or nullptr if empty. 
 \end{DoxyReturn}
-\Hypertarget{class_span_containers_1_1internal_1_1_pop_front_trait_a22d92c40c0f449b35900cf2b008a6bf2}\index{SpanContainers::SpanDequeue$<$ T, Extent $>$@{SpanContainers::SpanDequeue$<$ T, Extent $>$}!try\_front@{try\_front}}
+\Hypertarget{struct_span_containers_1_1internal_1_1_pop_front_trait_a22d92c40c0f449b35900cf2b008a6bf2}\index{SpanContainers::SpanDequeue$<$ T, Extent $>$@{SpanContainers::SpanDequeue$<$ T, Extent $>$}!try\_front@{try\_front}}
 \index{try\_front@{try\_front}!SpanContainers::SpanDequeue$<$ T, Extent $>$@{SpanContainers::SpanDequeue$<$ T, Extent $>$}}
 \doxysubsubsection{\texorpdfstring{try\_front()}{try\_front()}}
-{\footnotesize\ttfamily \label{class_span_containers_1_1internal_1_1_pop_front_trait_a22d92c40c0f449b35900cf2b008a6bf2} 
-pointer \mbox{\hyperlink{class_span_containers_1_1internal_1_1_pop_front_trait}{Span\+Containers\+::internal\+::\+Pop\+Front\+Trait}}$<$ Span\+Queue$<$ T, Extent $>$, T $>$\+::try\+\_\+front (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [nodiscard]}, {\ttfamily [constexpr]}, {\ttfamily [noexcept]}, {\ttfamily [inherited]}}
+{\footnotesize\ttfamily \label{struct_span_containers_1_1internal_1_1_pop_front_trait_a22d92c40c0f449b35900cf2b008a6bf2} 
+pointer \mbox{\hyperlink{struct_span_containers_1_1internal_1_1_pop_front_trait}{Span\+Containers\+::internal\+::\+Pop\+Front\+Trait}}$<$ Span\+Queue$<$ T, Extent $>$, T $>$\+::try\+\_\+front (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [nodiscard]}, {\ttfamily [constexpr]}, {\ttfamily [noexcept]}, {\ttfamily [inherited]}}
 
 
 
@@ -490,24 +473,24 @@ Gets a pointer to the item at the front of the container.
 \begin{DoxyReturn}{Returns}
 A pointer to the item at the front of the container or nullptr if empty. 
 \end{DoxyReturn}
-\Hypertarget{class_span_containers_1_1internal_1_1_pop_back_trait_a3270221b30d28bd88683e1bb42b0d0d5}\index{SpanContainers::SpanDequeue$<$ T, Extent $>$@{SpanContainers::SpanDequeue$<$ T, Extent $>$}!try\_pop\_back@{try\_pop\_back}}
+\Hypertarget{struct_span_containers_1_1internal_1_1_pop_back_trait_a3270221b30d28bd88683e1bb42b0d0d5}\index{SpanContainers::SpanDequeue$<$ T, Extent $>$@{SpanContainers::SpanDequeue$<$ T, Extent $>$}!try\_pop\_back@{try\_pop\_back}}
 \index{try\_pop\_back@{try\_pop\_back}!SpanContainers::SpanDequeue$<$ T, Extent $>$@{SpanContainers::SpanDequeue$<$ T, Extent $>$}}
 \doxysubsubsection{\texorpdfstring{try\_pop\_back()}{try\_pop\_back()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
-{\footnotesize\ttfamily \label{class_span_containers_1_1internal_1_1_pop_back_trait_a3270221b30d28bd88683e1bb42b0d0d5} 
-bool \mbox{\hyperlink{class_span_containers_1_1internal_1_1_pop_back_trait}{Span\+Containers\+::internal\+::\+Pop\+Back\+Trait}}$<$ \mbox{\hyperlink{class_span_containers_1_1_span_dequeue}{Span\+Dequeue}}$<$ T, Extent $>$, T $>$\+::try\+\_\+pop\+\_\+back (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [constexpr]}, {\ttfamily [noexcept]}, {\ttfamily [inherited]}}
+{\footnotesize\ttfamily \label{struct_span_containers_1_1internal_1_1_pop_back_trait_a3270221b30d28bd88683e1bb42b0d0d5} 
+bool \mbox{\hyperlink{struct_span_containers_1_1internal_1_1_pop_back_trait}{Span\+Containers\+::internal\+::\+Pop\+Back\+Trait}}$<$ \mbox{\hyperlink{class_span_containers_1_1_span_dequeue}{Span\+Dequeue}}$<$ T, Extent $>$, T $>$\+::try\+\_\+pop\+\_\+back (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [constexpr]}, {\ttfamily [noexcept]}, {\ttfamily [inherited]}}
 
 
 
 Tries to remove an item from the back of the container. 
 
 \begin{DoxyReturn}{Returns}
-true if an item was removed; false if the stack is empty. 
+true if an item was removed; false if the container is empty. 
 \end{DoxyReturn}
-\Hypertarget{class_span_containers_1_1internal_1_1_pop_back_trait_afac010954c1e67a0b5c0908610e3dbc0}\index{SpanContainers::SpanDequeue$<$ T, Extent $>$@{SpanContainers::SpanDequeue$<$ T, Extent $>$}!try\_pop\_back@{try\_pop\_back}}
+\Hypertarget{struct_span_containers_1_1internal_1_1_pop_back_trait_afac010954c1e67a0b5c0908610e3dbc0}\index{SpanContainers::SpanDequeue$<$ T, Extent $>$@{SpanContainers::SpanDequeue$<$ T, Extent $>$}!try\_pop\_back@{try\_pop\_back}}
 \index{try\_pop\_back@{try\_pop\_back}!SpanContainers::SpanDequeue$<$ T, Extent $>$@{SpanContainers::SpanDequeue$<$ T, Extent $>$}}
 \doxysubsubsection{\texorpdfstring{try\_pop\_back()}{try\_pop\_back()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
-{\footnotesize\ttfamily \label{class_span_containers_1_1internal_1_1_pop_back_trait_afac010954c1e67a0b5c0908610e3dbc0} 
-bool \mbox{\hyperlink{class_span_containers_1_1internal_1_1_pop_back_trait}{Span\+Containers\+::internal\+::\+Pop\+Back\+Trait}}$<$ \mbox{\hyperlink{class_span_containers_1_1_span_dequeue}{Span\+Dequeue}}$<$ T, Extent $>$, T $>$\+::try\+\_\+pop\+\_\+back (\begin{DoxyParamCaption}\item[{size\+\_\+type}]{n}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [constexpr]}, {\ttfamily [noexcept]}, {\ttfamily [inherited]}}
+{\footnotesize\ttfamily \label{struct_span_containers_1_1internal_1_1_pop_back_trait_afac010954c1e67a0b5c0908610e3dbc0} 
+bool \mbox{\hyperlink{struct_span_containers_1_1internal_1_1_pop_back_trait}{Span\+Containers\+::internal\+::\+Pop\+Back\+Trait}}$<$ \mbox{\hyperlink{class_span_containers_1_1_span_dequeue}{Span\+Dequeue}}$<$ T, Extent $>$, T $>$\+::try\+\_\+pop\+\_\+back (\begin{DoxyParamCaption}\item[{size\+\_\+type}]{n}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [constexpr]}, {\ttfamily [noexcept]}, {\ttfamily [inherited]}}
 
 
 
@@ -521,24 +504,24 @@ Tries to remove n items from the back of the container.
 \begin{DoxyReturn}{Returns}
 true if n items were removed; false if n is greater than size. 
 \end{DoxyReturn}
-\Hypertarget{class_span_containers_1_1internal_1_1_pop_front_trait_aa8c6c294633bdef7cff772b318cd14f1}\index{SpanContainers::SpanDequeue$<$ T, Extent $>$@{SpanContainers::SpanDequeue$<$ T, Extent $>$}!try\_pop\_front@{try\_pop\_front}}
+\Hypertarget{struct_span_containers_1_1internal_1_1_pop_front_trait_aa8c6c294633bdef7cff772b318cd14f1}\index{SpanContainers::SpanDequeue$<$ T, Extent $>$@{SpanContainers::SpanDequeue$<$ T, Extent $>$}!try\_pop\_front@{try\_pop\_front}}
 \index{try\_pop\_front@{try\_pop\_front}!SpanContainers::SpanDequeue$<$ T, Extent $>$@{SpanContainers::SpanDequeue$<$ T, Extent $>$}}
 \doxysubsubsection{\texorpdfstring{try\_pop\_front()}{try\_pop\_front()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
-{\footnotesize\ttfamily \label{class_span_containers_1_1internal_1_1_pop_front_trait_aa8c6c294633bdef7cff772b318cd14f1} 
-bool \mbox{\hyperlink{class_span_containers_1_1internal_1_1_pop_front_trait}{Span\+Containers\+::internal\+::\+Pop\+Front\+Trait}}$<$ Span\+Queue$<$ T, Extent $>$, T $>$\+::try\+\_\+pop\+\_\+front (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [constexpr]}, {\ttfamily [noexcept]}, {\ttfamily [inherited]}}
+{\footnotesize\ttfamily \label{struct_span_containers_1_1internal_1_1_pop_front_trait_aa8c6c294633bdef7cff772b318cd14f1} 
+bool \mbox{\hyperlink{struct_span_containers_1_1internal_1_1_pop_front_trait}{Span\+Containers\+::internal\+::\+Pop\+Front\+Trait}}$<$ Span\+Queue$<$ T, Extent $>$, T $>$\+::try\+\_\+pop\+\_\+front (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [constexpr]}, {\ttfamily [noexcept]}, {\ttfamily [inherited]}}
 
 
 
 Tries to remove an item from the front of the container. 
 
 \begin{DoxyReturn}{Returns}
-true if an item was removed; false if the stack is empty. 
+true if an item was removed; false if the container is empty. 
 \end{DoxyReturn}
-\Hypertarget{class_span_containers_1_1internal_1_1_pop_front_trait_a144e0b01ca125fe61203b43b626ecd8c}\index{SpanContainers::SpanDequeue$<$ T, Extent $>$@{SpanContainers::SpanDequeue$<$ T, Extent $>$}!try\_pop\_front@{try\_pop\_front}}
+\Hypertarget{struct_span_containers_1_1internal_1_1_pop_front_trait_a144e0b01ca125fe61203b43b626ecd8c}\index{SpanContainers::SpanDequeue$<$ T, Extent $>$@{SpanContainers::SpanDequeue$<$ T, Extent $>$}!try\_pop\_front@{try\_pop\_front}}
 \index{try\_pop\_front@{try\_pop\_front}!SpanContainers::SpanDequeue$<$ T, Extent $>$@{SpanContainers::SpanDequeue$<$ T, Extent $>$}}
 \doxysubsubsection{\texorpdfstring{try\_pop\_front()}{try\_pop\_front()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
-{\footnotesize\ttfamily \label{class_span_containers_1_1internal_1_1_pop_front_trait_a144e0b01ca125fe61203b43b626ecd8c} 
-bool \mbox{\hyperlink{class_span_containers_1_1internal_1_1_pop_front_trait}{Span\+Containers\+::internal\+::\+Pop\+Front\+Trait}}$<$ Span\+Queue$<$ T, Extent $>$, T $>$\+::try\+\_\+pop\+\_\+front (\begin{DoxyParamCaption}\item[{size\+\_\+type}]{n}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [constexpr]}, {\ttfamily [noexcept]}, {\ttfamily [inherited]}}
+{\footnotesize\ttfamily \label{struct_span_containers_1_1internal_1_1_pop_front_trait_a144e0b01ca125fe61203b43b626ecd8c} 
+bool \mbox{\hyperlink{struct_span_containers_1_1internal_1_1_pop_front_trait}{Span\+Containers\+::internal\+::\+Pop\+Front\+Trait}}$<$ Span\+Queue$<$ T, Extent $>$, T $>$\+::try\+\_\+pop\+\_\+front (\begin{DoxyParamCaption}\item[{size\+\_\+type}]{n}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [constexpr]}, {\ttfamily [noexcept]}, {\ttfamily [inherited]}}
 
 
 
@@ -598,110 +581,6 @@ Tries to assign value at the front of the container.
 \begin{DoxyReturn}{Returns}
 true if value was placed at the front of the container; false otherwise. 
 \end{DoxyReturn}
-\Hypertarget{class_span_containers_1_1_span_queue_a2af229fd041ec61ed920437c4ba889bd}\index{SpanContainers::SpanDequeue$<$ T, Extent $>$@{SpanContainers::SpanDequeue$<$ T, Extent $>$}!unsafe\_at@{unsafe\_at}}
-\index{unsafe\_at@{unsafe\_at}!SpanContainers::SpanDequeue$<$ T, Extent $>$@{SpanContainers::SpanDequeue$<$ T, Extent $>$}}
-\doxysubsubsection{\texorpdfstring{unsafe\_at()}{unsafe\_at()}}
-{\footnotesize\ttfamily \label{class_span_containers_1_1_span_queue_a2af229fd041ec61ed920437c4ba889bd} 
-template$<$typename T , std\+::size\+\_\+t Extent$>$ \\
-reference \mbox{\hyperlink{class_span_containers_1_1_span_queue}{Span\+Containers\+::\+Span\+Queue}}$<$ T, Extent $>$\+::unsafe\+\_\+at (\begin{DoxyParamCaption}\item[{size\+\_\+type}]{index}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [nodiscard]}, {\ttfamily [constexpr]}, {\ttfamily [noexcept]}, {\ttfamily [inherited]}}
-
-
-
-Gets a reference to the element at index, without a bounds check. 
-
-
-\begin{DoxyParams}{Parameters}
-{\em index} & The index of the element to get. \\
-\hline
-\end{DoxyParams}
-\begin{DoxyReturn}{Returns}
-A reference to the element at index. 
-\end{DoxyReturn}
-\Hypertarget{class_span_containers_1_1_span_dequeue_a6aecae2149e2858cefaa72324db82d33}\index{SpanContainers::SpanDequeue$<$ T, Extent $>$@{SpanContainers::SpanDequeue$<$ T, Extent $>$}!unsafe\_back@{unsafe\_back}}
-\index{unsafe\_back@{unsafe\_back}!SpanContainers::SpanDequeue$<$ T, Extent $>$@{SpanContainers::SpanDequeue$<$ T, Extent $>$}}
-\doxysubsubsection{\texorpdfstring{unsafe\_back()}{unsafe\_back()}}
-{\footnotesize\ttfamily \label{class_span_containers_1_1_span_dequeue_a6aecae2149e2858cefaa72324db82d33} 
-template$<$typename T , std\+::size\+\_\+t Extent$>$ \\
-reference \mbox{\hyperlink{class_span_containers_1_1_span_dequeue}{Span\+Containers\+::\+Span\+Dequeue}}$<$ T, Extent $>$\+::unsafe\+\_\+back (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [nodiscard]}, {\ttfamily [constexpr]}, {\ttfamily [noexcept]}}
-
-
-
-Gets a reference to the last item in the container without a bounds check. 
-
-\begin{DoxyReturn}{Returns}
-A reference to the last item in the container. 
-\end{DoxyReturn}
-\Hypertarget{class_span_containers_1_1_span_queue_ab9221d1174273595dd63636f881a187c}\index{SpanContainers::SpanDequeue$<$ T, Extent $>$@{SpanContainers::SpanDequeue$<$ T, Extent $>$}!unsafe\_front@{unsafe\_front}}
-\index{unsafe\_front@{unsafe\_front}!SpanContainers::SpanDequeue$<$ T, Extent $>$@{SpanContainers::SpanDequeue$<$ T, Extent $>$}}
-\doxysubsubsection{\texorpdfstring{unsafe\_front()}{unsafe\_front()}}
-{\footnotesize\ttfamily \label{class_span_containers_1_1_span_queue_ab9221d1174273595dd63636f881a187c} 
-template$<$typename T , std\+::size\+\_\+t Extent$>$ \\
-reference \mbox{\hyperlink{class_span_containers_1_1_span_queue}{Span\+Containers\+::\+Span\+Queue}}$<$ T, Extent $>$\+::unsafe\+\_\+front (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [nodiscard]}, {\ttfamily [constexpr]}, {\ttfamily [noexcept]}, {\ttfamily [inherited]}}
-
-
-
-Gets a reference to the item at the front of the container without a bounds check. 
-
-\begin{DoxyReturn}{Returns}
-A reference to the item at the front of the container. 
-\end{DoxyReturn}
-\Hypertarget{class_span_containers_1_1_span_dequeue_a16399328a91ba6af0693f85388ddc48c}\index{SpanContainers::SpanDequeue$<$ T, Extent $>$@{SpanContainers::SpanDequeue$<$ T, Extent $>$}!unsafe\_pop\_back@{unsafe\_pop\_back}}
-\index{unsafe\_pop\_back@{unsafe\_pop\_back}!SpanContainers::SpanDequeue$<$ T, Extent $>$@{SpanContainers::SpanDequeue$<$ T, Extent $>$}}
-\doxysubsubsection{\texorpdfstring{unsafe\_pop\_back()}{unsafe\_pop\_back()}}
-{\footnotesize\ttfamily \label{class_span_containers_1_1_span_dequeue_a16399328a91ba6af0693f85388ddc48c} 
-template$<$typename T , std\+::size\+\_\+t Extent$>$ \\
-void \mbox{\hyperlink{class_span_containers_1_1_span_dequeue}{Span\+Containers\+::\+Span\+Dequeue}}$<$ T, Extent $>$\+::unsafe\+\_\+pop\+\_\+back (\begin{DoxyParamCaption}\item[{size\+\_\+type}]{n}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [constexpr]}, {\ttfamily [noexcept]}}
-
-
-
-Removes n items from the back of the container without a bounds check. 
-
-
-\begin{DoxyParams}{Parameters}
-{\em n} & the number of items to remove. \\
-\hline
-\end{DoxyParams}
-\Hypertarget{class_span_containers_1_1_span_queue_a4f4ee76427e7bd499f9c1f8c8dc1ada5}\index{SpanContainers::SpanDequeue$<$ T, Extent $>$@{SpanContainers::SpanDequeue$<$ T, Extent $>$}!unsafe\_push\_back@{unsafe\_push\_back}}
-\index{unsafe\_push\_back@{unsafe\_push\_back}!SpanContainers::SpanDequeue$<$ T, Extent $>$@{SpanContainers::SpanDequeue$<$ T, Extent $>$}}
-\doxysubsubsection{\texorpdfstring{unsafe\_push\_back()}{unsafe\_push\_back()}}
-{\footnotesize\ttfamily \label{class_span_containers_1_1_span_queue_a4f4ee76427e7bd499f9c1f8c8dc1ada5} 
-template$<$typename T , std\+::size\+\_\+t Extent$>$ \\
-template$<$typename U $>$ \newline
-requires std\+::assignable\+\_\+from$<$T\&, U\&\&$>$\\
-void \mbox{\hyperlink{class_span_containers_1_1_span_queue}{Span\+Containers\+::\+Span\+Queue}}$<$ T, Extent $>$\+::unsafe\+\_\+push\+\_\+back (\begin{DoxyParamCaption}\item[{U \&\&}]{value}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [constexpr]}, {\ttfamily [noexcept]}, {\ttfamily [inherited]}}
-
-
-
-Assigns value to the back of the container, without bounds checks. 
-
-
-\begin{DoxyTemplParams}{Template Parameters}
-{\em U} & The type of the value. \\
-\hline
-\end{DoxyTemplParams}
-
-\begin{DoxyParams}{Parameters}
-{\em value} & The item to assign. \\
-\hline
-\end{DoxyParams}
-\Hypertarget{class_span_containers_1_1_span_dequeue_a39ff8e7596849d3f2c5345db5bf0c05a}\index{SpanContainers::SpanDequeue$<$ T, Extent $>$@{SpanContainers::SpanDequeue$<$ T, Extent $>$}!unsafe\_push\_front@{unsafe\_push\_front}}
-\index{unsafe\_push\_front@{unsafe\_push\_front}!SpanContainers::SpanDequeue$<$ T, Extent $>$@{SpanContainers::SpanDequeue$<$ T, Extent $>$}}
-\doxysubsubsection{\texorpdfstring{unsafe\_push\_front()}{unsafe\_push\_front()}}
-{\footnotesize\ttfamily \label{class_span_containers_1_1_span_dequeue_a39ff8e7596849d3f2c5345db5bf0c05a} 
-template$<$typename T , std\+::size\+\_\+t Extent$>$ \\
-template$<$typename U $>$ \newline
-requires std\+::assignable\+\_\+from$<$T\&, U\&\&$>$\\
-void \mbox{\hyperlink{class_span_containers_1_1_span_dequeue}{Span\+Containers\+::\+Span\+Dequeue}}$<$ T, Extent $>$\+::unsafe\+\_\+push\+\_\+front (\begin{DoxyParamCaption}\item[{U \&\&}]{value}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [constexpr]}, {\ttfamily [noexcept]}}
-
-
-
-Assign a value to the front of the container without a capacity check. 
-
-
-\begin{DoxyParams}{Parameters}
-{\em value} & The item to move to the front of the container. \\
-\hline
-\end{DoxyParams}
 
 
 The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}

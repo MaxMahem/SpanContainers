@@ -1,0 +1,128 @@
+\doxysection{Span\+Containers\+::internal\+::Pop\+Front\+Trait\texorpdfstring{$<$}{<} Derived, T \texorpdfstring{$>$}{>} Struct Template Reference}
+\hypertarget{struct_span_containers_1_1internal_1_1_pop_front_trait}{}\label{struct_span_containers_1_1internal_1_1_pop_front_trait}\index{SpanContainers::internal::PopFrontTrait$<$ Derived, T $>$@{SpanContainers::internal::PopFrontTrait$<$ Derived, T $>$}}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+constexpr reference \mbox{\hyperlink{struct_span_containers_1_1internal_1_1_pop_front_trait_a8a6942dd58acb8c267623801169f10bf}{front}} () const noexcept(!Use\+Exceptions)
+\begin{DoxyCompactList}\small\item\em Gets a refrence to the item at the front of the container. \end{DoxyCompactList}\item 
+constexpr pointer \mbox{\hyperlink{struct_span_containers_1_1internal_1_1_pop_front_trait_a22d92c40c0f449b35900cf2b008a6bf2}{try\+\_\+front}} () const noexcept
+\begin{DoxyCompactList}\small\item\em Gets a pointer to the item at the front of the container. \end{DoxyCompactList}\item 
+constexpr void \mbox{\hyperlink{struct_span_containers_1_1internal_1_1_pop_front_trait_a59ac33b41e19abaa75abcc16a5a5d7b7}{pop\+\_\+front}} () noexcept(!Use\+Exceptions)
+\begin{DoxyCompactList}\small\item\em Removes an item from the front of the container. \end{DoxyCompactList}\item 
+constexpr void \mbox{\hyperlink{struct_span_containers_1_1internal_1_1_pop_front_trait_af723ce2656f66557c43e76be176dd843}{pop\+\_\+front}} (size\+\_\+type n) noexcept(!Use\+Exceptions)
+\begin{DoxyCompactList}\small\item\em Removes n items from the front of the container. \end{DoxyCompactList}\item 
+constexpr bool \mbox{\hyperlink{struct_span_containers_1_1internal_1_1_pop_front_trait_aa8c6c294633bdef7cff772b318cd14f1}{try\+\_\+pop\+\_\+front}} () noexcept
+\begin{DoxyCompactList}\small\item\em Tries to remove an item from the front of the container. \end{DoxyCompactList}\item 
+constexpr bool \mbox{\hyperlink{struct_span_containers_1_1internal_1_1_pop_front_trait_a144e0b01ca125fe61203b43b626ecd8c}{try\+\_\+pop\+\_\+front}} (size\+\_\+type n) noexcept
+\begin{DoxyCompactList}\small\item\em Tries to remove n items from the front of the container. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{struct_span_containers_1_1internal_1_1_pop_front_trait_a8a6942dd58acb8c267623801169f10bf}\index{SpanContainers::internal::PopFrontTrait$<$ Derived, T $>$@{SpanContainers::internal::PopFrontTrait$<$ Derived, T $>$}!front@{front}}
+\index{front@{front}!SpanContainers::internal::PopFrontTrait$<$ Derived, T $>$@{SpanContainers::internal::PopFrontTrait$<$ Derived, T $>$}}
+\doxysubsubsection{\texorpdfstring{front()}{front()}}
+{\footnotesize\ttfamily \label{struct_span_containers_1_1internal_1_1_pop_front_trait_a8a6942dd58acb8c267623801169f10bf} 
+template$<$typename Derived , typename T $>$ \\
+reference \mbox{\hyperlink{struct_span_containers_1_1internal_1_1_pop_front_trait}{Span\+Containers\+::internal\+::\+Pop\+Front\+Trait}}$<$ Derived, T $>$\+::front (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [nodiscard]}, {\ttfamily [constexpr]}, {\ttfamily [noexcept]}}
+
+
+
+Gets a refrence to the item at the front of the container. 
+
+\begin{DoxyReturn}{Returns}
+A refrence to the item at the front of the container. 
+\end{DoxyReturn}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em \doxylink{class_span_containers_1_1_empty_container_error}{Empty\+Container\+Error}} & if the container is empty and Use\+Exceptions is true. \\
+\hline
+\end{DoxyExceptions}
+\Hypertarget{struct_span_containers_1_1internal_1_1_pop_front_trait_a59ac33b41e19abaa75abcc16a5a5d7b7}\index{SpanContainers::internal::PopFrontTrait$<$ Derived, T $>$@{SpanContainers::internal::PopFrontTrait$<$ Derived, T $>$}!pop\_front@{pop\_front}}
+\index{pop\_front@{pop\_front}!SpanContainers::internal::PopFrontTrait$<$ Derived, T $>$@{SpanContainers::internal::PopFrontTrait$<$ Derived, T $>$}}
+\doxysubsubsection{\texorpdfstring{pop\_front()}{pop\_front()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily \label{struct_span_containers_1_1internal_1_1_pop_front_trait_a59ac33b41e19abaa75abcc16a5a5d7b7} 
+template$<$typename Derived , typename T $>$ \\
+void \mbox{\hyperlink{struct_span_containers_1_1internal_1_1_pop_front_trait}{Span\+Containers\+::internal\+::\+Pop\+Front\+Trait}}$<$ Derived, T $>$\+::pop\+\_\+front (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [constexpr]}, {\ttfamily [noexcept]}}
+
+
+
+Removes an item from the front of the container. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em The} & number of items to remove from the container. \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em \doxylink{class_span_containers_1_1_empty_container_error}{Empty\+Container\+Error}} & if the container is empty and Use\+Exceptions is true. \\
+\hline
+\end{DoxyExceptions}
+\Hypertarget{struct_span_containers_1_1internal_1_1_pop_front_trait_af723ce2656f66557c43e76be176dd843}\index{SpanContainers::internal::PopFrontTrait$<$ Derived, T $>$@{SpanContainers::internal::PopFrontTrait$<$ Derived, T $>$}!pop\_front@{pop\_front}}
+\index{pop\_front@{pop\_front}!SpanContainers::internal::PopFrontTrait$<$ Derived, T $>$@{SpanContainers::internal::PopFrontTrait$<$ Derived, T $>$}}
+\doxysubsubsection{\texorpdfstring{pop\_front()}{pop\_front()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily \label{struct_span_containers_1_1internal_1_1_pop_front_trait_af723ce2656f66557c43e76be176dd843} 
+template$<$typename Derived , typename T $>$ \\
+void \mbox{\hyperlink{struct_span_containers_1_1internal_1_1_pop_front_trait}{Span\+Containers\+::internal\+::\+Pop\+Front\+Trait}}$<$ Derived, T $>$\+::pop\+\_\+front (\begin{DoxyParamCaption}\item[{size\+\_\+type}]{n}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [constexpr]}, {\ttfamily [noexcept]}}
+
+
+
+Removes n items from the front of the container. 
+
+
+\begin{DoxyExceptions}{Exceptions}
+{\em std\+::out\+\_\+of\+\_\+range} & if there are less than n items in the container and Use\+Exceptions is true. \\
+\hline
+\end{DoxyExceptions}
+\Hypertarget{struct_span_containers_1_1internal_1_1_pop_front_trait_a22d92c40c0f449b35900cf2b008a6bf2}\index{SpanContainers::internal::PopFrontTrait$<$ Derived, T $>$@{SpanContainers::internal::PopFrontTrait$<$ Derived, T $>$}!try\_front@{try\_front}}
+\index{try\_front@{try\_front}!SpanContainers::internal::PopFrontTrait$<$ Derived, T $>$@{SpanContainers::internal::PopFrontTrait$<$ Derived, T $>$}}
+\doxysubsubsection{\texorpdfstring{try\_front()}{try\_front()}}
+{\footnotesize\ttfamily \label{struct_span_containers_1_1internal_1_1_pop_front_trait_a22d92c40c0f449b35900cf2b008a6bf2} 
+template$<$typename Derived , typename T $>$ \\
+pointer \mbox{\hyperlink{struct_span_containers_1_1internal_1_1_pop_front_trait}{Span\+Containers\+::internal\+::\+Pop\+Front\+Trait}}$<$ Derived, T $>$\+::try\+\_\+front (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [nodiscard]}, {\ttfamily [constexpr]}, {\ttfamily [noexcept]}}
+
+
+
+Gets a pointer to the item at the front of the container. 
+
+\begin{DoxyReturn}{Returns}
+A pointer to the item at the front of the container or nullptr if empty. 
+\end{DoxyReturn}
+\Hypertarget{struct_span_containers_1_1internal_1_1_pop_front_trait_aa8c6c294633bdef7cff772b318cd14f1}\index{SpanContainers::internal::PopFrontTrait$<$ Derived, T $>$@{SpanContainers::internal::PopFrontTrait$<$ Derived, T $>$}!try\_pop\_front@{try\_pop\_front}}
+\index{try\_pop\_front@{try\_pop\_front}!SpanContainers::internal::PopFrontTrait$<$ Derived, T $>$@{SpanContainers::internal::PopFrontTrait$<$ Derived, T $>$}}
+\doxysubsubsection{\texorpdfstring{try\_pop\_front()}{try\_pop\_front()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily \label{struct_span_containers_1_1internal_1_1_pop_front_trait_aa8c6c294633bdef7cff772b318cd14f1} 
+template$<$typename Derived , typename T $>$ \\
+bool \mbox{\hyperlink{struct_span_containers_1_1internal_1_1_pop_front_trait}{Span\+Containers\+::internal\+::\+Pop\+Front\+Trait}}$<$ Derived, T $>$\+::try\+\_\+pop\+\_\+front (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [constexpr]}, {\ttfamily [noexcept]}}
+
+
+
+Tries to remove an item from the front of the container. 
+
+\begin{DoxyReturn}{Returns}
+true if an item was removed; false if the container is empty. 
+\end{DoxyReturn}
+\Hypertarget{struct_span_containers_1_1internal_1_1_pop_front_trait_a144e0b01ca125fe61203b43b626ecd8c}\index{SpanContainers::internal::PopFrontTrait$<$ Derived, T $>$@{SpanContainers::internal::PopFrontTrait$<$ Derived, T $>$}!try\_pop\_front@{try\_pop\_front}}
+\index{try\_pop\_front@{try\_pop\_front}!SpanContainers::internal::PopFrontTrait$<$ Derived, T $>$@{SpanContainers::internal::PopFrontTrait$<$ Derived, T $>$}}
+\doxysubsubsection{\texorpdfstring{try\_pop\_front()}{try\_pop\_front()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily \label{struct_span_containers_1_1internal_1_1_pop_front_trait_a144e0b01ca125fe61203b43b626ecd8c} 
+template$<$typename Derived , typename T $>$ \\
+bool \mbox{\hyperlink{struct_span_containers_1_1internal_1_1_pop_front_trait}{Span\+Containers\+::internal\+::\+Pop\+Front\+Trait}}$<$ Derived, T $>$\+::try\+\_\+pop\+\_\+front (\begin{DoxyParamCaption}\item[{size\+\_\+type}]{n}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [constexpr]}, {\ttfamily [noexcept]}}
+
+
+
+Tries to remove n items from the front of the container. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em The} & number of items to remove from the container. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true if n items were removed; false if n is greater than size. 
+\end{DoxyReturn}
+
+
+The documentation for this struct was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/\+Users/maxma/source/repos/\+Span\+Containers/lib/internal/\+Traits/Pop\+Front\+Trait.\+h\end{DoxyCompactItemize}

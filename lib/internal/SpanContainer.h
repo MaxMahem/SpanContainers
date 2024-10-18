@@ -1,6 +1,12 @@
 #pragma once
 #include "BufferSelector.h"
 
+#ifndef SPAN_CONTAINERS_USE_EXCEPTIONS
+#define SPAN_CONTAINERS_USE_EXCEPTIONS true
+#endif
+
+namespace SpanContainers { constexpr bool UseExceptions = SPAN_CONTAINERS_USE_EXCEPTIONS; }
+
 /// @brief Internal namespace for implementation details.
 namespace SpanContainers::internal {
 

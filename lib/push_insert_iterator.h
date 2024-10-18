@@ -28,7 +28,7 @@ public:
     explicit push_insert_iterator(Container& container) noexcept : container(&container) {}
 
     /// @brief Forward assigns value to the wrapped container via push.
-    /// @tparam T the type of the value to assign. Must be assignable to Container::element_value.
+    /// @tparam T the type of the value to assign. Must be assignable to Container::value_type.
     /// @param value The value to push.
     /// @return This iterator.
     template <typename T>

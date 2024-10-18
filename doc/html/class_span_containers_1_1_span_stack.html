@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
 <meta name="generator" content="Doxygen 1.12.0"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>SpanContainers: SpanContainers::SpanStack&lt; T, Extent &gt; Class Template Reference</title>
+<title>SpanContainers: SpanContainers::SpanStack&lt; T, Extent, UseExceptions &gt; Class Template Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -94,8 +94,9 @@ $(function(){ initResizable(false); });
 <a href="#pub-methods">Public Member Functions</a> &#124;
 <a href="#pub-static-methods">Static Public Member Functions</a> &#124;
 <a href="#pub-static-attribs">Static Public Attributes</a> &#124;
+<a href="#friends">Friends</a> &#124;
 <a href="class_span_containers_1_1_span_stack-members.html">List of all members</a>  </div>
-  <div class="headertitle"><div class="title">SpanContainers::SpanStack&lt; T, Extent &gt; Class Template Reference</div></div>
+  <div class="headertitle"><div class="title">SpanContainers::SpanStack&lt; T, Extent, UseExceptions &gt; Class Template Reference</div></div>
 </div><!--header-->
 <div class="contents">
 
@@ -104,26 +105,20 @@ $(function(){ initResizable(false); });
 
 <p><code>#include &lt;<a class="el" href="_span_stack_8h_source.html">SpanStack.h</a>&gt;</code></p>
 <div class="dynheader">
-Inheritance diagram for SpanContainers::SpanStack&lt; T, Extent &gt;:</div>
+Inheritance diagram for SpanContainers::SpanStack&lt; T, Extent, UseExceptions &gt;:</div>
 <div class="dyncontent">
  <div class="center">
-  <img src="class_span_containers_1_1_span_stack.png" usemap="#SpanContainers::SpanStack_3C_20T_2C_20Extent_20_3E_map" alt=""/>
-  <map id="SpanContainers::SpanStack_3C_20T_2C_20Extent_20_3E_map" name="SpanContainers::SpanStack_3C_20T_2C_20Extent_20_3E_map">
+  <img src="class_span_containers_1_1_span_stack.png" usemap="#SpanContainers::SpanStack_3C_20T_2C_20Extent_2C_20UseExceptions_20_3E_map" alt=""/>
+  <map id="SpanContainers::SpanStack_3C_20T_2C_20Extent_2C_20UseExceptions_20_3E_map" name="SpanContainers::SpanStack_3C_20T_2C_20Extent_2C_20UseExceptions_20_3E_map">
 <area href="class_span_containers_1_1internal_1_1_span_container.html" title="Base type for Span containers, holding common behavior." alt="SpanContainers::internal::SpanContainer&lt; T, Extent &gt;" shape="rect" coords="0,0,411,24"/>
-<area href="class_span_containers_1_1internal_1_1_index_trait.html" alt="SpanContainers::internal::IndexTrait&lt; SpanStack&lt; T, Extent &gt;, T &gt;" shape="rect" coords="421,0,832,24"/>
+<area href="struct_span_containers_1_1internal_1_1_index_trait.html" alt="SpanContainers::internal::IndexTrait&lt; SpanStack&lt; T, Extent &gt;, T &gt;" shape="rect" coords="421,0,832,24"/>
 <area href="struct_span_containers_1_1internal_1_1_push_back_trait.html" alt="SpanContainers::internal::PushBackTrait&lt; SpanStack&lt; T, Extent &gt;, T &gt;" shape="rect" coords="842,0,1253,24"/>
-<area href="class_span_containers_1_1internal_1_1_pop_back_trait.html" alt="SpanContainers::internal::PopBackTrait&lt; SpanStack&lt; T, Extent &gt;, T &gt;" shape="rect" coords="1263,0,1674,24"/>
+<area href="struct_span_containers_1_1internal_1_1_pop_back_trait.html" alt="SpanContainers::internal::PopBackTrait&lt; SpanStack&lt; T, Extent &gt;, T &gt;" shape="rect" coords="1263,0,1674,24"/>
   </map>
 </div></div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-types" name="pub-types"></a>
 Public Types</h2></td></tr>
-<tr class="memitem:a5884bfe0250b794adfc54d7c1e0df70c" id="r_a5884bfe0250b794adfc54d7c1e0df70c"><td class="memItemLeft" align="right" valign="top"><a id="a5884bfe0250b794adfc54d7c1e0df70c" name="a5884bfe0250b794adfc54d7c1e0df70c"></a>
-using&#160;</td><td class="memItemRight" valign="bottom"><b>size_type</b></td></tr>
-<tr class="separator:a5884bfe0250b794adfc54d7c1e0df70c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac9edea5dc17ba0270973b9093c5a5f67" id="r_ac9edea5dc17ba0270973b9093c5a5f67"><td class="memItemLeft" align="right" valign="top"><a id="ac9edea5dc17ba0270973b9093c5a5f67" name="ac9edea5dc17ba0270973b9093c5a5f67"></a>
-using&#160;</td><td class="memItemRight" valign="bottom"><b>reference</b></td></tr>
-<tr class="separator:ac9edea5dc17ba0270973b9093c5a5f67"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:acbf0783599d1034a54f66e1ce270e39f" id="r_acbf0783599d1034a54f66e1ce270e39f"><td class="memItemLeft" align="right" valign="top"><a id="acbf0783599d1034a54f66e1ce270e39f" name="acbf0783599d1034a54f66e1ce270e39f"></a>
 using&#160;</td><td class="memItemRight" valign="bottom"><b>span_type</b> = std::span&lt;T, Extent&gt;</td></tr>
 <tr class="separator:acbf0783599d1034a54f66e1ce270e39f"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -149,32 +144,13 @@ using&#160;</td><td class="memItemRight" valign="bottom"><b>const_reference</b> 
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:ade07b875471d3fc520d0f6510cbf7ded" id="r_ade07b875471d3fc520d0f6510cbf7ded"><td class="memItemLeft" align="right" valign="top">constexpr reference&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ade07b875471d3fc520d0f6510cbf7ded">unsafe_back</a> () const noexcept</td></tr>
-<tr class="memdesc:ade07b875471d3fc520d0f6510cbf7ded"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets a reference to the last item in the container without a bounds check.  <br /></td></tr>
-<tr class="separator:ade07b875471d3fc520d0f6510cbf7ded"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a5e5976294238ee154407203a5bd70c36" id="r_a5e5976294238ee154407203a5bd70c36"><td class="memItemLeft" align="right" valign="top">constexpr reference&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a5e5976294238ee154407203a5bd70c36">unsafe_at</a> (size_type index) const noexcept</td></tr>
-<tr class="memdesc:a5e5976294238ee154407203a5bd70c36"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets a reference to the element at index, without a bounds check.  <br /></td></tr>
-<tr class="separator:a5e5976294238ee154407203a5bd70c36"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a88fd58d86a5554a2e3bb20b28698666a" id="r_a88fd58d86a5554a2e3bb20b28698666a"><td class="memTemplParams" colspan="2">template&lt;typename U &gt; <br />
-requires std::assignable_from&lt;T&amp;, U&amp;&amp;&gt;</td></tr>
-<tr class="memitem:a88fd58d86a5554a2e3bb20b28698666a"><td class="memTemplItemLeft" align="right" valign="top">constexpr void&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="#a88fd58d86a5554a2e3bb20b28698666a">unsafe_push_back</a> (U &amp;&amp;value) noexcept(std::is_nothrow_assignable&lt; T &amp;, U &amp;&amp; &gt;::value)</td></tr>
-<tr class="memdesc:a88fd58d86a5554a2e3bb20b28698666a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Assigns value to the back of the container, without bounds checks.  <br /></td></tr>
-<tr class="separator:a88fd58d86a5554a2e3bb20b28698666a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad2e1f33b4ccc26cbe3c709f00c3d21f4" id="r_ad2e1f33b4ccc26cbe3c709f00c3d21f4"><td class="memTemplParams" colspan="2">template&lt;std::ranges::input_range Range = std::initializer_list&lt;T&gt;&gt; <br />
-requires std::convertible_to&lt;std::ranges::range_value_t&lt;Range&gt;, T&gt;</td></tr>
-<tr class="memitem:ad2e1f33b4ccc26cbe3c709f00c3d21f4"><td class="memTemplItemLeft" align="right" valign="top">constexpr bool&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="#ad2e1f33b4ccc26cbe3c709f00c3d21f4">try_push_back_range</a> (Range &amp;&amp;values)</td></tr>
-<tr class="memdesc:ad2e1f33b4ccc26cbe3c709f00c3d21f4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Tries to assign values to the back of the container.  <br /></td></tr>
-<tr class="separator:ad2e1f33b4ccc26cbe3c709f00c3d21f4"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a0ca86841425a2a330ea6f77fc0d424f7" id="r_a0ca86841425a2a330ea6f77fc0d424f7"><td class="memItemLeft" align="right" valign="top">constexpr void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a0ca86841425a2a330ea6f77fc0d424f7">unsafe_pop_back</a> (size_type n) noexcept</td></tr>
-<tr class="memdesc:a0ca86841425a2a330ea6f77fc0d424f7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Removes n items from the back of the container without a bounds check.  <br /></td></tr>
-<tr class="separator:a0ca86841425a2a330ea6f77fc0d424f7"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a6b553ec2842093ef30a5a755ca51dec3" id="r_a6b553ec2842093ef30a5a755ca51dec3"><td class="memItemLeft" align="right" valign="top"><a id="a6b553ec2842093ef30a5a755ca51dec3" name="a6b553ec2842093ef30a5a755ca51dec3"></a>
+<tr class="memitem:a115fa21f14a98aad5ea8cd7d4c450df1" id="r_a115fa21f14a98aad5ea8cd7d4c450df1"><td class="memItemLeft" align="right" valign="top"><a id="a115fa21f14a98aad5ea8cd7d4c450df1" name="a115fa21f14a98aad5ea8cd7d4c450df1"></a>
 constexpr void&#160;</td><td class="memItemRight" valign="bottom"><b>clear</b> () noexcept</td></tr>
-<tr class="memdesc:a6b553ec2842093ef30a5a755ca51dec3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Clears all items from the container. <br /></td></tr>
-<tr class="separator:a6b553ec2842093ef30a5a755ca51dec3"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae1ac2ccb847e2be28786bf4a89522713" id="r_ae1ac2ccb847e2be28786bf4a89522713"><td class="memItemLeft" align="right" valign="top">constexpr auto&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ae1ac2ccb847e2be28786bf4a89522713">as_span</a> () const noexcept</td></tr>
-<tr class="memdesc:ae1ac2ccb847e2be28786bf4a89522713"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets the current items in the container as a span.  <br /></td></tr>
-<tr class="separator:ae1ac2ccb847e2be28786bf4a89522713"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memdesc:a115fa21f14a98aad5ea8cd7d4c450df1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Clears all items from the container. <br /></td></tr>
+<tr class="separator:a115fa21f14a98aad5ea8cd7d4c450df1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a412987c6ff9f916821feaf2e6bae3bbc" id="r_a412987c6ff9f916821feaf2e6bae3bbc"><td class="memItemLeft" align="right" valign="top">constexpr auto&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a412987c6ff9f916821feaf2e6bae3bbc">as_span</a> () const noexcept</td></tr>
+<tr class="memdesc:a412987c6ff9f916821feaf2e6bae3bbc"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets the current items in the container as a span.  <br /></td></tr>
+<tr class="separator:a412987c6ff9f916821feaf2e6bae3bbc"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a7f483dfa24b80da71262eeaf59f1f8dc" id="r_a7f483dfa24b80da71262eeaf59f1f8dc"><td class="memTemplParams" colspan="2">template&lt;typename Buffer &gt; <br />
 requires std::is_lvalue_reference_v&lt;Buffer&amp;&gt; &amp;&amp; std::is_constructible_v&lt;span_type, Buffer&amp;&gt;</td></tr>
 <tr class="memitem:a7f483dfa24b80da71262eeaf59f1f8dc"><td class="memTemplItemLeft" align="right" valign="top">constexpr&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="#a7f483dfa24b80da71262eeaf59f1f8dc">SpanContainer</a> (Buffer &amp;buffer) noexcept</td></tr>
@@ -195,10 +171,10 @@ requires std::is_lvalue_reference_v&lt;Buffer&amp;&gt; &amp;&amp; std::is_constr
 <tr class="memitem:a6adcfa5c633a685bef25e8e8300e2e00" id="r_a6adcfa5c633a685bef25e8e8300e2e00"><td class="memItemLeft" align="right" valign="top">constexpr span_type&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_span_containers_1_1internal_1_1_span_container.html#a6adcfa5c633a685bef25e8e8300e2e00">data</a> () const noexcept</td></tr>
 <tr class="memdesc:a6adcfa5c633a685bef25e8e8300e2e00"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets the underlying span.  <br /></td></tr>
 <tr class="separator:a6adcfa5c633a685bef25e8e8300e2e00"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ada06eabb7b7e3fc9ec94b0f28b42aed5" id="r_ada06eabb7b7e3fc9ec94b0f28b42aed5"><td class="memItemLeft" align="right" valign="top">constexpr reference&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_span_containers_1_1internal_1_1_index_trait.html#ada06eabb7b7e3fc9ec94b0f28b42aed5">operator[]</a> (size_type index) const</td></tr>
+<tr class="memitem:ada06eabb7b7e3fc9ec94b0f28b42aed5" id="r_ada06eabb7b7e3fc9ec94b0f28b42aed5"><td class="memItemLeft" align="right" valign="top">constexpr reference&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_span_containers_1_1internal_1_1_index_trait.html#ada06eabb7b7e3fc9ec94b0f28b42aed5">operator[]</a> (size_type index) const</td></tr>
 <tr class="memdesc:ada06eabb7b7e3fc9ec94b0f28b42aed5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets a reference to the element at index.  <br /></td></tr>
 <tr class="separator:ada06eabb7b7e3fc9ec94b0f28b42aed5"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a2d79a1361803416b85bc31c09a2d013a" id="r_a2d79a1361803416b85bc31c09a2d013a"><td class="memItemLeft" align="right" valign="top">constexpr pointer&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_span_containers_1_1internal_1_1_index_trait.html#a2d79a1361803416b85bc31c09a2d013a">at</a> (size_type index) const noexcept</td></tr>
+<tr class="memitem:a2d79a1361803416b85bc31c09a2d013a" id="r_a2d79a1361803416b85bc31c09a2d013a"><td class="memItemLeft" align="right" valign="top">constexpr pointer&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_span_containers_1_1internal_1_1_index_trait.html#a2d79a1361803416b85bc31c09a2d013a">at</a> (size_type index) const noexcept</td></tr>
 <tr class="memdesc:a2d79a1361803416b85bc31c09a2d013a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets a pointer to the element at index.  <br /></td></tr>
 <tr class="separator:a2d79a1361803416b85bc31c09a2d013a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a8e1cf7d06e78ee535b13e311dc72b148" id="r_a8e1cf7d06e78ee535b13e311dc72b148"><td class="memItemLeft" align="right" valign="top">constexpr void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_span_containers_1_1internal_1_1_push_back_trait.html#a8e1cf7d06e78ee535b13e311dc72b148">push_back</a> (U &amp;&amp;value)</td></tr>
@@ -207,28 +183,24 @@ requires std::is_lvalue_reference_v&lt;Buffer&amp;&gt; &amp;&amp; std::is_constr
 <tr class="memitem:a0806b833c26f08891f2e928b562a986f" id="r_a0806b833c26f08891f2e928b562a986f"><td class="memItemLeft" align="right" valign="top">constexpr bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_span_containers_1_1internal_1_1_push_back_trait.html#a0806b833c26f08891f2e928b562a986f">try_push_back</a> (U &amp;&amp;value) noexcept(std::is_nothrow_assignable&lt; T &amp;, U &amp;&amp; &gt;::value)</td></tr>
 <tr class="memdesc:a0806b833c26f08891f2e928b562a986f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Tries to assign value at the back of the container.  <br /></td></tr>
 <tr class="separator:a0806b833c26f08891f2e928b562a986f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a9a1baefbc00e928dc6a2051895457e4d" id="r_a9a1baefbc00e928dc6a2051895457e4d"><td class="memItemLeft" align="right" valign="top">constexpr reference&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_span_containers_1_1internal_1_1_pop_back_trait.html#a9a1baefbc00e928dc6a2051895457e4d">back</a> () const</td></tr>
-<tr class="memdesc:a9a1baefbc00e928dc6a2051895457e4d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets a refrence to the item at the back of the container.  <br /></td></tr>
-<tr class="separator:a9a1baefbc00e928dc6a2051895457e4d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a1039675e077b05e71a59dd9318d44026" id="r_a1039675e077b05e71a59dd9318d44026"><td class="memItemLeft" align="right" valign="top">constexpr pointer&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_span_containers_1_1internal_1_1_pop_back_trait.html#a1039675e077b05e71a59dd9318d44026">try_back</a> () const noexcept</td></tr>
+<tr class="memitem:a635fbe6fc7cfd5aee71c4a58f89ed3a3" id="r_a635fbe6fc7cfd5aee71c4a58f89ed3a3"><td class="memItemLeft" align="right" valign="top">constexpr reference&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_span_containers_1_1internal_1_1_pop_back_trait.html#a635fbe6fc7cfd5aee71c4a58f89ed3a3">back</a> () const noexcept(!UseExceptions)</td></tr>
+<tr class="memdesc:a635fbe6fc7cfd5aee71c4a58f89ed3a3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets a refrence to the item at the back of the container.  <br /></td></tr>
+<tr class="separator:a635fbe6fc7cfd5aee71c4a58f89ed3a3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1039675e077b05e71a59dd9318d44026" id="r_a1039675e077b05e71a59dd9318d44026"><td class="memItemLeft" align="right" valign="top">constexpr pointer&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_span_containers_1_1internal_1_1_pop_back_trait.html#a1039675e077b05e71a59dd9318d44026">try_back</a> () const noexcept</td></tr>
 <tr class="memdesc:a1039675e077b05e71a59dd9318d44026"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets a pointer to the item at the back of the container.  <br /></td></tr>
 <tr class="separator:a1039675e077b05e71a59dd9318d44026"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af3d444f05e58c78c10ca284080e31af7" id="r_af3d444f05e58c78c10ca284080e31af7"><td class="memItemLeft" align="right" valign="top">constexpr void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_span_containers_1_1internal_1_1_pop_back_trait.html#af3d444f05e58c78c10ca284080e31af7">pop_back</a> ()</td></tr>
-<tr class="memdesc:af3d444f05e58c78c10ca284080e31af7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Removes an item from the back of the container.  <br /></td></tr>
-<tr class="separator:af3d444f05e58c78c10ca284080e31af7"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:afbec172bc1e718716e4e2392b47e9abc" id="r_afbec172bc1e718716e4e2392b47e9abc"><td class="memItemLeft" align="right" valign="top">constexpr void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_span_containers_1_1internal_1_1_pop_back_trait.html#afbec172bc1e718716e4e2392b47e9abc">pop_back</a> (size_type n)</td></tr>
-<tr class="memdesc:afbec172bc1e718716e4e2392b47e9abc"><td class="mdescLeft">&#160;</td><td class="mdescRight">Removes n items from the back of the container.  <br /></td></tr>
-<tr class="separator:afbec172bc1e718716e4e2392b47e9abc"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a3270221b30d28bd88683e1bb42b0d0d5" id="r_a3270221b30d28bd88683e1bb42b0d0d5"><td class="memItemLeft" align="right" valign="top">constexpr bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_span_containers_1_1internal_1_1_pop_back_trait.html#a3270221b30d28bd88683e1bb42b0d0d5">try_pop_back</a> () noexcept</td></tr>
+<tr class="memitem:aebbe0044f1d9347ec60ec0fb89cf1ee2" id="r_aebbe0044f1d9347ec60ec0fb89cf1ee2"><td class="memItemLeft" align="right" valign="top">constexpr void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_span_containers_1_1internal_1_1_pop_back_trait.html#aebbe0044f1d9347ec60ec0fb89cf1ee2">pop_back</a> () noexcept(!UseExceptions)</td></tr>
+<tr class="memdesc:aebbe0044f1d9347ec60ec0fb89cf1ee2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Removes an item from the back of the container.  <br /></td></tr>
+<tr class="separator:aebbe0044f1d9347ec60ec0fb89cf1ee2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1de34d69bef973f750d36e40716ceb32" id="r_a1de34d69bef973f750d36e40716ceb32"><td class="memItemLeft" align="right" valign="top">constexpr void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_span_containers_1_1internal_1_1_pop_back_trait.html#a1de34d69bef973f750d36e40716ceb32">pop_back</a> (size_type n) noexcept(!UseExceptions)</td></tr>
+<tr class="memdesc:a1de34d69bef973f750d36e40716ceb32"><td class="mdescLeft">&#160;</td><td class="mdescRight">Removes n items from the back of the container.  <br /></td></tr>
+<tr class="separator:a1de34d69bef973f750d36e40716ceb32"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3270221b30d28bd88683e1bb42b0d0d5" id="r_a3270221b30d28bd88683e1bb42b0d0d5"><td class="memItemLeft" align="right" valign="top">constexpr bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_span_containers_1_1internal_1_1_pop_back_trait.html#a3270221b30d28bd88683e1bb42b0d0d5">try_pop_back</a> () noexcept</td></tr>
 <tr class="memdesc:a3270221b30d28bd88683e1bb42b0d0d5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Tries to remove an item from the back of the container.  <br /></td></tr>
 <tr class="separator:a3270221b30d28bd88683e1bb42b0d0d5"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:afac010954c1e67a0b5c0908610e3dbc0" id="r_afac010954c1e67a0b5c0908610e3dbc0"><td class="memItemLeft" align="right" valign="top">constexpr bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_span_containers_1_1internal_1_1_pop_back_trait.html#afac010954c1e67a0b5c0908610e3dbc0">try_pop_back</a> (size_type n) noexcept</td></tr>
+<tr class="memitem:afac010954c1e67a0b5c0908610e3dbc0" id="r_afac010954c1e67a0b5c0908610e3dbc0"><td class="memItemLeft" align="right" valign="top">constexpr bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_span_containers_1_1internal_1_1_pop_back_trait.html#afac010954c1e67a0b5c0908610e3dbc0">try_pop_back</a> (size_type n) noexcept</td></tr>
 <tr class="memdesc:afac010954c1e67a0b5c0908610e3dbc0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Tries to remove n items from the back of the container.  <br /></td></tr>
 <tr class="separator:afac010954c1e67a0b5c0908610e3dbc0"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a97357b64a3c26d9e5bc4033d90f88cb8" id="r_a97357b64a3c26d9e5bc4033d90f88cb8"><td class="memItemLeft" align="right" valign="top"><a id="a97357b64a3c26d9e5bc4033d90f88cb8" name="a97357b64a3c26d9e5bc4033d90f88cb8"></a>
-constexpr void&#160;</td><td class="memItemRight" valign="bottom"><b>unsafe_pop_back</b> () noexcept</td></tr>
-<tr class="memdesc:a97357b64a3c26d9e5bc4033d90f88cb8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Removes an item from the back of the container without a bounds check. <br /></td></tr>
-<tr class="separator:a97357b64a3c26d9e5bc4033d90f88cb8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-static-methods" name="pub-static-methods"></a>
 Static Public Member Functions</h2></td></tr>
@@ -238,14 +210,26 @@ Static Public Member Functions</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-static-attribs" name="pub-static-attribs"></a>
 Static Public Attributes</h2></td></tr>
-<tr class="memitem:ad746f9410a5ca4aaf438238570f557fa" id="r_ad746f9410a5ca4aaf438238570f557fa"><td class="memItemLeft" align="right" valign="top"><a id="ad746f9410a5ca4aaf438238570f557fa" name="ad746f9410a5ca4aaf438238570f557fa"></a>
+<tr class="memitem:a48fa5cb6b022a517631e9fe0d6231948" id="r_a48fa5cb6b022a517631e9fe0d6231948"><td class="memItemLeft" align="right" valign="top"><a id="a48fa5cb6b022a517631e9fe0d6231948" name="a48fa5cb6b022a517631e9fe0d6231948"></a>
 static constexpr std::string_view&#160;</td><td class="memItemRight" valign="bottom"><b>TYPE_NAME</b> = &quot;SpanStack&quot;</td></tr>
-<tr class="memdesc:ad746f9410a5ca4aaf438238570f557fa"><td class="mdescLeft">&#160;</td><td class="mdescRight">the name of this type. <br /></td></tr>
-<tr class="separator:ad746f9410a5ca4aaf438238570f557fa"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memdesc:a48fa5cb6b022a517631e9fe0d6231948"><td class="mdescLeft">&#160;</td><td class="mdescRight">the name of this type. <br /></td></tr>
+<tr class="separator:a48fa5cb6b022a517631e9fe0d6231948"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="friends" name="friends"></a>
+Friends</h2></td></tr>
+<tr class="memitem:adc7f1078b9c62c648fcbe69a27eb64e9" id="r_adc7f1078b9c62c648fcbe69a27eb64e9"><td class="memItemLeft" align="right" valign="top"><a id="adc7f1078b9c62c648fcbe69a27eb64e9" name="adc7f1078b9c62c648fcbe69a27eb64e9"></a>
+struct&#160;</td><td class="memItemRight" valign="bottom"><b>internal::IndexTrait&lt; SpanStack&lt; T, Extent &gt;, T &gt;</b></td></tr>
+<tr class="separator:adc7f1078b9c62c648fcbe69a27eb64e9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa86af81781b381575de00f174c54edba" id="r_aa86af81781b381575de00f174c54edba"><td class="memItemLeft" align="right" valign="top"><a id="aa86af81781b381575de00f174c54edba" name="aa86af81781b381575de00f174c54edba"></a>
+struct&#160;</td><td class="memItemRight" valign="bottom"><b>internal::PushBackTrait&lt; SpanStack&lt; T, Extent &gt;, T &gt;</b></td></tr>
+<tr class="separator:aa86af81781b381575de00f174c54edba"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5873aa2522b1d91203b74332737db586" id="r_a5873aa2522b1d91203b74332737db586"><td class="memItemLeft" align="right" valign="top"><a id="a5873aa2522b1d91203b74332737db586" name="a5873aa2522b1d91203b74332737db586"></a>
+struct&#160;</td><td class="memItemRight" valign="bottom"><b>internal::PopBackTrait&lt; SpanStack&lt; T, Extent &gt;, T &gt;</b></td></tr>
+<tr class="separator:a5873aa2522b1d91203b74332737db586"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><div class="compoundTemplParams">template&lt;typename T, std::size_t Extent&gt;<br />
-class SpanContainers::SpanStack&lt; T, Extent &gt;</div><p>Represents a span-based, fixed size container with stack/vector like access. </p>
+<div class="textblock"><div class="compoundTemplParams">template&lt;typename T, std::size_t Extent, bool UseExceptions = true&gt;<br />
+class SpanContainers::SpanStack&lt; T, Extent, UseExceptions &gt;</div><p>Represents a span-based, fixed size container with stack/vector like access. </p>
 <dl class="tparams"><dt>Template Parameters</dt><dd>
   <table class="tparams">
     <tr><td class="paramname">T</td><td>The type of the item in the container. </td></tr>
@@ -289,19 +273,19 @@ template&lt;std::size_t MaxStackSize = 256&gt; </div>
 </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
-<a id="ae1ac2ccb847e2be28786bf4a89522713" name="ae1ac2ccb847e2be28786bf4a89522713"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ae1ac2ccb847e2be28786bf4a89522713">&#9670;&#160;</a></span>as_span()</h2>
+<a id="a412987c6ff9f916821feaf2e6bae3bbc" name="a412987c6ff9f916821feaf2e6bae3bbc"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a412987c6ff9f916821feaf2e6bae3bbc">&#9670;&#160;</a></span>as_span()</h2>
 
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;typename T , std::size_t Extent&gt; </div>
+template&lt;typename T , std::size_t Extent, bool UseExceptions = true&gt; </div>
 <table class="mlabels">
   <tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">auto <a class="el" href="class_span_containers_1_1_span_stack.html">SpanContainers::SpanStack</a>&lt; T, Extent &gt;::as_span </td>
+          <td class="memname">auto <a class="el" href="class_span_containers_1_1_span_stack.html">SpanContainers::SpanStack</a>&lt; T, Extent, UseExceptions &gt;::as_span </td>
           <td>(</td>
           <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
           <td> const</td>
@@ -329,7 +313,7 @@ template&lt;typename T , std::size_t Extent&gt; </div>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">pointer <a class="el" href="class_span_containers_1_1internal_1_1_index_trait.html">SpanContainers::internal::IndexTrait</a>&lt; <a class="el" href="class_span_containers_1_1_span_stack.html">SpanStack</a>&lt; T, Extent &gt;, T &gt;::at </td>
+          <td class="memname">pointer <a class="el" href="struct_span_containers_1_1internal_1_1_index_trait.html">SpanContainers::internal::IndexTrait</a>&lt; <a class="el" href="class_span_containers_1_1_span_stack.html">SpanStack</a>&lt; T, Extent &gt;, T &gt;::at </td>
           <td>(</td>
           <td class="paramtype">size_type</td>          <td class="paramname"><span class="paramname"><em>index</em></span></td><td>)</td>
           <td> const</td>
@@ -353,8 +337,8 @@ template&lt;typename T , std::size_t Extent&gt; </div>
 
 </div>
 </div>
-<a id="a9a1baefbc00e928dc6a2051895457e4d" name="a9a1baefbc00e928dc6a2051895457e4d"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a9a1baefbc00e928dc6a2051895457e4d">&#9670;&#160;</a></span>back()</h2>
+<a id="a635fbe6fc7cfd5aee71c4a58f89ed3a3" name="a635fbe6fc7cfd5aee71c4a58f89ed3a3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a635fbe6fc7cfd5aee71c4a58f89ed3a3">&#9670;&#160;</a></span>back()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -363,7 +347,7 @@ template&lt;typename T , std::size_t Extent&gt; </div>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">reference <a class="el" href="class_span_containers_1_1internal_1_1_pop_back_trait.html">SpanContainers::internal::PopBackTrait</a>&lt; <a class="el" href="class_span_containers_1_1_span_stack.html">SpanStack</a>&lt; T, Extent &gt;, T &gt;::back </td>
+          <td class="memname">reference <a class="el" href="struct_span_containers_1_1internal_1_1_pop_back_trait.html">SpanContainers::internal::PopBackTrait</a>&lt; <a class="el" href="class_span_containers_1_1_span_stack.html">SpanStack</a>&lt; T, Extent &gt;, T &gt;::back </td>
           <td>(</td>
           <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
           <td> const</td>
@@ -371,7 +355,7 @@ template&lt;typename T , std::size_t Extent&gt; </div>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">nodiscard</span><span class="mlabel">constexpr</span><span class="mlabel">inherited</span></span>  </td>
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">nodiscard</span><span class="mlabel">constexpr</span><span class="mlabel">noexcept</span><span class="mlabel">inherited</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
@@ -380,7 +364,7 @@ template&lt;typename T , std::size_t Extent&gt; </div>
 <dl class="section return"><dt>Returns</dt><dd>A refrence to the item at the back of the container. </dd></dl>
 <dl class="exception"><dt>Exceptions</dt><dd>
   <table class="exception">
-    <tr><td class="paramname"><a class="el" href="class_span_containers_1_1_empty_container_error.html" title="Represents an error for an operation that would be invalid due to an empty container.">EmptyContainerError</a></td><td>if the container is empty </td></tr>
+    <tr><td class="paramname"><a class="el" href="class_span_containers_1_1_empty_container_error.html" title="Represents an error for an operation that would be invalid due to an empty container.">EmptyContainerError</a></td><td>if the container is empty and UseExceptions is true. </td></tr>
   </table>
   </dd>
 </dl>
@@ -517,7 +501,7 @@ template&lt;typename T , std::size_t Extent&gt; </div>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">reference <a class="el" href="class_span_containers_1_1internal_1_1_index_trait.html">SpanContainers::internal::IndexTrait</a>&lt; <a class="el" href="class_span_containers_1_1_span_stack.html">SpanStack</a>&lt; T, Extent &gt;, T &gt;::operator[] </td>
+          <td class="memname">reference <a class="el" href="struct_span_containers_1_1internal_1_1_index_trait.html">SpanContainers::internal::IndexTrait</a>&lt; <a class="el" href="class_span_containers_1_1_span_stack.html">SpanStack</a>&lt; T, Extent &gt;, T &gt;::operator[] </td>
           <td>(</td>
           <td class="paramtype">size_type</td>          <td class="paramname"><span class="paramname"><em>index</em></span></td><td>)</td>
           <td> const</td>
@@ -540,15 +524,15 @@ template&lt;typename T , std::size_t Extent&gt; </div>
 <dl class="section return"><dt>Returns</dt><dd>A reference to the element at index. </dd></dl>
 <dl class="exception"><dt>Exceptions</dt><dd>
   <table class="exception">
-    <tr><td class="paramname">std::out_of_range</td><td>If index is out of range. </td></tr>
+    <tr><td class="paramname">std::out_of_range</td><td>If index is out of range and UseExceptions is true. </td></tr>
   </table>
   </dd>
 </dl>
 
 </div>
 </div>
-<a id="af3d444f05e58c78c10ca284080e31af7" name="af3d444f05e58c78c10ca284080e31af7"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#af3d444f05e58c78c10ca284080e31af7">&#9670;&#160;</a></span>pop_back() <span class="overload">[1/2]</span></h2>
+<a id="aebbe0044f1d9347ec60ec0fb89cf1ee2" name="aebbe0044f1d9347ec60ec0fb89cf1ee2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aebbe0044f1d9347ec60ec0fb89cf1ee2">&#9670;&#160;</a></span>pop_back() <span class="overload">[1/2]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -557,7 +541,7 @@ template&lt;typename T , std::size_t Extent&gt; </div>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">void <a class="el" href="class_span_containers_1_1internal_1_1_pop_back_trait.html">SpanContainers::internal::PopBackTrait</a>&lt; <a class="el" href="class_span_containers_1_1_span_stack.html">SpanStack</a>&lt; T, Extent &gt;, T &gt;::pop_back </td>
+          <td class="memname">void <a class="el" href="struct_span_containers_1_1internal_1_1_pop_back_trait.html">SpanContainers::internal::PopBackTrait</a>&lt; <a class="el" href="class_span_containers_1_1_span_stack.html">SpanStack</a>&lt; T, Extent &gt;, T &gt;::pop_back </td>
           <td>(</td>
           <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
           <td></td>
@@ -565,7 +549,7 @@ template&lt;typename T , std::size_t Extent&gt; </div>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">constexpr</span><span class="mlabel">inherited</span></span>  </td>
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">constexpr</span><span class="mlabel">noexcept</span><span class="mlabel">inherited</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
@@ -579,15 +563,15 @@ template&lt;typename T , std::size_t Extent&gt; </div>
 </dl>
 <dl class="exception"><dt>Exceptions</dt><dd>
   <table class="exception">
-    <tr><td class="paramname"><a class="el" href="class_span_containers_1_1_empty_container_error.html" title="Represents an error for an operation that would be invalid due to an empty container.">EmptyContainerError</a></td><td>if the container is empty </td></tr>
+    <tr><td class="paramname"><a class="el" href="class_span_containers_1_1_empty_container_error.html" title="Represents an error for an operation that would be invalid due to an empty container.">EmptyContainerError</a></td><td>if the container is empty and UseExceptions is true. </td></tr>
   </table>
   </dd>
 </dl>
 
 </div>
 </div>
-<a id="afbec172bc1e718716e4e2392b47e9abc" name="afbec172bc1e718716e4e2392b47e9abc"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#afbec172bc1e718716e4e2392b47e9abc">&#9670;&#160;</a></span>pop_back() <span class="overload">[2/2]</span></h2>
+<a id="a1de34d69bef973f750d36e40716ceb32" name="a1de34d69bef973f750d36e40716ceb32"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1de34d69bef973f750d36e40716ceb32">&#9670;&#160;</a></span>pop_back() <span class="overload">[2/2]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -596,7 +580,7 @@ template&lt;typename T , std::size_t Extent&gt; </div>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">void <a class="el" href="class_span_containers_1_1internal_1_1_pop_back_trait.html">SpanContainers::internal::PopBackTrait</a>&lt; <a class="el" href="class_span_containers_1_1_span_stack.html">SpanStack</a>&lt; T, Extent &gt;, T &gt;::pop_back </td>
+          <td class="memname">void <a class="el" href="struct_span_containers_1_1internal_1_1_pop_back_trait.html">SpanContainers::internal::PopBackTrait</a>&lt; <a class="el" href="class_span_containers_1_1_span_stack.html">SpanStack</a>&lt; T, Extent &gt;, T &gt;::pop_back </td>
           <td>(</td>
           <td class="paramtype">size_type</td>          <td class="paramname"><span class="paramname"><em>n</em></span></td><td>)</td>
           <td></td>
@@ -604,7 +588,7 @@ template&lt;typename T , std::size_t Extent&gt; </div>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">constexpr</span><span class="mlabel">inherited</span></span>  </td>
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">constexpr</span><span class="mlabel">noexcept</span><span class="mlabel">inherited</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
@@ -612,7 +596,7 @@ template&lt;typename T , std::size_t Extent&gt; </div>
 <p>Removes n items from the back of the container. </p>
 <dl class="exception"><dt>Exceptions</dt><dd>
   <table class="exception">
-    <tr><td class="paramname">std::out_of_range</td><td>if there are less than n items in the container. </td></tr>
+    <tr><td class="paramname">std::out_of_range</td><td>if there are less than n items in the container and UseExceptions is true. </td></tr>
   </table>
   </dd>
 </dl>
@@ -694,7 +678,7 @@ template&lt;typename T , std::size_t Extent&gt; </div>
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;typename T , std::size_t Extent&gt; </div>
+template&lt;typename T , std::size_t Extent, bool UseExceptions = true&gt; </div>
 <div class="memtemplate">
 template&lt;typename Buffer &gt; <br />
 requires std::is_lvalue_reference_v&lt;Buffer&amp;&gt; &amp;&amp; std::is_constructible_v&lt;span_type, Buffer&amp;&gt;</div>
@@ -742,7 +726,7 @@ requires std::is_lvalue_reference_v&lt;Buffer&amp;&gt; &amp;&amp; std::is_constr
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">pointer <a class="el" href="class_span_containers_1_1internal_1_1_pop_back_trait.html">SpanContainers::internal::PopBackTrait</a>&lt; <a class="el" href="class_span_containers_1_1_span_stack.html">SpanStack</a>&lt; T, Extent &gt;, T &gt;::try_back </td>
+          <td class="memname">pointer <a class="el" href="struct_span_containers_1_1internal_1_1_pop_back_trait.html">SpanContainers::internal::PopBackTrait</a>&lt; <a class="el" href="class_span_containers_1_1_span_stack.html">SpanStack</a>&lt; T, Extent &gt;, T &gt;::try_back </td>
           <td>(</td>
           <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
           <td> const</td>
@@ -770,7 +754,7 @@ requires std::is_lvalue_reference_v&lt;Buffer&amp;&gt; &amp;&amp; std::is_constr
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">bool <a class="el" href="class_span_containers_1_1internal_1_1_pop_back_trait.html">SpanContainers::internal::PopBackTrait</a>&lt; <a class="el" href="class_span_containers_1_1_span_stack.html">SpanStack</a>&lt; T, Extent &gt;, T &gt;::try_pop_back </td>
+          <td class="memname">bool <a class="el" href="struct_span_containers_1_1internal_1_1_pop_back_trait.html">SpanContainers::internal::PopBackTrait</a>&lt; <a class="el" href="class_span_containers_1_1_span_stack.html">SpanStack</a>&lt; T, Extent &gt;, T &gt;::try_pop_back </td>
           <td>(</td>
           <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
           <td></td>
@@ -784,7 +768,7 @@ requires std::is_lvalue_reference_v&lt;Buffer&amp;&gt; &amp;&amp; std::is_constr
 </div><div class="memdoc">
 
 <p>Tries to remove an item from the back of the container. </p>
-<dl class="section return"><dt>Returns</dt><dd>true if an item was removed; false if the stack is empty. </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>true if an item was removed; false if the container is empty. </dd></dl>
 
 </div>
 </div>
@@ -798,7 +782,7 @@ requires std::is_lvalue_reference_v&lt;Buffer&amp;&gt; &amp;&amp; std::is_constr
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">bool <a class="el" href="class_span_containers_1_1internal_1_1_pop_back_trait.html">SpanContainers::internal::PopBackTrait</a>&lt; <a class="el" href="class_span_containers_1_1_span_stack.html">SpanStack</a>&lt; T, Extent &gt;, T &gt;::try_pop_back </td>
+          <td class="memname">bool <a class="el" href="struct_span_containers_1_1internal_1_1_pop_back_trait.html">SpanContainers::internal::PopBackTrait</a>&lt; <a class="el" href="class_span_containers_1_1_span_stack.html">SpanStack</a>&lt; T, Extent &gt;, T &gt;::try_pop_back </td>
           <td>(</td>
           <td class="paramtype">size_type</td>          <td class="paramname"><span class="paramname"><em>n</em></span></td><td>)</td>
           <td></td>
@@ -859,190 +843,6 @@ requires std::is_lvalue_reference_v&lt;Buffer&amp;&gt; &amp;&amp; std::is_constr
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>true if value was placed at the back of the container; false otherwise. </dd></dl>
-
-</div>
-</div>
-<a id="ad2e1f33b4ccc26cbe3c709f00c3d21f4" name="ad2e1f33b4ccc26cbe3c709f00c3d21f4"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ad2e1f33b4ccc26cbe3c709f00c3d21f4">&#9670;&#160;</a></span>try_push_back_range()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<div class="memtemplate">
-template&lt;typename T , std::size_t Extent&gt; </div>
-<div class="memtemplate">
-template&lt;std::ranges::input_range Range = std::initializer_list&lt;T&gt;&gt; <br />
-requires std::convertible_to&lt;std::ranges::range_value_t&lt;Range&gt;, T&gt;</div>
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">bool <a class="el" href="class_span_containers_1_1_span_stack.html">SpanContainers::SpanStack</a>&lt; T, Extent &gt;::try_push_back_range </td>
-          <td>(</td>
-          <td class="paramtype">Range &amp;&amp;</td>          <td class="paramname"><span class="paramname"><em>values</em></span></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">constexpr</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>Tries to assign values to the back of the container. </p>
-<dl class="tparams"><dt>Template Parameters</dt><dd>
-  <table class="tparams">
-    <tr><td class="paramname">Range</td><td>The type of the range that contains the values. </td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Returns</dt><dd>true if values were placed at the back of the container; false if not enough room for all values. </dd></dl>
-
-</div>
-</div>
-<a id="a5e5976294238ee154407203a5bd70c36" name="a5e5976294238ee154407203a5bd70c36"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a5e5976294238ee154407203a5bd70c36">&#9670;&#160;</a></span>unsafe_at()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<div class="memtemplate">
-template&lt;typename T , std::size_t Extent&gt; </div>
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">reference <a class="el" href="class_span_containers_1_1_span_stack.html">SpanContainers::SpanStack</a>&lt; T, Extent &gt;::unsafe_at </td>
-          <td>(</td>
-          <td class="paramtype">size_type</td>          <td class="paramname"><span class="paramname"><em>index</em></span></td><td>)</td>
-          <td> const</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">nodiscard</span><span class="mlabel">constexpr</span><span class="mlabel">noexcept</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>Gets a reference to the element at index, without a bounds check. </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">index</td><td>The index of the element to get. </td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Returns</dt><dd>A reference to the element at index. </dd></dl>
-
-</div>
-</div>
-<a id="ade07b875471d3fc520d0f6510cbf7ded" name="ade07b875471d3fc520d0f6510cbf7ded"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ade07b875471d3fc520d0f6510cbf7ded">&#9670;&#160;</a></span>unsafe_back()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<div class="memtemplate">
-template&lt;typename T , std::size_t Extent&gt; </div>
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">reference <a class="el" href="class_span_containers_1_1_span_stack.html">SpanContainers::SpanStack</a>&lt; T, Extent &gt;::unsafe_back </td>
-          <td>(</td>
-          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
-          <td> const</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">nodiscard</span><span class="mlabel">constexpr</span><span class="mlabel">noexcept</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>Gets a reference to the last item in the container without a bounds check. </p>
-<dl class="section return"><dt>Returns</dt><dd>A reference to the last item in the container. </dd></dl>
-
-</div>
-</div>
-<a id="a0ca86841425a2a330ea6f77fc0d424f7" name="a0ca86841425a2a330ea6f77fc0d424f7"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a0ca86841425a2a330ea6f77fc0d424f7">&#9670;&#160;</a></span>unsafe_pop_back()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<div class="memtemplate">
-template&lt;typename T , std::size_t Extent&gt; </div>
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">void <a class="el" href="class_span_containers_1_1_span_stack.html">SpanContainers::SpanStack</a>&lt; T, Extent &gt;::unsafe_pop_back </td>
-          <td>(</td>
-          <td class="paramtype">size_type</td>          <td class="paramname"><span class="paramname"><em>n</em></span></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">constexpr</span><span class="mlabel">noexcept</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>Removes n items from the back of the container without a bounds check. </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">n</td><td>the number of items to remove. </td></tr>
-  </table>
-  </dd>
-</dl>
-
-</div>
-</div>
-<a id="a88fd58d86a5554a2e3bb20b28698666a" name="a88fd58d86a5554a2e3bb20b28698666a"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a88fd58d86a5554a2e3bb20b28698666a">&#9670;&#160;</a></span>unsafe_push_back()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<div class="memtemplate">
-template&lt;typename T , std::size_t Extent&gt; </div>
-<div class="memtemplate">
-template&lt;typename U &gt; <br />
-requires std::assignable_from&lt;T&amp;, U&amp;&amp;&gt;</div>
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">void <a class="el" href="class_span_containers_1_1_span_stack.html">SpanContainers::SpanStack</a>&lt; T, Extent &gt;::unsafe_push_back </td>
-          <td>(</td>
-          <td class="paramtype">U &amp;&amp;</td>          <td class="paramname"><span class="paramname"><em>value</em></span></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">constexpr</span><span class="mlabel">noexcept</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>Assigns value to the back of the container, without bounds checks. </p>
-<dl class="tparams"><dt>Template Parameters</dt><dd>
-  <table class="tparams">
-    <tr><td class="paramname">U</td><td>The type of the value. </td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">value</td><td>The item to assign. </td></tr>
-  </table>
-  </dd>
-</dl>
 
 </div>
 </div>

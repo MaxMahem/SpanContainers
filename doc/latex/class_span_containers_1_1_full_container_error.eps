@@ -174,8 +174,8 @@
 boxfont setfont
 1 boundaspect scale
 (SpanContainers::FullContainerError) cw
-(std::overflow_error) cw
-(std::runtime_error) cw
+(std::out_of_range) cw
+(std::logic_error) cw
 (std::exception) cw
 /boxwidth boxwidth marginwidth 2 mul add def
 /xspacing boxwidth distx add def
@@ -189,8 +189,8 @@ boundx scalefactor div boundy scalefactor div scale
 % ----- classes -----
 
  (SpanContainers::FullContainerError) 0.000000 0.000000 box
- (std::overflow_error) 0.000000 1.000000 box
- (std::runtime_error) 0.000000 2.000000 box
+ (std::out_of_range) 0.000000 1.000000 box
+ (std::logic_error) 0.000000 2.000000 box
  (std::exception) 0.000000 3.000000 box
 
 % ----- relations -----

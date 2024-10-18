@@ -102,17 +102,17 @@ $(function(){ initResizable(false); });
 <div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span><span class="keyword">namespace </span>SpanContainers {</div>
 <div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span> </div>
 <div class="foldopen" id="foldopen00011" data-start="{" data-end="};">
-<div class="line"><a id="l00011" name="l00011"></a><span class="lineno"><a class="line" href="class_span_containers_1_1_empty_container_error.html">   11</a></span><span class="keyword">class </span><a class="code hl_class" href="class_span_containers_1_1_empty_container_error.html">EmptyContainerError</a> : <span class="keyword">public</span> std::underflow_error</div>
+<div class="line"><a id="l00011" name="l00011"></a><span class="lineno"><a class="line" href="class_span_containers_1_1_empty_container_error.html">   11</a></span><span class="keyword">class </span><a class="code hl_class" href="class_span_containers_1_1_empty_container_error.html">EmptyContainerError</a> : <span class="keyword">public</span> std::out_of_range</div>
 <div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span>{</div>
 <div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span><span class="keyword">public</span>:</div>
 <div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span>    <span class="keyword">static</span> <span class="keyword">constexpr</span> std::string_view EXCEPTION_NAME = <span class="stringliteral">&quot;EmptyContainerError&quot;</span>;</div>
 <div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span> </div>
-<div class="line"><a id="l00018" name="l00018"></a><span class="lineno"><a class="line" href="class_span_containers_1_1_empty_container_error.html#ad945e92700318e74e8aa6ea730bd175e">   18</a></span>    <a class="code hl_function" href="class_span_containers_1_1_empty_container_error.html#ad945e92700318e74e8aa6ea730bd175e">EmptyContainerError</a>(<span class="keyword">const</span> std::string&amp; message = <span class="stringliteral">&quot;Container is empty.&quot;</span>) : std::underflow_error(message) {}</div>
+<div class="line"><a id="l00018" name="l00018"></a><span class="lineno"><a class="line" href="class_span_containers_1_1_empty_container_error.html#ad945e92700318e74e8aa6ea730bd175e">   18</a></span>    <a class="code hl_function" href="class_span_containers_1_1_empty_container_error.html#ad945e92700318e74e8aa6ea730bd175e">EmptyContainerError</a>(<span class="keyword">const</span> std::string&amp; message = <span class="stringliteral">&quot;Container is empty.&quot;</span>) : std::out_of_range(message) {}</div>
 <div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span> </div>
 <div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span>    <span class="keyword">template</span>&lt;<span class="keywordtype">int</span>ernal::FormattableSpanContainer Container&gt;</div>
 <div class="foldopen" id="foldopen00025" data-start="{" data-end="}">
 <div class="line"><a id="l00025" name="l00025"></a><span class="lineno"><a class="line" href="class_span_containers_1_1_empty_container_error.html#a9b9971417deeaaeaa56d244db51c181d">   25</a></span>    <a class="code hl_function" href="class_span_containers_1_1_empty_container_error.html#a9b9971417deeaaeaa56d244db51c181d">EmptyContainerError</a>(<span class="keyword">const</span> Container&amp; container, <span class="keyword">const</span> std::string&amp; format_string = <span class="stringliteral">&quot;Container &#39;{}&#39; is empty.&quot;</span>)</div>
-<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span>        : std::overflow_error(std::vformat(format_string, std::make_format_args(container))) {}</div>
+<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span>        : std::out_of_range(std::vformat(format_string, std::make_format_args(container))) {}</div>
 </div>
 <div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span>};</div>
 </div>

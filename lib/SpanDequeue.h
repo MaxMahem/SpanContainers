@@ -22,29 +22,23 @@ class SpanDequeue : public SpanQueue<T, Extent>,
                     public internal::PushFrontTrait<SpanDequeue<T, Extent>, T>,
                     public internal::PopBackTrait<SpanDequeue<T, Extent>, T>
 {
-    using SpanContainer = internal::SpanContainer<T, Extent>;
-    using SpanQueue = SpanQueue<T, Extent>;
+    friend struct internal::IndexTrait<SpanDequeue<T, Extent>, T>;
+    friend struct internal::PushFrontTrait<SpanDequeue<T, Extent>, T>;
+    friend struct internal::PopBackTrait<SpanDequeue<T, Extent>, T>;
 
+    using SpanContainer = internal::SpanContainer<T, Extent>;
     using SpanContainer::span;
     using SpanContainer::count;
+    using SpanContainer::size_type;
+    using SpanContainer::reference;
+
+    using SpanQueue = SpanQueue<T, Extent>;
     using SpanQueue::read;      // front
     using SpanQueue::write;     // back
 
     /// @brief Gets the previous write index.
     /// @returns The previous write index.
     auto constexpr previousIndex(auto index) const { return index == 0 ? Extent - 1 : index - 1; }
-
-public:
-    using SpanContainer::size_type;
-    using SpanContainer::reference;
-
-    /// @brief the name of this type.
-    static constexpr std::string_view TYPE_NAME = "SpanDequeue";
-
-    using SpanQueue::SpanQueue;
-    using SpanQueue::operator=;
-
-    using internal::PopBackTrait<SpanDequeue<T, Extent>, T>::unsafe_pop_back;
 
     /// @brief Gets a reference to the last item in the container without a bounds check.
     /// @return A reference to the last item in the container.
@@ -73,6 +67,13 @@ public:
         count -= n;
         write = (write + Extent - n) % Extent;
     }
+
+public:
+    /// @brief the name of this type.
+    static constexpr std::string_view TYPE_NAME = "SpanDequeue";
+
+    using SpanQueue::SpanQueue;
+    using SpanQueue::operator=;
 };
 
 }

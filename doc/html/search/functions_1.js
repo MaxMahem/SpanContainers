@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['back_0',['back',['../class_span_containers_1_1internal_1_1_pop_back_trait.html#a9a1baefbc00e928dc6a2051895457e4d',1,'SpanContainers::internal::PopBackTrait']]]
+  ['back_0',['back',['../struct_span_containers_1_1internal_1_1_pop_back_trait.html#a635fbe6fc7cfd5aee71c4a58f89ed3a3',1,'SpanContainers::internal::PopBackTrait']]]
 ];

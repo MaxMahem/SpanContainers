@@ -1,5 +1,5 @@
-\doxysection{Span\+Containers\+::Span\+Stack\texorpdfstring{$<$}{<} T, Extent \texorpdfstring{$>$}{>} Class Template Reference}
-\hypertarget{class_span_containers_1_1_span_stack}{}\label{class_span_containers_1_1_span_stack}\index{SpanContainers::SpanStack$<$ T, Extent $>$@{SpanContainers::SpanStack$<$ T, Extent $>$}}
+\doxysection{Span\+Containers\+::Span\+Stack\texorpdfstring{$<$}{<} T, Extent, Use\+Exceptions \texorpdfstring{$>$}{>} Class Template Reference}
+\hypertarget{class_span_containers_1_1_span_stack}{}\label{class_span_containers_1_1_span_stack}\index{SpanContainers::SpanStack$<$ T, Extent, UseExceptions $>$@{SpanContainers::SpanStack$<$ T, Extent, UseExceptions $>$}}
 
 
 Represents a span-\/based, fixed size container with stack/vector like access.  
@@ -9,7 +9,7 @@ Represents a span-\/based, fixed size container with stack/vector like access.
 
 {\ttfamily \#include $<$Span\+Stack.\+h$>$}
 
-Inheritance diagram for Span\+Containers\+::Span\+Stack\texorpdfstring{$<$}{<} T, Extent \texorpdfstring{$>$}{>}\+:\begin{figure}[H]
+Inheritance diagram for Span\+Containers\+::Span\+Stack\texorpdfstring{$<$}{<} T, Extent, Use\+Exceptions \texorpdfstring{$>$}{>}\+:\begin{figure}[H]
 \begin{center}
 \leavevmode
 \includegraphics[height=0.668258cm]{class_span_containers_1_1_span_stack}
@@ -17,12 +17,6 @@ Inheritance diagram for Span\+Containers\+::Span\+Stack\texorpdfstring{$<$}{<} T
 \end{figure}
 \doxysubsubsection*{Public Types}
 \begin{DoxyCompactItemize}
-\item 
-\Hypertarget{class_span_containers_1_1_span_stack_a5884bfe0250b794adfc54d7c1e0df70c}\label{class_span_containers_1_1_span_stack_a5884bfe0250b794adfc54d7c1e0df70c} 
-using {\bfseries size\+\_\+type}
-\item 
-\Hypertarget{class_span_containers_1_1_span_stack_ac9edea5dc17ba0270973b9093c5a5f67}\label{class_span_containers_1_1_span_stack_ac9edea5dc17ba0270973b9093c5a5f67} 
-using {\bfseries reference}
 \item 
 \Hypertarget{class_span_containers_1_1internal_1_1_span_container_acbf0783599d1034a54f66e1ce270e39f}\label{class_span_containers_1_1internal_1_1_span_container_acbf0783599d1034a54f66e1ce270e39f} 
 using {\bfseries span\+\_\+type} = std\+::span$<$T, Extent$>$
@@ -47,22 +41,10 @@ using {\bfseries const\+\_\+reference} = span\+\_\+type\+::const\+\_\+reference
 \doxysubsubsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-constexpr reference \mbox{\hyperlink{class_span_containers_1_1_span_stack_ade07b875471d3fc520d0f6510cbf7ded}{unsafe\+\_\+back}} () const noexcept
-\begin{DoxyCompactList}\small\item\em Gets a reference to the last item in the container without a bounds check. \end{DoxyCompactList}\item 
-constexpr reference \mbox{\hyperlink{class_span_containers_1_1_span_stack_a5e5976294238ee154407203a5bd70c36}{unsafe\+\_\+at}} (size\+\_\+type index) const noexcept
-\begin{DoxyCompactList}\small\item\em Gets a reference to the element at index, without a bounds check. \end{DoxyCompactList}\item 
-{\footnotesize template$<$typename U $>$ \newline
-requires std\+::assignable\+\_\+from$<$T\&, U\&\&$>$}\\constexpr void \mbox{\hyperlink{class_span_containers_1_1_span_stack_a88fd58d86a5554a2e3bb20b28698666a}{unsafe\+\_\+push\+\_\+back}} (U \&\&value) noexcept(std\+::is\+\_\+nothrow\+\_\+assignable$<$ T \&, U \&\& $>$\+::value)
-\begin{DoxyCompactList}\small\item\em Assigns value to the back of the container, without bounds checks. \end{DoxyCompactList}\item 
-{\footnotesize template$<$std\+::ranges\+::input\+\_\+range Range = std\+::initializer\+\_\+list$<$\+T$>$$>$ \newline
-requires std\+::convertible\+\_\+to$<$std\+::ranges\+::range\+\_\+value\+\_\+t$<$Range$>$, T$>$}\\constexpr bool \mbox{\hyperlink{class_span_containers_1_1_span_stack_ad2e1f33b4ccc26cbe3c709f00c3d21f4}{try\+\_\+push\+\_\+back\+\_\+range}} (Range \&\&values)
-\begin{DoxyCompactList}\small\item\em Tries to assign values to the back of the container. \end{DoxyCompactList}\item 
-constexpr void \mbox{\hyperlink{class_span_containers_1_1_span_stack_a0ca86841425a2a330ea6f77fc0d424f7}{unsafe\+\_\+pop\+\_\+back}} (size\+\_\+type n) noexcept
-\begin{DoxyCompactList}\small\item\em Removes n items from the back of the container without a bounds check. \end{DoxyCompactList}\item 
-\Hypertarget{class_span_containers_1_1_span_stack_a6b553ec2842093ef30a5a755ca51dec3}\label{class_span_containers_1_1_span_stack_a6b553ec2842093ef30a5a755ca51dec3} 
+\Hypertarget{class_span_containers_1_1_span_stack_a115fa21f14a98aad5ea8cd7d4c450df1}\label{class_span_containers_1_1_span_stack_a115fa21f14a98aad5ea8cd7d4c450df1} 
 constexpr void {\bfseries clear} () noexcept
 \begin{DoxyCompactList}\small\item\em Clears all items from the container. \end{DoxyCompactList}\item 
-constexpr auto \mbox{\hyperlink{class_span_containers_1_1_span_stack_ae1ac2ccb847e2be28786bf4a89522713}{as\+\_\+span}} () const noexcept
+constexpr auto \mbox{\hyperlink{class_span_containers_1_1_span_stack_a412987c6ff9f916821feaf2e6bae3bbc}{as\+\_\+span}} () const noexcept
 \begin{DoxyCompactList}\small\item\em Gets the current items in the container as a span. \end{DoxyCompactList}\item 
 {\footnotesize template$<$typename Buffer $>$ \newline
 requires std\+::is\+\_\+lvalue\+\_\+reference\+\_\+v$<$Buffer\&$>$ \&\& std\+::is\+\_\+constructible\+\_\+v$<$span\+\_\+type, Buffer\&$>$}\\constexpr \mbox{\hyperlink{class_span_containers_1_1_span_stack_a7f483dfa24b80da71262eeaf59f1f8dc}{Span\+Container}} (Buffer \&buffer) noexcept
@@ -78,29 +60,26 @@ constexpr bool \mbox{\hyperlink{class_span_containers_1_1internal_1_1_span_conta
 \begin{DoxyCompactList}\small\item\em Gets if the container is full or not. \end{DoxyCompactList}\item 
 constexpr span\+\_\+type \mbox{\hyperlink{class_span_containers_1_1internal_1_1_span_container_a6adcfa5c633a685bef25e8e8300e2e00}{data}} () const noexcept
 \begin{DoxyCompactList}\small\item\em Gets the underlying span. \end{DoxyCompactList}\item 
-constexpr reference \mbox{\hyperlink{class_span_containers_1_1internal_1_1_index_trait_ada06eabb7b7e3fc9ec94b0f28b42aed5}{operator\mbox{[}$\,$\mbox{]}}} (size\+\_\+type index) const
+constexpr reference \mbox{\hyperlink{struct_span_containers_1_1internal_1_1_index_trait_ada06eabb7b7e3fc9ec94b0f28b42aed5}{operator\mbox{[}$\,$\mbox{]}}} (size\+\_\+type index) const
 \begin{DoxyCompactList}\small\item\em Gets a reference to the element at index. \end{DoxyCompactList}\item 
-constexpr pointer \mbox{\hyperlink{class_span_containers_1_1internal_1_1_index_trait_a2d79a1361803416b85bc31c09a2d013a}{at}} (size\+\_\+type index) const noexcept
+constexpr pointer \mbox{\hyperlink{struct_span_containers_1_1internal_1_1_index_trait_a2d79a1361803416b85bc31c09a2d013a}{at}} (size\+\_\+type index) const noexcept
 \begin{DoxyCompactList}\small\item\em Gets a pointer to the element at index. \end{DoxyCompactList}\item 
 constexpr void \mbox{\hyperlink{struct_span_containers_1_1internal_1_1_push_back_trait_a8e1cf7d06e78ee535b13e311dc72b148}{push\+\_\+back}} (U \&\&value)
 \begin{DoxyCompactList}\small\item\em Assigns value to the back of the container. \end{DoxyCompactList}\item 
 constexpr bool \mbox{\hyperlink{struct_span_containers_1_1internal_1_1_push_back_trait_a0806b833c26f08891f2e928b562a986f}{try\+\_\+push\+\_\+back}} (U \&\&value) noexcept(std\+::is\+\_\+nothrow\+\_\+assignable$<$ T \&, U \&\& $>$\+::value)
 \begin{DoxyCompactList}\small\item\em Tries to assign value at the back of the container. \end{DoxyCompactList}\item 
-constexpr reference \mbox{\hyperlink{class_span_containers_1_1internal_1_1_pop_back_trait_a9a1baefbc00e928dc6a2051895457e4d}{back}} () const
+constexpr reference \mbox{\hyperlink{struct_span_containers_1_1internal_1_1_pop_back_trait_a635fbe6fc7cfd5aee71c4a58f89ed3a3}{back}} () const noexcept(!Use\+Exceptions)
 \begin{DoxyCompactList}\small\item\em Gets a refrence to the item at the back of the container. \end{DoxyCompactList}\item 
-constexpr pointer \mbox{\hyperlink{class_span_containers_1_1internal_1_1_pop_back_trait_a1039675e077b05e71a59dd9318d44026}{try\+\_\+back}} () const noexcept
+constexpr pointer \mbox{\hyperlink{struct_span_containers_1_1internal_1_1_pop_back_trait_a1039675e077b05e71a59dd9318d44026}{try\+\_\+back}} () const noexcept
 \begin{DoxyCompactList}\small\item\em Gets a pointer to the item at the back of the container. \end{DoxyCompactList}\item 
-constexpr void \mbox{\hyperlink{class_span_containers_1_1internal_1_1_pop_back_trait_af3d444f05e58c78c10ca284080e31af7}{pop\+\_\+back}} ()
+constexpr void \mbox{\hyperlink{struct_span_containers_1_1internal_1_1_pop_back_trait_aebbe0044f1d9347ec60ec0fb89cf1ee2}{pop\+\_\+back}} () noexcept(!Use\+Exceptions)
 \begin{DoxyCompactList}\small\item\em Removes an item from the back of the container. \end{DoxyCompactList}\item 
-constexpr void \mbox{\hyperlink{class_span_containers_1_1internal_1_1_pop_back_trait_afbec172bc1e718716e4e2392b47e9abc}{pop\+\_\+back}} (size\+\_\+type n)
+constexpr void \mbox{\hyperlink{struct_span_containers_1_1internal_1_1_pop_back_trait_a1de34d69bef973f750d36e40716ceb32}{pop\+\_\+back}} (size\+\_\+type n) noexcept(!Use\+Exceptions)
 \begin{DoxyCompactList}\small\item\em Removes n items from the back of the container. \end{DoxyCompactList}\item 
-constexpr bool \mbox{\hyperlink{class_span_containers_1_1internal_1_1_pop_back_trait_a3270221b30d28bd88683e1bb42b0d0d5}{try\+\_\+pop\+\_\+back}} () noexcept
+constexpr bool \mbox{\hyperlink{struct_span_containers_1_1internal_1_1_pop_back_trait_a3270221b30d28bd88683e1bb42b0d0d5}{try\+\_\+pop\+\_\+back}} () noexcept
 \begin{DoxyCompactList}\small\item\em Tries to remove an item from the back of the container. \end{DoxyCompactList}\item 
-constexpr bool \mbox{\hyperlink{class_span_containers_1_1internal_1_1_pop_back_trait_afac010954c1e67a0b5c0908610e3dbc0}{try\+\_\+pop\+\_\+back}} (size\+\_\+type n) noexcept
-\begin{DoxyCompactList}\small\item\em Tries to remove n items from the back of the container. \end{DoxyCompactList}\item 
-\Hypertarget{class_span_containers_1_1internal_1_1_pop_back_trait_a97357b64a3c26d9e5bc4033d90f88cb8}\label{class_span_containers_1_1internal_1_1_pop_back_trait_a97357b64a3c26d9e5bc4033d90f88cb8} 
-constexpr void {\bfseries unsafe\+\_\+pop\+\_\+back} () noexcept
-\begin{DoxyCompactList}\small\item\em Removes an item from the back of the container without a bounds check. \end{DoxyCompactList}\end{DoxyCompactItemize}
+constexpr bool \mbox{\hyperlink{struct_span_containers_1_1internal_1_1_pop_back_trait_afac010954c1e67a0b5c0908610e3dbc0}{try\+\_\+pop\+\_\+back}} (size\+\_\+type n) noexcept
+\begin{DoxyCompactList}\small\item\em Tries to remove n items from the back of the container. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsubsection*{Static Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
@@ -109,14 +88,26 @@ static consteval size\+\_\+type \mbox{\hyperlink{class_span_containers_1_1intern
 \doxysubsubsection*{Static Public Attributes}
 \begin{DoxyCompactItemize}
 \item 
-\Hypertarget{class_span_containers_1_1_span_stack_ad746f9410a5ca4aaf438238570f557fa}\label{class_span_containers_1_1_span_stack_ad746f9410a5ca4aaf438238570f557fa} 
+\Hypertarget{class_span_containers_1_1_span_stack_a48fa5cb6b022a517631e9fe0d6231948}\label{class_span_containers_1_1_span_stack_a48fa5cb6b022a517631e9fe0d6231948} 
 static constexpr std\+::string\+\_\+view {\bfseries TYPE\+\_\+\+NAME} = "{}Span\+Stack"{}
 \begin{DoxyCompactList}\small\item\em the name of this type. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Friends}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_span_containers_1_1_span_stack_adc7f1078b9c62c648fcbe69a27eb64e9}\label{class_span_containers_1_1_span_stack_adc7f1078b9c62c648fcbe69a27eb64e9} 
+struct {\bfseries internal\+::\+Index\+Trait$<$ Span\+Stack$<$ T, Extent $>$, T $>$}
+\item 
+\Hypertarget{class_span_containers_1_1_span_stack_aa86af81781b381575de00f174c54edba}\label{class_span_containers_1_1_span_stack_aa86af81781b381575de00f174c54edba} 
+struct {\bfseries internal\+::\+Push\+Back\+Trait$<$ Span\+Stack$<$ T, Extent $>$, T $>$}
+\item 
+\Hypertarget{class_span_containers_1_1_span_stack_a5873aa2522b1d91203b74332737db586}\label{class_span_containers_1_1_span_stack_a5873aa2522b1d91203b74332737db586} 
+struct {\bfseries internal\+::\+Pop\+Back\+Trait$<$ Span\+Stack$<$ T, Extent $>$, T $>$}
+\end{DoxyCompactItemize}
 
 
 \doxysubsection{Detailed Description}
-\subsubsection*{template$<$typename T, std\+::size\+\_\+t Extent$>$\newline
-class Span\+Containers\+::\+Span\+Stack$<$ T, Extent $>$}
+\subsubsection*{template$<$typename T, std\+::size\+\_\+t Extent, bool Use\+Exceptions = true$>$\newline
+class Span\+Containers\+::\+Span\+Stack$<$ T, Extent, Use\+Exceptions $>$}
 Represents a span-\/based, fixed size container with stack/vector like access. 
 
 
@@ -129,8 +120,8 @@ Represents a span-\/based, fixed size container with stack/vector like access.
 
 
 \doxysubsection{Member Typedef Documentation}
-\Hypertarget{class_span_containers_1_1internal_1_1_span_container_a46e4f3e4ed3050a088056fccb00a76aa}\index{SpanContainers::SpanStack$<$ T, Extent $>$@{SpanContainers::SpanStack$<$ T, Extent $>$}!BufferType@{BufferType}}
-\index{BufferType@{BufferType}!SpanContainers::SpanStack$<$ T, Extent $>$@{SpanContainers::SpanStack$<$ T, Extent $>$}}
+\Hypertarget{class_span_containers_1_1internal_1_1_span_container_a46e4f3e4ed3050a088056fccb00a76aa}\index{SpanContainers::SpanStack$<$ T, Extent, UseExceptions $>$@{SpanContainers::SpanStack$<$ T, Extent, UseExceptions $>$}!BufferType@{BufferType}}
+\index{BufferType@{BufferType}!SpanContainers::SpanStack$<$ T, Extent, UseExceptions $>$@{SpanContainers::SpanStack$<$ T, Extent, UseExceptions $>$}}
 \doxysubsubsection{\texorpdfstring{BufferType}{BufferType}}
 {\footnotesize\ttfamily \label{class_span_containers_1_1internal_1_1_span_container_a46e4f3e4ed3050a088056fccb00a76aa} 
 template$<$typename T , std\+::size\+\_\+t Extent$>$ \\
@@ -149,12 +140,12 @@ If the span would be larger than Max\+Stack\+Size, returns a stack allocated std
 
 
 \doxysubsection{Member Function Documentation}
-\Hypertarget{class_span_containers_1_1_span_stack_ae1ac2ccb847e2be28786bf4a89522713}\index{SpanContainers::SpanStack$<$ T, Extent $>$@{SpanContainers::SpanStack$<$ T, Extent $>$}!as\_span@{as\_span}}
-\index{as\_span@{as\_span}!SpanContainers::SpanStack$<$ T, Extent $>$@{SpanContainers::SpanStack$<$ T, Extent $>$}}
+\Hypertarget{class_span_containers_1_1_span_stack_a412987c6ff9f916821feaf2e6bae3bbc}\index{SpanContainers::SpanStack$<$ T, Extent, UseExceptions $>$@{SpanContainers::SpanStack$<$ T, Extent, UseExceptions $>$}!as\_span@{as\_span}}
+\index{as\_span@{as\_span}!SpanContainers::SpanStack$<$ T, Extent, UseExceptions $>$@{SpanContainers::SpanStack$<$ T, Extent, UseExceptions $>$}}
 \doxysubsubsection{\texorpdfstring{as\_span()}{as\_span()}}
-{\footnotesize\ttfamily \label{class_span_containers_1_1_span_stack_ae1ac2ccb847e2be28786bf4a89522713} 
-template$<$typename T , std\+::size\+\_\+t Extent$>$ \\
-auto \mbox{\hyperlink{class_span_containers_1_1_span_stack}{Span\+Containers\+::\+Span\+Stack}}$<$ T, Extent $>$\+::as\+\_\+span (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [constexpr]}, {\ttfamily [noexcept]}}
+{\footnotesize\ttfamily \label{class_span_containers_1_1_span_stack_a412987c6ff9f916821feaf2e6bae3bbc} 
+template$<$typename T , std\+::size\+\_\+t Extent, bool Use\+Exceptions = true$>$ \\
+auto \mbox{\hyperlink{class_span_containers_1_1_span_stack}{Span\+Containers\+::\+Span\+Stack}}$<$ T, Extent, Use\+Exceptions $>$\+::as\+\_\+span (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [constexpr]}, {\ttfamily [noexcept]}}
 
 
 
@@ -163,11 +154,11 @@ Gets the current items in the container as a span.
 \begin{DoxyReturn}{Returns}
 The current items in the container as a span. 
 \end{DoxyReturn}
-\Hypertarget{class_span_containers_1_1internal_1_1_index_trait_a2d79a1361803416b85bc31c09a2d013a}\index{SpanContainers::SpanStack$<$ T, Extent $>$@{SpanContainers::SpanStack$<$ T, Extent $>$}!at@{at}}
-\index{at@{at}!SpanContainers::SpanStack$<$ T, Extent $>$@{SpanContainers::SpanStack$<$ T, Extent $>$}}
+\Hypertarget{struct_span_containers_1_1internal_1_1_index_trait_a2d79a1361803416b85bc31c09a2d013a}\index{SpanContainers::SpanStack$<$ T, Extent, UseExceptions $>$@{SpanContainers::SpanStack$<$ T, Extent, UseExceptions $>$}!at@{at}}
+\index{at@{at}!SpanContainers::SpanStack$<$ T, Extent, UseExceptions $>$@{SpanContainers::SpanStack$<$ T, Extent, UseExceptions $>$}}
 \doxysubsubsection{\texorpdfstring{at()}{at()}}
-{\footnotesize\ttfamily \label{class_span_containers_1_1internal_1_1_index_trait_a2d79a1361803416b85bc31c09a2d013a} 
-pointer \mbox{\hyperlink{class_span_containers_1_1internal_1_1_index_trait}{Span\+Containers\+::internal\+::\+Index\+Trait}}$<$ \mbox{\hyperlink{class_span_containers_1_1_span_stack}{Span\+Stack}}$<$ T, Extent $>$, T $>$\+::at (\begin{DoxyParamCaption}\item[{size\+\_\+type}]{index}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [nodiscard]}, {\ttfamily [constexpr]}, {\ttfamily [noexcept]}, {\ttfamily [inherited]}}
+{\footnotesize\ttfamily \label{struct_span_containers_1_1internal_1_1_index_trait_a2d79a1361803416b85bc31c09a2d013a} 
+pointer \mbox{\hyperlink{struct_span_containers_1_1internal_1_1_index_trait}{Span\+Containers\+::internal\+::\+Index\+Trait}}$<$ \mbox{\hyperlink{class_span_containers_1_1_span_stack}{Span\+Stack}}$<$ T, Extent $>$, T $>$\+::at (\begin{DoxyParamCaption}\item[{size\+\_\+type}]{index}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [nodiscard]}, {\ttfamily [constexpr]}, {\ttfamily [noexcept]}, {\ttfamily [inherited]}}
 
 
 
@@ -181,11 +172,11 @@ Gets a pointer to the element at index.
 \begin{DoxyReturn}{Returns}
 A pointer to the element at index, or nullptr if index is out of bounds. 
 \end{DoxyReturn}
-\Hypertarget{class_span_containers_1_1internal_1_1_pop_back_trait_a9a1baefbc00e928dc6a2051895457e4d}\index{SpanContainers::SpanStack$<$ T, Extent $>$@{SpanContainers::SpanStack$<$ T, Extent $>$}!back@{back}}
-\index{back@{back}!SpanContainers::SpanStack$<$ T, Extent $>$@{SpanContainers::SpanStack$<$ T, Extent $>$}}
+\Hypertarget{struct_span_containers_1_1internal_1_1_pop_back_trait_a635fbe6fc7cfd5aee71c4a58f89ed3a3}\index{SpanContainers::SpanStack$<$ T, Extent, UseExceptions $>$@{SpanContainers::SpanStack$<$ T, Extent, UseExceptions $>$}!back@{back}}
+\index{back@{back}!SpanContainers::SpanStack$<$ T, Extent, UseExceptions $>$@{SpanContainers::SpanStack$<$ T, Extent, UseExceptions $>$}}
 \doxysubsubsection{\texorpdfstring{back()}{back()}}
-{\footnotesize\ttfamily \label{class_span_containers_1_1internal_1_1_pop_back_trait_a9a1baefbc00e928dc6a2051895457e4d} 
-reference \mbox{\hyperlink{class_span_containers_1_1internal_1_1_pop_back_trait}{Span\+Containers\+::internal\+::\+Pop\+Back\+Trait}}$<$ \mbox{\hyperlink{class_span_containers_1_1_span_stack}{Span\+Stack}}$<$ T, Extent $>$, T $>$\+::back (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [nodiscard]}, {\ttfamily [constexpr]}, {\ttfamily [inherited]}}
+{\footnotesize\ttfamily \label{struct_span_containers_1_1internal_1_1_pop_back_trait_a635fbe6fc7cfd5aee71c4a58f89ed3a3} 
+reference \mbox{\hyperlink{struct_span_containers_1_1internal_1_1_pop_back_trait}{Span\+Containers\+::internal\+::\+Pop\+Back\+Trait}}$<$ \mbox{\hyperlink{class_span_containers_1_1_span_stack}{Span\+Stack}}$<$ T, Extent $>$, T $>$\+::back (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [nodiscard]}, {\ttfamily [constexpr]}, {\ttfamily [noexcept]}, {\ttfamily [inherited]}}
 
 
 
@@ -196,11 +187,11 @@ A refrence to the item at the back of the container.
 \end{DoxyReturn}
 
 \begin{DoxyExceptions}{Exceptions}
-{\em \doxylink{class_span_containers_1_1_empty_container_error}{Empty\+Container\+Error}} & if the container is empty \\
+{\em \doxylink{class_span_containers_1_1_empty_container_error}{Empty\+Container\+Error}} & if the container is empty and Use\+Exceptions is true. \\
 \hline
 \end{DoxyExceptions}
-\Hypertarget{class_span_containers_1_1internal_1_1_span_container_a4f8d412fd122d11ca3c0f9d3351e5f61}\index{SpanContainers::SpanStack$<$ T, Extent $>$@{SpanContainers::SpanStack$<$ T, Extent $>$}!capacity@{capacity}}
-\index{capacity@{capacity}!SpanContainers::SpanStack$<$ T, Extent $>$@{SpanContainers::SpanStack$<$ T, Extent $>$}}
+\Hypertarget{class_span_containers_1_1internal_1_1_span_container_a4f8d412fd122d11ca3c0f9d3351e5f61}\index{SpanContainers::SpanStack$<$ T, Extent, UseExceptions $>$@{SpanContainers::SpanStack$<$ T, Extent, UseExceptions $>$}!capacity@{capacity}}
+\index{capacity@{capacity}!SpanContainers::SpanStack$<$ T, Extent, UseExceptions $>$@{SpanContainers::SpanStack$<$ T, Extent, UseExceptions $>$}}
 \doxysubsubsection{\texorpdfstring{capacity()}{capacity()}}
 {\footnotesize\ttfamily \label{class_span_containers_1_1internal_1_1_span_container_a4f8d412fd122d11ca3c0f9d3351e5f61} 
 template$<$typename T , std\+::size\+\_\+t Extent$>$ \\
@@ -213,8 +204,8 @@ Gets the capacity of the container.
 \begin{DoxyReturn}{Returns}
 The capcity of the container. 
 \end{DoxyReturn}
-\Hypertarget{class_span_containers_1_1internal_1_1_span_container_a6adcfa5c633a685bef25e8e8300e2e00}\index{SpanContainers::SpanStack$<$ T, Extent $>$@{SpanContainers::SpanStack$<$ T, Extent $>$}!data@{data}}
-\index{data@{data}!SpanContainers::SpanStack$<$ T, Extent $>$@{SpanContainers::SpanStack$<$ T, Extent $>$}}
+\Hypertarget{class_span_containers_1_1internal_1_1_span_container_a6adcfa5c633a685bef25e8e8300e2e00}\index{SpanContainers::SpanStack$<$ T, Extent, UseExceptions $>$@{SpanContainers::SpanStack$<$ T, Extent, UseExceptions $>$}!data@{data}}
+\index{data@{data}!SpanContainers::SpanStack$<$ T, Extent, UseExceptions $>$@{SpanContainers::SpanStack$<$ T, Extent, UseExceptions $>$}}
 \doxysubsubsection{\texorpdfstring{data()}{data()}}
 {\footnotesize\ttfamily \label{class_span_containers_1_1internal_1_1_span_container_a6adcfa5c633a685bef25e8e8300e2e00} 
 template$<$typename T , std\+::size\+\_\+t Extent$>$ \\
@@ -227,8 +218,8 @@ Gets the underlying span.
 \begin{DoxyReturn}{Returns}
 the underlying span. 
 \end{DoxyReturn}
-\Hypertarget{class_span_containers_1_1internal_1_1_span_container_a3919cb46d780c978a8f3e04f61291d26}\index{SpanContainers::SpanStack$<$ T, Extent $>$@{SpanContainers::SpanStack$<$ T, Extent $>$}!empty@{empty}}
-\index{empty@{empty}!SpanContainers::SpanStack$<$ T, Extent $>$@{SpanContainers::SpanStack$<$ T, Extent $>$}}
+\Hypertarget{class_span_containers_1_1internal_1_1_span_container_a3919cb46d780c978a8f3e04f61291d26}\index{SpanContainers::SpanStack$<$ T, Extent, UseExceptions $>$@{SpanContainers::SpanStack$<$ T, Extent, UseExceptions $>$}!empty@{empty}}
+\index{empty@{empty}!SpanContainers::SpanStack$<$ T, Extent, UseExceptions $>$@{SpanContainers::SpanStack$<$ T, Extent, UseExceptions $>$}}
 \doxysubsubsection{\texorpdfstring{empty()}{empty()}}
 {\footnotesize\ttfamily \label{class_span_containers_1_1internal_1_1_span_container_a3919cb46d780c978a8f3e04f61291d26} 
 template$<$typename T , std\+::size\+\_\+t Extent$>$ \\
@@ -241,8 +232,8 @@ Gets if the container is empty or not.
 \begin{DoxyReturn}{Returns}
 true if the container is empty; false otherwise. 
 \end{DoxyReturn}
-\Hypertarget{class_span_containers_1_1internal_1_1_span_container_a62bdcb19c7b8f204d141c3abd6ff6b76}\index{SpanContainers::SpanStack$<$ T, Extent $>$@{SpanContainers::SpanStack$<$ T, Extent $>$}!full@{full}}
-\index{full@{full}!SpanContainers::SpanStack$<$ T, Extent $>$@{SpanContainers::SpanStack$<$ T, Extent $>$}}
+\Hypertarget{class_span_containers_1_1internal_1_1_span_container_a62bdcb19c7b8f204d141c3abd6ff6b76}\index{SpanContainers::SpanStack$<$ T, Extent, UseExceptions $>$@{SpanContainers::SpanStack$<$ T, Extent, UseExceptions $>$}!full@{full}}
+\index{full@{full}!SpanContainers::SpanStack$<$ T, Extent, UseExceptions $>$@{SpanContainers::SpanStack$<$ T, Extent, UseExceptions $>$}}
 \doxysubsubsection{\texorpdfstring{full()}{full()}}
 {\footnotesize\ttfamily \label{class_span_containers_1_1internal_1_1_span_container_a62bdcb19c7b8f204d141c3abd6ff6b76} 
 template$<$typename T , std\+::size\+\_\+t Extent$>$ \\
@@ -255,11 +246,11 @@ Gets if the container is full or not.
 \begin{DoxyReturn}{Returns}
 true if the container is full; false otherwise. 
 \end{DoxyReturn}
-\Hypertarget{class_span_containers_1_1internal_1_1_index_trait_ada06eabb7b7e3fc9ec94b0f28b42aed5}\index{SpanContainers::SpanStack$<$ T, Extent $>$@{SpanContainers::SpanStack$<$ T, Extent $>$}!operator\mbox{[}\mbox{]}@{operator[]}}
-\index{operator\mbox{[}\mbox{]}@{operator[]}!SpanContainers::SpanStack$<$ T, Extent $>$@{SpanContainers::SpanStack$<$ T, Extent $>$}}
+\Hypertarget{struct_span_containers_1_1internal_1_1_index_trait_ada06eabb7b7e3fc9ec94b0f28b42aed5}\index{SpanContainers::SpanStack$<$ T, Extent, UseExceptions $>$@{SpanContainers::SpanStack$<$ T, Extent, UseExceptions $>$}!operator\mbox{[}\mbox{]}@{operator[]}}
+\index{operator\mbox{[}\mbox{]}@{operator[]}!SpanContainers::SpanStack$<$ T, Extent, UseExceptions $>$@{SpanContainers::SpanStack$<$ T, Extent, UseExceptions $>$}}
 \doxysubsubsection{\texorpdfstring{operator[]()}{operator[]()}}
-{\footnotesize\ttfamily \label{class_span_containers_1_1internal_1_1_index_trait_ada06eabb7b7e3fc9ec94b0f28b42aed5} 
-reference \mbox{\hyperlink{class_span_containers_1_1internal_1_1_index_trait}{Span\+Containers\+::internal\+::\+Index\+Trait}}$<$ \mbox{\hyperlink{class_span_containers_1_1_span_stack}{Span\+Stack}}$<$ T, Extent $>$, T $>$\+::operator\mbox{[}$\,$\mbox{]} (\begin{DoxyParamCaption}\item[{size\+\_\+type}]{index}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [nodiscard]}, {\ttfamily [constexpr]}, {\ttfamily [inherited]}}
+{\footnotesize\ttfamily \label{struct_span_containers_1_1internal_1_1_index_trait_ada06eabb7b7e3fc9ec94b0f28b42aed5} 
+reference \mbox{\hyperlink{struct_span_containers_1_1internal_1_1_index_trait}{Span\+Containers\+::internal\+::\+Index\+Trait}}$<$ \mbox{\hyperlink{class_span_containers_1_1_span_stack}{Span\+Stack}}$<$ T, Extent $>$, T $>$\+::operator\mbox{[}$\,$\mbox{]} (\begin{DoxyParamCaption}\item[{size\+\_\+type}]{index}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [nodiscard]}, {\ttfamily [constexpr]}, {\ttfamily [inherited]}}
 
 
 
@@ -275,14 +266,14 @@ A reference to the element at index.
 \end{DoxyReturn}
 
 \begin{DoxyExceptions}{Exceptions}
-{\em std\+::out\+\_\+of\+\_\+range} & If index is out of range. \\
+{\em std\+::out\+\_\+of\+\_\+range} & If index is out of range and Use\+Exceptions is true. \\
 \hline
 \end{DoxyExceptions}
-\Hypertarget{class_span_containers_1_1internal_1_1_pop_back_trait_af3d444f05e58c78c10ca284080e31af7}\index{SpanContainers::SpanStack$<$ T, Extent $>$@{SpanContainers::SpanStack$<$ T, Extent $>$}!pop\_back@{pop\_back}}
-\index{pop\_back@{pop\_back}!SpanContainers::SpanStack$<$ T, Extent $>$@{SpanContainers::SpanStack$<$ T, Extent $>$}}
+\Hypertarget{struct_span_containers_1_1internal_1_1_pop_back_trait_aebbe0044f1d9347ec60ec0fb89cf1ee2}\index{SpanContainers::SpanStack$<$ T, Extent, UseExceptions $>$@{SpanContainers::SpanStack$<$ T, Extent, UseExceptions $>$}!pop\_back@{pop\_back}}
+\index{pop\_back@{pop\_back}!SpanContainers::SpanStack$<$ T, Extent, UseExceptions $>$@{SpanContainers::SpanStack$<$ T, Extent, UseExceptions $>$}}
 \doxysubsubsection{\texorpdfstring{pop\_back()}{pop\_back()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
-{\footnotesize\ttfamily \label{class_span_containers_1_1internal_1_1_pop_back_trait_af3d444f05e58c78c10ca284080e31af7} 
-void \mbox{\hyperlink{class_span_containers_1_1internal_1_1_pop_back_trait}{Span\+Containers\+::internal\+::\+Pop\+Back\+Trait}}$<$ \mbox{\hyperlink{class_span_containers_1_1_span_stack}{Span\+Stack}}$<$ T, Extent $>$, T $>$\+::pop\+\_\+back (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [constexpr]}, {\ttfamily [inherited]}}
+{\footnotesize\ttfamily \label{struct_span_containers_1_1internal_1_1_pop_back_trait_aebbe0044f1d9347ec60ec0fb89cf1ee2} 
+void \mbox{\hyperlink{struct_span_containers_1_1internal_1_1_pop_back_trait}{Span\+Containers\+::internal\+::\+Pop\+Back\+Trait}}$<$ \mbox{\hyperlink{class_span_containers_1_1_span_stack}{Span\+Stack}}$<$ T, Extent $>$, T $>$\+::pop\+\_\+back (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [constexpr]}, {\ttfamily [noexcept]}, {\ttfamily [inherited]}}
 
 
 
@@ -295,14 +286,14 @@ Removes an item from the back of the container.
 \end{DoxyParams}
 
 \begin{DoxyExceptions}{Exceptions}
-{\em \doxylink{class_span_containers_1_1_empty_container_error}{Empty\+Container\+Error}} & if the container is empty \\
+{\em \doxylink{class_span_containers_1_1_empty_container_error}{Empty\+Container\+Error}} & if the container is empty and Use\+Exceptions is true. \\
 \hline
 \end{DoxyExceptions}
-\Hypertarget{class_span_containers_1_1internal_1_1_pop_back_trait_afbec172bc1e718716e4e2392b47e9abc}\index{SpanContainers::SpanStack$<$ T, Extent $>$@{SpanContainers::SpanStack$<$ T, Extent $>$}!pop\_back@{pop\_back}}
-\index{pop\_back@{pop\_back}!SpanContainers::SpanStack$<$ T, Extent $>$@{SpanContainers::SpanStack$<$ T, Extent $>$}}
+\Hypertarget{struct_span_containers_1_1internal_1_1_pop_back_trait_a1de34d69bef973f750d36e40716ceb32}\index{SpanContainers::SpanStack$<$ T, Extent, UseExceptions $>$@{SpanContainers::SpanStack$<$ T, Extent, UseExceptions $>$}!pop\_back@{pop\_back}}
+\index{pop\_back@{pop\_back}!SpanContainers::SpanStack$<$ T, Extent, UseExceptions $>$@{SpanContainers::SpanStack$<$ T, Extent, UseExceptions $>$}}
 \doxysubsubsection{\texorpdfstring{pop\_back()}{pop\_back()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
-{\footnotesize\ttfamily \label{class_span_containers_1_1internal_1_1_pop_back_trait_afbec172bc1e718716e4e2392b47e9abc} 
-void \mbox{\hyperlink{class_span_containers_1_1internal_1_1_pop_back_trait}{Span\+Containers\+::internal\+::\+Pop\+Back\+Trait}}$<$ \mbox{\hyperlink{class_span_containers_1_1_span_stack}{Span\+Stack}}$<$ T, Extent $>$, T $>$\+::pop\+\_\+back (\begin{DoxyParamCaption}\item[{size\+\_\+type}]{n}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [constexpr]}, {\ttfamily [inherited]}}
+{\footnotesize\ttfamily \label{struct_span_containers_1_1internal_1_1_pop_back_trait_a1de34d69bef973f750d36e40716ceb32} 
+void \mbox{\hyperlink{struct_span_containers_1_1internal_1_1_pop_back_trait}{Span\+Containers\+::internal\+::\+Pop\+Back\+Trait}}$<$ \mbox{\hyperlink{class_span_containers_1_1_span_stack}{Span\+Stack}}$<$ T, Extent $>$, T $>$\+::pop\+\_\+back (\begin{DoxyParamCaption}\item[{size\+\_\+type}]{n}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [constexpr]}, {\ttfamily [noexcept]}, {\ttfamily [inherited]}}
 
 
 
@@ -310,11 +301,11 @@ Removes n items from the back of the container.
 
 
 \begin{DoxyExceptions}{Exceptions}
-{\em std\+::out\+\_\+of\+\_\+range} & if there are less than n items in the container. \\
+{\em std\+::out\+\_\+of\+\_\+range} & if there are less than n items in the container and Use\+Exceptions is true. \\
 \hline
 \end{DoxyExceptions}
-\Hypertarget{struct_span_containers_1_1internal_1_1_push_back_trait_a8e1cf7d06e78ee535b13e311dc72b148}\index{SpanContainers::SpanStack$<$ T, Extent $>$@{SpanContainers::SpanStack$<$ T, Extent $>$}!push\_back@{push\_back}}
-\index{push\_back@{push\_back}!SpanContainers::SpanStack$<$ T, Extent $>$@{SpanContainers::SpanStack$<$ T, Extent $>$}}
+\Hypertarget{struct_span_containers_1_1internal_1_1_push_back_trait_a8e1cf7d06e78ee535b13e311dc72b148}\index{SpanContainers::SpanStack$<$ T, Extent, UseExceptions $>$@{SpanContainers::SpanStack$<$ T, Extent, UseExceptions $>$}!push\_back@{push\_back}}
+\index{push\_back@{push\_back}!SpanContainers::SpanStack$<$ T, Extent, UseExceptions $>$@{SpanContainers::SpanStack$<$ T, Extent, UseExceptions $>$}}
 \doxysubsubsection{\texorpdfstring{push\_back()}{push\_back()}}
 {\footnotesize\ttfamily \label{struct_span_containers_1_1internal_1_1_push_back_trait_a8e1cf7d06e78ee535b13e311dc72b148} 
 void \mbox{\hyperlink{struct_span_containers_1_1internal_1_1_push_back_trait}{Span\+Containers\+::internal\+::\+Push\+Back\+Trait}}$<$ \mbox{\hyperlink{class_span_containers_1_1_span_stack}{Span\+Stack}}$<$ T, Extent $>$, T $>$\+::push\+\_\+back (\begin{DoxyParamCaption}\item[{U \&\&}]{value}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [constexpr]}, {\ttfamily [inherited]}}
@@ -333,8 +324,8 @@ Assigns value to the back of the container.
 {\em \doxylink{class_span_containers_1_1_full_container_error}{Full\+Container\+Error}} & if the container capacity is exceeded \\
 \hline
 \end{DoxyExceptions}
-\Hypertarget{class_span_containers_1_1internal_1_1_span_container_a137e5e887756180fad653799515b225b}\index{SpanContainers::SpanStack$<$ T, Extent $>$@{SpanContainers::SpanStack$<$ T, Extent $>$}!size@{size}}
-\index{size@{size}!SpanContainers::SpanStack$<$ T, Extent $>$@{SpanContainers::SpanStack$<$ T, Extent $>$}}
+\Hypertarget{class_span_containers_1_1internal_1_1_span_container_a137e5e887756180fad653799515b225b}\index{SpanContainers::SpanStack$<$ T, Extent, UseExceptions $>$@{SpanContainers::SpanStack$<$ T, Extent, UseExceptions $>$}!size@{size}}
+\index{size@{size}!SpanContainers::SpanStack$<$ T, Extent, UseExceptions $>$@{SpanContainers::SpanStack$<$ T, Extent, UseExceptions $>$}}
 \doxysubsubsection{\texorpdfstring{size()}{size()}}
 {\footnotesize\ttfamily \label{class_span_containers_1_1internal_1_1_span_container_a137e5e887756180fad653799515b225b} 
 template$<$typename T , std\+::size\+\_\+t Extent$>$ \\
@@ -347,11 +338,11 @@ Gets the current size of the container.
 \begin{DoxyReturn}{Returns}
 The current size of the container. 
 \end{DoxyReturn}
-\Hypertarget{class_span_containers_1_1_span_stack_a7f483dfa24b80da71262eeaf59f1f8dc}\index{SpanContainers::SpanStack$<$ T, Extent $>$@{SpanContainers::SpanStack$<$ T, Extent $>$}!SpanContainer@{SpanContainer}}
-\index{SpanContainer@{SpanContainer}!SpanContainers::SpanStack$<$ T, Extent $>$@{SpanContainers::SpanStack$<$ T, Extent $>$}}
+\Hypertarget{class_span_containers_1_1_span_stack_a7f483dfa24b80da71262eeaf59f1f8dc}\index{SpanContainers::SpanStack$<$ T, Extent, UseExceptions $>$@{SpanContainers::SpanStack$<$ T, Extent, UseExceptions $>$}!SpanContainer@{SpanContainer}}
+\index{SpanContainer@{SpanContainer}!SpanContainers::SpanStack$<$ T, Extent, UseExceptions $>$@{SpanContainers::SpanStack$<$ T, Extent, UseExceptions $>$}}
 \doxysubsubsection{\texorpdfstring{SpanContainer()}{SpanContainer()}}
 {\footnotesize\ttfamily \label{class_span_containers_1_1_span_stack_a7f483dfa24b80da71262eeaf59f1f8dc} 
-template$<$typename T , std\+::size\+\_\+t Extent$>$ \\
+template$<$typename T , std\+::size\+\_\+t Extent, bool Use\+Exceptions = true$>$ \\
 template$<$typename Buffer $>$ \newline
 requires std\+::is\+\_\+lvalue\+\_\+reference\+\_\+v$<$Buffer\&$>$ \&\& std\+::is\+\_\+constructible\+\_\+v$<$span\+\_\+type, Buffer\&$>$\\
 \mbox{\hyperlink{class_span_containers_1_1internal_1_1_span_container}{Span\+Containers\+::internal\+::\+Span\+Container}}$<$ T, Extent $>$\+::\+Span\+Container (\begin{DoxyParamCaption}\item[{Buffer \&}]{buffer}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [constexpr]}, {\ttfamily [noexcept]}}
@@ -370,11 +361,11 @@ Constructs a new container wrapping buffer.
 {\em buffer} & The underlying buffer to wrap. \\
 \hline
 \end{DoxyParams}
-\Hypertarget{class_span_containers_1_1internal_1_1_pop_back_trait_a1039675e077b05e71a59dd9318d44026}\index{SpanContainers::SpanStack$<$ T, Extent $>$@{SpanContainers::SpanStack$<$ T, Extent $>$}!try\_back@{try\_back}}
-\index{try\_back@{try\_back}!SpanContainers::SpanStack$<$ T, Extent $>$@{SpanContainers::SpanStack$<$ T, Extent $>$}}
+\Hypertarget{struct_span_containers_1_1internal_1_1_pop_back_trait_a1039675e077b05e71a59dd9318d44026}\index{SpanContainers::SpanStack$<$ T, Extent, UseExceptions $>$@{SpanContainers::SpanStack$<$ T, Extent, UseExceptions $>$}!try\_back@{try\_back}}
+\index{try\_back@{try\_back}!SpanContainers::SpanStack$<$ T, Extent, UseExceptions $>$@{SpanContainers::SpanStack$<$ T, Extent, UseExceptions $>$}}
 \doxysubsubsection{\texorpdfstring{try\_back()}{try\_back()}}
-{\footnotesize\ttfamily \label{class_span_containers_1_1internal_1_1_pop_back_trait_a1039675e077b05e71a59dd9318d44026} 
-pointer \mbox{\hyperlink{class_span_containers_1_1internal_1_1_pop_back_trait}{Span\+Containers\+::internal\+::\+Pop\+Back\+Trait}}$<$ \mbox{\hyperlink{class_span_containers_1_1_span_stack}{Span\+Stack}}$<$ T, Extent $>$, T $>$\+::try\+\_\+back (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [nodiscard]}, {\ttfamily [constexpr]}, {\ttfamily [noexcept]}, {\ttfamily [inherited]}}
+{\footnotesize\ttfamily \label{struct_span_containers_1_1internal_1_1_pop_back_trait_a1039675e077b05e71a59dd9318d44026} 
+pointer \mbox{\hyperlink{struct_span_containers_1_1internal_1_1_pop_back_trait}{Span\+Containers\+::internal\+::\+Pop\+Back\+Trait}}$<$ \mbox{\hyperlink{class_span_containers_1_1_span_stack}{Span\+Stack}}$<$ T, Extent $>$, T $>$\+::try\+\_\+back (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [nodiscard]}, {\ttfamily [constexpr]}, {\ttfamily [noexcept]}, {\ttfamily [inherited]}}
 
 
 
@@ -383,24 +374,24 @@ Gets a pointer to the item at the back of the container.
 \begin{DoxyReturn}{Returns}
 A pointer to the item at the back of the container or nullptr if empty. 
 \end{DoxyReturn}
-\Hypertarget{class_span_containers_1_1internal_1_1_pop_back_trait_a3270221b30d28bd88683e1bb42b0d0d5}\index{SpanContainers::SpanStack$<$ T, Extent $>$@{SpanContainers::SpanStack$<$ T, Extent $>$}!try\_pop\_back@{try\_pop\_back}}
-\index{try\_pop\_back@{try\_pop\_back}!SpanContainers::SpanStack$<$ T, Extent $>$@{SpanContainers::SpanStack$<$ T, Extent $>$}}
+\Hypertarget{struct_span_containers_1_1internal_1_1_pop_back_trait_a3270221b30d28bd88683e1bb42b0d0d5}\index{SpanContainers::SpanStack$<$ T, Extent, UseExceptions $>$@{SpanContainers::SpanStack$<$ T, Extent, UseExceptions $>$}!try\_pop\_back@{try\_pop\_back}}
+\index{try\_pop\_back@{try\_pop\_back}!SpanContainers::SpanStack$<$ T, Extent, UseExceptions $>$@{SpanContainers::SpanStack$<$ T, Extent, UseExceptions $>$}}
 \doxysubsubsection{\texorpdfstring{try\_pop\_back()}{try\_pop\_back()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
-{\footnotesize\ttfamily \label{class_span_containers_1_1internal_1_1_pop_back_trait_a3270221b30d28bd88683e1bb42b0d0d5} 
-bool \mbox{\hyperlink{class_span_containers_1_1internal_1_1_pop_back_trait}{Span\+Containers\+::internal\+::\+Pop\+Back\+Trait}}$<$ \mbox{\hyperlink{class_span_containers_1_1_span_stack}{Span\+Stack}}$<$ T, Extent $>$, T $>$\+::try\+\_\+pop\+\_\+back (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [constexpr]}, {\ttfamily [noexcept]}, {\ttfamily [inherited]}}
+{\footnotesize\ttfamily \label{struct_span_containers_1_1internal_1_1_pop_back_trait_a3270221b30d28bd88683e1bb42b0d0d5} 
+bool \mbox{\hyperlink{struct_span_containers_1_1internal_1_1_pop_back_trait}{Span\+Containers\+::internal\+::\+Pop\+Back\+Trait}}$<$ \mbox{\hyperlink{class_span_containers_1_1_span_stack}{Span\+Stack}}$<$ T, Extent $>$, T $>$\+::try\+\_\+pop\+\_\+back (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [constexpr]}, {\ttfamily [noexcept]}, {\ttfamily [inherited]}}
 
 
 
 Tries to remove an item from the back of the container. 
 
 \begin{DoxyReturn}{Returns}
-true if an item was removed; false if the stack is empty. 
+true if an item was removed; false if the container is empty. 
 \end{DoxyReturn}
-\Hypertarget{class_span_containers_1_1internal_1_1_pop_back_trait_afac010954c1e67a0b5c0908610e3dbc0}\index{SpanContainers::SpanStack$<$ T, Extent $>$@{SpanContainers::SpanStack$<$ T, Extent $>$}!try\_pop\_back@{try\_pop\_back}}
-\index{try\_pop\_back@{try\_pop\_back}!SpanContainers::SpanStack$<$ T, Extent $>$@{SpanContainers::SpanStack$<$ T, Extent $>$}}
+\Hypertarget{struct_span_containers_1_1internal_1_1_pop_back_trait_afac010954c1e67a0b5c0908610e3dbc0}\index{SpanContainers::SpanStack$<$ T, Extent, UseExceptions $>$@{SpanContainers::SpanStack$<$ T, Extent, UseExceptions $>$}!try\_pop\_back@{try\_pop\_back}}
+\index{try\_pop\_back@{try\_pop\_back}!SpanContainers::SpanStack$<$ T, Extent, UseExceptions $>$@{SpanContainers::SpanStack$<$ T, Extent, UseExceptions $>$}}
 \doxysubsubsection{\texorpdfstring{try\_pop\_back()}{try\_pop\_back()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
-{\footnotesize\ttfamily \label{class_span_containers_1_1internal_1_1_pop_back_trait_afac010954c1e67a0b5c0908610e3dbc0} 
-bool \mbox{\hyperlink{class_span_containers_1_1internal_1_1_pop_back_trait}{Span\+Containers\+::internal\+::\+Pop\+Back\+Trait}}$<$ \mbox{\hyperlink{class_span_containers_1_1_span_stack}{Span\+Stack}}$<$ T, Extent $>$, T $>$\+::try\+\_\+pop\+\_\+back (\begin{DoxyParamCaption}\item[{size\+\_\+type}]{n}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [constexpr]}, {\ttfamily [noexcept]}, {\ttfamily [inherited]}}
+{\footnotesize\ttfamily \label{struct_span_containers_1_1internal_1_1_pop_back_trait_afac010954c1e67a0b5c0908610e3dbc0} 
+bool \mbox{\hyperlink{struct_span_containers_1_1internal_1_1_pop_back_trait}{Span\+Containers\+::internal\+::\+Pop\+Back\+Trait}}$<$ \mbox{\hyperlink{class_span_containers_1_1_span_stack}{Span\+Stack}}$<$ T, Extent $>$, T $>$\+::try\+\_\+pop\+\_\+back (\begin{DoxyParamCaption}\item[{size\+\_\+type}]{n}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [constexpr]}, {\ttfamily [noexcept]}, {\ttfamily [inherited]}}
 
 
 
@@ -414,8 +405,8 @@ Tries to remove n items from the back of the container.
 \begin{DoxyReturn}{Returns}
 true if n items were removed; false if n is greater than size. 
 \end{DoxyReturn}
-\Hypertarget{struct_span_containers_1_1internal_1_1_push_back_trait_a0806b833c26f08891f2e928b562a986f}\index{SpanContainers::SpanStack$<$ T, Extent $>$@{SpanContainers::SpanStack$<$ T, Extent $>$}!try\_push\_back@{try\_push\_back}}
-\index{try\_push\_back@{try\_push\_back}!SpanContainers::SpanStack$<$ T, Extent $>$@{SpanContainers::SpanStack$<$ T, Extent $>$}}
+\Hypertarget{struct_span_containers_1_1internal_1_1_push_back_trait_a0806b833c26f08891f2e928b562a986f}\index{SpanContainers::SpanStack$<$ T, Extent, UseExceptions $>$@{SpanContainers::SpanStack$<$ T, Extent, UseExceptions $>$}!try\_push\_back@{try\_push\_back}}
+\index{try\_push\_back@{try\_push\_back}!SpanContainers::SpanStack$<$ T, Extent, UseExceptions $>$@{SpanContainers::SpanStack$<$ T, Extent, UseExceptions $>$}}
 \doxysubsubsection{\texorpdfstring{try\_push\_back()}{try\_push\_back()}}
 {\footnotesize\ttfamily \label{struct_span_containers_1_1internal_1_1_push_back_trait_a0806b833c26f08891f2e928b562a986f} 
 bool \mbox{\hyperlink{struct_span_containers_1_1internal_1_1_push_back_trait}{Span\+Containers\+::internal\+::\+Push\+Back\+Trait}}$<$ \mbox{\hyperlink{class_span_containers_1_1_span_stack}{Span\+Stack}}$<$ T, Extent $>$, T $>$\+::try\+\_\+push\+\_\+back (\begin{DoxyParamCaption}\item[{U \&\&}]{value}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [constexpr]}, {\ttfamily [noexcept]}, {\ttfamily [inherited]}}
@@ -437,99 +428,6 @@ Tries to assign value at the back of the container.
 \begin{DoxyReturn}{Returns}
 true if value was placed at the back of the container; false otherwise. 
 \end{DoxyReturn}
-\Hypertarget{class_span_containers_1_1_span_stack_ad2e1f33b4ccc26cbe3c709f00c3d21f4}\index{SpanContainers::SpanStack$<$ T, Extent $>$@{SpanContainers::SpanStack$<$ T, Extent $>$}!try\_push\_back\_range@{try\_push\_back\_range}}
-\index{try\_push\_back\_range@{try\_push\_back\_range}!SpanContainers::SpanStack$<$ T, Extent $>$@{SpanContainers::SpanStack$<$ T, Extent $>$}}
-\doxysubsubsection{\texorpdfstring{try\_push\_back\_range()}{try\_push\_back\_range()}}
-{\footnotesize\ttfamily \label{class_span_containers_1_1_span_stack_ad2e1f33b4ccc26cbe3c709f00c3d21f4} 
-template$<$typename T , std\+::size\+\_\+t Extent$>$ \\
-template$<$std\+::ranges\+::input\+\_\+range Range = std\+::initializer\+\_\+list$<$\+T$>$$>$ \newline
-requires std\+::convertible\+\_\+to$<$std\+::ranges\+::range\+\_\+value\+\_\+t$<$Range$>$, T$>$\\
-bool \mbox{\hyperlink{class_span_containers_1_1_span_stack}{Span\+Containers\+::\+Span\+Stack}}$<$ T, Extent $>$\+::try\+\_\+push\+\_\+back\+\_\+range (\begin{DoxyParamCaption}\item[{Range \&\&}]{values}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [constexpr]}}
-
-
-
-Tries to assign values to the back of the container. 
-
-
-\begin{DoxyTemplParams}{Template Parameters}
-{\em Range} & The type of the range that contains the values. \\
-\hline
-\end{DoxyTemplParams}
-\begin{DoxyReturn}{Returns}
-true if values were placed at the back of the container; false if not enough room for all values. 
-\end{DoxyReturn}
-\Hypertarget{class_span_containers_1_1_span_stack_a5e5976294238ee154407203a5bd70c36}\index{SpanContainers::SpanStack$<$ T, Extent $>$@{SpanContainers::SpanStack$<$ T, Extent $>$}!unsafe\_at@{unsafe\_at}}
-\index{unsafe\_at@{unsafe\_at}!SpanContainers::SpanStack$<$ T, Extent $>$@{SpanContainers::SpanStack$<$ T, Extent $>$}}
-\doxysubsubsection{\texorpdfstring{unsafe\_at()}{unsafe\_at()}}
-{\footnotesize\ttfamily \label{class_span_containers_1_1_span_stack_a5e5976294238ee154407203a5bd70c36} 
-template$<$typename T , std\+::size\+\_\+t Extent$>$ \\
-reference \mbox{\hyperlink{class_span_containers_1_1_span_stack}{Span\+Containers\+::\+Span\+Stack}}$<$ T, Extent $>$\+::unsafe\+\_\+at (\begin{DoxyParamCaption}\item[{size\+\_\+type}]{index}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [nodiscard]}, {\ttfamily [constexpr]}, {\ttfamily [noexcept]}}
-
-
-
-Gets a reference to the element at index, without a bounds check. 
-
-
-\begin{DoxyParams}{Parameters}
-{\em index} & The index of the element to get. \\
-\hline
-\end{DoxyParams}
-\begin{DoxyReturn}{Returns}
-A reference to the element at index. 
-\end{DoxyReturn}
-\Hypertarget{class_span_containers_1_1_span_stack_ade07b875471d3fc520d0f6510cbf7ded}\index{SpanContainers::SpanStack$<$ T, Extent $>$@{SpanContainers::SpanStack$<$ T, Extent $>$}!unsafe\_back@{unsafe\_back}}
-\index{unsafe\_back@{unsafe\_back}!SpanContainers::SpanStack$<$ T, Extent $>$@{SpanContainers::SpanStack$<$ T, Extent $>$}}
-\doxysubsubsection{\texorpdfstring{unsafe\_back()}{unsafe\_back()}}
-{\footnotesize\ttfamily \label{class_span_containers_1_1_span_stack_ade07b875471d3fc520d0f6510cbf7ded} 
-template$<$typename T , std\+::size\+\_\+t Extent$>$ \\
-reference \mbox{\hyperlink{class_span_containers_1_1_span_stack}{Span\+Containers\+::\+Span\+Stack}}$<$ T, Extent $>$\+::unsafe\+\_\+back (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [nodiscard]}, {\ttfamily [constexpr]}, {\ttfamily [noexcept]}}
-
-
-
-Gets a reference to the last item in the container without a bounds check. 
-
-\begin{DoxyReturn}{Returns}
-A reference to the last item in the container. 
-\end{DoxyReturn}
-\Hypertarget{class_span_containers_1_1_span_stack_a0ca86841425a2a330ea6f77fc0d424f7}\index{SpanContainers::SpanStack$<$ T, Extent $>$@{SpanContainers::SpanStack$<$ T, Extent $>$}!unsafe\_pop\_back@{unsafe\_pop\_back}}
-\index{unsafe\_pop\_back@{unsafe\_pop\_back}!SpanContainers::SpanStack$<$ T, Extent $>$@{SpanContainers::SpanStack$<$ T, Extent $>$}}
-\doxysubsubsection{\texorpdfstring{unsafe\_pop\_back()}{unsafe\_pop\_back()}}
-{\footnotesize\ttfamily \label{class_span_containers_1_1_span_stack_a0ca86841425a2a330ea6f77fc0d424f7} 
-template$<$typename T , std\+::size\+\_\+t Extent$>$ \\
-void \mbox{\hyperlink{class_span_containers_1_1_span_stack}{Span\+Containers\+::\+Span\+Stack}}$<$ T, Extent $>$\+::unsafe\+\_\+pop\+\_\+back (\begin{DoxyParamCaption}\item[{size\+\_\+type}]{n}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [constexpr]}, {\ttfamily [noexcept]}}
-
-
-
-Removes n items from the back of the container without a bounds check. 
-
-
-\begin{DoxyParams}{Parameters}
-{\em n} & the number of items to remove. \\
-\hline
-\end{DoxyParams}
-\Hypertarget{class_span_containers_1_1_span_stack_a88fd58d86a5554a2e3bb20b28698666a}\index{SpanContainers::SpanStack$<$ T, Extent $>$@{SpanContainers::SpanStack$<$ T, Extent $>$}!unsafe\_push\_back@{unsafe\_push\_back}}
-\index{unsafe\_push\_back@{unsafe\_push\_back}!SpanContainers::SpanStack$<$ T, Extent $>$@{SpanContainers::SpanStack$<$ T, Extent $>$}}
-\doxysubsubsection{\texorpdfstring{unsafe\_push\_back()}{unsafe\_push\_back()}}
-{\footnotesize\ttfamily \label{class_span_containers_1_1_span_stack_a88fd58d86a5554a2e3bb20b28698666a} 
-template$<$typename T , std\+::size\+\_\+t Extent$>$ \\
-template$<$typename U $>$ \newline
-requires std\+::assignable\+\_\+from$<$T\&, U\&\&$>$\\
-void \mbox{\hyperlink{class_span_containers_1_1_span_stack}{Span\+Containers\+::\+Span\+Stack}}$<$ T, Extent $>$\+::unsafe\+\_\+push\+\_\+back (\begin{DoxyParamCaption}\item[{U \&\&}]{value}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [constexpr]}, {\ttfamily [noexcept]}}
-
-
-
-Assigns value to the back of the container, without bounds checks. 
-
-
-\begin{DoxyTemplParams}{Template Parameters}
-{\em U} & The type of the value. \\
-\hline
-\end{DoxyTemplParams}
-
-\begin{DoxyParams}{Parameters}
-{\em value} & The item to assign. \\
-\hline
-\end{DoxyParams}
 
 
 The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}

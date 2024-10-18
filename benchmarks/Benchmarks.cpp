@@ -9,9 +9,11 @@
 
 #include <benchmark/benchmark.h>
 
+#define SPAN_CONTAINERS_USE_EXCEPTIONS false
 #include "SpanStack.h"
 #include "SpanHeap.h"
-#include "SpanContainerFormatter.h"
+
+namespace SpanContainers::Benchmarks {
 
 using namespace SpanContainers;
 
@@ -67,22 +69,6 @@ public:
         }
     }
 
-    void SpanStackArrayUnsafePushPop(benchmark::State& state) {
-        for (auto _ : state) {
-            // SpanStack<T, TestSize>::BufferType<1> buffer{};
-            std::array<T, TestSize> buffer{};
-            SpanStack<T, TestSize> spanStack{ buffer };
-
-            for (T number : randomData) { spanStack.unsafe_push_back(number); }
-
-            auto rit = randomData.rbegin();
-            while (!spanStack.empty()) {
-                if (spanStack.unsafe_back() != *rit++) { std::terminate(); }
-                spanStack.pop_back();
-            }
-        }
-    }
-
     void SpanStackHeapPushPop(benchmark::State& state) {
         for (auto _ : state) {
             SpanContainers::internal::HeapArray<T, TestSize> buffer{};
@@ -133,11 +119,6 @@ public:
 //BENCHMARK_TEMPLATE_F(PushPopFixture, SpanStack_Array_1024, int, 1024)(benchmark::State& state) { this->SpanStackArrayPushPop(state); }
 BENCHMARK_TEMPLATE_F(PushPopFixture, SpanStack_Array_2048, std::int64_t, 2048)(benchmark::State& state) { this->SpanStackArrayPushPop(state); }
 
-//BENCHMARK_TEMPLATE_F(PushPopFixture, SpanStack_ArrayUnsafe_256,  int, 256)(benchmark::State& state)  { this->SpanStackArrayUnsafePushPop(state); }
-//BENCHMARK_TEMPLATE_F(PushPopFixture, SpanStack_ArrayUnsafe_512,  int, 512)(benchmark::State& state)  { this->SpanStackArrayUnsafePushPop(state); }
-//BENCHMARK_TEMPLATE_F(PushPopFixture, SpanStack_ArrayUnsafe_1024, int, 1024)(benchmark::State& state) { this->SpanStackArrayUnsafePushPop(state); }
-BENCHMARK_TEMPLATE_F(PushPopFixture, SpanStack_ArrayUnsafe_2048, std::int64_t, 2048)(benchmark::State& state) { this->SpanStackArrayUnsafePushPop(state); }
-
 //BENCHMARK_TEMPLATE_F(PushPopFixture, SpanStack_Heap_256,  int, 256)(benchmark::State& state)  { this->SpanStackHeapPushPop(state); }
 //BENCHMARK_TEMPLATE_F(PushPopFixture, SpanStack_Heap_512,  int, 512)(benchmark::State& state)  { this->SpanStackHeapPushPop(state); }
 //BENCHMARK_TEMPLATE_F(PushPopFixture, SpanStack_Heap_1024, int, 1024)(benchmark::State& state) { this->SpanStackHeapPushPop(state); }
@@ -152,5 +133,7 @@ BENCHMARK_TEMPLATE_F(PushPopFixture, Stack_2048, std::int64_t, 2048)(benchmark::
 //BENCHMARK_TEMPLATE_F(PushPopFixture, Vector_512,  int, 512)(benchmark::State& state)  { this->StdVectorPushPop(state); }
 //BENCHMARK_TEMPLATE_F(PushPopFixture, Vector_1024, int, 1024)(benchmark::State& state) { this->StdVectorPushPop(state); }
 BENCHMARK_TEMPLATE_F(PushPopFixture, Vector_2048, std::int64_t, 2048)(benchmark::State& state) { this->StdVectorPushPop(state); }
+
+}
 
 BENCHMARK_MAIN();

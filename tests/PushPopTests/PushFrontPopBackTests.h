@@ -7,8 +7,8 @@
 #include <gtest/gtest.h>
 
 #include "../BaseTests.h"
-#include "../PushPopFuncs/PushFrontFuncs.h"
-#include "../PushPopFuncs/PopBackFuncs.h"
+#include "../ContainerFuncs/PushFrontFuncs.h"
+#include "../ContainerFuncs/PopBackFuncs.h"
 #include "PushPopTestFixture.h"
 
 namespace SpanContainers::Tests {
@@ -45,8 +45,18 @@ TYPED_TEST_P(PushFrontPopBackTests, PushPopIsFIFO)
 TYPED_TEST_P(PushFrontPopBackTests, PushPopAfterClearIsFIFO)
 {
     // partially fill then clear
-    for (int value : NUMBER_FILL | std::views::take(3)) { this->emptyContainer.push_back(value); }
+    for (int value : NUMBER_FILL | std::views::take(TEST_EXTENT - 1)) { this->push(this->emptyContainer, value); }
     this->emptyContainer.clear();
+
+    std::vector<int> values = this->BuildPushPopVector(this->emptyContainer, NUMBER_FILL, this->push, this->get, this->pop);
+    EXPECT_THAT(values, ::testing::ElementsAreArray(NUMBER_FILL));
+}
+
+TYPED_TEST_P(PushFrontPopBackTests, PushPopWrappingIsFIFO)
+{
+    // partially fill then pop-empty
+    for (int value : NUMBER_FILL | std::views::take(TEST_EXTENT - 1)) { this->push(this->emptyContainer, value); }
+    for (int iteration = TEST_EXTENT - 1; iteration > 0; --iteration) { this->pop(this->emptyContainer); }
 
     std::vector<int> values = this->BuildPushPopVector(this->emptyContainer, NUMBER_FILL, this->push, this->get, this->pop);
     EXPECT_THAT(values, ::testing::ElementsAreArray(NUMBER_FILL));
@@ -56,7 +66,8 @@ REGISTER_TYPED_TEST_SUITE_P(PushFrontPopBackTests,
     PopDecrementsSize, 
     PopNDecrementsSizeByN,
     PushPopIsFIFO, 
-    PushPopAfterClearIsFIFO
+    PushPopAfterClearIsFIFO,
+    PushPopWrappingIsFIFO
 );
 
 }

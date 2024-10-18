@@ -6,8 +6,8 @@
 #include <type_traits>
     
 #include "internal/SpanContainer.h"
-#include "internal/PushPopTraits/PushFrontTrait.h"
-#include "internal/PushPopTraits/PopBackTrait.h"
+#include "internal/Traits/PushFrontTrait.h"
+#include "internal/Traits/PopBackTrait.h"
 
 #include "SpanQueue.h"
 

@@ -11,8 +11,8 @@
 #include "GetPopTests/BackTests.h"
 #include "PushTests/PushStraightTests.h"
 #include "PushPopTests/PushPopTestFixture.h"
-#include "PushPopFuncs/PopBackFuncs.h"
-#include "PushPopFuncs/PushStraightFuncs.h"
+#include "ContainerFuncs/PopBackFuncs.h"
+#include "ContainerFuncs/PushStraightFuncs.h"
 #include "PushPopTests/PushStraightPopBackTests.h"
 
 namespace SpanContainers::Tests {

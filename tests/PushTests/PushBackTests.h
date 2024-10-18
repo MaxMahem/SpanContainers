@@ -5,7 +5,8 @@
 
 #include "Errors/FullContainerError.h"
 
-#include "../PushPopFuncs/PushBackFuncs.h"
+#include "../ContainerFuncs/PushBackFuncs.h"
+#include "../ContainerFuncs/IndexFuncs.h"
 #include "PushTestFixture.h"
 
 namespace SpanContainers::Tests {
@@ -16,7 +17,7 @@ using namespace SpanContainers;
 /// @tparam Container the type of the container.
 template <typename Container>
 class PushBackTests : public PushTestFixture<Container, std::back_insert_iterator<Container>>, 
-                      public PushBackFuncs<Container>{ };
+                      public PushBackFuncs<Container> { };
 
 TYPED_TEST_SUITE_P(PushBackTests);
 
@@ -34,7 +35,7 @@ TYPED_TEST_P(PushBackTests, WhenFullClearEmptiesContainer)
 
 TYPED_TEST_P(PushBackTests, WhenFullPushBackThrows)
 {
-    ASSERT_THROW(this->fullContainer.push_back(6),     FullContainerError);
+    ASSERT_THROW(this->fullContainer.push_back(6), FullContainerError);
 }
 
 TYPED_TEST_P(PushBackTests, WhenFullTryPushBackReturnsFalse)

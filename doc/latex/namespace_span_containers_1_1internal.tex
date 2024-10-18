@@ -12,13 +12,17 @@ struct \mbox{\hyperlink{namespace_span_containers_1_1internal_struct_span_contai
 \begin{DoxyCompactList}\small\item\em helper struct fr selecting buffer type.  \mbox{\hyperlink{namespace_span_containers_1_1internal_struct_span_containers_1_1internal_1_1_buffer_selector}{More...}}\end{DoxyCompactList}\item 
 struct \mbox{\hyperlink{struct_span_containers_1_1internal_1_1_heap_array}{Heap\+Array}}
 \begin{DoxyCompactList}\small\item\em helper struct for creating heap-\/allocated std\+::arrays. \end{DoxyCompactList}\item 
+class \mbox{\hyperlink{class_span_containers_1_1internal_1_1_index_trait}{Index\+Trait}}
+\begin{DoxyCompactList}\small\item\em Represents the ability of a container to access elements via index. \end{DoxyCompactList}\item 
 class \mbox{\hyperlink{class_span_containers_1_1internal_1_1_pop_back_trait}{Pop\+Back\+Trait}}
 \item 
 class \mbox{\hyperlink{class_span_containers_1_1internal_1_1_pop_front_trait}{Pop\+Front\+Trait}}
 \item 
-class \mbox{\hyperlink{class_span_containers_1_1internal_1_1_push_back_trait}{Push\+Back\+Trait}}
+struct \mbox{\hyperlink{struct_span_containers_1_1internal_1_1_push_back_trait}{Push\+Back\+Trait}}
 \item 
-class \mbox{\hyperlink{class_span_containers_1_1internal_1_1_push_front_trait}{Push\+Front\+Trait}}
+struct \mbox{\hyperlink{struct_span_containers_1_1internal_1_1_push_front_trait}{Push\+Front\+Trait}}
+\item 
+struct \mbox{\hyperlink{struct_span_containers_1_1internal_1_1_push_straight_trait}{Push\+Straight\+Trait}}
 \item 
 class \mbox{\hyperlink{class_span_containers_1_1internal_1_1_span_container}{Span\+Container}}
 \begin{DoxyCompactList}\small\item\em Base type for Span containers, holding common behavior. \end{DoxyCompactList}\end{DoxyCompactItemize}
@@ -50,7 +54,7 @@ helper struct fr selecting buffer type.
 \hline
 \end{DoxyTemplParams}
 \begin{DoxyFields}{Class Members}
-\mbox{\Hypertarget{namespace_span_containers_1_1internal_a232c8115a7ff239803cc9a01be984904}\label{namespace_span_containers_1_1internal_a232c8115a7ff239803cc9a01be984904}} 
+\mbox{\Hypertarget{namespace_span_containers_1_1internal_a73eeed698c30a0e52d077ee4217d6612}\label{namespace_span_containers_1_1internal_a73eeed698c30a0e52d077ee4217d6612}} 
 typedef conditional\_t$<$ Extent \texorpdfstring{$\ast$}{*}sizeof(T)$<$=MaxStackSize, array$<$ T, Extent $>$, \mbox{\hyperlink{struct_span_containers_1_1internal_1_1_heap_array}{HeapArray}}$<$ T, Extent $>$ $>$&
 BufferType&
 Type alais for selecting a buffer type. 

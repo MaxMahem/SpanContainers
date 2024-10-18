@@ -8,8 +8,8 @@
 #include <type_traits>
 
 #include "internal/SpanContainer.h"
-#include "internal/PushPopTraits/PushStraightTrait.h"
-#include "internal/PushPopTraits/PopBackTrait.h"
+#include "internal/Traits/PushStraightTrait.h"
+#include "internal/Traits/PopBackTrait.h"
 
 namespace SpanContainers {
 
@@ -51,11 +51,6 @@ public:
 
     using SpanContainer::SpanContainer;
     using SpanContainer::operator=;
-
-    using SpanContainer::empty;
-    using SpanContainer::full;
-    using SpanContainer::capacity;
-    using SpanContainer::size;
 
     using internal::PopBackTrait<SpanHeap<T, Extent, Comparer>, T>::unsafe_pop_back;
 

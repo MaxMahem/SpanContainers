@@ -1,29 +1,57 @@
 \doxysection{Pop\+Back\+Trait.\+h}
-\hypertarget{_pop_back_trait_8h_source}{}\label{_pop_back_trait_8h_source}\index{C:/Users/maxma/source/repos/SpanContainers/lib/internal/PushPopTraits/PopBackTrait.h@{C:/Users/maxma/source/repos/SpanContainers/lib/internal/PushPopTraits/PopBackTrait.h}}
+\hypertarget{_pop_back_trait_8h_source}{}\label{_pop_back_trait_8h_source}\index{C:/Users/maxma/source/repos/SpanContainers/lib/internal/Traits/PopBackTrait.h@{C:/Users/maxma/source/repos/SpanContainers/lib/internal/Traits/PopBackTrait.h}}
 
 \begin{DoxyCode}{0}
 \DoxyCodeLine{00001\ \textcolor{preprocessor}{\#pragma\ once}}
-\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#include\ <type\_traits>}}
-\DoxyCodeLine{00003\ }
-\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ "{}Errors/EmptyContainerError.h"{}}}
+\DoxyCodeLine{00002\ }
+\DoxyCodeLine{00003\ \textcolor{preprocessor}{\#include\ <stdexcept>}}
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ <type\_traits>}}
 \DoxyCodeLine{00005\ }
-\DoxyCodeLine{00006\ \textcolor{keyword}{namespace\ }\mbox{\hyperlink{namespace_span_containers_1_1internal}{SpanContainers::internal}}\ \{}
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#include\ "{}Errors/EmptyContainerError.h"{}}}
 \DoxyCodeLine{00007\ }
-\DoxyCodeLine{00008\ \textcolor{keyword}{template}\ <\textcolor{keyword}{typename}\ Derived,\ \textcolor{keyword}{typename}\ T>\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_span_containers_1_1internal_1_1_pop_back_trait}{PopBackTrait}}\ \{}
-\DoxyCodeLine{00009\ \ \ \ \ \textcolor{keyword}{using\ }reference\ =\ std::span<T>::reference;}
-\DoxyCodeLine{00010\ \ \ \ \ \textcolor{keyword}{using\ }pointer\ =\ std::span<T>::pointer;}
-\DoxyCodeLine{00011\ }
-\DoxyCodeLine{00012\ \textcolor{keyword}{public}:}
-\DoxyCodeLine{00016\ \ \ \ \ [[nodiscard]]\ \textcolor{keyword}{constexpr}\ reference\ \mbox{\hyperlink{class_span_containers_1_1internal_1_1_pop_back_trait_a9a1baefbc00e928dc6a2051895457e4d}{back}}()\textcolor{keyword}{\ const}}
-\DoxyCodeLine{00017\ \textcolor{keyword}{\ \ \ \ }\{}
-\DoxyCodeLine{00018\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keyword}{auto}\&\ derived\ =\ \textcolor{keyword}{static\_cast<}\textcolor{keyword}{const\ }Derived\&\textcolor{keyword}{>}(*this);}
-\DoxyCodeLine{00019\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (pointer\ \mbox{\hyperlink{class_span_containers_1_1internal_1_1_pop_back_trait_a9a1baefbc00e928dc6a2051895457e4d}{back}}\ =\ derived.try\_back())\ \{\ \textcolor{keywordflow}{return}\ *\mbox{\hyperlink{class_span_containers_1_1internal_1_1_pop_back_trait_a9a1baefbc00e928dc6a2051895457e4d}{back}};\ \}}
-\DoxyCodeLine{00020\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{throw}\ \mbox{\hyperlink{class_span_containers_1_1_empty_container_error}{EmptyContainerError}}();}
-\DoxyCodeLine{00021\ \ \ \ \ \}}
-\DoxyCodeLine{00022\ }
-\DoxyCodeLine{00025\ \ \ \ \ \textcolor{keyword}{constexpr}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_span_containers_1_1internal_1_1_pop_back_trait_af3d444f05e58c78c10ca284080e31af7}{pop\_back}}()\ \{\ \textcolor{keywordflow}{if}\ (!\textcolor{keyword}{static\_cast<}Derived\&\textcolor{keyword}{>}(*this).try\_pop\_back())\ \{\ \textcolor{keywordflow}{throw}\ \mbox{\hyperlink{class_span_containers_1_1_empty_container_error}{EmptyContainerError}}();\ \}\ \}}
-\DoxyCodeLine{00026\ \};}
-\DoxyCodeLine{00027\ }
-\DoxyCodeLine{00028\ \}}
+\DoxyCodeLine{00008\ \textcolor{keyword}{namespace\ }\mbox{\hyperlink{namespace_span_containers_1_1internal}{SpanContainers::internal}}\ \{}
+\DoxyCodeLine{00009\ }
+\DoxyCodeLine{00010\ \textcolor{keyword}{template}\ <\textcolor{keyword}{typename}\ Derived,\ \textcolor{keyword}{typename}\ T>\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_span_containers_1_1internal_1_1_pop_back_trait}{PopBackTrait}}\ \{}
+\DoxyCodeLine{00011\ \ \ \ \ \textcolor{keyword}{using\ }reference\ =\ std::span<T>::reference;}
+\DoxyCodeLine{00012\ \ \ \ \ \textcolor{keyword}{using\ }pointer\ \ \ =\ std::span<T>::pointer;}
+\DoxyCodeLine{00013\ \ \ \ \ \textcolor{keyword}{using\ }size\_type\ =\ std::span<T>::size\_type;}
+\DoxyCodeLine{00014\ }
+\DoxyCodeLine{00015\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00019\ \ \ \ \ [[nodiscard]]\ \textcolor{keyword}{constexpr}\ reference\ \mbox{\hyperlink{class_span_containers_1_1internal_1_1_pop_back_trait_a9a1baefbc00e928dc6a2051895457e4d}{back}}()\textcolor{keyword}{\ const}}
+\DoxyCodeLine{00020\ \textcolor{keyword}{\ \ \ \ }\{}
+\DoxyCodeLine{00021\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (pointer\ \mbox{\hyperlink{class_span_containers_1_1internal_1_1_pop_back_trait_a9a1baefbc00e928dc6a2051895457e4d}{back}}\ =\ \mbox{\hyperlink{class_span_containers_1_1internal_1_1_pop_back_trait_a1039675e077b05e71a59dd9318d44026}{try\_back}}())\ \{\ \textcolor{keywordflow}{return}\ *\mbox{\hyperlink{class_span_containers_1_1internal_1_1_pop_back_trait_a9a1baefbc00e928dc6a2051895457e4d}{back}};\ \}}
+\DoxyCodeLine{00022\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{throw}\ \mbox{\hyperlink{class_span_containers_1_1_empty_container_error}{EmptyContainerError}}();}
+\DoxyCodeLine{00023\ \ \ \ \ \}}
+\DoxyCodeLine{00024\ }
+\DoxyCodeLine{00027\ \ \ \ \ [[nodiscard]]\ \textcolor{keyword}{constexpr}\ pointer\ \mbox{\hyperlink{class_span_containers_1_1internal_1_1_pop_back_trait_a1039675e077b05e71a59dd9318d44026}{try\_back}}()\ const\ noexcept\ }
+\DoxyCodeLine{00028\ \ \ \ \ \{}
+\DoxyCodeLine{00029\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keyword}{auto}\&\ derived\ =\ \textcolor{keyword}{static\_cast<}\textcolor{keyword}{const\ }Derived\&\textcolor{keyword}{>}(*this);}
+\DoxyCodeLine{00030\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ !derived.empty()\ ?\ \&derived.unsafe\_back()\ :\ \textcolor{keyword}{nullptr};\ }
+\DoxyCodeLine{00031\ \ \ \ \ \}}
+\DoxyCodeLine{00032\ }
+\DoxyCodeLine{00036\ \ \ \ \ \textcolor{keyword}{constexpr}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_span_containers_1_1internal_1_1_pop_back_trait_af3d444f05e58c78c10ca284080e31af7}{pop\_back}}()\ \{\ \textcolor{keywordflow}{if}\ (!\mbox{\hyperlink{class_span_containers_1_1internal_1_1_pop_back_trait_a3270221b30d28bd88683e1bb42b0d0d5}{try\_pop\_back}}(1))\ \{\ \textcolor{keywordflow}{throw}\ \mbox{\hyperlink{class_span_containers_1_1_empty_container_error}{EmptyContainerError}}();\ \}\ \}}
+\DoxyCodeLine{00037\ }
+\DoxyCodeLine{00040\ \ \ \ \ \textcolor{keyword}{constexpr}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_span_containers_1_1internal_1_1_pop_back_trait_afbec172bc1e718716e4e2392b47e9abc}{pop\_back}}(size\_type\ n)}
+\DoxyCodeLine{00041\ \ \ \ \ \{}
+\DoxyCodeLine{00042\ \ \ \ \ \ \ \ \ \textcolor{keyword}{auto}\&\ derived\ =\ \textcolor{keyword}{static\_cast<}Derived\&\textcolor{keyword}{>}(*this);}
+\DoxyCodeLine{00043\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!\mbox{\hyperlink{class_span_containers_1_1internal_1_1_pop_back_trait_a3270221b30d28bd88683e1bb42b0d0d5}{try\_pop\_back}}(n))\ \{}
+\DoxyCodeLine{00044\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{throw}\ std::out\_of\_range(std::format(\textcolor{stringliteral}{"{}Not\ enough\ items\ in\ container\ '\{\}'\ to\ pop\ \{\}\ items."{}},\ derived,\ n));}
+\DoxyCodeLine{00045\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00046\ \ \ \ \ \}}
+\DoxyCodeLine{00047\ }
+\DoxyCodeLine{00050\ \ \ \ \ \textcolor{keyword}{constexpr}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_span_containers_1_1internal_1_1_pop_back_trait_a3270221b30d28bd88683e1bb42b0d0d5}{try\_pop\_back}}()\ noexcept\ \{\ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{class_span_containers_1_1internal_1_1_pop_back_trait_a3270221b30d28bd88683e1bb42b0d0d5}{try\_pop\_back}}(1);\ \}}
+\DoxyCodeLine{00051\ }
+\DoxyCodeLine{00055\ \ \ \ \ \textcolor{keyword}{constexpr}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_span_containers_1_1internal_1_1_pop_back_trait_afac010954c1e67a0b5c0908610e3dbc0}{try\_pop\_back}}(size\_type\ n)\ \textcolor{keyword}{noexcept}}
+\DoxyCodeLine{00056\ \ \ \ \ \{}
+\DoxyCodeLine{00057\ \ \ \ \ \ \ \ \ \textcolor{keyword}{auto}\&\ derived\ =\ \textcolor{keyword}{static\_cast<}Derived\&\textcolor{keyword}{>}(*this);}
+\DoxyCodeLine{00058\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (n\ >\ derived.size())\ \{\ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};\ \}}
+\DoxyCodeLine{00059\ \ \ \ \ \ \ \ \ \textcolor{keyword}{static\_cast<}Derived\&\textcolor{keyword}{>}(*this).unsafe\_pop\_back(n);}
+\DoxyCodeLine{00060\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{true};}
+\DoxyCodeLine{00061\ \ \ \ \ \}}
+\DoxyCodeLine{00062\ }
+\DoxyCodeLine{00064\ \ \ \ \ \textcolor{keyword}{constexpr}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_span_containers_1_1internal_1_1_pop_back_trait_a97357b64a3c26d9e5bc4033d90f88cb8}{unsafe\_pop\_back}}()\ noexcept\ \{\ \textcolor{keyword}{static\_cast<}Derived\&\textcolor{keyword}{>}(*this).unsafe\_pop\_back(1);\ \}}
+\DoxyCodeLine{00065\ \};}
+\DoxyCodeLine{00066\ }
+\DoxyCodeLine{00067\ \}}
 
 \end{DoxyCode}

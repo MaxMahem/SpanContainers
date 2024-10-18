@@ -1,0 +1,43 @@
+\doxysection{Index\+Trait.\+h}
+\hypertarget{_index_trait_8h_source}{}\label{_index_trait_8h_source}\index{C:/Users/maxma/source/repos/SpanContainers/lib/internal/Traits/IndexTrait.h@{C:/Users/maxma/source/repos/SpanContainers/lib/internal/Traits/IndexTrait.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00002\ }
+\DoxyCodeLine{00003\ \textcolor{preprocessor}{\#include\ <algorithm>}}
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ <cassert>}}
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ <cstddef>}}
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#include\ <ranges>}}
+\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#include\ <string\_view>}}
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#include\ <type\_traits>}}
+\DoxyCodeLine{00009\ }
+\DoxyCodeLine{00010\ \textcolor{preprocessor}{\#include\ "{}internal/SpanContainer.h"{}}}
+\DoxyCodeLine{00011\ \textcolor{preprocessor}{\#include\ "{}internal/Traits/PushBackTrait.h"{}}}
+\DoxyCodeLine{00012\ \textcolor{preprocessor}{\#include\ "{}internal/Traits/PopBackTrait.h"{}}}
+\DoxyCodeLine{00013\ }
+\DoxyCodeLine{00014\ }
+\DoxyCodeLine{00015\ \textcolor{keyword}{namespace\ }\mbox{\hyperlink{namespace_span_containers_1_1internal}{SpanContainers::internal}}\ \{}
+\DoxyCodeLine{00016\ }
+\DoxyCodeLine{00020\ \textcolor{keyword}{template}\ <\textcolor{keyword}{typename}\ Derived,\ \textcolor{keyword}{typename}\ T>\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_span_containers_1_1internal_1_1_index_trait}{IndexTrait}}\ \{}
+\DoxyCodeLine{00021\ \ \ \ \ \textcolor{keyword}{using\ }reference\ =\ std::span<T>::reference;}
+\DoxyCodeLine{00022\ \ \ \ \ \textcolor{keyword}{using\ }pointer\ \ \ =\ std::span<T>::pointer;}
+\DoxyCodeLine{00023\ \ \ \ \ \textcolor{keyword}{using\ }size\_type\ =\ std::span<T>::size\_type;}
+\DoxyCodeLine{00024\ }
+\DoxyCodeLine{00025\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00030\ \ \ \ \ [[nodiscard]]\ \textcolor{keyword}{constexpr}\ reference\ \mbox{\hyperlink{class_span_containers_1_1internal_1_1_index_trait_ada06eabb7b7e3fc9ec94b0f28b42aed5}{operator[]}}(size\_type\ index)\textcolor{keyword}{\ const}}
+\DoxyCodeLine{00031\ \textcolor{keyword}{\ \ \ \ }\{}
+\DoxyCodeLine{00032\ \ \ \ \ \ \ \ \ \textcolor{keyword}{auto}\ derived\ =\ \textcolor{keyword}{static\_cast<}\textcolor{keyword}{const\ }Derived\&\textcolor{keyword}{>}(*this);}
+\DoxyCodeLine{00033\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (index\ >=\ derived.size())\ \{\ \textcolor{keywordflow}{throw}\ std::out\_of\_range(\textcolor{stringliteral}{"{}Index\ out\ of\ range."{}});\ \}}
+\DoxyCodeLine{00034\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ derived.unsafe\_at(index);}
+\DoxyCodeLine{00035\ \ \ \ \ \}}
+\DoxyCodeLine{00036\ }
+\DoxyCodeLine{00040\ \ \ \ \ [[nodiscard]]\ \textcolor{keyword}{constexpr}\ pointer\ \mbox{\hyperlink{class_span_containers_1_1internal_1_1_index_trait_a2d79a1361803416b85bc31c09a2d013a}{at}}(size\_type\ index)\ \textcolor{keyword}{const}\ \textcolor{keyword}{noexcept}}
+\DoxyCodeLine{00041\ \ \ \ \ \{}
+\DoxyCodeLine{00042\ \ \ \ \ \ \ \ \ \textcolor{keyword}{auto}\ derived\ =\ \textcolor{keyword}{static\_cast<}\textcolor{keyword}{const\ }Derived\&\textcolor{keyword}{>}(*this);}
+\DoxyCodeLine{00043\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ index\ >=\ derived.size()\ ?\ nullptr\ :\ \&derived.unsafe\_at(index);}
+\DoxyCodeLine{00044\ \ \ \ \ \}}
+\DoxyCodeLine{00045\ \};}
+\DoxyCodeLine{00046\ }
+\DoxyCodeLine{00047\ \}}
+
+\end{DoxyCode}

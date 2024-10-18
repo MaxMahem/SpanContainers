@@ -11,8 +11,19 @@ Inheritance diagram for Span\+Containers\+::internal\+::Pop\+Back\+Trait\texorpd
 \item 
 constexpr reference \mbox{\hyperlink{class_span_containers_1_1internal_1_1_pop_back_trait_a9a1baefbc00e928dc6a2051895457e4d}{back}} () const
 \begin{DoxyCompactList}\small\item\em Gets a refrence to the item at the back of the container. \end{DoxyCompactList}\item 
+constexpr pointer \mbox{\hyperlink{class_span_containers_1_1internal_1_1_pop_back_trait_a1039675e077b05e71a59dd9318d44026}{try\+\_\+back}} () const noexcept
+\begin{DoxyCompactList}\small\item\em Gets a pointer to the item at the back of the container. \end{DoxyCompactList}\item 
 constexpr void \mbox{\hyperlink{class_span_containers_1_1internal_1_1_pop_back_trait_af3d444f05e58c78c10ca284080e31af7}{pop\+\_\+back}} ()
-\begin{DoxyCompactList}\small\item\em Removes the item from the back of the container. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Removes an item from the back of the container. \end{DoxyCompactList}\item 
+constexpr void \mbox{\hyperlink{class_span_containers_1_1internal_1_1_pop_back_trait_afbec172bc1e718716e4e2392b47e9abc}{pop\+\_\+back}} (size\+\_\+type n)
+\begin{DoxyCompactList}\small\item\em Removes n items from the back of the container. \end{DoxyCompactList}\item 
+constexpr bool \mbox{\hyperlink{class_span_containers_1_1internal_1_1_pop_back_trait_a3270221b30d28bd88683e1bb42b0d0d5}{try\+\_\+pop\+\_\+back}} () noexcept
+\begin{DoxyCompactList}\small\item\em Tries to remove an item from the back of the container. \end{DoxyCompactList}\item 
+constexpr bool \mbox{\hyperlink{class_span_containers_1_1internal_1_1_pop_back_trait_afac010954c1e67a0b5c0908610e3dbc0}{try\+\_\+pop\+\_\+back}} (size\+\_\+type n) noexcept
+\begin{DoxyCompactList}\small\item\em Tries to remove n items from the back of the container. \end{DoxyCompactList}\item 
+\Hypertarget{class_span_containers_1_1internal_1_1_pop_back_trait_a97357b64a3c26d9e5bc4033d90f88cb8}\label{class_span_containers_1_1internal_1_1_pop_back_trait_a97357b64a3c26d9e5bc4033d90f88cb8} 
+constexpr void {\bfseries unsafe\+\_\+pop\+\_\+back} () noexcept
+\begin{DoxyCompactList}\small\item\em Removes an item from the back of the container without a bounds check. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
 \doxysubsection{Member Function Documentation}
@@ -37,22 +48,90 @@ A refrence to the item at the back of the container.
 \end{DoxyExceptions}
 \Hypertarget{class_span_containers_1_1internal_1_1_pop_back_trait_af3d444f05e58c78c10ca284080e31af7}\index{SpanContainers::internal::PopBackTrait$<$ Derived, T $>$@{SpanContainers::internal::PopBackTrait$<$ Derived, T $>$}!pop\_back@{pop\_back}}
 \index{pop\_back@{pop\_back}!SpanContainers::internal::PopBackTrait$<$ Derived, T $>$@{SpanContainers::internal::PopBackTrait$<$ Derived, T $>$}}
-\doxysubsubsection{\texorpdfstring{pop\_back()}{pop\_back()}}
+\doxysubsubsection{\texorpdfstring{pop\_back()}{pop\_back()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
 {\footnotesize\ttfamily \label{class_span_containers_1_1internal_1_1_pop_back_trait_af3d444f05e58c78c10ca284080e31af7} 
 template$<$typename Derived , typename T $>$ \\
 void \mbox{\hyperlink{class_span_containers_1_1internal_1_1_pop_back_trait}{Span\+Containers\+::internal\+::\+Pop\+Back\+Trait}}$<$ Derived, T $>$\+::pop\+\_\+back (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [constexpr]}}
 
 
 
-Removes the item from the back of the container. 
+Removes an item from the back of the container. 
 
+
+\begin{DoxyParams}{Parameters}
+{\em The} & number of items to remove from the container. \\
+\hline
+\end{DoxyParams}
 
 \begin{DoxyExceptions}{Exceptions}
 {\em \doxylink{class_span_containers_1_1_empty_container_error}{Empty\+Container\+Error}} & if the container is empty \\
 \hline
 \end{DoxyExceptions}
+\Hypertarget{class_span_containers_1_1internal_1_1_pop_back_trait_afbec172bc1e718716e4e2392b47e9abc}\index{SpanContainers::internal::PopBackTrait$<$ Derived, T $>$@{SpanContainers::internal::PopBackTrait$<$ Derived, T $>$}!pop\_back@{pop\_back}}
+\index{pop\_back@{pop\_back}!SpanContainers::internal::PopBackTrait$<$ Derived, T $>$@{SpanContainers::internal::PopBackTrait$<$ Derived, T $>$}}
+\doxysubsubsection{\texorpdfstring{pop\_back()}{pop\_back()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily \label{class_span_containers_1_1internal_1_1_pop_back_trait_afbec172bc1e718716e4e2392b47e9abc} 
+template$<$typename Derived , typename T $>$ \\
+void \mbox{\hyperlink{class_span_containers_1_1internal_1_1_pop_back_trait}{Span\+Containers\+::internal\+::\+Pop\+Back\+Trait}}$<$ Derived, T $>$\+::pop\+\_\+back (\begin{DoxyParamCaption}\item[{size\+\_\+type}]{n}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [constexpr]}}
+
+
+
+Removes n items from the back of the container. 
+
+
+\begin{DoxyExceptions}{Exceptions}
+{\em std\+::out\+\_\+of\+\_\+range} & if there are less than n items in the container. \\
+\hline
+\end{DoxyExceptions}
+\Hypertarget{class_span_containers_1_1internal_1_1_pop_back_trait_a1039675e077b05e71a59dd9318d44026}\index{SpanContainers::internal::PopBackTrait$<$ Derived, T $>$@{SpanContainers::internal::PopBackTrait$<$ Derived, T $>$}!try\_back@{try\_back}}
+\index{try\_back@{try\_back}!SpanContainers::internal::PopBackTrait$<$ Derived, T $>$@{SpanContainers::internal::PopBackTrait$<$ Derived, T $>$}}
+\doxysubsubsection{\texorpdfstring{try\_back()}{try\_back()}}
+{\footnotesize\ttfamily \label{class_span_containers_1_1internal_1_1_pop_back_trait_a1039675e077b05e71a59dd9318d44026} 
+template$<$typename Derived , typename T $>$ \\
+pointer \mbox{\hyperlink{class_span_containers_1_1internal_1_1_pop_back_trait}{Span\+Containers\+::internal\+::\+Pop\+Back\+Trait}}$<$ Derived, T $>$\+::try\+\_\+back (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [nodiscard]}, {\ttfamily [constexpr]}, {\ttfamily [noexcept]}}
+
+
+
+Gets a pointer to the item at the back of the container. 
+
+\begin{DoxyReturn}{Returns}
+A pointer to the item at the back of the container or nullptr if empty. 
+\end{DoxyReturn}
+\Hypertarget{class_span_containers_1_1internal_1_1_pop_back_trait_a3270221b30d28bd88683e1bb42b0d0d5}\index{SpanContainers::internal::PopBackTrait$<$ Derived, T $>$@{SpanContainers::internal::PopBackTrait$<$ Derived, T $>$}!try\_pop\_back@{try\_pop\_back}}
+\index{try\_pop\_back@{try\_pop\_back}!SpanContainers::internal::PopBackTrait$<$ Derived, T $>$@{SpanContainers::internal::PopBackTrait$<$ Derived, T $>$}}
+\doxysubsubsection{\texorpdfstring{try\_pop\_back()}{try\_pop\_back()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily \label{class_span_containers_1_1internal_1_1_pop_back_trait_a3270221b30d28bd88683e1bb42b0d0d5} 
+template$<$typename Derived , typename T $>$ \\
+bool \mbox{\hyperlink{class_span_containers_1_1internal_1_1_pop_back_trait}{Span\+Containers\+::internal\+::\+Pop\+Back\+Trait}}$<$ Derived, T $>$\+::try\+\_\+pop\+\_\+back (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [constexpr]}, {\ttfamily [noexcept]}}
+
+
+
+Tries to remove an item from the back of the container. 
+
+\begin{DoxyReturn}{Returns}
+true if an item was removed; false if the stack is empty. 
+\end{DoxyReturn}
+\Hypertarget{class_span_containers_1_1internal_1_1_pop_back_trait_afac010954c1e67a0b5c0908610e3dbc0}\index{SpanContainers::internal::PopBackTrait$<$ Derived, T $>$@{SpanContainers::internal::PopBackTrait$<$ Derived, T $>$}!try\_pop\_back@{try\_pop\_back}}
+\index{try\_pop\_back@{try\_pop\_back}!SpanContainers::internal::PopBackTrait$<$ Derived, T $>$@{SpanContainers::internal::PopBackTrait$<$ Derived, T $>$}}
+\doxysubsubsection{\texorpdfstring{try\_pop\_back()}{try\_pop\_back()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily \label{class_span_containers_1_1internal_1_1_pop_back_trait_afac010954c1e67a0b5c0908610e3dbc0} 
+template$<$typename Derived , typename T $>$ \\
+bool \mbox{\hyperlink{class_span_containers_1_1internal_1_1_pop_back_trait}{Span\+Containers\+::internal\+::\+Pop\+Back\+Trait}}$<$ Derived, T $>$\+::try\+\_\+pop\+\_\+back (\begin{DoxyParamCaption}\item[{size\+\_\+type}]{n}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [constexpr]}, {\ttfamily [noexcept]}}
+
+
+
+Tries to remove n items from the back of the container. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em The} & number of items to remove from the container. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true if n items were removed; false if n is greater than size. 
+\end{DoxyReturn}
 
 
 The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
 \item 
-C\+:/\+Users/maxma/source/repos/\+Span\+Containers/lib/internal/\+Push\+Pop\+Traits/Pop\+Back\+Trait.\+h\end{DoxyCompactItemize}
+C\+:/\+Users/maxma/source/repos/\+Span\+Containers/lib/internal/\+Traits/Pop\+Back\+Trait.\+h\end{DoxyCompactItemize}

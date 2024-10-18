@@ -6,8 +6,8 @@
 #include <gmock/gmock.h>
 #include <gtest/gtest.h>
 
-#include "../PushPopFuncs/PushBackFuncs.h"
-#include "../PushPopFuncs/PopBackFuncs.h"
+#include "../ContainerFuncs/PushBackFuncs.h"
+#include "../ContainerFuncs/PopBackFuncs.h"
 #include "PushPopTestFixture.h"
 
 namespace SpanContainers::Tests {

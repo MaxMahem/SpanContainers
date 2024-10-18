@@ -107,13 +107,18 @@ Classes</h2></td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_span_containers_1_1internal_1_1_heap_array.html">HeapArray</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">helper struct for creating heap-allocated std::arrays.  <a href="struct_span_containers_1_1internal_1_1_heap_array.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_span_containers_1_1internal_1_1_index_trait.html">IndexTrait</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Represents the ability of a container to access elements via index.  <a href="class_span_containers_1_1internal_1_1_index_trait.html#details">More...</a><br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_span_containers_1_1internal_1_1_pop_back_trait.html">PopBackTrait</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_span_containers_1_1internal_1_1_pop_front_trait.html">PopFrontTrait</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_span_containers_1_1internal_1_1_push_back_trait.html">PushBackTrait</a></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_span_containers_1_1internal_1_1_push_back_trait.html">PushBackTrait</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_span_containers_1_1internal_1_1_push_front_trait.html">PushFrontTrait</a></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_span_containers_1_1internal_1_1_push_front_trait.html">PushFrontTrait</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_span_containers_1_1internal_1_1_push_straight_trait.html">PushStraightTrait</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_span_containers_1_1internal_1_1_span_container.html">SpanContainer</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Base type for Span containers, holding common behavior.  <a href="class_span_containers_1_1internal_1_1_span_container.html#details">More...</a><br /></td></tr>
@@ -154,7 +159,7 @@ struct SpanContainers::internal::BufferSelector&lt; T, Extent &gt;</div><p>helpe
 </div><table class="fieldtable">
 <tr><th colspan="3">Class Members</th></tr>
 <tr><td class="fieldtype">
-<a id="a232c8115a7ff239803cc9a01be984904" name="a232c8115a7ff239803cc9a01be984904"></a>typedef conditional_t&lt; Extent *sizeof(T)&lt;=MaxStackSize, array&lt; T, Extent &gt;, <a class="el" href="struct_span_containers_1_1internal_1_1_heap_array.html">HeapArray</a>&lt; T, Extent &gt; &gt;</td>
+<a id="a73eeed698c30a0e52d077ee4217d6612" name="a73eeed698c30a0e52d077ee4217d6612"></a>typedef conditional_t&lt; Extent *sizeof(T)&lt;=MaxStackSize, array&lt; T, Extent &gt;, <a class="el" href="struct_span_containers_1_1internal_1_1_heap_array.html">HeapArray</a>&lt; T, Extent &gt; &gt;</td>
 <td class="fieldname">
 BufferType</td>
 <td class="fielddoc">

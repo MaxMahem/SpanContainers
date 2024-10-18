@@ -1,0 +1,83 @@
+\doxysection{Span\+Containers\+::internal\+::Index\+Trait\texorpdfstring{$<$}{<} Derived, T \texorpdfstring{$>$}{>} Class Template Reference}
+\hypertarget{class_span_containers_1_1internal_1_1_index_trait}{}\label{class_span_containers_1_1internal_1_1_index_trait}\index{SpanContainers::internal::IndexTrait$<$ Derived, T $>$@{SpanContainers::internal::IndexTrait$<$ Derived, T $>$}}
+
+
+Represents the ability of a container to access elements via index.  
+
+
+
+
+{\ttfamily \#include $<$Index\+Trait.\+h$>$}
+
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+constexpr reference \mbox{\hyperlink{class_span_containers_1_1internal_1_1_index_trait_ada06eabb7b7e3fc9ec94b0f28b42aed5}{operator\mbox{[}$\,$\mbox{]}}} (size\+\_\+type index) const
+\begin{DoxyCompactList}\small\item\em Gets a reference to the element at index. \end{DoxyCompactList}\item 
+constexpr pointer \mbox{\hyperlink{class_span_containers_1_1internal_1_1_index_trait_a2d79a1361803416b85bc31c09a2d013a}{at}} (size\+\_\+type index) const noexcept
+\begin{DoxyCompactList}\small\item\em Gets a pointer to the element at index. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\subsubsection*{template$<$typename Derived, typename T$>$\newline
+class Span\+Containers\+::internal\+::\+Index\+Trait$<$ Derived, T $>$}
+Represents the ability of a container to access elements via index. 
+
+
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Derived} & The container type with this trait. \\
+\hline
+{\em T} & The element type of the container. \\
+\hline
+\end{DoxyTemplParams}
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_span_containers_1_1internal_1_1_index_trait_a2d79a1361803416b85bc31c09a2d013a}\index{SpanContainers::internal::IndexTrait$<$ Derived, T $>$@{SpanContainers::internal::IndexTrait$<$ Derived, T $>$}!at@{at}}
+\index{at@{at}!SpanContainers::internal::IndexTrait$<$ Derived, T $>$@{SpanContainers::internal::IndexTrait$<$ Derived, T $>$}}
+\doxysubsubsection{\texorpdfstring{at()}{at()}}
+{\footnotesize\ttfamily \label{class_span_containers_1_1internal_1_1_index_trait_a2d79a1361803416b85bc31c09a2d013a} 
+template$<$typename Derived , typename T $>$ \\
+pointer \mbox{\hyperlink{class_span_containers_1_1internal_1_1_index_trait}{Span\+Containers\+::internal\+::\+Index\+Trait}}$<$ Derived, T $>$\+::at (\begin{DoxyParamCaption}\item[{size\+\_\+type}]{index}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [nodiscard]}, {\ttfamily [constexpr]}, {\ttfamily [noexcept]}}
+
+
+
+Gets a pointer to the element at index. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em index} & The index of the element to get. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A pointer to the element at index, or nullptr if index is out of bounds. 
+\end{DoxyReturn}
+\Hypertarget{class_span_containers_1_1internal_1_1_index_trait_ada06eabb7b7e3fc9ec94b0f28b42aed5}\index{SpanContainers::internal::IndexTrait$<$ Derived, T $>$@{SpanContainers::internal::IndexTrait$<$ Derived, T $>$}!operator\mbox{[}\mbox{]}@{operator[]}}
+\index{operator\mbox{[}\mbox{]}@{operator[]}!SpanContainers::internal::IndexTrait$<$ Derived, T $>$@{SpanContainers::internal::IndexTrait$<$ Derived, T $>$}}
+\doxysubsubsection{\texorpdfstring{operator[]()}{operator[]()}}
+{\footnotesize\ttfamily \label{class_span_containers_1_1internal_1_1_index_trait_ada06eabb7b7e3fc9ec94b0f28b42aed5} 
+template$<$typename Derived , typename T $>$ \\
+reference \mbox{\hyperlink{class_span_containers_1_1internal_1_1_index_trait}{Span\+Containers\+::internal\+::\+Index\+Trait}}$<$ Derived, T $>$\+::operator\mbox{[}$\,$\mbox{]} (\begin{DoxyParamCaption}\item[{size\+\_\+type}]{index}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [nodiscard]}, {\ttfamily [constexpr]}}
+
+
+
+Gets a reference to the element at index. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em index} & The index of the element to get. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A reference to the element at index. 
+\end{DoxyReturn}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em std\+::out\+\_\+of\+\_\+range} & If index is out of range. \\
+\hline
+\end{DoxyExceptions}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/\+Users/maxma/source/repos/\+Span\+Containers/lib/internal/\+Traits/Index\+Trait.\+h\end{DoxyCompactItemize}

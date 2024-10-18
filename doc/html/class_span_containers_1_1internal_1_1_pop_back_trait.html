@@ -110,9 +110,25 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a9a1baefbc00e928dc6a2051895457e4d" id="r_a9a1baefbc00e928dc6a2051895457e4d"><td class="memItemLeft" align="right" valign="top">constexpr reference&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a9a1baefbc00e928dc6a2051895457e4d">back</a> () const</td></tr>
 <tr class="memdesc:a9a1baefbc00e928dc6a2051895457e4d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets a refrence to the item at the back of the container.  <br /></td></tr>
 <tr class="separator:a9a1baefbc00e928dc6a2051895457e4d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1039675e077b05e71a59dd9318d44026" id="r_a1039675e077b05e71a59dd9318d44026"><td class="memItemLeft" align="right" valign="top">constexpr pointer&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a1039675e077b05e71a59dd9318d44026">try_back</a> () const noexcept</td></tr>
+<tr class="memdesc:a1039675e077b05e71a59dd9318d44026"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets a pointer to the item at the back of the container.  <br /></td></tr>
+<tr class="separator:a1039675e077b05e71a59dd9318d44026"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af3d444f05e58c78c10ca284080e31af7" id="r_af3d444f05e58c78c10ca284080e31af7"><td class="memItemLeft" align="right" valign="top">constexpr void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#af3d444f05e58c78c10ca284080e31af7">pop_back</a> ()</td></tr>
-<tr class="memdesc:af3d444f05e58c78c10ca284080e31af7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Removes the item from the back of the container.  <br /></td></tr>
+<tr class="memdesc:af3d444f05e58c78c10ca284080e31af7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Removes an item from the back of the container.  <br /></td></tr>
 <tr class="separator:af3d444f05e58c78c10ca284080e31af7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afbec172bc1e718716e4e2392b47e9abc" id="r_afbec172bc1e718716e4e2392b47e9abc"><td class="memItemLeft" align="right" valign="top">constexpr void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#afbec172bc1e718716e4e2392b47e9abc">pop_back</a> (size_type n)</td></tr>
+<tr class="memdesc:afbec172bc1e718716e4e2392b47e9abc"><td class="mdescLeft">&#160;</td><td class="mdescRight">Removes n items from the back of the container.  <br /></td></tr>
+<tr class="separator:afbec172bc1e718716e4e2392b47e9abc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3270221b30d28bd88683e1bb42b0d0d5" id="r_a3270221b30d28bd88683e1bb42b0d0d5"><td class="memItemLeft" align="right" valign="top">constexpr bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a3270221b30d28bd88683e1bb42b0d0d5">try_pop_back</a> () noexcept</td></tr>
+<tr class="memdesc:a3270221b30d28bd88683e1bb42b0d0d5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Tries to remove an item from the back of the container.  <br /></td></tr>
+<tr class="separator:a3270221b30d28bd88683e1bb42b0d0d5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afac010954c1e67a0b5c0908610e3dbc0" id="r_afac010954c1e67a0b5c0908610e3dbc0"><td class="memItemLeft" align="right" valign="top">constexpr bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#afac010954c1e67a0b5c0908610e3dbc0">try_pop_back</a> (size_type n) noexcept</td></tr>
+<tr class="memdesc:afac010954c1e67a0b5c0908610e3dbc0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Tries to remove n items from the back of the container.  <br /></td></tr>
+<tr class="separator:afac010954c1e67a0b5c0908610e3dbc0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a97357b64a3c26d9e5bc4033d90f88cb8" id="r_a97357b64a3c26d9e5bc4033d90f88cb8"><td class="memItemLeft" align="right" valign="top"><a id="a97357b64a3c26d9e5bc4033d90f88cb8" name="a97357b64a3c26d9e5bc4033d90f88cb8"></a>
+constexpr void&#160;</td><td class="memItemRight" valign="bottom"><b>unsafe_pop_back</b> () noexcept</td></tr>
+<tr class="memdesc:a97357b64a3c26d9e5bc4033d90f88cb8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Removes an item from the back of the container without a bounds check. <br /></td></tr>
+<tr class="separator:a97357b64a3c26d9e5bc4033d90f88cb8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Member Function Documentation</h2>
 <a id="a9a1baefbc00e928dc6a2051895457e4d" name="a9a1baefbc00e928dc6a2051895457e4d"></a>
@@ -152,7 +168,7 @@ template&lt;typename Derived , typename T &gt; </div>
 </div>
 </div>
 <a id="af3d444f05e58c78c10ca284080e31af7" name="af3d444f05e58c78c10ca284080e31af7"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#af3d444f05e58c78c10ca284080e31af7">&#9670;&#160;</a></span>pop_back()</h2>
+<h2 class="memtitle"><span class="permalink"><a href="#af3d444f05e58c78c10ca284080e31af7">&#9670;&#160;</a></span>pop_back() <span class="overload">[1/2]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -176,7 +192,13 @@ template&lt;typename Derived , typename T &gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p>Removes the item from the back of the container. </p>
+<p>Removes an item from the back of the container. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">The</td><td>number of items to remove from the container. </td></tr>
+  </table>
+  </dd>
+</dl>
 <dl class="exception"><dt>Exceptions</dt><dd>
   <table class="exception">
     <tr><td class="paramname"><a class="el" href="class_span_containers_1_1_empty_container_error.html" title="Represents an error for an operation that would be invalid due to an empty container.">EmptyContainerError</a></td><td>if the container is empty </td></tr>
@@ -186,8 +208,139 @@ template&lt;typename Derived , typename T &gt; </div>
 
 </div>
 </div>
+<a id="afbec172bc1e718716e4e2392b47e9abc" name="afbec172bc1e718716e4e2392b47e9abc"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#afbec172bc1e718716e4e2392b47e9abc">&#9670;&#160;</a></span>pop_back() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename Derived , typename T &gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void <a class="el" href="class_span_containers_1_1internal_1_1_pop_back_trait.html">SpanContainers::internal::PopBackTrait</a>&lt; Derived, T &gt;::pop_back </td>
+          <td>(</td>
+          <td class="paramtype">size_type</td>          <td class="paramname"><span class="paramname"><em>n</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">constexpr</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Removes n items from the back of the container. </p>
+<dl class="exception"><dt>Exceptions</dt><dd>
+  <table class="exception">
+    <tr><td class="paramname">std::out_of_range</td><td>if there are less than n items in the container. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a1039675e077b05e71a59dd9318d44026" name="a1039675e077b05e71a59dd9318d44026"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1039675e077b05e71a59dd9318d44026">&#9670;&#160;</a></span>try_back()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename Derived , typename T &gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">pointer <a class="el" href="class_span_containers_1_1internal_1_1_pop_back_trait.html">SpanContainers::internal::PopBackTrait</a>&lt; Derived, T &gt;::try_back </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">nodiscard</span><span class="mlabel">constexpr</span><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Gets a pointer to the item at the back of the container. </p>
+<dl class="section return"><dt>Returns</dt><dd>A pointer to the item at the back of the container or nullptr if empty. </dd></dl>
+
+</div>
+</div>
+<a id="a3270221b30d28bd88683e1bb42b0d0d5" name="a3270221b30d28bd88683e1bb42b0d0d5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3270221b30d28bd88683e1bb42b0d0d5">&#9670;&#160;</a></span>try_pop_back() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename Derived , typename T &gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool <a class="el" href="class_span_containers_1_1internal_1_1_pop_back_trait.html">SpanContainers::internal::PopBackTrait</a>&lt; Derived, T &gt;::try_pop_back </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">constexpr</span><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Tries to remove an item from the back of the container. </p>
+<dl class="section return"><dt>Returns</dt><dd>true if an item was removed; false if the stack is empty. </dd></dl>
+
+</div>
+</div>
+<a id="afac010954c1e67a0b5c0908610e3dbc0" name="afac010954c1e67a0b5c0908610e3dbc0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#afac010954c1e67a0b5c0908610e3dbc0">&#9670;&#160;</a></span>try_pop_back() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename Derived , typename T &gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool <a class="el" href="class_span_containers_1_1internal_1_1_pop_back_trait.html">SpanContainers::internal::PopBackTrait</a>&lt; Derived, T &gt;::try_pop_back </td>
+          <td>(</td>
+          <td class="paramtype">size_type</td>          <td class="paramname"><span class="paramname"><em>n</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">constexpr</span><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Tries to remove n items from the back of the container. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">The</td><td>number of items to remove from the container. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>true if n items were removed; false if n is greater than size. </dd></dl>
+
+</div>
+</div>
 <hr/>The documentation for this class was generated from the following file:<ul>
-<li>C:/Users/maxma/source/repos/SpanContainers/lib/internal/PushPopTraits/<a class="el" href="_pop_back_trait_8h_source.html">PopBackTrait.h</a></li>
+<li>C:/Users/maxma/source/repos/SpanContainers/lib/internal/Traits/<a class="el" href="_pop_back_trait_8h_source.html">PopBackTrait.h</a></li>
 </ul>
 </div><!-- contents -->
 <!-- start footer part -->

@@ -1,0 +1,68 @@
+\doxysection{Span\+Containers\+::internal\+::Push\+Front\+Trait\texorpdfstring{$<$}{<} Derived, T \texorpdfstring{$>$}{>} Struct Template Reference}
+\hypertarget{struct_span_containers_1_1internal_1_1_push_front_trait}{}\label{struct_span_containers_1_1internal_1_1_push_front_trait}\index{SpanContainers::internal::PushFrontTrait$<$ Derived, T $>$@{SpanContainers::internal::PushFrontTrait$<$ Derived, T $>$}}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+{\footnotesize template$<$typename U $>$ \newline
+requires std\+::assignable\+\_\+from$<$T\&, U\&\&$>$}\\constexpr void \mbox{\hyperlink{struct_span_containers_1_1internal_1_1_push_front_trait_a15e3f53e4c19cf6cdbbcfe3e24210d97}{push\+\_\+front}} (U \&\&value)
+\begin{DoxyCompactList}\small\item\em Assigns value to the front of the container. \end{DoxyCompactList}\item 
+{\footnotesize template$<$typename U $>$ \newline
+requires std\+::assignable\+\_\+from$<$T\&, U\&\&$>$}\\constexpr bool \mbox{\hyperlink{struct_span_containers_1_1internal_1_1_push_front_trait_a519d4ddae9ccac8cccf22277c6998389}{try\+\_\+push\+\_\+front}} (U \&\&value) noexcept(std\+::is\+\_\+nothrow\+\_\+assignable$<$ T \&, U \&\& $>$\+::value)
+\begin{DoxyCompactList}\small\item\em Tries to assign value at the front of the container. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{struct_span_containers_1_1internal_1_1_push_front_trait_a15e3f53e4c19cf6cdbbcfe3e24210d97}\index{SpanContainers::internal::PushFrontTrait$<$ Derived, T $>$@{SpanContainers::internal::PushFrontTrait$<$ Derived, T $>$}!push\_front@{push\_front}}
+\index{push\_front@{push\_front}!SpanContainers::internal::PushFrontTrait$<$ Derived, T $>$@{SpanContainers::internal::PushFrontTrait$<$ Derived, T $>$}}
+\doxysubsubsection{\texorpdfstring{push\_front()}{push\_front()}}
+{\footnotesize\ttfamily \label{struct_span_containers_1_1internal_1_1_push_front_trait_a15e3f53e4c19cf6cdbbcfe3e24210d97} 
+template$<$typename Derived , typename T $>$ \\
+template$<$typename U $>$ \newline
+requires std\+::assignable\+\_\+from$<$T\&, U\&\&$>$\\
+void \mbox{\hyperlink{struct_span_containers_1_1internal_1_1_push_front_trait}{Span\+Containers\+::internal\+::\+Push\+Front\+Trait}}$<$ Derived, T $>$\+::push\+\_\+front (\begin{DoxyParamCaption}\item[{U \&\&}]{value}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [constexpr]}}
+
+
+
+Assigns value to the front of the container. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em value} & The item to place at the front of the container. \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em \doxylink{class_span_containers_1_1_full_container_error}{Full\+Container\+Error}} & if the container capacity is exceeded \\
+\hline
+\end{DoxyExceptions}
+\Hypertarget{struct_span_containers_1_1internal_1_1_push_front_trait_a519d4ddae9ccac8cccf22277c6998389}\index{SpanContainers::internal::PushFrontTrait$<$ Derived, T $>$@{SpanContainers::internal::PushFrontTrait$<$ Derived, T $>$}!try\_push\_front@{try\_push\_front}}
+\index{try\_push\_front@{try\_push\_front}!SpanContainers::internal::PushFrontTrait$<$ Derived, T $>$@{SpanContainers::internal::PushFrontTrait$<$ Derived, T $>$}}
+\doxysubsubsection{\texorpdfstring{try\_push\_front()}{try\_push\_front()}}
+{\footnotesize\ttfamily \label{struct_span_containers_1_1internal_1_1_push_front_trait_a519d4ddae9ccac8cccf22277c6998389} 
+template$<$typename Derived , typename T $>$ \\
+template$<$typename U $>$ \newline
+requires std\+::assignable\+\_\+from$<$T\&, U\&\&$>$\\
+bool \mbox{\hyperlink{struct_span_containers_1_1internal_1_1_push_front_trait}{Span\+Containers\+::internal\+::\+Push\+Front\+Trait}}$<$ Derived, T $>$\+::try\+\_\+push\+\_\+front (\begin{DoxyParamCaption}\item[{U \&\&}]{value}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [constexpr]}, {\ttfamily [noexcept]}}
+
+
+
+Tries to assign value at the front of the container. 
+
+
+\begin{DoxyTemplParams}{Template Parameters}
+{\em U} & the type of the value to assign to the container. Must be assignable to T. \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}{Parameters}
+{\em value} & The item to move to the front of the container. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true if value was placed at the front of the container; false otherwise. 
+\end{DoxyReturn}
+
+
+The documentation for this struct was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/\+Users/maxma/source/repos/\+Span\+Containers/lib/internal/\+Traits/Push\+Front\+Trait.\+h\end{DoxyCompactItemize}

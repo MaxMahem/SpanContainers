@@ -1,11 +1,14 @@
 # SpanContainers
 
-Provides a set of fixed length containers adapaters wrapping `std::span`, specifically:
+Provides a set of fixed length containers wrapping `std::span`, specifically:
 
-* SpanQueue - provides FIFO access, via `push_back` and `front`/`pop_front`
-* SpanStack - provides LIFO access, via `push_back` and `back`/`pop_back`
-* SpanDequeue - provides FIFO and LIFO access, with push and pop access from both ends.
-* SpanHeap - provdes sorted retrival via undirected `push` and `back`/`pop_back`
+* SpanQueue - a circular buffer providing FIFO access, via `push_back` and `front`/`pop_front`, 
+and indexed access via `at` and subscript.
+* SpanStack - a linear buffer providng LIFO access, via `push_back` and `back`/`pop_back`, 
+and indexed access via `at` and subscript.
+* SpanDequeue - a circular buffer providing FIFO and LIFO access, with push and pop access from both ends
+and indexed access via `at` and subscript.
+* SpanHeap - a heap provding sorted retrival via undirected `push` and `back`/`pop_back`. No index access.
 
 Requiries C++20.
 

@@ -6,7 +6,8 @@
 #include "Errors/FullContainerError.h"
 
 #include "../BaseTests.h"
-#include "../PushPopFuncs/PushFrontFuncs.h"
+#include "../ContainerFuncs/IndexFuncs.h"
+#include "../ContainerFuncs/PushFrontFuncs.h"
 
 namespace SpanContainers::Tests {
 
@@ -15,7 +16,8 @@ using namespace SpanContainers;
 /// @brief Test fixture for testing Span containers with push front ability
 /// @tparam Container the type of the container.
 template <typename Container>
-class PushFrontTests : public PushTestFixture<Container, std::front_insert_iterator<Container>>, public PushFrontFuncs<Container> { };
+class PushFrontTests : public PushTestFixture<Container, std::front_insert_iterator<Container>>,
+                       public PushFrontFuncs<Container> { };
 
 TYPED_TEST_SUITE_P(PushFrontTests);
 

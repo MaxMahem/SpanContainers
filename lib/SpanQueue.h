@@ -8,8 +8,9 @@
 #include <type_traits>
 
 #include "internal/SpanContainer.h"
-#include "internal/PushPopTraits/PushBackTrait.h"
-#include "internal/PushPopTraits/PopFrontTrait.h"
+#include "internal/Traits/IndexTrait.h"
+#include "internal/Traits/PushBackTrait.h"
+#include "internal/Traits/PopFrontTrait.h"
 
 
 namespace SpanContainers {
@@ -19,6 +20,7 @@ namespace SpanContainers {
 /// @tparam Extent The size/maximum number of elements in the container.
 template <typename T, std::size_t Extent>
 class SpanQueue : public internal::SpanContainer<T, Extent>,
+                  public internal::IndexTrait<SpanQueue<T, Extent>, T>,
                   public internal::PushBackTrait<SpanQueue<T, Extent>, T>,
                   public internal::PopFrontTrait<SpanQueue<T, Extent>, T>
 {
@@ -52,6 +54,15 @@ public:
     {
         assert(count > 0 && "Container is empty.");
         return span[read]; 
+    }
+
+    /// @brief Gets a reference to the element at index, without a bounds check.
+    /// @param index The index of the element to get.
+    /// @return A reference to the element at index.
+    [[nodiscard]] constexpr reference unsafe_at(size_type index) const noexcept
+    {
+        assert(index < count && "Index out of range.");
+        return span[(read + index) % Extent];
     }
 
     /// @brief Assigns value to the back of the container, without bounds checks.

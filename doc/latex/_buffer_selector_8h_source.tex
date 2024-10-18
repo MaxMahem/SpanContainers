@@ -12,13 +12,10 @@
 \DoxyCodeLine{00012\ \textcolor{keyword}{template}\ <\textcolor{keyword}{typename}\ T,\ std::\textcolor{keywordtype}{size\_t}\ Extent>}
 \DoxyCodeLine{00013\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{namespace_span_containers_1_1internal_struct_span_containers_1_1internal_1_1_buffer_selector}{BufferSelector}}\ \{}
 \DoxyCodeLine{00016\ \ \ \ \ \textcolor{keyword}{template}\ <std::\textcolor{keywordtype}{size\_t}\ MaxStackSize\ =\ 256>}
-\DoxyCodeLine{00017\ \ \ \ \ \textcolor{keyword}{using\ }\mbox{\hyperlink{namespace_span_containers_1_1internal_a232c8115a7ff239803cc9a01be984904}{BufferType}}\ =\ std::conditional\_t<}
-\DoxyCodeLine{00018\ \ \ \ \ \ \ \ \ Extent\ *\ \textcolor{keyword}{sizeof}(T)\ <=\ MaxStackSize,}
-\DoxyCodeLine{00019\ \ \ \ \ \ \ \ \ std::array<T,\ Extent>,}
-\DoxyCodeLine{00020\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{struct_span_containers_1_1internal_1_1_heap_array}{internal::HeapArray<T,\ Extent>}}}
-\DoxyCodeLine{00021\ \ \ \ \ >;}
-\DoxyCodeLine{00022\ \};}
-\DoxyCodeLine{00023\ }
-\DoxyCodeLine{00024\ \}}
+\DoxyCodeLine{00017\ \ \ \ \ \textcolor{keyword}{using\ }\mbox{\hyperlink{namespace_span_containers_1_1internal_a73eeed698c30a0e52d077ee4217d6612}{BufferType}}\ =\ std::conditional\_t<Extent\ *\ \textcolor{keyword}{sizeof}(T)\ <=\ MaxStackSize,}
+\DoxyCodeLine{00018\ \ \ \ \ \ \ \ \ std::array<T,\ Extent>,\ \mbox{\hyperlink{struct_span_containers_1_1internal_1_1_heap_array}{internal::HeapArray<T,\ Extent>}}>;}
+\DoxyCodeLine{00019\ \};}
+\DoxyCodeLine{00020\ }
+\DoxyCodeLine{00021\ \}}
 
 \end{DoxyCode}

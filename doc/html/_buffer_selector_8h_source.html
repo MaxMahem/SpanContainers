@@ -104,20 +104,17 @@ $(function(){ initResizable(false); });
 <div class="foldopen" id="foldopen00013" data-start="{" data-end="};">
 <div class="line"><a id="l00013" name="l00013"></a><span class="lineno"><a class="line" href="namespace_span_containers_1_1internal.html">   13</a></span><span class="keyword">struct </span><a class="code hl_struct" href="namespace_span_containers_1_1internal.html#struct_span_containers_1_1internal_1_1_buffer_selector">BufferSelector</a> {</div>
 <div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span>    <span class="keyword">template</span> &lt;std::<span class="keywordtype">size_t</span> MaxStackSize = 256&gt;</div>
-<div class="line"><a id="l00017" name="l00017"></a><span class="lineno"><a class="line" href="namespace_span_containers_1_1internal.html#a232c8115a7ff239803cc9a01be984904">   17</a></span>    <span class="keyword">using </span><a class="code hl_typedef" href="namespace_span_containers_1_1internal.html#a232c8115a7ff239803cc9a01be984904">BufferType</a> = std::conditional_t&lt;</div>
-<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span>        Extent * <span class="keyword">sizeof</span>(T) &lt;= MaxStackSize,</div>
-<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span>        std::array&lt;T, Extent&gt;,</div>
-<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span>        <a class="code hl_struct" href="struct_span_containers_1_1internal_1_1_heap_array.html">internal::HeapArray&lt;T, Extent&gt;</a></div>
-<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span>    &gt;;</div>
-<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span>};</div>
+<div class="line"><a id="l00017" name="l00017"></a><span class="lineno"><a class="line" href="namespace_span_containers_1_1internal.html#a73eeed698c30a0e52d077ee4217d6612">   17</a></span>    <span class="keyword">using </span><a class="code hl_typedef" href="namespace_span_containers_1_1internal.html#a73eeed698c30a0e52d077ee4217d6612">BufferType</a> = std::conditional_t&lt;Extent * <span class="keyword">sizeof</span>(T) &lt;= MaxStackSize,</div>
+<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span>        std::array&lt;T, Extent&gt;, <a class="code hl_struct" href="struct_span_containers_1_1internal_1_1_heap_array.html">internal::HeapArray&lt;T, Extent&gt;</a>&gt;;</div>
+<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span>};</div>
 </div>
-<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span> </div>
-<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span>}</div>
+<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span> </div>
+<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span>}</div>
 </div>
 <div class="ttc" id="anamespace_span_containers_1_1internal_html"><div class="ttname"><a href="namespace_span_containers_1_1internal.html">SpanContainers::internal</a></div><div class="ttdoc">Internal namespace for implementation details.</div><div class="ttdef"><b>Definition</b> BufferSelector.h:7</div></div>
-<div class="ttc" id="anamespace_span_containers_1_1internal_html_a232c8115a7ff239803cc9a01be984904"><div class="ttname"><a href="namespace_span_containers_1_1internal.html#a232c8115a7ff239803cc9a01be984904">SpanContainers::internal::BufferSelector::BufferType</a></div><div class="ttdeci">std::conditional_t&lt; Extent *sizeof(T)&lt;=MaxStackSize, std::array&lt; T, Extent &gt;, internal::HeapArray&lt; T, Extent &gt; &gt; BufferType</div><div class="ttdef"><b>Definition</b> BufferSelector.h:17</div></div>
+<div class="ttc" id="anamespace_span_containers_1_1internal_html_a73eeed698c30a0e52d077ee4217d6612"><div class="ttname"><a href="namespace_span_containers_1_1internal.html#a73eeed698c30a0e52d077ee4217d6612">SpanContainers::internal::BufferSelector::BufferType</a></div><div class="ttdeci">std::conditional_t&lt; Extent *sizeof(T)&lt;=MaxStackSize, std::array&lt; T, Extent &gt;, internal::HeapArray&lt; T, Extent &gt; &gt; BufferType</div><div class="ttdef"><b>Definition</b> BufferSelector.h:17</div></div>
 <div class="ttc" id="anamespace_span_containers_1_1internal_html_struct_span_containers_1_1internal_1_1_buffer_selector"><div class="ttname"><a href="namespace_span_containers_1_1internal.html#struct_span_containers_1_1internal_1_1_buffer_selector">SpanContainers::internal::BufferSelector</a></div><div class="ttdoc">helper struct fr selecting buffer type.</div><div class="ttdef"><b>Definition</b> BufferSelector.h:13</div></div>
-<div class="ttc" id="astruct_span_containers_1_1internal_1_1_heap_array_html"><div class="ttname"><a href="struct_span_containers_1_1internal_1_1_heap_array.html">SpanContainers::internal::HeapArray</a></div><div class="ttdoc">helper struct for creating heap-allocated std::arrays.</div><div class="ttdef"><b>Definition</b> HeapArray.h:12</div></div>
+<div class="ttc" id="astruct_span_containers_1_1internal_1_1_heap_array_html"><div class="ttname"><a href="struct_span_containers_1_1internal_1_1_heap_array.html">SpanContainers::internal::HeapArray</a></div><div class="ttdoc">helper struct for creating heap-allocated std::arrays.</div><div class="ttdef"><b>Definition</b> HeapArray.h:11</div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>

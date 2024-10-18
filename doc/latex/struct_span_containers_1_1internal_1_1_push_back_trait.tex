@@ -1,0 +1,68 @@
+\doxysection{Span\+Containers\+::internal\+::Push\+Back\+Trait\texorpdfstring{$<$}{<} Derived, T \texorpdfstring{$>$}{>} Struct Template Reference}
+\hypertarget{struct_span_containers_1_1internal_1_1_push_back_trait}{}\label{struct_span_containers_1_1internal_1_1_push_back_trait}\index{SpanContainers::internal::PushBackTrait$<$ Derived, T $>$@{SpanContainers::internal::PushBackTrait$<$ Derived, T $>$}}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+{\footnotesize template$<$typename U $>$ \newline
+requires std\+::assignable\+\_\+from$<$T\&, U\&\&$>$}\\constexpr void \mbox{\hyperlink{struct_span_containers_1_1internal_1_1_push_back_trait_a8e1cf7d06e78ee535b13e311dc72b148}{push\+\_\+back}} (U \&\&value)
+\begin{DoxyCompactList}\small\item\em Assigns value to the back of the container. \end{DoxyCompactList}\item 
+{\footnotesize template$<$typename U $>$ \newline
+requires std\+::assignable\+\_\+from$<$T\&, U\&\&$>$}\\constexpr bool \mbox{\hyperlink{struct_span_containers_1_1internal_1_1_push_back_trait_a0806b833c26f08891f2e928b562a986f}{try\+\_\+push\+\_\+back}} (U \&\&value) noexcept(std\+::is\+\_\+nothrow\+\_\+assignable$<$ T \&, U \&\& $>$\+::value)
+\begin{DoxyCompactList}\small\item\em Tries to assign value at the back of the container. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{struct_span_containers_1_1internal_1_1_push_back_trait_a8e1cf7d06e78ee535b13e311dc72b148}\index{SpanContainers::internal::PushBackTrait$<$ Derived, T $>$@{SpanContainers::internal::PushBackTrait$<$ Derived, T $>$}!push\_back@{push\_back}}
+\index{push\_back@{push\_back}!SpanContainers::internal::PushBackTrait$<$ Derived, T $>$@{SpanContainers::internal::PushBackTrait$<$ Derived, T $>$}}
+\doxysubsubsection{\texorpdfstring{push\_back()}{push\_back()}}
+{\footnotesize\ttfamily \label{struct_span_containers_1_1internal_1_1_push_back_trait_a8e1cf7d06e78ee535b13e311dc72b148} 
+template$<$typename Derived , typename T $>$ \\
+template$<$typename U $>$ \newline
+requires std\+::assignable\+\_\+from$<$T\&, U\&\&$>$\\
+void \mbox{\hyperlink{struct_span_containers_1_1internal_1_1_push_back_trait}{Span\+Containers\+::internal\+::\+Push\+Back\+Trait}}$<$ Derived, T $>$\+::push\+\_\+back (\begin{DoxyParamCaption}\item[{U \&\&}]{value}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [constexpr]}}
+
+
+
+Assigns value to the back of the container. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em value} & The item to place at the back of the container. \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em \doxylink{class_span_containers_1_1_full_container_error}{Full\+Container\+Error}} & if the container capacity is exceeded \\
+\hline
+\end{DoxyExceptions}
+\Hypertarget{struct_span_containers_1_1internal_1_1_push_back_trait_a0806b833c26f08891f2e928b562a986f}\index{SpanContainers::internal::PushBackTrait$<$ Derived, T $>$@{SpanContainers::internal::PushBackTrait$<$ Derived, T $>$}!try\_push\_back@{try\_push\_back}}
+\index{try\_push\_back@{try\_push\_back}!SpanContainers::internal::PushBackTrait$<$ Derived, T $>$@{SpanContainers::internal::PushBackTrait$<$ Derived, T $>$}}
+\doxysubsubsection{\texorpdfstring{try\_push\_back()}{try\_push\_back()}}
+{\footnotesize\ttfamily \label{struct_span_containers_1_1internal_1_1_push_back_trait_a0806b833c26f08891f2e928b562a986f} 
+template$<$typename Derived , typename T $>$ \\
+template$<$typename U $>$ \newline
+requires std\+::assignable\+\_\+from$<$T\&, U\&\&$>$\\
+bool \mbox{\hyperlink{struct_span_containers_1_1internal_1_1_push_back_trait}{Span\+Containers\+::internal\+::\+Push\+Back\+Trait}}$<$ Derived, T $>$\+::try\+\_\+push\+\_\+back (\begin{DoxyParamCaption}\item[{U \&\&}]{value}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [constexpr]}, {\ttfamily [noexcept]}}
+
+
+
+Tries to assign value at the back of the container. 
+
+
+\begin{DoxyTemplParams}{Template Parameters}
+{\em U} & the type of the value to assign to the container. Must be assignable to T. \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}{Parameters}
+{\em value} & The item to move to the back of the container. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true if value was placed at the back of the container; false otherwise. 
+\end{DoxyReturn}
+
+
+The documentation for this struct was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/\+Users/maxma/source/repos/\+Span\+Containers/lib/internal/\+Traits/Push\+Back\+Trait.\+h\end{DoxyCompactItemize}

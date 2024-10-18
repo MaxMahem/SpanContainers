@@ -1,9 +1,9 @@
 #pragma once
 
 #include <concepts>
+#include <stdexcept>
 #include <type_traits>
 
-#include "Errors/EmptyContainerError.h"
 #include "Errors/FullContainerError.h"
 
 namespace SpanContainers::internal {
@@ -29,6 +29,18 @@ template <typename Derived, typename T> struct PushStraightTrait {
         if (derived.full()) { return false; }
         derived.unsafe_push(std::forward<U>(value));
         return true;
+    }
+
+    /// @brief Assigns values to the container.
+    /// @tparam Range The type of the range that contains the values.
+    /// @throws std::out_of_range if the container capacity would be exceeded.
+    template<std::ranges::input_range Range = std::initializer_list<T>>
+    constexpr void push_range(Range&& values) requires std::convertible_to<std::ranges::range_value_t<Range>, T>
+    {
+        if (!static_cast<Derived&>(*this).try_push_range(std::forward(values))) 
+        { 
+            throw std::out_of_range("Not enough space in container.");
+        }
     }
 };
 

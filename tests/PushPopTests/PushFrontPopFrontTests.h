@@ -8,8 +8,8 @@
 #include <gtest/gtest.h>
 
 #include "../BaseTests.h"
-#include "../PushPopFuncs/PushFrontFuncs.h"
-#include "../PushPopFuncs/PopFrontFuncs.h"
+#include "../ContainerFuncs/PushFrontFuncs.h"
+#include "../ContainerFuncs/PopFrontFuncs.h"
 
 namespace SpanContainers::Tests {
 
@@ -45,7 +45,7 @@ TYPED_TEST_P(PushFrontPopFrontTests, PushPopIsLIFO)
 TYPED_TEST_P(PushFrontPopFrontTests, PushPopAfterClearIsLIFO)
 {
     // partially fill then clear
-    for (int value : NUMBER_FILL | std::views::take(3)) { this->emptyContainer.push_back(value); }
+    for (int value : NUMBER_FILL | std::views::take(3)) { this->push(this->emptyContainer, value); }
     this->emptyContainer.clear();
 
     std::vector<int> values = this->BuildPushPopVector(this->emptyContainer, NUMBER_FILL, this->push, this->get, this->pop);

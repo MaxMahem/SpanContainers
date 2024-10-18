@@ -1,0 +1,152 @@
+\doxysection{Span\+Containers\+::push\+\_\+insert\+\_\+iterator\texorpdfstring{$<$}{<} Container \texorpdfstring{$>$}{>} Class Template Reference}
+\hypertarget{class_span_containers_1_1push__insert__iterator}{}\label{class_span_containers_1_1push__insert__iterator}\index{SpanContainers::push\_insert\_iterator$<$ Container $>$@{SpanContainers::push\_insert\_iterator$<$ Container $>$}}
+
+
+Represents an output iterator that unconditionally inserts into the wrapped container via push.  
+
+
+
+
+{\ttfamily \#include $<$push\+\_\+insert\+\_\+iterator.\+h$>$}
+
+\doxysubsubsection*{Public Types}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_span_containers_1_1push__insert__iterator_acf20d65266956112b61ad5ed6180c054}\label{class_span_containers_1_1push__insert__iterator_acf20d65266956112b61ad5ed6180c054} 
+using {\bfseries container\+\_\+type} = Container
+\item 
+\Hypertarget{class_span_containers_1_1push__insert__iterator_a54e37b785526afa38f2dbb4713ac89fc}\label{class_span_containers_1_1push__insert__iterator_a54e37b785526afa38f2dbb4713ac89fc} 
+using {\bfseries value\+\_\+type} = void
+\item 
+\Hypertarget{class_span_containers_1_1push__insert__iterator_a344df320c5f84529b75654be7d9f6f20}\label{class_span_containers_1_1push__insert__iterator_a344df320c5f84529b75654be7d9f6f20} 
+using {\bfseries difference\+\_\+type} = std\+::ptrdiff\+\_\+t
+\item 
+\Hypertarget{class_span_containers_1_1push__insert__iterator_ac39242e2b782d43e33ff98d51a8a90a2}\label{class_span_containers_1_1push__insert__iterator_ac39242e2b782d43e33ff98d51a8a90a2} 
+using {\bfseries reference} = void
+\item 
+\Hypertarget{class_span_containers_1_1push__insert__iterator_a051ec87e8c6e47242be48d6ed6b9d755}\label{class_span_containers_1_1push__insert__iterator_a051ec87e8c6e47242be48d6ed6b9d755} 
+using {\bfseries pointer} = void
+\item 
+\Hypertarget{class_span_containers_1_1push__insert__iterator_a64e61a2bb42ea962b5f4206e28444a26}\label{class_span_containers_1_1push__insert__iterator_a64e61a2bb42ea962b5f4206e28444a26} 
+using {\bfseries iterator\+\_\+category} = std\+::output\+\_\+iterator\+\_\+tag
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_span_containers_1_1push__insert__iterator_ae2a11897e328c38bb5a080d68c27c162}{push\+\_\+insert\+\_\+iterator}} (Container \&container) noexcept
+\begin{DoxyCompactList}\small\item\em Creates a new push insert iterator wrapping container. \end{DoxyCompactList}\item 
+{\footnotesize template$<$typename T $>$ }\\constexpr \mbox{\hyperlink{class_span_containers_1_1push__insert__iterator}{push\+\_\+insert\+\_\+iterator}} \& \mbox{\hyperlink{class_span_containers_1_1push__insert__iterator_a785bad48cd01e5e1543962976591bfb9}{operator=}} (T \&\&value)
+\begin{DoxyCompactList}\small\item\em Forward assigns value to the wrapped container via push. \end{DoxyCompactList}\item 
+constexpr \mbox{\hyperlink{class_span_containers_1_1push__insert__iterator}{push\+\_\+insert\+\_\+iterator}} \& \mbox{\hyperlink{class_span_containers_1_1push__insert__iterator_a5199045447c632d1599105a282fcbaad}{operator\texorpdfstring{$\ast$}{*}}} ()
+\begin{DoxyCompactList}\small\item\em Does nothing. \end{DoxyCompactList}\item 
+constexpr \mbox{\hyperlink{class_span_containers_1_1push__insert__iterator}{push\+\_\+insert\+\_\+iterator}} \& \mbox{\hyperlink{class_span_containers_1_1push__insert__iterator_a89c751f4bd0536aef6bd8b1caddb05ce}{operator++}} ()
+\begin{DoxyCompactList}\small\item\em Does nothing. \end{DoxyCompactList}\item 
+constexpr \mbox{\hyperlink{class_span_containers_1_1push__insert__iterator}{push\+\_\+insert\+\_\+iterator}} \mbox{\hyperlink{class_span_containers_1_1push__insert__iterator_afb1a9c22a35ac5326b19cdb6ad138a9d}{operator++}} (int)
+\begin{DoxyCompactList}\small\item\em Does nothing. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\subsubsection*{template$<$typename Container$>$\newline
+requires Pushable\+Container$<$Container, typename Container\+::value\+\_\+type$>$\newline
+class Span\+Containers\+::push\+\_\+insert\+\_\+iterator$<$ Container $>$}
+Represents an output iterator that unconditionally inserts into the wrapped container via push. 
+
+
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Container} & The type of the wrapped container. \\
+\hline
+\end{DoxyTemplParams}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{class_span_containers_1_1push__insert__iterator_ae2a11897e328c38bb5a080d68c27c162}\index{SpanContainers::push\_insert\_iterator$<$ Container $>$@{SpanContainers::push\_insert\_iterator$<$ Container $>$}!push\_insert\_iterator@{push\_insert\_iterator}}
+\index{push\_insert\_iterator@{push\_insert\_iterator}!SpanContainers::push\_insert\_iterator$<$ Container $>$@{SpanContainers::push\_insert\_iterator$<$ Container $>$}}
+\doxysubsubsection{\texorpdfstring{push\_insert\_iterator()}{push\_insert\_iterator()}}
+{\footnotesize\ttfamily \label{class_span_containers_1_1push__insert__iterator_ae2a11897e328c38bb5a080d68c27c162} 
+template$<$typename Container $>$ \\
+\mbox{\hyperlink{class_span_containers_1_1push__insert__iterator}{Span\+Containers\+::push\+\_\+insert\+\_\+iterator}}$<$ Container $>$\+::push\+\_\+insert\+\_\+iterator (\begin{DoxyParamCaption}\item[{Container \&}]{container}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [explicit]}, {\ttfamily [noexcept]}}
+
+
+
+Creates a new push insert iterator wrapping container. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em container} & The container to wrap. \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_span_containers_1_1push__insert__iterator_a5199045447c632d1599105a282fcbaad}\index{SpanContainers::push\_insert\_iterator$<$ Container $>$@{SpanContainers::push\_insert\_iterator$<$ Container $>$}!operator\texorpdfstring{$\ast$}{*}@{operator\texorpdfstring{$\ast$}{*}}}
+\index{operator\texorpdfstring{$\ast$}{*}@{operator\texorpdfstring{$\ast$}{*}}!SpanContainers::push\_insert\_iterator$<$ Container $>$@{SpanContainers::push\_insert\_iterator$<$ Container $>$}}
+\doxysubsubsection{\texorpdfstring{operator\texorpdfstring{$\ast$}{*}()}{operator*()}}
+{\footnotesize\ttfamily \label{class_span_containers_1_1push__insert__iterator_a5199045447c632d1599105a282fcbaad} 
+template$<$typename Container $>$ \\
+\mbox{\hyperlink{class_span_containers_1_1push__insert__iterator}{push\+\_\+insert\+\_\+iterator}} \& \mbox{\hyperlink{class_span_containers_1_1push__insert__iterator}{Span\+Containers\+::push\+\_\+insert\+\_\+iterator}}$<$ Container $>$\+::operator\texorpdfstring{$\ast$}{*} (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [constexpr]}}
+
+
+
+Does nothing. 
+
+\begin{DoxyReturn}{Returns}
+This iterator. 
+\end{DoxyReturn}
+\Hypertarget{class_span_containers_1_1push__insert__iterator_a89c751f4bd0536aef6bd8b1caddb05ce}\index{SpanContainers::push\_insert\_iterator$<$ Container $>$@{SpanContainers::push\_insert\_iterator$<$ Container $>$}!operator++@{operator++}}
+\index{operator++@{operator++}!SpanContainers::push\_insert\_iterator$<$ Container $>$@{SpanContainers::push\_insert\_iterator$<$ Container $>$}}
+\doxysubsubsection{\texorpdfstring{operator++()}{operator++()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily \label{class_span_containers_1_1push__insert__iterator_a89c751f4bd0536aef6bd8b1caddb05ce} 
+template$<$typename Container $>$ \\
+\mbox{\hyperlink{class_span_containers_1_1push__insert__iterator}{push\+\_\+insert\+\_\+iterator}} \& \mbox{\hyperlink{class_span_containers_1_1push__insert__iterator}{Span\+Containers\+::push\+\_\+insert\+\_\+iterator}}$<$ Container $>$\+::operator++ (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [constexpr]}}
+
+
+
+Does nothing. 
+
+\begin{DoxyReturn}{Returns}
+This iterator. 
+\end{DoxyReturn}
+\Hypertarget{class_span_containers_1_1push__insert__iterator_afb1a9c22a35ac5326b19cdb6ad138a9d}\index{SpanContainers::push\_insert\_iterator$<$ Container $>$@{SpanContainers::push\_insert\_iterator$<$ Container $>$}!operator++@{operator++}}
+\index{operator++@{operator++}!SpanContainers::push\_insert\_iterator$<$ Container $>$@{SpanContainers::push\_insert\_iterator$<$ Container $>$}}
+\doxysubsubsection{\texorpdfstring{operator++()}{operator++()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily \label{class_span_containers_1_1push__insert__iterator_afb1a9c22a35ac5326b19cdb6ad138a9d} 
+template$<$typename Container $>$ \\
+\mbox{\hyperlink{class_span_containers_1_1push__insert__iterator}{push\+\_\+insert\+\_\+iterator}} \mbox{\hyperlink{class_span_containers_1_1push__insert__iterator}{Span\+Containers\+::push\+\_\+insert\+\_\+iterator}}$<$ Container $>$\+::operator++ (\begin{DoxyParamCaption}\item[{int}]{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [constexpr]}}
+
+
+
+Does nothing. 
+
+\begin{DoxyReturn}{Returns}
+This iterator. 
+\end{DoxyReturn}
+\Hypertarget{class_span_containers_1_1push__insert__iterator_a785bad48cd01e5e1543962976591bfb9}\index{SpanContainers::push\_insert\_iterator$<$ Container $>$@{SpanContainers::push\_insert\_iterator$<$ Container $>$}!operator=@{operator=}}
+\index{operator=@{operator=}!SpanContainers::push\_insert\_iterator$<$ Container $>$@{SpanContainers::push\_insert\_iterator$<$ Container $>$}}
+\doxysubsubsection{\texorpdfstring{operator=()}{operator=()}}
+{\footnotesize\ttfamily \label{class_span_containers_1_1push__insert__iterator_a785bad48cd01e5e1543962976591bfb9} 
+template$<$typename Container $>$ \\
+template$<$typename T $>$ \\
+\mbox{\hyperlink{class_span_containers_1_1push__insert__iterator}{push\+\_\+insert\+\_\+iterator}} \& \mbox{\hyperlink{class_span_containers_1_1push__insert__iterator}{Span\+Containers\+::push\+\_\+insert\+\_\+iterator}}$<$ Container $>$\+::operator= (\begin{DoxyParamCaption}\item[{T \&\&}]{value}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [constexpr]}}
+
+
+
+Forward assigns value to the wrapped container via push. 
+
+
+\begin{DoxyTemplParams}{Template Parameters}
+{\em T} & the type of the value to assign. Must be assignable to Container\+::element\+\_\+value. \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}{Parameters}
+{\em value} & The value to push. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+This iterator. 
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/\+Users/maxma/source/repos/\+Span\+Containers/lib/push\+\_\+insert\+\_\+iterator.\+h\end{DoxyCompactItemize}

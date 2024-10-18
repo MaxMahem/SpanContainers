@@ -6,7 +6,7 @@
 #include "push_insert_iterator.h"
 #include "Errors/FullContainerError.h"
 
-#include "../PushPopFuncs/PushStraightFuncs.h"
+#include "../ContainerFuncs/PushStraightFuncs.h"
 #include "PushTestFixture.h"
 
 namespace SpanContainers::Tests {

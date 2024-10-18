@@ -1,4 +1,6 @@
 var searchData=
 [
-  ['operator_20std_3a_3aspan_3c_20t_2c_20extent_20_3e_0',['span&lt; T, Extent &gt;',['../struct_span_containers_1_1internal_1_1_heap_array.html#a8b15fce391e8d0815945b70b51577ea3',1,'SpanContainers::internal::HeapArray']]]
+  ['indextrait_0',['IndexTrait',['../class_span_containers_1_1internal_1_1_index_trait.html',1,'SpanContainers::internal']]],
+  ['indextrait_3c_20spanqueue_3c_20t_2c_20extent_20_3e_2c_20t_20_3e_1',['IndexTrait&lt; SpanQueue&lt; T, Extent &gt;, T &gt;',['../class_span_containers_1_1internal_1_1_index_trait.html',1,'SpanContainers::internal']]],
+  ['indextrait_3c_20spanstack_3c_20t_2c_20extent_20_3e_2c_20t_20_3e_2',['IndexTrait&lt; SpanStack&lt; T, Extent &gt;, T &gt;',['../class_span_containers_1_1internal_1_1_index_trait.html',1,'SpanContainers::internal']]]
 ];

@@ -1,6 +1,8 @@
 ﻿#include <iostream>
 #include <ranges>
 #include <vector>
+
+
 #include "SpanDequeue.h"
 #include "SpanQueue.h"
 #include "SpanStack.h"

@@ -63,7 +63,7 @@ class SpanDequeue : public SpanQueue<T, Extent>,
     /// @param n the number of items to remove.
     constexpr void unsafe_pop_back(size_type n) noexcept
     {
-        assert(count - n >= 0 && "Not enough items to pop.");
+        assert(n <= count && "Not enough items to pop.");
         count -= n;
         write = (write + Extent - n) % Extent;
     }

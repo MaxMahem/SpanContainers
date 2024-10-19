@@ -6,7 +6,6 @@
 #include "Errors/FullContainerError.h"
 
 #include "../ContainerFuncs/PushBackFuncs.h"
-#include "../ContainerFuncs/IndexFuncs.h"
 #include "PushTestFixture.h"
 
 namespace SpanContainers::Tests {

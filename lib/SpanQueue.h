@@ -66,7 +66,7 @@ class SpanQueue : public internal::SpanContainer<T, Extent>,
     /// @brief Remove n items from the front of the container, without bounds check.
     constexpr void unsafe_pop_front(size_type n) noexcept
     {
-        assert(count - n >= 0 && "Not enough items to pop.");
+        assert(n <= count && "Not enough items to pop.");
         count -= n;
         read = (read + n) % Extent;
     }

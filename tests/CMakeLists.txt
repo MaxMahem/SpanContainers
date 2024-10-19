@@ -19,10 +19,20 @@ add_executable(SpanContainerTests
     "SpanHeapTests.cc"
     "SpanStackTests.cc"
     "SpanQueueTests.cc"
-)
-
+ )
 target_link_libraries(SpanContainerTests GTest::gtest_main GTest::gmock_main)
 target_include_directories(SpanContainerTests PRIVATE "${PROJECT_INCLUDE_DIR}")
 
+
+ add_executable(SpanContainerDeathTests
+    "SpanStackDeathTests.cc"
+    "SpanQueueDeathTests.cc"
+    "SpanDequeueDeathTests.cc"
+    "SpanHeapDeathTests.cc"
+ )
+target_link_libraries(SpanContainerDeathTests GTest::gtest_main GTest::gmock_main)
+target_include_directories(SpanContainerDeathTests PRIVATE "${PROJECT_INCLUDE_DIR}")
+
 include(GoogleTest)
 gtest_discover_tests(SpanContainerTests)
+gtest_discover_tests(SpanContainerDeathTests)

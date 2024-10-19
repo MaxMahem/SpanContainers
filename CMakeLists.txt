@@ -20,5 +20,3 @@ add_subdirectory(src)
 add_subdirectory(tests)
 add_subdirectory(benchmarks)
 
-#include(GoogleTest)
-#gtest_discover_tests(SpanContainerTests)

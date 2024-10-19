@@ -4,14 +4,14 @@
 
 #include <gtest/gtest.h>
 
-#include "../BaseTests.h"
+#include "../EmptyContainerTestFixture.h"
 
 namespace SpanContainers::Tests {
 
 /// @brief Test fixture for testing Span container with push based insertion
 /// @tparam Container the type of the container.
 template <typename Container, typename Inserter>
-class PushTestFixture : public BaseTests<Container> {
+class PushTestFixture : public EmptyContainerTestFixture<Container> {
     std::array<int, 5> array{};
 
 protected:
@@ -21,7 +21,7 @@ protected:
 
     void SetUp() override
     {
-        BaseTests<Container>::SetUp();
+        EmptyContainerTestFixture<Container>::SetUp();
         ASSERT_TRUE(fullContainer.full());
         ASSERT_EQ(fullContainer.size(), fullContainer.capacity());
     }

@@ -38,7 +38,7 @@ class SpanQueue : public internal::SpanContainer<T, Extent>,
     /// @return A reference to the item at the front of the container.
     [[nodiscard]] constexpr reference unsafe_front() const noexcept 
     {
-        assert(count > 0 && "Container is empty.");
+        assert(count > 0 && "Container is empty");
         return span[read]; 
     }
 
@@ -47,7 +47,7 @@ class SpanQueue : public internal::SpanContainer<T, Extent>,
     /// @return A reference to the element at index.
     [[nodiscard]] constexpr reference unsafe_at(size_type index) const noexcept
     {
-        assert(index < count && "Index out of range.");
+        assert(index < count && "Index out of range");
         return span[(read + index) % Extent];
     }
 
@@ -57,7 +57,7 @@ class SpanQueue : public internal::SpanContainer<T, Extent>,
     template <typename U> requires std::assignable_from<T&, U&&>
     constexpr void unsafe_push_back(U&& value) noexcept(std::is_nothrow_assignable<T&, U&&>::value)
     {
-        assert(count < Extent && "Container is full.");
+        assert(count < Extent && "Container is full");
         span[write] = std::forward<U>(value);
         write = (write + 1) % Extent;
         ++count;
@@ -66,7 +66,7 @@ class SpanQueue : public internal::SpanContainer<T, Extent>,
     /// @brief Remove n items from the front of the container, without bounds check.
     constexpr void unsafe_pop_front(size_type n) noexcept
     {
-        assert(count - n >= 0 && "Not enough items to pop.");
+        assert(n <= count && "Not enough items to pop");
         count -= n;
         read = (read + n) % Extent;
     }

@@ -44,7 +44,7 @@ class SpanDequeue : public SpanQueue<T, Extent>,
     /// @return A reference to the last item in the container.
     [[nodiscard]] constexpr reference unsafe_back() const noexcept 
     {
-        assert(count > 0 && "Container is empty.");
+        assert(count > 0 && "Container is empty");
         return span[previousIndex(write)]; 
     }
 
@@ -53,7 +53,7 @@ class SpanDequeue : public SpanQueue<T, Extent>,
     template <typename U> requires std::assignable_from<T&, U&&>
     constexpr void unsafe_push_front(U&& value) noexcept(std::is_nothrow_assignable<T, T&&>::value)
     {
-        assert(count < Extent && "Container is full.");
+        assert(count < Extent && "Container is full");
         ++count;
         read = previousIndex(read);
         span[read] = std::forward<U>(value);
@@ -63,7 +63,7 @@ class SpanDequeue : public SpanQueue<T, Extent>,
     /// @param n the number of items to remove.
     constexpr void unsafe_pop_back(size_type n) noexcept
     {
-        assert(count - n >= 0 && "Not enough items to pop.");
+        assert(n <= count && "Not enough items to pop");
         count -= n;
         write = (write + Extent - n) % Extent;
     }

@@ -38,7 +38,7 @@ class SpanStack : public internal::SpanContainer<T, Extent>,
     /// @return A reference to the last item in the container.
     [[nodiscard]] constexpr reference unsafe_back() const noexcept 
     { 
-        assert(count > 0 && "Container is empty.");
+        assert(count > 0 && "Container is empty");
         return span[count - 1]; 
     }
 
@@ -47,7 +47,7 @@ class SpanStack : public internal::SpanContainer<T, Extent>,
     /// @return A reference to the element at index.
     [[nodiscard]] constexpr reference unsafe_at(size_type index) const noexcept
     {
-        assert(index < count && "Index out of range.");
+        assert(index < count && "Index out of range");
         return span[index];
     }
 
@@ -57,7 +57,7 @@ class SpanStack : public internal::SpanContainer<T, Extent>,
     template <typename U> requires std::assignable_from<T&, U&&>
     constexpr void unsafe_push_back(U&& value) noexcept(std::is_nothrow_assignable<T&, U&&>::value)
     {
-        assert(count < Extent && "Container is full.");
+        assert(count < Extent && "Container is full");
         span[count++] = std::forward<U>(value);
     }
 
@@ -82,7 +82,7 @@ class SpanStack : public internal::SpanContainer<T, Extent>,
     /// @param n the number of items to remove.
     constexpr void unsafe_pop_back(size_type n) noexcept 
     { 
-        assert(n <= count && "Not enough items to pop.");
+        assert(n <= count && "Not enough items to pop");
         count -= n; 
     }
 

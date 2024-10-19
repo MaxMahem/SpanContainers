@@ -64,7 +64,7 @@ public:
     /// @return A reference to the last item in the container.
     [[nodiscard]] constexpr reference unsafe_back() const noexcept 
     {
-        assert(count > 0 && "Container is empty.");
+        assert(count > 0 && "Container is empty");
         return span[0]; 
     }
 
@@ -74,7 +74,7 @@ public:
     template <typename U> requires std::assignable_from<T&, U&&>
     constexpr void unsafe_push(U&& value) noexcept(std::is_nothrow_assignable<T, U>::value)
     {
-        assert(count < Extent && "Container is full.");
+        assert(count < Extent && "Container is full");
         span[count++] = std::forward<U>(value);
         std::push_heap(span.begin(), span.begin() + count, comparer);
     }
@@ -110,7 +110,7 @@ public:
     /// @param n The number of items to remove from the back of the container.
     constexpr void unsafe_pop_back(size_type n) noexcept
     {
-        assert(n <= count && "Not enough items to pop.");
+        assert(n <= count && "Not enough items to pop");
         if (n > CalculateMakeThreshold()) {
             std::make_heap(span.begin(), span.begin() + count, comparer);
             count -= n;

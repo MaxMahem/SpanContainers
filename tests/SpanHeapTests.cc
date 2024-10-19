@@ -24,39 +24,41 @@ INSTANTIATE_TYPED_TEST_SUITE_P(HeapTests, BackTests,         TestSpanHeap);
 // default heap is a max heap, which should compare the same as the LIFO tests.
 INSTANTIATE_TYPED_TEST_SUITE_P(HeapTests, PushStraightPopBackTests, TestSpanHeap);
 
-class SpanHeapTests : public PushPopTestFixture<SpanHeap<int, TEST_EXTENT>>,
-                      public PopBackFuncs<SpanHeap<int, TEST_EXTENT>>,
-                      public PushStraightFuncs<SpanHeap<int, TEST_EXTENT>> { };
+class SpanMaxHeapTests : public PushStraightPopBackTests<SpanHeap<int, TEST_EXTENT>> { };
 
-TEST_F(SpanHeapTests, MaxHeapTest) 
+TEST_F(SpanMaxHeapTests, PushPopIsMaxHeap)
 {
-    SpanHeap<int, TEST_EXTENT>::BufferType<> buffer{};
-    SpanHeap<int, TEST_EXTENT, std::greater<int>> minHeap(buffer);
-
-    for (int value : NUMBER_FILL) { minHeap.push(value); }
-
-    std::vector<int> values;
-    while (!minHeap.empty()) {
-        values.push_back(minHeap.back());
-        minHeap.pop_back();
+    for (auto& pushMethod : this->PushFuncs) {
+        std::vector<int> values = this->BuildPushPopVector(this->emptyContainer, NUMBER_FILL, pushMethod, this->get, this->pop);
+        EXPECT_THAT(values, ::testing::ElementsAreArray(NUMBER_FILL_REVERSE));
     }
+}
+
+TEST_F(SpanMaxHeapTests, PushPopAfterClearIsMaxHeap)
+{
+    // partially fill then clear
+    for (int value : NUMBER_FILL | std::views::take(3)) { this->emptyContainer.push(value); }
+    this->emptyContainer.clear();
+
+    std::vector<int> values = this->BuildPushPopVector(this->emptyContainer, NUMBER_FILL, this->push, this->get, this->pop);
+    EXPECT_THAT(values, ::testing::ElementsAreArray(NUMBER_FILL_REVERSE));
+}
+
+class SpanMinHeapTests : public PushStraightPopBackTests<SpanHeap<int, TEST_EXTENT, std::greater<int>>> { };
+
+TEST_F(SpanMinHeapTests, PushPopMinHeapTest)
+{
+    std::vector<int> values = this->BuildPushPopVector(this->emptyContainer, NUMBER_FILL, this->push, this->get, this->pop);
     EXPECT_THAT(values, ::testing::ElementsAreArray(NUMBER_FILL));
 }
 
 struct CustomComparer { constexpr bool operator()(int a, int b) { return a < b; } };
 
-TEST_F(SpanHeapTests, StaticCustomComparer)
+class SpanCustomComparerHeapTests : public PushStraightPopBackTests<SpanHeap<int, TEST_EXTENT, CustomComparer>> { };
+
+TEST_F(SpanCustomComparerHeapTests, PushPopStaticCustomComparer)
 {
-    SpanHeap<int, TEST_EXTENT>::BufferType<> buffer{};
-    SpanHeap<int, TEST_EXTENT, CustomComparer> minHeap{ buffer };
-
-    for (int value : NUMBER_FILL) { minHeap.push(value); }
-
-    std::vector<int> values;
-    while (!minHeap.empty()) {
-        values.push_back(minHeap.back());
-        minHeap.pop_back();
-    }
+    std::vector<int> values = this->BuildPushPopVector(this->emptyContainer, NUMBER_FILL, this->push, this->get, this->pop);
     EXPECT_THAT(values, ::testing::ElementsAreArray(NUMBER_FILL_REVERSE));
 }
 

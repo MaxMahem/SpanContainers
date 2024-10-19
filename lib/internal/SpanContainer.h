@@ -38,7 +38,8 @@ public:
     /// otherwise, returns a structure wrapping a heap allocated std::array.
     /// @tparam MaxStackSize the maximum size, in bytes, to allocate on the stack.
     template <std::size_t MaxStackSize = 256>
-    using BufferType = BufferSelector<T, Extent>::BufferType<MaxStackSize>;
+    using BufferType = std::conditional_t<Extent * sizeof(T) <= MaxStackSize,
+        std::array<T, Extent>, internal::HeapArray<T, Extent>>;
 
     /// @brief Default constructor for empty container
     constexpr SpanContainer() noexcept requires (Extent == 0) = default;

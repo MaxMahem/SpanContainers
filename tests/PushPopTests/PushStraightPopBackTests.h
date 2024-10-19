@@ -33,29 +33,9 @@ TYPED_TEST_P(PushStraightPopBackTests, PopNDecrementsSizeByN)
     for (auto popNMethod : this->PopNFuncs) { this->TestPopNDecrement(this->push, popNMethod); }
 }
 
-TYPED_TEST_P(PushStraightPopBackTests, PushPopIsLIFO)
-{
-    for (auto& pushMethod : this->PushFuncs) {
-        std::vector<int> values = this->BuildPushPopVector(this->emptyContainer, NUMBER_FILL, pushMethod, this->get, this->pop);
-        EXPECT_THAT(values, ::testing::ElementsAreArray(NUMBER_FILL_REVERSE));
-    }
-}
-
-TYPED_TEST_P(PushStraightPopBackTests, PushPopAfterClearIsLIFO)
-{
-    // partially fill then clear
-    for (int value : NUMBER_FILL | std::views::take(3)) { this->emptyContainer.push(value); }
-    this->emptyContainer.clear();
-
-    std::vector<int> values = this->BuildPushPopVector(this->emptyContainer, NUMBER_FILL, this->push, this->get, this->pop);
-    EXPECT_THAT(values, ::testing::ElementsAreArray(NUMBER_FILL_REVERSE));
-}
-
 REGISTER_TYPED_TEST_SUITE_P(PushStraightPopBackTests, 
     PopDecrementsSize, 
-    PopNDecrementsSizeByN,
-    PushPopIsLIFO, 
-    PushPopAfterClearIsLIFO
+    PopNDecrementsSizeByN
 );
 
 }

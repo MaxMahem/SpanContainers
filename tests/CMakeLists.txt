@@ -13,7 +13,6 @@ FetchContent_MakeAvailable(googletest)
 enable_testing()
 
 add_executable(SpanContainerTests
-    "BufferSelectorTests.cc"
     "HeapArrayTests.cc"
     "SpanContainerTests.cc"
     "SpanDequeueTests.cc"

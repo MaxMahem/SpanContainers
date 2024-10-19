@@ -13,45 +13,18 @@
 #include "SpanStack.h"
 #include "SpanHeap.h"
 
+#include "RandomDataFixture.h"
+
 namespace SpanContainers::Benchmarks {
 
 using namespace SpanContainers;
 
-class RNG {
-    static std::mt19937& engine() {
-        static std::random_device device;
-        static std::mt19937 engine{ device() };
-        return engine;
-    }
-
-public:
-    template <std::integral T> static T generate() {
-        static std::uniform_int_distribution<T> distribution{ std::numeric_limits<T>::min(), std::numeric_limits<T>::max() };
-        return distribution(engine());
-    }
-
-    template <std::floating_point T> static T generate() {
-        static std::uniform_real_distribution<T> distribution{ 0.0, 1.0 };
-        return distribution(engine());
-    }
-
-    template <typename T> static T generate() requires requires { typename T::first_type; typename T::second_type; } {
-        return { generate<typename T::first_type>(), generate<typename T::second_type>() };
-    }
-};
-
-template <typename T, std::size_t TestSize> 
-class RandomDataFixture : public benchmark::Fixture {
-public:
-    std::array<T, TestSize> randomData{};
-
-    void SetUp(const ::benchmark::State& state) override { std::ranges::generate(randomData, RNG::generate<T>); }
-};
-
 template <typename T, std::size_t TestSize>
-class PushPopFixture : public RandomDataFixture<T, TestSize> {
-public:
+class PushPopFixture : public RandomDataFixture<T, TestSize> 
+{
     using RandomDataFixture<T, TestSize>::randomData;
+
+public:
 
     void SpanStackArrayPushPop(benchmark::State& state) {
         for (auto _ : state) {
@@ -114,9 +87,9 @@ public:
     }
 };
 
-//BENCHMARK_TEMPLATE_F(PushPopFixture, SpanStack_Array_256,  int, 256)(benchmark::State& state)  { this->SpanStackArrayPushPop(state); }
-//BENCHMARK_TEMPLATE_F(PushPopFixture, SpanStack_Array_512,  int, 512)(benchmark::State& state)  { this->SpanStackArrayPushPop(state); }
-//BENCHMARK_TEMPLATE_F(PushPopFixture, SpanStack_Array_1024, int, 1024)(benchmark::State& state) { this->SpanStackArrayPushPop(state); }
+BENCHMARK_TEMPLATE_F(PushPopFixture, SpanStack_Array_256,  std::int64_t, 256)(benchmark::State& state)  { this->SpanStackArrayPushPop(state); }
+BENCHMARK_TEMPLATE_F(PushPopFixture, SpanStack_Array_512,  std::int64_t, 512)(benchmark::State& state)  { this->SpanStackArrayPushPop(state); }
+BENCHMARK_TEMPLATE_F(PushPopFixture, SpanStack_Array_1024, std::int64_t, 1024)(benchmark::State& state) { this->SpanStackArrayPushPop(state); }
 BENCHMARK_TEMPLATE_F(PushPopFixture, SpanStack_Array_2048, std::int64_t, 2048)(benchmark::State& state) { this->SpanStackArrayPushPop(state); }
 
 //BENCHMARK_TEMPLATE_F(PushPopFixture, SpanStack_Heap_256,  int, 256)(benchmark::State& state)  { this->SpanStackHeapPushPop(state); }
@@ -124,14 +97,14 @@ BENCHMARK_TEMPLATE_F(PushPopFixture, SpanStack_Array_2048, std::int64_t, 2048)(b
 //BENCHMARK_TEMPLATE_F(PushPopFixture, SpanStack_Heap_1024, int, 1024)(benchmark::State& state) { this->SpanStackHeapPushPop(state); }
 //BENCHMARK_TEMPLATE_F(PushPopFixture, SpanStack_Heap_2048, int, 2048)(benchmark::State& state) { this->SpanStackHeapPushPop(state); }
 
-//BENCHMARK_TEMPLATE_F(PushPopFixture, Stack_256,  int, 256)(benchmark::State& state)  { this->StdStackPushPop(state); }
-//BENCHMARK_TEMPLATE_F(PushPopFixture, Stack_512,  int, 512)(benchmark::State& state)  { this->StdStackPushPop(state); }
-//BENCHMARK_TEMPLATE_F(PushPopFixture, Stack_1024, int, 1024)(benchmark::State& state) { this->StdStackPushPop(state); }
+BENCHMARK_TEMPLATE_F(PushPopFixture, Stack_256,  std::int64_t, 256)(benchmark::State& state)  { this->StdStackPushPop(state); }
+BENCHMARK_TEMPLATE_F(PushPopFixture, Stack_512,  std::int64_t, 512)(benchmark::State& state)  { this->StdStackPushPop(state); }
+BENCHMARK_TEMPLATE_F(PushPopFixture, Stack_1024, std::int64_t, 1024)(benchmark::State& state) { this->StdStackPushPop(state); }
 BENCHMARK_TEMPLATE_F(PushPopFixture, Stack_2048, std::int64_t, 2048)(benchmark::State& state) { this->StdStackPushPop(state); }
 
-//BENCHMARK_TEMPLATE_F(PushPopFixture, Vector_256,  int, 256)(benchmark::State& state)  { this->StdVectorPushPop(state); }
-//BENCHMARK_TEMPLATE_F(PushPopFixture, Vector_512,  int, 512)(benchmark::State& state)  { this->StdVectorPushPop(state); }
-//BENCHMARK_TEMPLATE_F(PushPopFixture, Vector_1024, int, 1024)(benchmark::State& state) { this->StdVectorPushPop(state); }
+BENCHMARK_TEMPLATE_F(PushPopFixture, Vector_256,  std::int64_t, 256)(benchmark::State& state)  { this->StdVectorPushPop(state); }
+BENCHMARK_TEMPLATE_F(PushPopFixture, Vector_512,  std::int64_t, 512)(benchmark::State& state)  { this->StdVectorPushPop(state); }
+BENCHMARK_TEMPLATE_F(PushPopFixture, Vector_1024, std::int64_t, 1024)(benchmark::State& state) { this->StdVectorPushPop(state); }
 BENCHMARK_TEMPLATE_F(PushPopFixture, Vector_2048, std::int64_t, 2048)(benchmark::State& state) { this->StdVectorPushPop(state); }
 
 }

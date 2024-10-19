@@ -6,7 +6,7 @@
 /// @brief Internal namespace for implementation details.
 namespace SpanContainers::internal {
 
-/// @brief helper struct fr selecting buffer type.
+/// @brief helper struct for selecting buffer type.
 /// @tparam T The type of the element in the buffer.
 /// @tparam Extent The number of elements in the type.
 template <typename T, std::size_t Extent>

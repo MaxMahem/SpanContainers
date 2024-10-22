@@ -4,6 +4,7 @@
 #include <type_traits>
 
 #include "Errors/EmptyContainerError.h"
+#include "SpanContainerFormatter.h"
 
 namespace SpanContainers::internal {
 

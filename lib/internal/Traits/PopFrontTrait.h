@@ -3,6 +3,7 @@
 #include <stdexcept>
 #include <type_traits>
 
+#include "SpanContainerFormatter.h"
 #include "Errors/EmptyContainerError.h"
 
 namespace SpanContainers::internal {

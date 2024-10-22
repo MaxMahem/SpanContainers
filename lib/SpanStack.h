@@ -48,7 +48,7 @@ class SpanStack : public internal::SpanContainer<T, Extent>,
     [[nodiscard]] constexpr reference unsafe_at(size_type index) const noexcept
     {
         assert(index < count && "Index out of range");
-        return span[index];
+        return span[count - 1 - index];
     }
 
     /// @brief Assigns value to the back of the container, without bounds checks.
@@ -63,19 +63,16 @@ class SpanStack : public internal::SpanContainer<T, Extent>,
 
     /// @brief Tries to assign values to the back of the container.
     /// @tparam Range The type of the range that contains the values.
-    /// @return true if values were placed at the back of the container; false if not enough room for all values.
-    template<std::ranges::input_range Range = std::initializer_list<T>>
-    constexpr bool try_push_back_range(Range&& values) requires std::convertible_to<std::ranges::range_value_t<Range>, T>
+    template<std::ranges::range Range = std::initializer_list<T>> 
+        requires std::convertible_to<std::ranges::range_value_t<Range>, T>
+    constexpr void unsafe_push_back_sized_range(Range&& values, size_type rangeSize) 
     {
-        const auto newCount = count + std::ranges::size(values);
-        if (newCount > Extent) { return false; }
+        const auto newCount = count + rangeSize;
+        assert(newCount <= Extent && "Range is to large for span.");
 
-        constexpr bool isRvalue = std::is_rvalue_reference<Range&&>::value;
-        if constexpr (isRvalue) { std::ranges::move(values, span.begin() + count); }
-        else                    { std::ranges::copy(values, span.begin() + count); }
-
-        count = newCount;    
-        return true;
+        if constexpr (std::is_rvalue_reference<Range&&>::value) { std::ranges::move(values, span.begin() + count); }
+        else                                                    { std::ranges::copy(values, span.begin() + count); }
+        count = newCount;
     }
 
     /// @brief Removes n items from the back of the container without a bounds check.

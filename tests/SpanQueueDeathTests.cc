@@ -1,17 +1,17 @@
+#include <functional>
+
 #include <gtest/gtest.h>
 
 #define SPAN_CONTAINERS_USE_EXCEPTIONS false
 #include "SpanQueue.h"
 
-#include "PushTests/PushBackDeathTests.h"
-#include "GetPopTests/FrontDeathTests.h"
-#include "GetPopTests/EmptyIndexDeathTests.h"
+#include "ContainerTestTraits.h"
+#include "TypedContainerDeathTests.h"
 
 namespace SpanContainers::Tests {
 
-using TestSpanQueue = ::testing::Types<SpanQueue<int, TEST_EXTENT>>;
-INSTANTIATE_TYPED_TEST_SUITE_P(QueueTests, PushBackDeathTest,   TestSpanQueue);
-INSTANTIATE_TYPED_TEST_SUITE_P(QueueTests, FrontDeathTest,      TestSpanQueue);
-INSTANTIATE_TYPED_TEST_SUITE_P(QueueTests, EmptyIndexDeathTest, TestSpanQueue);
+using Queue = SpanQueue<int, 5>;
+using QueueTestType = std::tuple<Queue, PushBackFuncs<Queue>, PopFrontFuncs<Queue>, IndexFuncs<Queue>, std::greater<int>>;
+INSTANTIATE_TYPED_TEST_SUITE_P(QueueDeathTests, TypedContainerDeathTest, QueueTestType);
 
 }

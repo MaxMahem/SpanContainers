@@ -1,65 +1,50 @@
-#include <array>
+#include  <cstddef>
+#include <functional>
 #include <ranges>
-#include <vector>
+#include <variant>
 
-#include <gmock/gmock.h>
 #include <gtest/gtest.h>
 
 #include "SpanHeap.h"
 
-#include "BaseTests.h"
-#include "GetPopTests/BackTests.h"
-#include "PushTests/PushStraightTests.h"
-#include "PushPopTests/PushPopTestFixture.h"
-#include "ContainerFuncs/PopBackFuncs.h"
-#include "ContainerFuncs/PushStraightFuncs.h"
-#include "PushPopTests/PushStraightPopBackTests.h"
+#include "TypedContainerTests.h"
+#include "ContainerTestTraits.h"
 
 namespace SpanContainers::Tests {
 
-using TestSpanHeap = ::testing::Types<SpanHeap<int, TEST_EXTENT>>;
-INSTANTIATE_TYPED_TEST_SUITE_P(HeapTests, BaseTests,         TestSpanHeap);
-INSTANTIATE_TYPED_TEST_SUITE_P(HeapTests, PushStraightTests, TestSpanHeap);
-INSTANTIATE_TYPED_TEST_SUITE_P(HeapTests, BackTests,         TestSpanHeap);
-// default heap is a max heap, which should compare the same as the LIFO tests.
-INSTANTIATE_TYPED_TEST_SUITE_P(HeapTests, PushStraightPopBackTests, TestSpanHeap);
+using MinHeap = SpanHeap<int, 5>;
+using MinHeapTestType = std::tuple<MinHeap, PushStraightFuncs<MinHeap>, PopBackFuncs<MinHeap>, NoIndex, std::greater<int>>;
 
-class SpanMaxHeapTests : public PushStraightPopBackTests<SpanHeap<int, TEST_EXTENT>> { };
-
-TEST_F(SpanMaxHeapTests, PushPopIsMaxHeap)
-{
-    for (auto& pushMethod : this->PushFuncs) {
-        std::vector<int> values = this->BuildPushPopVector(this->emptyContainer, NUMBER_FILL, pushMethod, this->get, this->pop);
-        EXPECT_THAT(values, ::testing::ElementsAreArray(NUMBER_FILL_REVERSE));
-    }
-}
-
-TEST_F(SpanMaxHeapTests, PushPopAfterClearIsMaxHeap)
-{
-    // partially fill then clear
-    for (int value : NUMBER_FILL | std::views::take(3)) { this->emptyContainer.push(value); }
-    this->emptyContainer.clear();
-
-    std::vector<int> values = this->BuildPushPopVector(this->emptyContainer, NUMBER_FILL, this->push, this->get, this->pop);
-    EXPECT_THAT(values, ::testing::ElementsAreArray(NUMBER_FILL_REVERSE));
-}
-
-class SpanMinHeapTests : public PushStraightPopBackTests<SpanHeap<int, TEST_EXTENT, std::greater<int>>> { };
-
-TEST_F(SpanMinHeapTests, PushPopMinHeapTest)
-{
-    std::vector<int> values = this->BuildPushPopVector(this->emptyContainer, NUMBER_FILL, this->push, this->get, this->pop);
-    EXPECT_THAT(values, ::testing::ElementsAreArray(NUMBER_FILL));
-}
+using MaxHeap = SpanHeap<int, 5, std::greater<int>>;
+using MaxHeapTestType = std::tuple<MaxHeap, PushStraightFuncs<MaxHeap>, PopBackFuncs<MaxHeap>, NoIndex, std::less<int>>;
 
 struct CustomComparer { constexpr bool operator()(int a, int b) { return a < b; } };
 
-class SpanCustomComparerHeapTests : public PushStraightPopBackTests<SpanHeap<int, TEST_EXTENT, CustomComparer>> { };
+using CustomComparerHeap = SpanHeap<int, 5, CustomComparer>;
+using CustomComparerHeapTestType = std::tuple<CustomComparerHeap, PushStraightFuncs<CustomComparerHeap>, PopBackFuncs<CustomComparerHeap>, NoIndex, std::greater<int>>;
 
-TEST_F(SpanCustomComparerHeapTests, PushPopStaticCustomComparer)
+using HeapTypes = ::testing::Types<MinHeapTestType, MaxHeapTestType, CustomComparerHeapTestType>;
+INSTANTIATE_TYPED_TEST_SUITE_P(HeapTests, TypedContainerTests, HeapTypes);
+
+constexpr std::size_t LARGE_TEST_EXTENT = 30;
+constexpr std::size_t LARGE_TEST_SPLIT = LARGE_TEST_EXTENT / 5;
+
+using LargeHeap = SpanHeap<int, LARGE_TEST_EXTENT>;
+using LargeHeapTestType = std::tuple<LargeHeap, PushStraightFuncs<LargeHeap>, PopBackFuncs<LargeHeap>, NoIndex, std::greater<int>>;
+
+class LargeHeapTest : public TypedContainerTests<LargeHeapTestType> { };
+
+TEST_F(LargeHeapTest, PushLargeAndSmallRange)
 {
-    std::vector<int> values = this->BuildPushPopVector(this->emptyContainer, NUMBER_FILL, this->push, this->get, this->pop);
-    EXPECT_THAT(values, ::testing::ElementsAreArray(NUMBER_FILL_REVERSE));
+    // test the large value path (calls std::make_heap)
+    ASSERT_GT(LARGE_TEST_SPLIT, this->emptyContainer.make_threshold());
+    this->emptyContainer.try_push_range(LargeHeapTest::FILL | std::views::drop(LARGE_TEST_SPLIT));
+    // test the small value path (calls std::push_heap)
+    ASSERT_LE(LARGE_TEST_SPLIT, this->emptyContainer.make_threshold());
+    this->emptyContainer.try_push_range(LargeHeapTest::FILL | std::views::take(LARGE_TEST_SPLIT));
+
+    std::vector<int> values = this->Empty(this->emptyContainer, LargeHeapTest::PopFuncs::get, LargeHeapTest::PopFuncs::pop);
+    EXPECT_THAT(values, ::testing::ElementsAreArray(LargeHeapTest::EXPECTED_RESULTS));
 }
 
 }

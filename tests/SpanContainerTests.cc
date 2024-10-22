@@ -9,8 +9,6 @@ namespace SpanContainers::Tests {
 
 using namespace SpanContainers::internal;
 
-// Static Tests
-
 TEST(SpanContainerConstructors, DefaultConstructor)
 { 
     SpanContainer<int, 0> defaultContainer{};
@@ -42,26 +40,6 @@ TEST(BufferSelectorTest, BufferSelectorHeapAllocation)
     using SelectedBufferType = internal::SpanContainer<int, TEST_EXTENT>::BufferType<TEST_EXTENT>;
     bool isHeapAllocated = std::is_same<SelectedBufferType, internal::HeapArray<int, TEST_EXTENT>>::value;
     ASSERT_TRUE(isHeapAllocated);
-}
-
-// instance tests
-
-class SpanContainerTest : public testing::Test
-{
-    std::array<int, TEST_EXTENT> array{};
-
-protected:
-    TestSpanContainer container;
-
-    SpanContainerTest() : container(array) { }
-};
-
-TEST_F(SpanContainerTest, CapacityMatchesExtent) { EXPECT_EQ(container.capacity(), TEST_EXTENT); }
-
-TEST_F(SpanContainerTest, InitialStateEmtpy) 
-{
-    EXPECT_THAT(container, ::testing::SizeIs(0));
-    EXPECT_THAT(container, ::testing::IsEmpty()); 
 }
 
 }

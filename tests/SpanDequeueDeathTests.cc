@@ -1,21 +1,22 @@
+#include <functional>
+#include <variant>
+
 #include <gtest/gtest.h>
 
 #define SPAN_CONTAINERS_USE_EXCEPTIONS false
 #include "SpanDequeue.h"
 
-#include "PushTests/PushBackDeathTests.h"
-#include "PushTests/PushFrontDeathTests.h"
-#include "GetPopTests/BackDeathTests.h"
-#include "GetPopTests/FrontDeathTests.h"
-#include "GetPopTests/EmptyIndexDeathTests.h"
+#include "TypedContainerDeathTests.h"
+#include "ContainerTestTraits.h"
 
 namespace SpanContainers::Tests {
 
-using TestSpanDequeue = ::testing::Types<SpanDequeue<int, TEST_EXTENT>>;
-INSTANTIATE_TYPED_TEST_SUITE_P(DequeueTests, PushBackDeathTest,   TestSpanDequeue);
-INSTANTIATE_TYPED_TEST_SUITE_P(DequeueTests, PushFrontDeathTest,  TestSpanDequeue);
-INSTANTIATE_TYPED_TEST_SUITE_P(DequeueTests, BackDeathTest,       TestSpanDequeue);
-INSTANTIATE_TYPED_TEST_SUITE_P(DequeueTests, FrontDeathTest,      TestSpanDequeue);
-INSTANTIATE_TYPED_TEST_SUITE_P(DequeueTests, EmptyIndexDeathTest, TestSpanDequeue);
+using Dequeue = SpanDequeue<int, 5>;
+using DequePushBackPopFront  = std::tuple<Dequeue, PushBackFuncs<Dequeue>,  PopFrontFuncs<Dequeue>, IndexFuncs<Dequeue>, std::less<int>>;
+using DequePushFrontPopBack  = std::tuple<Dequeue, PushFrontFuncs<Dequeue>, PopBackFuncs<Dequeue>,  NoIndex,             std::less<int>>;
+
+using DequeTestTypes = testing::Types<DequePushBackPopFront, DequePushFrontPopBack>;
+
+INSTANTIATE_TYPED_TEST_SUITE_P(DequeueTests, TypedContainerDeathTest, DequeTestTypes);
 
 }

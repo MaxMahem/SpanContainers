@@ -59,7 +59,10 @@ public:
 
     /// @brief Gets the capacity of the container.
     /// @return The capcity of the container.
-    static consteval size_type capacity() noexcept { return Extent; }
+    static constexpr size_type capacity() noexcept { return Extent; }
+
+    /// @brief The capacity of the container.
+    static constexpr size_type extent = Extent;
 
     /// @brief Gets if the container is empty or not.
     /// @return true if the container is empty; false otherwise.

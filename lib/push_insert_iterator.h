@@ -56,6 +56,6 @@ public:
 /// @param container the container to wrap.
 /// @return a push_insert_iterator wrapping container.
 template <typename Container>
-push_insert_iterator<Container> push_insert(Container& container) { return push_insert_iterator<Container>(container); }
+push_insert_iterator<Container> push_inserter(Container& container) { return push_insert_iterator<Container>(container); }
 
 }

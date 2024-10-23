@@ -87,8 +87,7 @@ class SpanQueue : public internal::SpanContainer<T, Extent>,
         requires std::convertible_to<std::ranges::range_value_t<Range>, T>
     constexpr void unsafe_push_back_sized_range(Range&& values, size_type rangeSize)
     {
-        const auto newCount = count + rangeSize;
-        assert(newCount <= Extent && "Range is to large for span.");
+        assert(count + rangeSize <= Extent && "Range is to large for span.");
         for (auto&& value : values) { unsafe_push_back(std::forward<decltype(value)>(value)); }
     }
 

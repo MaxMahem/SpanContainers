@@ -13,26 +13,26 @@
 namespace SpanContainers::Tests {
 
 using MinHeap = SpanHeap<int, 5>;
-using MinHeapTestType = std::tuple<MinHeap, PushStraightFuncs<MinHeap>, PopBackFuncs<MinHeap>, NoIndex, std::greater<int>>;
+using MinHeapTestAdaptor = ContainerTestAdaptor<MinHeap, PushStraight<MinHeap>, PopBack<MinHeap>, std::greater<int>>;
 
 using MaxHeap = SpanHeap<int, 5, std::greater<int>>;
-using MaxHeapTestType = std::tuple<MaxHeap, PushStraightFuncs<MaxHeap>, PopBackFuncs<MaxHeap>, NoIndex, std::less<int>>;
+using MaxHeapTestAdaptor = ContainerTestAdaptor<MaxHeap, PushStraight<MaxHeap>, PopBack<MaxHeap>, std::less<int>>;
 
 struct CustomComparer { constexpr bool operator()(int a, int b) { return a < b; } };
 
 using CustomComparerHeap = SpanHeap<int, 5, CustomComparer>;
-using CustomComparerHeapTestType = std::tuple<CustomComparerHeap, PushStraightFuncs<CustomComparerHeap>, PopBackFuncs<CustomComparerHeap>, NoIndex, std::greater<int>>;
+using CustomComparerHeapTestAdaptor = ContainerTestAdaptor<CustomComparerHeap, PushStraight<CustomComparerHeap>, PopBack<CustomComparerHeap>, std::greater<int>>;
 
-using HeapTypes = ::testing::Types<MinHeapTestType, MaxHeapTestType, CustomComparerHeapTestType>;
+using HeapTypes = ::testing::Types<MinHeapTestAdaptor, MaxHeapTestAdaptor, CustomComparerHeapTestAdaptor>;
 INSTANTIATE_TYPED_TEST_SUITE_P(HeapTests, TypedContainerTests, HeapTypes);
 
 constexpr std::size_t LARGE_TEST_EXTENT = 30;
 constexpr std::size_t LARGE_TEST_SPLIT = LARGE_TEST_EXTENT / 5;
 
 using LargeHeap = SpanHeap<int, LARGE_TEST_EXTENT>;
-using LargeHeapTestType = std::tuple<LargeHeap, PushStraightFuncs<LargeHeap>, PopBackFuncs<LargeHeap>, NoIndex, std::greater<int>>;
+using LargeHeapTestAdaptor = ContainerTestAdaptor<LargeHeap, PushStraight<LargeHeap>, PopBack<LargeHeap>, std::greater<int>>;
 
-class LargeHeapTest : public TypedContainerTests<LargeHeapTestType> { };
+class LargeHeapTest : public TypedContainerTests<LargeHeapTestAdaptor> { };
 
 TEST_F(LargeHeapTest, PushLargeAndSmallRange)
 {

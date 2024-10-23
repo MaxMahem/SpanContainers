@@ -11,12 +11,17 @@
 namespace SpanContainers::Tests {
 
 using Dequeue = SpanDequeue<int, 5>;
-using DequePushBackPopFront  = std::tuple<Dequeue, PushBackFuncs<Dequeue>,  PopFrontFuncs<Dequeue>, IndexFuncs<Dequeue>, std::less<int>>;
-using DequePushBackPopBack   = std::tuple<Dequeue, PushBackFuncs<Dequeue>,  PopBackFuncs<Dequeue>,  NoIndex,             std::greater<int>>;
-using DequePushFrontPopFront = std::tuple<Dequeue, PushFrontFuncs<Dequeue>, PopFrontFuncs<Dequeue>, IndexFuncs<Dequeue>, std::greater<int>>;
-using DequePushFrontPopBack  = std::tuple<Dequeue, PushFrontFuncs<Dequeue>, PopBackFuncs<Dequeue>,  NoIndex,             std::less<int>>;
+using DequePushBackPopFrontTestAdaptor  = ContainerTestAdaptor<Dequeue, PushBack<Dequeue>,  PopFront<Dequeue>, FIFO, std::less<int>>;
+using DequePushBackPopBackTestAdaptor   = ContainerTestAdaptor<Dequeue, PushBack<Dequeue>,  PopBack<Dequeue>,  LIFO, std::less<int>>;
+using DequePushFrontPopFrontTestAdaptor = ContainerTestAdaptor<Dequeue, PushFront<Dequeue>, PopFront<Dequeue>, LIFO, std::greater<int>>;
+using DequePushFrontPopBackTestAdaptor  = ContainerTestAdaptor<Dequeue, PushFront<Dequeue>, PopBack<Dequeue>,  FIFO, std::greater<int>>;
 
-using DequeTestTypes = testing::Types<DequePushBackPopFront, DequePushBackPopBack, DequePushFrontPopFront, DequePushFrontPopBack>;
+using DequeTestTypes = testing::Types<
+    DequePushBackPopFrontTestAdaptor, 
+    DequePushBackPopBackTestAdaptor, 
+    DequePushFrontPopFrontTestAdaptor, 
+    DequePushFrontPopBackTestAdaptor
+>;
 
 INSTANTIATE_TYPED_TEST_SUITE_P(DequeueTests, TypedContainerTests, DequeTestTypes);
 

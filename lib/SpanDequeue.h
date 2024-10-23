@@ -60,6 +60,14 @@ class SpanDequeue : public SpanQueue<T, Extent>,
         span[read] = std::forward<U>(value);
     }
 
+    template<std::ranges::range Range = std::initializer_list<T>>
+        requires std::convertible_to<std::ranges::range_value_t<Range>, T>
+    constexpr void unsafe_push_front_sized_range(Range&& values, size_type rangeSize)
+    {
+        assert(count + rangeSize <= Extent && "Range is to large for span.");
+        for (auto&& value : values) { unsafe_push_front(std::forward<decltype(value)>(value)); }
+    }
+
     /// @brief Removes n items from the back of the container without a bounds check.
     /// @param n the number of items to remove.
     constexpr void unsafe_pop_back(size_type n) noexcept

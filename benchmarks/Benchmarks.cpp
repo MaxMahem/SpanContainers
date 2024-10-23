@@ -2,12 +2,15 @@
 #include <array>
 #include <cstdlib>
 #include <list>
+#include <queue>
 #include <random>
 #include <ranges>
 #include <stack>
 #include <vector>
 
 #include <benchmark/benchmark.h>
+
+#include "push_insert_iterator.h"
 
 #define SPAN_CONTAINERS_USE_EXCEPTIONS false
 #include "SpanStack.h"
@@ -17,26 +20,29 @@
 
 namespace SpanContainers::Benchmarks {
 
-using namespace SpanContainers;
+//using namespace SpanContainers;
 
 template <typename T, std::size_t TestSize>
 class PushPopFixture : public RandomDataFixture<T, TestSize> 
 {
-    using RandomDataFixture<T, TestSize>::randomData;
+    using THIS = PushPopFixture<T, TestSize>;
 
 public:
 
-    void SpanStackArrayPushPop(benchmark::State& state) {
+    void SpanStackArrayPushPop(benchmark::State& state) 
+    {
         for (auto _ : state) {
-            // SpanStack<T, TestSize>::BufferType<1> buffer{};
             std::array<T, TestSize> buffer{};
             SpanStack<T, TestSize> spanStack{ buffer };
 
-            std::ranges::copy(randomData, std::back_inserter(spanStack));
+            std::ranges::copy(THIS::RANDOM_DATA, std::back_inserter(spanStack));
 
-            auto rit = randomData.rbegin();
+            auto rit = THIS::RANDOM_DATA.rbegin();
             while (!spanStack.empty()) { 
-                if (spanStack.back() != *rit++) { std::terminate(); }
+                if (spanStack.back() != *rit++) {
+                    state.SkipWithError("Data generated out of order!");
+                    return;
+                }
                 spanStack.pop_back(); 
             }
         }
@@ -47,11 +53,14 @@ public:
             SpanContainers::internal::HeapArray<T, TestSize> buffer{};
             SpanContainers::SpanStack<T, TestSize> spanStack{ buffer };
 
-            for (T number : randomData) { spanStack.push_back(number); }
+            std::ranges::copy(THIS::RANDOM_DATA, std::back_inserter(spanStack));
 
-            auto rit = randomData.rbegin();
+            auto rit = THIS::RANDOM_DATA.rbegin();
             while (!spanStack.empty()) {
-                if (spanStack.back() != *rit++) { std::terminate(); }
+                if (spanStack.back() != *rit++) {
+                    state.SkipWithError("Data generated out of order!");
+                    return; 
+                }
                 spanStack.pop_back();
             }
         }
@@ -61,11 +70,14 @@ public:
         for (auto _ : state) {
             std::stack<T> stack{};
 
-            for (T number : randomData) { stack.push(number); }
+            std::ranges::copy(THIS::RANDOM_DATA, push_inserter(stack));
             
-            auto rit = randomData.rbegin();
+            auto rit = THIS::RANDOM_DATA.rbegin();
             while (!stack.empty()) {
-                if (stack.top() != *rit++) { std::terminate(); }
+                if (stack.top() != *rit++) {
+                    state.SkipWithError("Data generated out of order!");
+                    return;
+                }
                 stack.pop();
             }
         }
@@ -76,21 +88,59 @@ public:
             std::vector<T> vector{};
             vector.reserve(TestSize);
 
-            std::ranges::copy(randomData, std::back_inserter(vector));
+            std::ranges::copy(THIS::RANDOM_DATA, std::back_inserter(vector));
             
-            auto rit = randomData.rbegin();
+            auto rit = THIS::RANDOM_DATA.rbegin();
             while (!vector.empty()) {
-                if (vector.back() != *rit++) { std::terminate(); }
+                if (vector.back() != *rit++) {
+                    state.SkipWithError("Data generated out of order!");
+                    return;
+                }
                 vector.pop_back();
+            }
+        }
+    }
+
+    void StdPriorityQuePushPop(benchmark::State& state) {
+        for (auto _ : state) {
+            std::priority_queue<T> priorityQueue{};
+
+            std::ranges::copy(THIS::RANDOM_DATA, push_inserter(priorityQueue));
+
+            auto rit = THIS::SORTED_DATA.rbegin();
+            while (!priorityQueue.empty()) {
+                if (priorityQueue.top() != *rit++) {
+                    state.SkipWithError("Data generated out of order!");
+                    return;
+                }
+                priorityQueue.pop();
+            }
+        }
+    }
+
+    void HeapPushPop(benchmark::State& state) {
+        for (auto _ : state) {
+            std::array<T, TestSize> buffer{};
+            SpanHeap<T, TestSize> heap{ buffer };
+
+            std::ranges::copy(THIS::RANDOM_DATA, push_inserter(heap));
+
+            auto rit = THIS::SORTED_DATA.rbegin();
+            while (!heap.empty()) {
+                if (heap.back() != *rit++) {
+                    state.SkipWithError("Data generated out of order!");
+                    return;
+                }
+                heap.pop_back();
             }
         }
     }
 };
 
 BENCHMARK_TEMPLATE_F(PushPopFixture, SpanStack_Array_256,  std::int64_t, 256)(benchmark::State& state)  { this->SpanStackArrayPushPop(state); }
-BENCHMARK_TEMPLATE_F(PushPopFixture, SpanStack_Array_512,  std::int64_t, 512)(benchmark::State& state)  { this->SpanStackArrayPushPop(state); }
-BENCHMARK_TEMPLATE_F(PushPopFixture, SpanStack_Array_1024, std::int64_t, 1024)(benchmark::State& state) { this->SpanStackArrayPushPop(state); }
-BENCHMARK_TEMPLATE_F(PushPopFixture, SpanStack_Array_2048, std::int64_t, 2048)(benchmark::State& state) { this->SpanStackArrayPushPop(state); }
+//BENCHMARK_TEMPLATE_F(PushPopFixture, SpanStack_Array_512,  std::int64_t, 512)(benchmark::State& state)  { this->SpanStackArrayPushPop(state); }
+//BENCHMARK_TEMPLATE_F(PushPopFixture, SpanStack_Array_1024, std::int64_t, 1024)(benchmark::State& state) { this->SpanStackArrayPushPop(state); }
+//BENCHMARK_TEMPLATE_F(PushPopFixture, SpanStack_Array_2048, std::int64_t, 2048)(benchmark::State& state) { this->SpanStackArrayPushPop(state); }
 
 //BENCHMARK_TEMPLATE_F(PushPopFixture, SpanStack_Heap_256,  int, 256)(benchmark::State& state)  { this->SpanStackHeapPushPop(state); }
 //BENCHMARK_TEMPLATE_F(PushPopFixture, SpanStack_Heap_512,  int, 512)(benchmark::State& state)  { this->SpanStackHeapPushPop(state); }
@@ -98,14 +148,18 @@ BENCHMARK_TEMPLATE_F(PushPopFixture, SpanStack_Array_2048, std::int64_t, 2048)(b
 //BENCHMARK_TEMPLATE_F(PushPopFixture, SpanStack_Heap_2048, int, 2048)(benchmark::State& state) { this->SpanStackHeapPushPop(state); }
 
 BENCHMARK_TEMPLATE_F(PushPopFixture, Stack_256,  std::int64_t, 256)(benchmark::State& state)  { this->StdStackPushPop(state); }
-BENCHMARK_TEMPLATE_F(PushPopFixture, Stack_512,  std::int64_t, 512)(benchmark::State& state)  { this->StdStackPushPop(state); }
-BENCHMARK_TEMPLATE_F(PushPopFixture, Stack_1024, std::int64_t, 1024)(benchmark::State& state) { this->StdStackPushPop(state); }
-BENCHMARK_TEMPLATE_F(PushPopFixture, Stack_2048, std::int64_t, 2048)(benchmark::State& state) { this->StdStackPushPop(state); }
+//BENCHMARK_TEMPLATE_F(PushPopFixture, Stack_512,  std::int64_t, 512)(benchmark::State& state)  { this->StdStackPushPop(state); }
+//BENCHMARK_TEMPLATE_F(PushPopFixture, Stack_1024, std::int64_t, 1024)(benchmark::State& state) { this->StdStackPushPop(state); }
+//BENCHMARK_TEMPLATE_F(PushPopFixture, Stack_2048, std::int64_t, 2048)(benchmark::State& state) { this->StdStackPushPop(state); }
 
 BENCHMARK_TEMPLATE_F(PushPopFixture, Vector_256,  std::int64_t, 256)(benchmark::State& state)  { this->StdVectorPushPop(state); }
-BENCHMARK_TEMPLATE_F(PushPopFixture, Vector_512,  std::int64_t, 512)(benchmark::State& state)  { this->StdVectorPushPop(state); }
-BENCHMARK_TEMPLATE_F(PushPopFixture, Vector_1024, std::int64_t, 1024)(benchmark::State& state) { this->StdVectorPushPop(state); }
-BENCHMARK_TEMPLATE_F(PushPopFixture, Vector_2048, std::int64_t, 2048)(benchmark::State& state) { this->StdVectorPushPop(state); }
+//BENCHMARK_TEMPLATE_F(PushPopFixture, Vector_512,  std::int64_t, 512)(benchmark::State& state)  { this->StdVectorPushPop(state); }
+//BENCHMARK_TEMPLATE_F(PushPopFixture, Vector_1024, std::int64_t, 1024)(benchmark::State& state) { this->StdVectorPushPop(state); }
+//BENCHMARK_TEMPLATE_F(PushPopFixture, Vector_2048, std::int64_t, 2048)(benchmark::State& state) { this->StdVectorPushPop(state); }
+
+BENCHMARK_TEMPLATE_F(PushPopFixture, StdPriorityQue_256, std::int64_t, 256)(benchmark::State& state) { this->StdPriorityQuePushPop(state); }
+
+BENCHMARK_TEMPLATE_F(PushPopFixture, SpanHeap_256, std::int64_t, 256)(benchmark::State& state) { this->HeapPushPop(state); }
 
 }
 

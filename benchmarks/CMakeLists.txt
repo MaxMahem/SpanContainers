@@ -18,4 +18,7 @@ add_executable(Benchmarks "Benchmarks.cpp")
 target_link_libraries(Benchmarks benchmark::benchmark)
 target_include_directories(Benchmarks PRIVATE "${PROJECT_INCLUDE_DIR}")
 
+set(CMAKE_CXX_STANDARD 20)
+set(CMAKE_CXX_STANDARD_REQUIRED ON)
+
 set_property(TARGET Benchmarks PROPERTY CXX_STANDARD 20)

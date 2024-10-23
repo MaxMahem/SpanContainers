@@ -36,23 +36,24 @@ struct PushBackTrait
         return true;
     }
 
-    /// @brief Assign values to the container.
+    /// @brief Assign values to the back of the container.
     /// @details This method only provides the basic exception gurantee. If range exceeds the capacty of the container, 
     /// values will be pushed_back until capcity is reached, at which point a FullContainerError exception is thrown.
     /// @tparam Range The type of the range that contains the values.
     /// @throws FullContainerError If the size of the range exceeds the container capacity and UseExceptions is true.
     template<std::ranges::range Range = std::initializer_list<T>>
+        requires std::convertible_to<std::ranges::range_value_t<Range>, T>
     constexpr void push_back_range(Range&& values)
     {
         for (auto&& value : values) { push_back(std::forward<decltype(value)>(value)); }
     }
 
-    /// @brief Assign values to the container.
+    /// @brief Assign values to the back of the container.
     /// @details This method provides a strong exception gurantee.
-    /// appended until capcity is reached, at which point an exception is thrown.
     /// @tparam Range The type of the range that contains the values.
     /// @throws std::out_of_range If the size of the range exceeds the container capacity and UseExceptions is true.
     template<std::ranges::sized_range Range = std::initializer_list<T>>
+        requires std::convertible_to<std::ranges::range_value_t<Range>, T>
     constexpr void push_back_range(Range&& values)
     {
         const auto rangeSize = std::ranges::size(values);
@@ -73,23 +74,6 @@ struct PushBackTrait
         asDerived().unsafe_push_back_sized_range(std::forward<Range>(values), rangeSize);
         return true;
     }
-
-    /// @brief Assign values to the container.
-    /// @tparam Range The type of the range that contains the values.
-    /// @throws std::out_of_range If the size of the range exceeds the container capacity and UseExceptions is true.
-    /*template<std::ranges::range Range>
-    constexpr void push_back_range(Range&& values) requires (std::convertible_to<std::ranges::range_value_t<Range>, T>)
-    {
-        if constexpr (UseExceptions) {
-            for (auto&& value : values) {
-                if (asDerived().count + 1 > asDerived().capacity()) {
-                    throw std::out_of_range(std::format("Range exceeds capacity of '{}'.", asDerived()));
-                }
-                asDerived().unsafe_push_back(std::forward<decltype(value)>(value));
-            }
-        }
-        else { for (auto&& value : values) { asDerived().unsafe_push_back(std::forward<decltype(value)>(value)); } }
-    }*/
 
 private:
     [[nodiscard]] constexpr Derived& asDerived() noexcept { return static_cast<Derived&>(*this); }

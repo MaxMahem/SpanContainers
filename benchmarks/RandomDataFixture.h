@@ -11,9 +11,17 @@ namespace SpanContainers::Benchmarks {
 template <typename T, std::size_t TestSize>
 class RandomDataFixture : public benchmark::Fixture {
 public:
-    std::array<T, TestSize> randomData{};
+    inline static const std::array<T, TestSize> RANDOM_DATA = [] {
+        std::array<T, TestSize> data{};
+        std::ranges::generate(data, RNG::generate<T>);
+        return data;
+    }();
 
-    void SetUp(const ::benchmark::State& state) override { std::ranges::generate(randomData, RNG::generate<T>); }
+    inline static const std::array<T, TestSize> SORTED_DATA = [] {
+        std::array<T, TestSize> data = RANDOM_DATA;
+        std::ranges::sort(data);
+        return data;
+    }();
 };
 
 }

@@ -98,8 +98,6 @@ public:
         requires std::is_lvalue_reference_v<Buffer&>&& std::is_constructible_v<span_type, Buffer&>
     constexpr SpanHeap(Buffer& buffer, Comparer comparer) noexcept : span(buffer), comparer(comparer) { }
 
-    [[nodiscard]] Comparer comp() noexcept { return comparer; }
-
     /// @brief Get the threshold at which heap_make will be used over heap_push
     /// @return the smallest number of items for which push should be used over make
     [[nodiscard]] size_type make_threshold() noexcept { return count / std::max(1, std::bit_width(count) - 1); }

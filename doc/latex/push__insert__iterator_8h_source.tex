@@ -2,48 +2,46 @@
 \hypertarget{push__insert__iterator_8h_source}{}\label{push__insert__iterator_8h_source}\index{C:/Users/maxma/source/repos/SpanContainers/lib/push\_insert\_iterator.h@{C:/Users/maxma/source/repos/SpanContainers/lib/push\_insert\_iterator.h}}
 
 \begin{DoxyCode}{0}
-\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#include\ <concepts>}}
-\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#include\ <iterator>}}
-\DoxyCodeLine{00003\ \textcolor{preprocessor}{\#include\ <utility>}}
-\DoxyCodeLine{00004\ }
-\DoxyCodeLine{00005\ \textcolor{keyword}{namespace\ }SpanContainers\ \{}
-\DoxyCodeLine{00006\ }
-\DoxyCodeLine{00007\ \textcolor{keyword}{template}\ <\textcolor{keyword}{typename}\ Container,\ \textcolor{keyword}{typename}\ T>}
-\DoxyCodeLine{00008\ \textcolor{keyword}{concept\ }\mbox{\hyperlink{concept_span_containers_1_1_pushable_container}{PushableContainer}}\ =\ \textcolor{keyword}{requires}(Container\ container,\ T\ value)\ \{}
-\DoxyCodeLine{00009\ \ \ \ \ \{\ container.push(std::forward<T>(value))\ \};}
-\DoxyCodeLine{00010\ \};}
-\DoxyCodeLine{00011\ }
-\DoxyCodeLine{00014\ \textcolor{keyword}{template}\ <\textcolor{keyword}{typename}\ Container>\ \textcolor{keyword}{requires}\ \mbox{\hyperlink{concept_span_containers_1_1_pushable_container}{PushableContainer<Container,\ typename\ Container::value\_type>}}}
-\DoxyCodeLine{00015\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_span_containers_1_1push__insert__iterator}{push\_insert\_iterator}}\ \{}
-\DoxyCodeLine{00016\ \ \ \ \ Container*\ container;}
-\DoxyCodeLine{00017\ }
-\DoxyCodeLine{00018\ \textcolor{keyword}{public}:}
-\DoxyCodeLine{00019\ \ \ \ \ \textcolor{keyword}{using\ }container\_type\ \ \ \ =\ Container;}
-\DoxyCodeLine{00020\ \ \ \ \ \textcolor{keyword}{using\ }value\_type\ \ \ \ \ \ \ \ =\ void;}
-\DoxyCodeLine{00021\ \ \ \ \ \textcolor{keyword}{using\ }difference\_type\ \ \ =\ std::ptrdiff\_t;}
-\DoxyCodeLine{00022\ \ \ \ \ \textcolor{keyword}{using\ }reference\ \ \ \ \ \ \ \ \ =\ void;}
-\DoxyCodeLine{00023\ \ \ \ \ \textcolor{keyword}{using\ }pointer\ \ \ \ \ \ \ \ \ \ \ =\ void;}
-\DoxyCodeLine{00024\ \ \ \ \ \textcolor{keyword}{using\ }iterator\_category\ =\ std::output\_iterator\_tag;}
-\DoxyCodeLine{00025\ }
-\DoxyCodeLine{00028\ \ \ \ \ \textcolor{keyword}{explicit}\ \mbox{\hyperlink{class_span_containers_1_1push__insert__iterator_ae2a11897e328c38bb5a080d68c27c162}{push\_insert\_iterator}}(Container\&\ container)\ noexcept\ :\ container(\&container)\ \{\}}
-\DoxyCodeLine{00029\ }
-\DoxyCodeLine{00034\ \ \ \ \ \textcolor{keyword}{template}\ <\textcolor{keyword}{typename}\ T>}
-\DoxyCodeLine{00035\ \ \ \ \ \textcolor{keyword}{constexpr}\ \mbox{\hyperlink{class_span_containers_1_1push__insert__iterator}{push\_insert\_iterator}}\&\ \mbox{\hyperlink{class_span_containers_1_1push__insert__iterator_a785bad48cd01e5e1543962976591bfb9}{operator=}}(T\&\&\ value)}
-\DoxyCodeLine{00036\ \ \ \ \ \{}
-\DoxyCodeLine{00037\ \ \ \ \ \ \ \ \ container-\/>push(std::forward<T>(value));}
-\DoxyCodeLine{00038\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ *\textcolor{keyword}{this};}
-\DoxyCodeLine{00039\ \ \ \ \ \}}
-\DoxyCodeLine{00040\ }
-\DoxyCodeLine{00043\ \ \ \ \ \textcolor{keyword}{constexpr}\ \mbox{\hyperlink{class_span_containers_1_1push__insert__iterator}{push\_insert\_iterator}}\&\ \mbox{\hyperlink{class_span_containers_1_1push__insert__iterator_a5199045447c632d1599105a282fcbaad}{operator*}}()\ \{\ \textcolor{keywordflow}{return}\ *\textcolor{keyword}{this};\ \}}
-\DoxyCodeLine{00044\ }
-\DoxyCodeLine{00047\ \ \ \ \ \textcolor{keyword}{constexpr}\ \mbox{\hyperlink{class_span_containers_1_1push__insert__iterator}{push\_insert\_iterator}}\&\ \mbox{\hyperlink{class_span_containers_1_1push__insert__iterator_a89c751f4bd0536aef6bd8b1caddb05ce}{operator++}}()\ \{\ \textcolor{keywordflow}{return}\ *\textcolor{keyword}{this};\ \}}
-\DoxyCodeLine{00048\ }
-\DoxyCodeLine{00051\ \ \ \ \ \textcolor{keyword}{constexpr}\ \mbox{\hyperlink{class_span_containers_1_1push__insert__iterator}{push\_insert\_iterator}}\ \mbox{\hyperlink{class_span_containers_1_1push__insert__iterator_afb1a9c22a35ac5326b19cdb6ad138a9d}{operator++}}(\textcolor{keywordtype}{int})\ \{\ \textcolor{keywordflow}{return}\ *\textcolor{keyword}{this};\ \}}
-\DoxyCodeLine{00052\ \};}
-\DoxyCodeLine{00053\ }
-\DoxyCodeLine{00058\ \textcolor{keyword}{template}\ <\textcolor{keyword}{typename}\ Container>}
-\DoxyCodeLine{00059\ push\_insert\_iterator<Container>\ push\_inserter(Container\&\ container)\ \{\ \textcolor{keywordflow}{return}\ push\_insert\_iterator<Container>(container);\ \}}
-\DoxyCodeLine{00060\ }
-\DoxyCodeLine{00061\ \}}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00002\ }
+\DoxyCodeLine{00003\ \textcolor{preprocessor}{\#include\ <iterator>}}
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ <utility>}}
+\DoxyCodeLine{00005\ }
+\DoxyCodeLine{00006\ \textcolor{keyword}{namespace\ }SpanContainers\ \{}
+\DoxyCodeLine{00007\ }
+\DoxyCodeLine{00010\ \textcolor{comment}{//template\ <PushableContainer<Container::value\_type>\ Container>}}
+\DoxyCodeLine{00011\ \textcolor{keyword}{template}\ <\textcolor{keyword}{typename}\ Container>}
+\DoxyCodeLine{00012\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_span_containers_1_1push__insert__iterator}{push\_insert\_iterator}}}
+\DoxyCodeLine{00013\ \{}
+\DoxyCodeLine{00014\ \ \ \ \ Container*\ container;}
+\DoxyCodeLine{00015\ }
+\DoxyCodeLine{00016\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00017\ \ \ \ \ \textcolor{keyword}{using\ }container\_type\ \ \ \ =\ Container;}
+\DoxyCodeLine{00018\ \ \ \ \ \textcolor{keyword}{using\ }value\_type\ \ \ \ \ \ \ \ =\ void;}
+\DoxyCodeLine{00019\ \ \ \ \ \textcolor{keyword}{using\ }difference\_type\ \ \ =\ std::ptrdiff\_t;}
+\DoxyCodeLine{00020\ \ \ \ \ \textcolor{keyword}{using\ }reference\ \ \ \ \ \ \ \ \ =\ void;}
+\DoxyCodeLine{00021\ \ \ \ \ \textcolor{keyword}{using\ }pointer\ \ \ \ \ \ \ \ \ \ \ =\ void;}
+\DoxyCodeLine{00022\ \ \ \ \ \textcolor{keyword}{using\ }iterator\_category\ =\ std::output\_iterator\_tag;}
+\DoxyCodeLine{00023\ }
+\DoxyCodeLine{00026\ \ \ \ \ \textcolor{keyword}{explicit}\ \mbox{\hyperlink{class_span_containers_1_1push__insert__iterator_ae2a11897e328c38bb5a080d68c27c162}{push\_insert\_iterator}}(Container\&\ container)\ noexcept\ :\ container(\&container)\ \{\}}
+\DoxyCodeLine{00027\ }
+\DoxyCodeLine{00032\ \ \ \ \ \textcolor{keyword}{template}\ <\textcolor{keyword}{typename}\ T>}
+\DoxyCodeLine{00033\ \ \ \ \ \textcolor{keyword}{constexpr}\ \mbox{\hyperlink{class_span_containers_1_1push__insert__iterator}{push\_insert\_iterator}}\&\ \mbox{\hyperlink{class_span_containers_1_1push__insert__iterator_a785bad48cd01e5e1543962976591bfb9}{operator=}}(T\&\&\ value)}
+\DoxyCodeLine{00034\ \ \ \ \ \{}
+\DoxyCodeLine{00035\ \ \ \ \ \ \ \ \ container-\/>push(std::forward<T>(value));}
+\DoxyCodeLine{00036\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ *\textcolor{keyword}{this};}
+\DoxyCodeLine{00037\ \ \ \ \ \}}
+\DoxyCodeLine{00038\ }
+\DoxyCodeLine{00041\ \ \ \ \ \textcolor{keyword}{constexpr}\ \mbox{\hyperlink{class_span_containers_1_1push__insert__iterator}{push\_insert\_iterator}}\&\ \mbox{\hyperlink{class_span_containers_1_1push__insert__iterator_a5199045447c632d1599105a282fcbaad}{operator*}}()\ \{\ \textcolor{keywordflow}{return}\ *\textcolor{keyword}{this};\ \}}
+\DoxyCodeLine{00042\ }
+\DoxyCodeLine{00045\ \ \ \ \ \textcolor{keyword}{constexpr}\ \mbox{\hyperlink{class_span_containers_1_1push__insert__iterator}{push\_insert\_iterator}}\&\ \mbox{\hyperlink{class_span_containers_1_1push__insert__iterator_a89c751f4bd0536aef6bd8b1caddb05ce}{operator++}}()\ \{\ \textcolor{keywordflow}{return}\ *\textcolor{keyword}{this};\ \}}
+\DoxyCodeLine{00046\ }
+\DoxyCodeLine{00049\ \ \ \ \ \textcolor{keyword}{constexpr}\ \mbox{\hyperlink{class_span_containers_1_1push__insert__iterator}{push\_insert\_iterator}}\ \mbox{\hyperlink{class_span_containers_1_1push__insert__iterator_afb1a9c22a35ac5326b19cdb6ad138a9d}{operator++}}(\textcolor{keywordtype}{int})\ \{\ \textcolor{keywordflow}{return}\ *\textcolor{keyword}{this};\ \}}
+\DoxyCodeLine{00050\ \};}
+\DoxyCodeLine{00051\ }
+\DoxyCodeLine{00056\ \textcolor{keyword}{template}\ <\textcolor{keyword}{typename}\ Container>}
+\DoxyCodeLine{00057\ push\_insert\_iterator<Container>\ push\_inserter(Container\&\ container)\ \{\ \textcolor{keywordflow}{return}\ push\_insert\_iterator<Container>(container);\ \}}
+\DoxyCodeLine{00058\ }
+\DoxyCodeLine{00059\ \}}
 
 \end{DoxyCode}

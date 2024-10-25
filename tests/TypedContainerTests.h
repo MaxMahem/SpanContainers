@@ -10,95 +10,16 @@
 #include <gtest/gtest.h>
 
 #include "SpanContainerFormatter.h"
+#include "Errors/IndexOutOfRangeError.h"
 
-#include "ContainerTestTraits.h"
+#include "ContainerTestFixture.h"
 
 namespace SpanContainers::Tests {
 
-using namespace SpanContainers;
-
-/// @brief Test fixture for container tests
-/// @tparam TestContainer the aggregate test container type expects a tuple in the format:
-/// - Container
-/// - PushFuncs<Container>
-/// - PopFuncs<Container>
-/// - IndexFuncs<Container> - this one can also be NoIndex if no index functions.
-/// - Comparer - a comparer, typically std;:less or std::greater
-template <typename Adaptor>
-class TypedContainerTests : public ::testing::Test 
-{
-protected:
-    using Container  = typename Adaptor::Container;
-    using PushFuncs  = typename Adaptor::PushFuncs;
-    using PopFuncs   = typename Adaptor::PopFuncs;
-
-    std::array<int, Container::extent> emptyBuffer{};
-    Container emptyContainer{ emptyBuffer };
-
-    std::array<int, Container::extent> fullBuffer{};
-    Container fullContainer{ fullBuffer };
-
-    TypedContainerTests() : emptyContainer(emptyBuffer), fullContainer(fullBuffer) { }
-
-    void SetUp() override
-    {
-        SCOPED_TRACE(std::format("SetUp: {}", Adaptor::NAME));
-
-        Fill(fullContainer, Adaptor::FILL, PushFuncs::push);
-        ExpectFull(fullContainer);
-        ExpectEmpty(emptyContainer);
-    }
-
-    constexpr static void Fill(Container& container, auto&& fill, auto push) {
-        for (auto value : fill) { push(container, value); }
-    }
-
-    [[nodiscard]] constexpr static std::vector<int> Empty(Container& container, auto get, auto pop)
-    {
-        std::vector<int> values{};
-        while (!container.empty()) {
-            values.push_back(get(container));
-            pop(container);
-        }
-        return values;
-    }
-
-    /// @brief Tests that container is empty by every avaliable measure. Also validates failure methods for gets.
-    /// @param container the container to test
-    void static ExpectEmpty(Container container) 
-    {
-        EXPECT_THAT(container, ::testing::IsEmpty());
-        EXPECT_THAT(container, ::testing::SizeIs(0));
-        EXPECT_FALSE(container.full());
-
-        EXPECT_THROW((void) PopFuncs::get(container), EmptyContainerError);
-        EXPECT_EQ(PopFuncs::try_get(container), nullptr);
-   
-        if constexpr (Indexable<Container>) {
-            for (auto index : std::views::iota(std::size_t{ 0 }, Container::extent)) {
-                EXPECT_THROW((void) container[index], std::out_of_range);
-                EXPECT_EQ(container.at(index), nullptr);
-            }
-        }
-    }
-
-    /// @brief Tests that container is full by every avaliable measure. Also partially checks ordering
-    /// @param container the container to test
-    void static ExpectFull(Container container) 
-    {
-        EXPECT_TRUE(container.full());
-        EXPECT_THAT(container, ::testing::SizeIs(Container::extent));
-
-        if constexpr (Indexable<Container>) {
-            for (auto index : std::views::iota(std::size_t{ 0 }, Container::extent)) {
-                EXPECT_EQ(container[index],     Adaptor::INDEX_ORDER[index]);
-                EXPECT_EQ(*container.at(index), Adaptor::INDEX_ORDER[index]);
-            }
-        }
-
-        EXPECT_EQ(PopFuncs::get(container),      Adaptor::PUSHPOP_ORDER[0]);
-        EXPECT_EQ(*PopFuncs::try_get(container), Adaptor::PUSHPOP_ORDER[0]);
-    }
+template <typename Container>
+concept Indexable = requires(Container container, std::size_t index) {
+    { container[index] }    -> std::same_as<int&>;
+    { container.at(index) } -> std::same_as<int*>;
 };
 
 TYPED_TEST_SUITE_P(TypedContainerTests);
@@ -138,7 +59,7 @@ TYPED_TEST_P(TypedContainerTests, OutOfRangePushFails)
 
     // strong exception gurantee for failure, even if part of the push could succeed.
     EXPECT_FALSE(TypeParam::PushFuncs::try_push_range(this->fullContainer, TypeParam::FILL));
-    EXPECT_THROW(TypeParam::PushFuncs::push_range(this->emptyContainer,    TypeParam::FILL), std::out_of_range);
+    EXPECT_THROW(TypeParam::PushFuncs::push_range(this->emptyContainer,    TypeParam::FILL), ExceedsCapacityError);
 
     // check no mutation occured
     EXPECT_THAT(this->emptyContainer, ::testing::SizeIs(partialContainerSize));
@@ -160,9 +81,22 @@ TYPED_TEST_P(TypedContainerTests, OutOfRangePopFails)
     TestFixture::ExpectEmpty(this->emptyContainer);    // also checks for mutation
 
     // strong exception gurantee for failure, even if part of the pop could succeed.
-    EXPECT_THROW(TypeParam::PopFuncs::pop_n(this->fullContainer,     TypeParam::Container::extent + 1), std::out_of_range);
+    EXPECT_THROW(TypeParam::PopFuncs::pop_n(this->fullContainer,     TypeParam::Container::extent + 1), InsufficentItemsError);
     EXPECT_FALSE(TypeParam::PopFuncs::try_pop_n(this->fullContainer, TypeParam::Container::extent + 1));
     TestFixture::ExpectFull(this->fullContainer);  // also checks for mutation
+}
+
+TYPED_TEST_P(TypedContainerTests, OutOfRangeIndexFails)
+{
+    if constexpr (!Indexable<TypeParam::Container>) { GTEST_SKIP() << "No index methods."; }
+    else {
+        for (auto index : std::views::iota(std::size_t{ 0 }, TypeParam::Container::extent)) {
+            EXPECT_THROW((void) this->emptyContainer[index], IndexOutOfRangeError);
+            EXPECT_EQ(this->emptyContainer.at(index), nullptr);
+        }
+        EXPECT_THROW((void) this->emptyContainer[TypeParam::Container::extent + 1], IndexOutOfRangeError);
+        EXPECT_EQ(this->emptyContainer.at(TypeParam::Container::extent + 1), nullptr);
+    }
 }
 
 /// @brief Tests that push methods succeed and increment size.
@@ -247,7 +181,7 @@ TYPED_TEST_P(TypedContainerTests, PushRangeOrderedCorrect)
     testPushRange(TypeParam::PushFuncs::push_range_list, TypeParam::FILL_LIST, "push_range_list");
 }
 
-TYPED_TEST_P(TypedContainerTests, IndexsAreCorrect)
+TYPED_TEST_P(TypedContainerTests, IndexLookupCorrect)
 {
     if constexpr (!Indexable<TypeParam::Container>) { GTEST_SKIP() << "No index methods."; }
     else {
@@ -263,11 +197,12 @@ REGISTER_TYPED_TEST_SUITE_P(TypedContainerTests,
     ClearEmptiesContainer,
     OutOfRangePushFails,
     OutOfRangePopFails,
+    OutOfRangeIndexFails,
     PushToFullSucceeds,
     PopToEmptySucceeds,
     PushPopCorrectOrder,
     PushRangeOrderedCorrect,
-    IndexsAreCorrect
+    IndexLookupCorrect
 );
 
 }

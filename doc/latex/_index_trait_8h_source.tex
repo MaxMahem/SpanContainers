@@ -17,18 +17,18 @@
 \DoxyCodeLine{00016\ \ \ \ \ \textcolor{keyword}{using\ }pointer\ \ \ =\ std::span<T>::pointer;}
 \DoxyCodeLine{00017\ \ \ \ \ \textcolor{keyword}{using\ }size\_type\ =\ std::span<T>::size\_type;}
 \DoxyCodeLine{00018\ }
-\DoxyCodeLine{00019\ \ \ \ \ [[nodiscard]]\ \textcolor{keyword}{constexpr}\ \textcolor{keyword}{const}\ Derived\&\ asDerived()\ \textcolor{keyword}{const}\ \textcolor{keyword}{noexcept}\ \{\ \textcolor{keywordflow}{return}\ \textcolor{keyword}{static\_cast<}\textcolor{keyword}{const\ }Derived\&\textcolor{keyword}{>}(*this);\ \}}
+\DoxyCodeLine{00019\ \ \ \ \ [[nodiscard]]\ \textcolor{keyword}{constexpr}\ \textcolor{keyword}{const}\ Derived\&\ AsDerived()\ \textcolor{keyword}{const}\ \textcolor{keyword}{noexcept}\ \{\ \textcolor{keywordflow}{return}\ \textcolor{keyword}{static\_cast<}\textcolor{keyword}{const\ }Derived\&\textcolor{keyword}{>}(*this);\ \}}
 \DoxyCodeLine{00020\ }
 \DoxyCodeLine{00021\ \textcolor{keyword}{public}:}
 \DoxyCodeLine{00026\ \ \ \ \ [[nodiscard]]\ \textcolor{keyword}{constexpr}\ reference\ \mbox{\hyperlink{struct_span_containers_1_1internal_1_1_index_trait_ada06eabb7b7e3fc9ec94b0f28b42aed5}{operator[]}}(size\_type\ index)\textcolor{keyword}{\ const}}
 \DoxyCodeLine{00027\ \textcolor{keyword}{\ \ \ \ }\{}
-\DoxyCodeLine{00028\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ \textcolor{keyword}{constexpr}\ (UseExceptions)\ \{\ \mbox{\hyperlink{class_span_containers_1_1_index_out_of_range_error_a264607f2129a30372811f14293003bf0}{IndexOutOfRangeError::ThrowIfOutOfRange}}(asDerived(),\ index);\ \}}
-\DoxyCodeLine{00029\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ asDerived().unsafe\_at(index);}
+\DoxyCodeLine{00028\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ \textcolor{keyword}{constexpr}\ (UseExceptions)\ \{\ \mbox{\hyperlink{class_span_containers_1_1_index_out_of_range_error_a264607f2129a30372811f14293003bf0}{IndexOutOfRangeError::ThrowIfOutOfRange}}(AsDerived(),\ index);\ \}}
+\DoxyCodeLine{00029\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ AsDerived().unsafe\_at(index);}
 \DoxyCodeLine{00030\ \ \ \ \ \}}
 \DoxyCodeLine{00031\ }
 \DoxyCodeLine{00035\ \ \ \ \ [[nodiscard]]\ \textcolor{keyword}{constexpr}\ pointer\ \mbox{\hyperlink{struct_span_containers_1_1internal_1_1_index_trait_a2d79a1361803416b85bc31c09a2d013a}{at}}(size\_type\ index)\ \textcolor{keyword}{const}\ \textcolor{keyword}{noexcept}}
 \DoxyCodeLine{00036\ \ \ \ \ \{}
-\DoxyCodeLine{00037\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ index\ >=\ asDerived().size()\ ?\ nullptr\ :\ \&asDerived().unsafe\_at(index);}
+\DoxyCodeLine{00037\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ index\ >=\ AsDerived().size()\ ?\ nullptr\ :\ \&AsDerived().unsafe\_at(index);}
 \DoxyCodeLine{00038\ \ \ \ \ \}}
 \DoxyCodeLine{00039\ \};}
 \DoxyCodeLine{00040\ }

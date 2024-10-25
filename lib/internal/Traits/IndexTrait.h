@@ -16,7 +16,7 @@ private:
     using pointer   = std::span<T>::pointer;
     using size_type = std::span<T>::size_type;
 
-    [[nodiscard]] constexpr const Derived& asDerived() const noexcept { return static_cast<const Derived&>(*this); }
+    [[nodiscard]] constexpr const Derived& AsDerived() const noexcept { return static_cast<const Derived&>(*this); }
 
 public:
     /// @brief Gets a reference to the element at index.
@@ -25,8 +25,8 @@ public:
     /// @throws std::out_of_range If index is out of range and UseExceptions is true.
     [[nodiscard]] constexpr reference operator[](size_type index) const
     {
-        if constexpr (UseExceptions) { IndexOutOfRangeError::ThrowIfOutOfRange(asDerived(), index); }
-        return asDerived().unsafe_at(index);
+        if constexpr (UseExceptions) { IndexOutOfRangeError::ThrowIfOutOfRange(AsDerived(), index); }
+        return AsDerived().unsafe_at(index);
     }
 
     /// @brief Gets a pointer to the element at index.
@@ -34,7 +34,7 @@ public:
     /// @return A pointer to the element at index, or nullptr if index is out of bounds.
     [[nodiscard]] constexpr pointer at(size_type index) const noexcept
     {
-        return index >= asDerived().size() ? nullptr : &asDerived().unsafe_at(index);
+        return index >= AsDerived().size() ? nullptr : &AsDerived().unsafe_at(index);
     }
 };
 

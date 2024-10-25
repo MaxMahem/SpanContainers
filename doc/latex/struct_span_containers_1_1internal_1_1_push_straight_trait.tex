@@ -22,7 +22,7 @@ requires std\+::convertible\+\_\+to$<$std\+::ranges\+::range\+\_\+value\+\_\+t$<
 requires std\+::convertible\+\_\+to$<$std\+::ranges\+::range\+\_\+value\+\_\+t$<$Range$>$, T$>$}\\constexpr void \mbox{\hyperlink{struct_span_containers_1_1internal_1_1_push_straight_trait_a45d835a02662237925490501f84bd775}{push\+\_\+range}} (Range \&\&values)
 \begin{DoxyCompactList}\small\item\em Assign values to the container. \end{DoxyCompactList}\item 
 {\footnotesize template$<$std\+::ranges\+::sized\+\_\+range Range = std\+::initializer\+\_\+list$<$\+T$>$$>$ \newline
-requires std\+::convertible\+\_\+to$<$std\+::ranges\+::range\+\_\+value\+\_\+t$<$Range$>$, T$>$}\\constexpr bool \mbox{\hyperlink{struct_span_containers_1_1internal_1_1_push_straight_trait_a247cc2fe0d139a2e56a3cf0d1f4212d9}{try\+\_\+push\+\_\+range}} (Range \&\&values)
+requires std\+::convertible\+\_\+to$<$std\+::ranges\+::range\+\_\+value\+\_\+t$<$Range$>$, T$>$}\\constexpr bool \mbox{\hyperlink{struct_span_containers_1_1internal_1_1_push_straight_trait_a187b4d524463505b104f08e2a120223f}{try\+\_\+push\+\_\+range}} (Range \&\&values) std
 \begin{DoxyCompactList}\small\item\em Tries to assign the values to the container. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
@@ -127,10 +127,10 @@ Tries to assign value to an element of the container.
 \begin{DoxyReturn}{Returns}
 {\ttfamily true} if value was assigned a value within the container; {\ttfamily false} otherwise. 
 \end{DoxyReturn}
-\Hypertarget{struct_span_containers_1_1internal_1_1_push_straight_trait_a247cc2fe0d139a2e56a3cf0d1f4212d9}\index{SpanContainers::internal::PushStraightTrait$<$ Derived, T $>$@{SpanContainers::internal::PushStraightTrait$<$ Derived, T $>$}!try\_push\_range@{try\_push\_range}}
+\Hypertarget{struct_span_containers_1_1internal_1_1_push_straight_trait_a187b4d524463505b104f08e2a120223f}\index{SpanContainers::internal::PushStraightTrait$<$ Derived, T $>$@{SpanContainers::internal::PushStraightTrait$<$ Derived, T $>$}!try\_push\_range@{try\_push\_range}}
 \index{try\_push\_range@{try\_push\_range}!SpanContainers::internal::PushStraightTrait$<$ Derived, T $>$@{SpanContainers::internal::PushStraightTrait$<$ Derived, T $>$}}
 \doxysubsubsection{\texorpdfstring{try\_push\_range()}{try\_push\_range()}}
-{\footnotesize\ttfamily \label{struct_span_containers_1_1internal_1_1_push_straight_trait_a247cc2fe0d139a2e56a3cf0d1f4212d9} 
+{\footnotesize\ttfamily \label{struct_span_containers_1_1internal_1_1_push_straight_trait_a187b4d524463505b104f08e2a120223f} 
 template$<$typename Derived , typename T $>$ \\
 template$<$std\+::ranges\+::sized\+\_\+range Range = std\+::initializer\+\_\+list$<$\+T$>$$>$ \newline
 requires std\+::convertible\+\_\+to$<$std\+::ranges\+::range\+\_\+value\+\_\+t$<$Range$>$, T$>$\\
@@ -146,7 +146,10 @@ Tries to assign the values to the container.
 \hline
 \end{DoxyTemplParams}
 \begin{DoxyReturn}{Returns}
-{\ttfamily true} if values were placed at the back of the container; {\ttfamily false} otherwise. 
+{\ttfamily true} if values were placed at the back of the container; {\ttfamily false} otherwise.
+\end{DoxyReturn}
+Gets a output iterator that inserts via push. \begin{DoxyReturn}{Returns}
+An output iterator that inserts via push. 
 \end{DoxyReturn}
 
 

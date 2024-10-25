@@ -195,11 +195,11 @@ requires std::convertible_to&lt;std::ranges::range_value_t&lt;Range&gt;, T&gt;</
 <tr class="memitem:a45d835a02662237925490501f84bd775"><td class="memTemplItemLeft" align="right" valign="top">constexpr void&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="struct_span_containers_1_1internal_1_1_push_straight_trait.html#a45d835a02662237925490501f84bd775">push_range</a> (Range &amp;&amp;values)</td></tr>
 <tr class="memdesc:a45d835a02662237925490501f84bd775"><td class="mdescLeft">&#160;</td><td class="mdescRight">Assign values to the container.  <br /></td></tr>
 <tr class="separator:a45d835a02662237925490501f84bd775"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a247cc2fe0d139a2e56a3cf0d1f4212d9" id="r_a247cc2fe0d139a2e56a3cf0d1f4212d9"><td class="memTemplParams" colspan="2">template&lt;std::ranges::sized_range Range = std::initializer_list&lt;T&gt;&gt; <br />
+<tr class="memitem:a187b4d524463505b104f08e2a120223f" id="r_a187b4d524463505b104f08e2a120223f"><td class="memTemplParams" colspan="2">template&lt;std::ranges::sized_range Range = std::initializer_list&lt;T&gt;&gt; <br />
 requires std::convertible_to&lt;std::ranges::range_value_t&lt;Range&gt;, T&gt;</td></tr>
-<tr class="memitem:a247cc2fe0d139a2e56a3cf0d1f4212d9"><td class="memTemplItemLeft" align="right" valign="top">constexpr bool&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="struct_span_containers_1_1internal_1_1_push_straight_trait.html#a247cc2fe0d139a2e56a3cf0d1f4212d9">try_push_range</a> (Range &amp;&amp;values)</td></tr>
-<tr class="memdesc:a247cc2fe0d139a2e56a3cf0d1f4212d9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Tries to assign the values to the container.  <br /></td></tr>
-<tr class="separator:a247cc2fe0d139a2e56a3cf0d1f4212d9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a187b4d524463505b104f08e2a120223f"><td class="memTemplItemLeft" align="right" valign="top">constexpr bool&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="struct_span_containers_1_1internal_1_1_push_straight_trait.html#a187b4d524463505b104f08e2a120223f">try_push_range</a> (Range &amp;&amp;values) std</td></tr>
+<tr class="memdesc:a187b4d524463505b104f08e2a120223f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Tries to assign the values to the container.  <br /></td></tr>
+<tr class="separator:a187b4d524463505b104f08e2a120223f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a635fbe6fc7cfd5aee71c4a58f89ed3a3" id="r_a635fbe6fc7cfd5aee71c4a58f89ed3a3"><td class="memItemLeft" align="right" valign="top">constexpr reference&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_span_containers_1_1internal_1_1_pop_back_trait.html#a635fbe6fc7cfd5aee71c4a58f89ed3a3">back</a> () const noexcept(!UseExceptions)</td></tr>
 <tr class="memdesc:a635fbe6fc7cfd5aee71c4a58f89ed3a3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets a refrence to the item at the back of the container.  <br /></td></tr>
 <tr class="separator:a635fbe6fc7cfd5aee71c4a58f89ed3a3"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -992,8 +992,8 @@ requires std::assignable_from&lt;T&amp;, U&amp;&amp;&gt;</div>
 
 </div>
 </div>
-<a id="a247cc2fe0d139a2e56a3cf0d1f4212d9" name="a247cc2fe0d139a2e56a3cf0d1f4212d9"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a247cc2fe0d139a2e56a3cf0d1f4212d9">&#9670;&#160;</a></span>try_push_range()</h2>
+<a id="a187b4d524463505b104f08e2a120223f" name="a187b4d524463505b104f08e2a120223f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a187b4d524463505b104f08e2a120223f">&#9670;&#160;</a></span>try_push_range()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -1027,7 +1027,8 @@ requires std::convertible_to&lt;std::ranges::range_value_t&lt;Range&gt;, T&gt;</
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd><code>true</code> if values were placed at the back of the container; <code>false</code> otherwise. </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd><code>true</code> if values were placed at the back of the container; <code>false</code> otherwise.</dd></dl>
+<p>Gets a output iterator that inserts via push. </p><dl class="section return"><dt>Returns</dt><dd>An output iterator that inserts via push. </dd></dl>
 
 </div>
 </div>

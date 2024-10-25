@@ -6,74 +6,58 @@
 \DoxyCodeLine{00002\ \textcolor{preprocessor}{\#include\ <type\_traits>}}
 \DoxyCodeLine{00003\ \textcolor{preprocessor}{\#include\ <utility>}}
 \DoxyCodeLine{00004\ }
-\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ "{}Errors/FullContainerError.h"{}}}
-\DoxyCodeLine{00006\ }
-\DoxyCodeLine{00007\ \textcolor{keyword}{namespace\ }\mbox{\hyperlink{namespace_span_containers_1_1internal}{SpanContainers::internal}}\ \{}
-\DoxyCodeLine{00008\ }
-\DoxyCodeLine{00009\ \textcolor{keyword}{template}\ <\textcolor{keyword}{typename}\ Derived,\ \textcolor{keyword}{typename}\ T>\ }
-\DoxyCodeLine{00010\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{struct_span_containers_1_1internal_1_1_push_front_trait}{PushFrontTrait}}}
-\DoxyCodeLine{00011\ \{}
-\DoxyCodeLine{00015\ \ \ \ \ \textcolor{keyword}{template}\ <\textcolor{keyword}{typename}\ U>\ \textcolor{keyword}{requires}\ std::assignable\_from<T\&,\ U\&\&>}
-\DoxyCodeLine{00016\ \ \ \ \ \textcolor{keyword}{constexpr}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{struct_span_containers_1_1internal_1_1_push_front_trait_a7ef22830daebaf05d080abfa02b2bd8c}{push\_front}}(U\&\&\ value)\ \textcolor{keyword}{noexcept}(std::is\_nothrow\_assignable<T\&,\ U\&\&>::value\ \&\&\ !UseExceptions)}
-\DoxyCodeLine{00017\ \ \ \ \ \{}
-\DoxyCodeLine{00018\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ \textcolor{keyword}{constexpr}\ (UseExceptions)\ \{\ \mbox{\hyperlink{class_span_containers_1_1_full_container_error_a8447c91bbb12f335727eef3c410d9c13}{FullContainerError::ThrowIfFull}}(asDerived());\ \}}
-\DoxyCodeLine{00019\ \ \ \ \ \ \ \ \ asDerived().unsafe\_push\_front(std::forward<U>(value));}
-\DoxyCodeLine{00020\ \ \ \ \ \}}
-\DoxyCodeLine{00021\ }
-\DoxyCodeLine{00026\ \ \ \ \ \textcolor{keyword}{template}\ <\textcolor{keyword}{typename}\ U>\ \textcolor{keyword}{requires}\ std::assignable\_from<T\&,\ U\&\&>}
-\DoxyCodeLine{00027\ \ \ \ \ \textcolor{keyword}{constexpr}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{struct_span_containers_1_1internal_1_1_push_front_trait_a519d4ddae9ccac8cccf22277c6998389}{try\_push\_front}}(U\ \&\&\ value)\ \textcolor{keyword}{noexcept}(std::is\_nothrow\_assignable<T\&,\ U\&\&>::value)}
-\DoxyCodeLine{00028\ \ \ \ \ \{}
-\DoxyCodeLine{00029\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (asDerived().full())\ \{\ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};\ \}}
-\DoxyCodeLine{00030\ \ \ \ \ \ \ \ \ asDerived().unsafe\_push\_front(std::forward<U>(value));}
-\DoxyCodeLine{00031\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{true};}
-\DoxyCodeLine{00032\ \ \ \ \ \}}
-\DoxyCodeLine{00033\ }
-\DoxyCodeLine{00037\ \ \ \ \ \textcolor{keyword}{template}<std::ranges::range\ Range\ =\ std::initializer\_list<T>>}
-\DoxyCodeLine{00038\ \ \ \ \ \ \ \ \ \textcolor{keyword}{requires}\ std::convertible\_to<std::ranges::range\_value\_t<Range>,\ T>}
-\DoxyCodeLine{00039\ \ \ \ \ \textcolor{keyword}{constexpr}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{struct_span_containers_1_1internal_1_1_push_front_trait_a0709044e01fc27789e2cb9bf94e0bf42}{push\_front\_range}}(Range\&\&\ values)}
-\DoxyCodeLine{00040\ \ \ \ \ \{}
-\DoxyCodeLine{00041\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ \textcolor{keyword}{constexpr}\ (UseExceptions)\ \{}
-\DoxyCodeLine{00042\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{auto}\&\&\ value\ :\ values)\ \{}
-\DoxyCodeLine{00043\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (asDerived().count\ +\ 1\ >\ asDerived().capacity())\ \{}
-\DoxyCodeLine{00044\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{throw}\ std::out\_of\_range(std::format(\textcolor{stringliteral}{"{}Range\ exceeds\ capacity\ of\ '\{\}'."{}},\ asDerived()));}
-\DoxyCodeLine{00045\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{00046\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ asDerived().unsafe\_push\_front(std::forward<\textcolor{keyword}{decltype}(value)>(value));}
-\DoxyCodeLine{00047\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{00048\ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{00049\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}\ \{\ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{auto}\&\&\ value\ :\ values)\ \{\ asDerived().unsafe\_push\_front(std::forward<\textcolor{keyword}{decltype}(value)>(value));\ \}\ \}}
-\DoxyCodeLine{00050\ \ \ \ \ \}}
-\DoxyCodeLine{00051\ }
-\DoxyCodeLine{00056\ \ \ \ \ \textcolor{keyword}{template}<std::ranges::sized\_range\ Range\ =\ std::initializer\_list<T>>}
-\DoxyCodeLine{00057\ \ \ \ \ \ \ \ \ \textcolor{keyword}{requires}\ std::convertible\_to<std::ranges::range\_value\_t<Range>,\ T>}
-\DoxyCodeLine{00058\ \ \ \ \ \textcolor{keyword}{constexpr}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{struct_span_containers_1_1internal_1_1_push_front_trait_a0709044e01fc27789e2cb9bf94e0bf42}{push\_front\_range}}(Range\&\&\ values)}
-\DoxyCodeLine{00059\ \ \ \ \ \{}
-\DoxyCodeLine{00060\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keyword}{auto}\ rangeSize\ =\ std::ranges::size(values);}
-\DoxyCodeLine{00061\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keyword}{auto}\ newCount\ =\ asDerived().count\ +\ rangeSize;}
-\DoxyCodeLine{00062\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ \textcolor{keyword}{constexpr}\ (UseExceptions)\ \{\ ThrowIfOutOfRange(newCount);\ \}}
-\DoxyCodeLine{00063\ \ \ \ \ \ \ \ \ asDerived().unsafe\_push\_front\_sized\_range(std::forward<Range>(values),\ rangeSize);}
-\DoxyCodeLine{00064\ \ \ \ \ \}}
-\DoxyCodeLine{00065\ }
-\DoxyCodeLine{00069\ \ \ \ \ \textcolor{keyword}{template}<std::ranges::sized\_range\ Range>}
-\DoxyCodeLine{00070\ \ \ \ \ \textcolor{keyword}{constexpr}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{struct_span_containers_1_1internal_1_1_push_front_trait_aaf8feeb0cff3b57f7c927d3e9148f47d}{try\_push\_front\_range}}(Range\&\&\ values)}
-\DoxyCodeLine{00071\ \ \ \ \ \ \ \ \ \textcolor{keyword}{requires}\ std::convertible\_to<std::ranges::range\_value\_t<Range>,\ T>}
-\DoxyCodeLine{00072\ \ \ \ \ \{}
-\DoxyCodeLine{00073\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keyword}{auto}\ newCount\ =\ asDerived().count\ +\ std::ranges::size(values);}
-\DoxyCodeLine{00074\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (newCount\ >\ asDerived().extent)\ \{\ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};\ \}}
-\DoxyCodeLine{00075\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{auto}\&\&\ value\ :\ values)\ \{\ asDerived().unsafe\_push\_front(std::forward<\textcolor{keyword}{decltype}(value)>(value));\ \}}
-\DoxyCodeLine{00076\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{true};}
-\DoxyCodeLine{00077\ \ \ \ \ \}}
-\DoxyCodeLine{00078\ }
-\DoxyCodeLine{00079\ \textcolor{keyword}{private}:}
-\DoxyCodeLine{00080\ \ \ \ \ [[nodiscard]]\ \textcolor{keyword}{constexpr}\ Derived\&\ asDerived()\ noexcept\ \{\ \textcolor{keywordflow}{return}\ \textcolor{keyword}{static\_cast<}Derived\&\textcolor{keyword}{>}(*this);\ \}}
-\DoxyCodeLine{00081\ }
-\DoxyCodeLine{00082\ \ \ \ \ \textcolor{keywordtype}{void}\ ThrowIfOutOfRange(\textcolor{keyword}{auto}\ newCount)}
-\DoxyCodeLine{00083\ \ \ \ \ \{}
-\DoxyCodeLine{00084\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (newCount\ >\ Derived::extent)\ \{}
-\DoxyCodeLine{00085\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{throw}\ std::out\_of\_range(std::format(\textcolor{stringliteral}{"{}Size\ of\ values\ (\{\})\ exceeds\ '\{\}'\ capacity."{}},\ newCount\ -\/\ Derived::extent,\ asDerived()));}
-\DoxyCodeLine{00086\ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{00087\ \ \ \ \ \}}
-\DoxyCodeLine{00088\ \};}
-\DoxyCodeLine{00089\ }
-\DoxyCodeLine{00090\ \}}
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ "{}Errors/ExceedsCapacityError.h"{}}}
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#include\ "{}Errors/FullContainerError.h"{}}}
+\DoxyCodeLine{00007\ }
+\DoxyCodeLine{00008\ \textcolor{keyword}{namespace\ }\mbox{\hyperlink{namespace_span_containers_1_1internal}{SpanContainers::internal}}\ \{}
+\DoxyCodeLine{00009\ }
+\DoxyCodeLine{00010\ \textcolor{keyword}{template}\ <\textcolor{keyword}{typename}\ Derived,\ \textcolor{keyword}{typename}\ T>\ }
+\DoxyCodeLine{00011\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{struct_span_containers_1_1internal_1_1_push_front_trait}{PushFrontTrait}}}
+\DoxyCodeLine{00012\ \{}
+\DoxyCodeLine{00016\ \ \ \ \ \textcolor{keyword}{template}\ <\textcolor{keyword}{typename}\ U>\ \textcolor{keyword}{requires}\ std::assignable\_from<T\&,\ U\&\&>}
+\DoxyCodeLine{00017\ \ \ \ \ \textcolor{keyword}{constexpr}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{struct_span_containers_1_1internal_1_1_push_front_trait_a7ef22830daebaf05d080abfa02b2bd8c}{push\_front}}(U\&\&\ value)\ \textcolor{keyword}{noexcept}(std::is\_nothrow\_assignable<T\&,\ U\&\&>::value\ \&\&\ !UseExceptions)}
+\DoxyCodeLine{00018\ \ \ \ \ \{}
+\DoxyCodeLine{00019\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ \textcolor{keyword}{constexpr}\ (UseExceptions)\ \{\ \mbox{\hyperlink{class_span_containers_1_1_full_container_error_a8447c91bbb12f335727eef3c410d9c13}{FullContainerError::ThrowIfFull}}(AsDerived());\ \}}
+\DoxyCodeLine{00020\ \ \ \ \ \ \ \ \ AsDerived().unsafe\_push\_front(std::forward<U>(value));}
+\DoxyCodeLine{00021\ \ \ \ \ \}}
+\DoxyCodeLine{00022\ }
+\DoxyCodeLine{00027\ \ \ \ \ \textcolor{keyword}{template}\ <\textcolor{keyword}{typename}\ U>\ \textcolor{keyword}{requires}\ std::assignable\_from<T\&,\ U\&\&>}
+\DoxyCodeLine{00028\ \ \ \ \ \textcolor{keyword}{constexpr}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{struct_span_containers_1_1internal_1_1_push_front_trait_a519d4ddae9ccac8cccf22277c6998389}{try\_push\_front}}(U\ \&\&\ value)\ \textcolor{keyword}{noexcept}(std::is\_nothrow\_assignable<T\&,\ U\&\&>::value)}
+\DoxyCodeLine{00029\ \ \ \ \ \{}
+\DoxyCodeLine{00030\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (AsDerived().full())\ \{\ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};\ \}}
+\DoxyCodeLine{00031\ \ \ \ \ \ \ \ \ AsDerived().unsafe\_push\_front(std::forward<U>(value));}
+\DoxyCodeLine{00032\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{true};}
+\DoxyCodeLine{00033\ \ \ \ \ \}}
+\DoxyCodeLine{00034\ }
+\DoxyCodeLine{00040\ \ \ \ \ \textcolor{keyword}{template}<std::ranges::range\ Range\ =\ std::initializer\_list<T>>}
+\DoxyCodeLine{00041\ \ \ \ \ \ \ \ \ \textcolor{keyword}{requires}\ std::convertible\_to<std::ranges::range\_value\_t<Range>,\ T>}
+\DoxyCodeLine{00042\ \ \ \ \ \textcolor{keyword}{constexpr}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{struct_span_containers_1_1internal_1_1_push_front_trait_a0709044e01fc27789e2cb9bf94e0bf42}{push\_front\_range}}(Range\&\&\ values)\ \{\ std::ranges::copy(values,\ \mbox{\hyperlink{struct_span_containers_1_1internal_1_1_push_front_trait_a9e8a3e6aad14f41148cc87150c198916}{front\_inserter}}());\ \}}
+\DoxyCodeLine{00043\ }
+\DoxyCodeLine{00048\ \ \ \ \ \textcolor{keyword}{template}<std::ranges::sized\_range\ Range\ =\ std::initializer\_list<T>>}
+\DoxyCodeLine{00049\ \ \ \ \ \ \ \ \ \textcolor{keyword}{requires}\ std::convertible\_to<std::ranges::range\_value\_t<Range>,\ T>}
+\DoxyCodeLine{00050\ \ \ \ \ \textcolor{keyword}{constexpr}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{struct_span_containers_1_1internal_1_1_push_front_trait_a0709044e01fc27789e2cb9bf94e0bf42}{push\_front\_range}}(Range\&\&\ values)}
+\DoxyCodeLine{00051\ \ \ \ \ \{}
+\DoxyCodeLine{00052\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keyword}{auto}\ rangeSize\ =\ std::ranges::size(values);}
+\DoxyCodeLine{00053\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ \textcolor{keyword}{constexpr}\ (UseExceptions)\ \{\ \mbox{\hyperlink{class_span_containers_1_1_exceeds_capacity_error_abcec0af91fca0d9545a0590695048985}{ExceedsCapacityError::ThrowIfExceedsCapcity}}(AsDerived(),\ rangeSize);\ \}}
+\DoxyCodeLine{00054\ \ \ \ \ \ \ \ \ AsDerived().unsafe\_push\_front\_sized\_range(std::forward<Range>(values),\ rangeSize);}
+\DoxyCodeLine{00055\ \ \ \ \ \}}
+\DoxyCodeLine{00056\ }
+\DoxyCodeLine{00060\ \ \ \ \ \textcolor{keyword}{template}<std::ranges::sized\_range\ Range>}
+\DoxyCodeLine{00061\ \ \ \ \ \ \ \ \ \textcolor{keyword}{requires}\ std::convertible\_to<std::ranges::range\_value\_t<Range>,\ T>}
+\DoxyCodeLine{00062\ \ \ \ \ \textcolor{keyword}{constexpr}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{struct_span_containers_1_1internal_1_1_push_front_trait_aaf8feeb0cff3b57f7c927d3e9148f47d}{try\_push\_front\_range}}(Range\&\&\ values)}
+\DoxyCodeLine{00063\ \ \ \ \ \{}
+\DoxyCodeLine{00064\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keyword}{auto}\ newCount\ =\ AsDerived().count\ +\ std::ranges::size(values);}
+\DoxyCodeLine{00065\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (newCount\ >\ AsDerived().max\_size())\ \{\ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};\ \}}
+\DoxyCodeLine{00066\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{auto}\&\&\ value\ :\ values)\ \{\ AsDerived().unsafe\_push\_front(std::forward<\textcolor{keyword}{decltype}(value)>(value));\ \}}
+\DoxyCodeLine{00067\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{true};}
+\DoxyCodeLine{00068\ \ \ \ \ \}}
+\DoxyCodeLine{00069\ }
+\DoxyCodeLine{00072\ \ \ \ \ \textcolor{keyword}{constexpr}\ std::front\_insert\_iterator<Derived>\ \mbox{\hyperlink{struct_span_containers_1_1internal_1_1_push_front_trait_a9e8a3e6aad14f41148cc87150c198916}{front\_inserter}}()\ \{\ \textcolor{keywordflow}{return}\ std::front\_inserter(AsDerived());\ \}}
+\DoxyCodeLine{00073\ }
+\DoxyCodeLine{00074\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00075\ \ \ \ \ [[nodiscard]]\ \textcolor{keyword}{constexpr}\ Derived\&\ AsDerived()\ noexcept\ \{\ \textcolor{keywordflow}{return}\ \textcolor{keyword}{static\_cast<}Derived\&\textcolor{keyword}{>}(*this);\ \}}
+\DoxyCodeLine{00076\ \};}
+\DoxyCodeLine{00077\ }
+\DoxyCodeLine{00078\ \}}
 
 \end{DoxyCode}

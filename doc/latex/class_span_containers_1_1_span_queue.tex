@@ -70,8 +70,10 @@ constexpr void \mbox{\hyperlink{struct_span_containers_1_1internal_1_1_push_back
 \begin{DoxyCompactList}\small\item\em Assign values to the back of the container. \end{DoxyCompactList}\item 
 constexpr void \mbox{\hyperlink{struct_span_containers_1_1internal_1_1_push_back_trait_a9207adc1c6648914ea3ad1d06e987e69}{push\+\_\+back\+\_\+range}} (Range \&\&values)
 \begin{DoxyCompactList}\small\item\em Assign values to the back of the container. \end{DoxyCompactList}\item 
-constexpr bool \mbox{\hyperlink{struct_span_containers_1_1internal_1_1_push_back_trait_a8568c88598c97a5613dd9f4553c541ee}{try\+\_\+push\+\_\+back\+\_\+range}} (Range \&\&values)
+constexpr bool \mbox{\hyperlink{struct_span_containers_1_1internal_1_1_push_back_trait_a7ebabab578072fb73f89e91369fa9d0f}{try\+\_\+push\+\_\+back\+\_\+range}} (Range \&\&values)
 \begin{DoxyCompactList}\small\item\em Tries to assign the values to the container. \end{DoxyCompactList}\item 
+constexpr std\+::back\+\_\+insert\+\_\+iterator$<$ \mbox{\hyperlink{class_span_containers_1_1_span_queue}{Span\+Queue}}$<$ T, Extent $>$ $>$ \mbox{\hyperlink{struct_span_containers_1_1internal_1_1_push_back_trait_aaa00a89b8272984dd6e65217c4e43c44}{back\+\_\+inserter}} ()
+\begin{DoxyCompactList}\small\item\em Gets a output iterator that inserts via push\+\_\+back. \end{DoxyCompactList}\item 
 constexpr reference \mbox{\hyperlink{struct_span_containers_1_1internal_1_1_pop_front_trait_a8a6942dd58acb8c267623801169f10bf}{front}} () const noexcept(!Use\+Exceptions)
 \begin{DoxyCompactList}\small\item\em Gets a refrence to the item at the front of the container. \end{DoxyCompactList}\item 
 constexpr pointer \mbox{\hyperlink{struct_span_containers_1_1internal_1_1_pop_front_trait_a22d92c40c0f449b35900cf2b008a6bf2}{try\+\_\+front}} () const noexcept
@@ -181,6 +183,19 @@ Gets a pointer to the element at index.
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
 A pointer to the element at index, or nullptr if index is out of bounds. 
+\end{DoxyReturn}
+\Hypertarget{struct_span_containers_1_1internal_1_1_push_back_trait_aaa00a89b8272984dd6e65217c4e43c44}\index{SpanContainers::SpanQueue$<$ T, Extent $>$@{SpanContainers::SpanQueue$<$ T, Extent $>$}!back\_inserter@{back\_inserter}}
+\index{back\_inserter@{back\_inserter}!SpanContainers::SpanQueue$<$ T, Extent $>$@{SpanContainers::SpanQueue$<$ T, Extent $>$}}
+\doxysubsubsection{\texorpdfstring{back\_inserter()}{back\_inserter()}}
+{\footnotesize\ttfamily \label{struct_span_containers_1_1internal_1_1_push_back_trait_aaa00a89b8272984dd6e65217c4e43c44} 
+std\+::back\+\_\+insert\+\_\+iterator$<$ \mbox{\hyperlink{class_span_containers_1_1_span_queue}{Span\+Queue}}$<$ T, Extent $>$ $>$ \mbox{\hyperlink{struct_span_containers_1_1internal_1_1_push_back_trait}{Span\+Containers\+::internal\+::\+Push\+Back\+Trait}}$<$ \mbox{\hyperlink{class_span_containers_1_1_span_queue}{Span\+Queue}}$<$ T, Extent $>$, T $>$\+::back\+\_\+inserter (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [constexpr]}, {\ttfamily [inherited]}}
+
+
+
+Gets a output iterator that inserts via push\+\_\+back. 
+
+\begin{DoxyReturn}{Returns}
+An output iterator that inserts via push\+\_\+back. 
 \end{DoxyReturn}
 \Hypertarget{class_span_containers_1_1internal_1_1_span_container_a033f9429b061e25e7163a18f26561753}\index{SpanContainers::SpanQueue$<$ T, Extent $>$@{SpanContainers::SpanQueue$<$ T, Extent $>$}!capacity@{capacity}}
 \index{capacity@{capacity}!SpanContainers::SpanQueue$<$ T, Extent $>$@{SpanContainers::SpanQueue$<$ T, Extent $>$}}
@@ -356,7 +371,7 @@ void \mbox{\hyperlink{struct_span_containers_1_1internal_1_1_push_back_trait}{Sp
 
 Assign values to the back of the container. 
 
-This method only provides the basic exception gurantee. If range exceeds the capacty of the container, values will be pushed\+\_\+back until capcity is reached, at which point a \doxylink{class_span_containers_1_1_full_container_error}{Full\+Container\+Error} exception is thrown. 
+This method only provides the basic exception gurantee. If range exceeds the capacty of the container, values will be pushed until capcity is reached, at which point a \doxylink{class_span_containers_1_1_full_container_error}{Full\+Container\+Error} exception is thrown. 
 \begin{DoxyTemplParams}{Template Parameters}
 {\em Range} & The type of the range that contains the values. \\
 \hline
@@ -490,10 +505,10 @@ Tries to assign value at the back of the container.
 \begin{DoxyReturn}{Returns}
 true if value was placed at the back of the container; false otherwise. 
 \end{DoxyReturn}
-\Hypertarget{struct_span_containers_1_1internal_1_1_push_back_trait_a8568c88598c97a5613dd9f4553c541ee}\index{SpanContainers::SpanQueue$<$ T, Extent $>$@{SpanContainers::SpanQueue$<$ T, Extent $>$}!try\_push\_back\_range@{try\_push\_back\_range}}
+\Hypertarget{struct_span_containers_1_1internal_1_1_push_back_trait_a7ebabab578072fb73f89e91369fa9d0f}\index{SpanContainers::SpanQueue$<$ T, Extent $>$@{SpanContainers::SpanQueue$<$ T, Extent $>$}!try\_push\_back\_range@{try\_push\_back\_range}}
 \index{try\_push\_back\_range@{try\_push\_back\_range}!SpanContainers::SpanQueue$<$ T, Extent $>$@{SpanContainers::SpanQueue$<$ T, Extent $>$}}
 \doxysubsubsection{\texorpdfstring{try\_push\_back\_range()}{try\_push\_back\_range()}}
-{\footnotesize\ttfamily \label{struct_span_containers_1_1internal_1_1_push_back_trait_a8568c88598c97a5613dd9f4553c541ee} 
+{\footnotesize\ttfamily \label{struct_span_containers_1_1internal_1_1_push_back_trait_a7ebabab578072fb73f89e91369fa9d0f} 
 bool \mbox{\hyperlink{struct_span_containers_1_1internal_1_1_push_back_trait}{Span\+Containers\+::internal\+::\+Push\+Back\+Trait}}$<$ \mbox{\hyperlink{class_span_containers_1_1_span_queue}{Span\+Queue}}$<$ T, Extent $>$, T $>$\+::try\+\_\+push\+\_\+back\+\_\+range (\begin{DoxyParamCaption}\item[{Range \&\&}]{values}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [constexpr]}, {\ttfamily [inherited]}}
 
 

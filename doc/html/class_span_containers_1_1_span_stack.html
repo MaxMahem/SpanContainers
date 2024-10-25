@@ -119,15 +119,15 @@ Inheritance diagram for SpanContainers::SpanStack&lt; T, Extent &gt;:</div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-types" name="pub-types"></a>
 Public Types</h2></td></tr>
+<tr class="memitem:a21c7341698dc1eb6c29b6017b44eb2ac" id="r_a21c7341698dc1eb6c29b6017b44eb2ac"><td class="memItemLeft" align="right" valign="top"><a id="a21c7341698dc1eb6c29b6017b44eb2ac" name="a21c7341698dc1eb6c29b6017b44eb2ac"></a>
+using&#160;</td><td class="memItemRight" valign="bottom"><b>value_type</b> = T</td></tr>
+<tr class="separator:a21c7341698dc1eb6c29b6017b44eb2ac"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:acbf0783599d1034a54f66e1ce270e39f" id="r_acbf0783599d1034a54f66e1ce270e39f"><td class="memItemLeft" align="right" valign="top"><a id="acbf0783599d1034a54f66e1ce270e39f" name="acbf0783599d1034a54f66e1ce270e39f"></a>
 using&#160;</td><td class="memItemRight" valign="bottom"><b>span_type</b> = std::span&lt;T, Extent&gt;</td></tr>
 <tr class="separator:acbf0783599d1034a54f66e1ce270e39f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a22869b80b5a5ec719f8097bd9d5faaa2" id="r_a22869b80b5a5ec719f8097bd9d5faaa2"><td class="memItemLeft" align="right" valign="top"><a id="a22869b80b5a5ec719f8097bd9d5faaa2" name="a22869b80b5a5ec719f8097bd9d5faaa2"></a>
 using&#160;</td><td class="memItemRight" valign="bottom"><b>element_type</b> = span_type::element_type</td></tr>
 <tr class="separator:a22869b80b5a5ec719f8097bd9d5faaa2"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a34698b5872c3f13cc4840496c95396bb" id="r_a34698b5872c3f13cc4840496c95396bb"><td class="memItemLeft" align="right" valign="top"><a id="a34698b5872c3f13cc4840496c95396bb" name="a34698b5872c3f13cc4840496c95396bb"></a>
-using&#160;</td><td class="memItemRight" valign="bottom"><b>value_type</b> = span_type::value_type</td></tr>
-<tr class="separator:a34698b5872c3f13cc4840496c95396bb"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aeaa664707f34abfa1c5def991d6a2ca0" id="r_aeaa664707f34abfa1c5def991d6a2ca0"><td class="memItemLeft" align="right" valign="top"><a id="aeaa664707f34abfa1c5def991d6a2ca0" name="aeaa664707f34abfa1c5def991d6a2ca0"></a>
 using&#160;</td><td class="memItemRight" valign="bottom"><b>pointer</b> = span_type::pointer</td></tr>
 <tr class="separator:aeaa664707f34abfa1c5def991d6a2ca0"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -189,9 +189,12 @@ requires std::is_lvalue_reference_v&lt;Buffer&amp;&gt; &amp;&amp; std::is_constr
 <tr class="memitem:a9207adc1c6648914ea3ad1d06e987e69" id="r_a9207adc1c6648914ea3ad1d06e987e69"><td class="memItemLeft" align="right" valign="top">constexpr void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_span_containers_1_1internal_1_1_push_back_trait.html#a9207adc1c6648914ea3ad1d06e987e69">push_back_range</a> (Range &amp;&amp;values)</td></tr>
 <tr class="memdesc:a9207adc1c6648914ea3ad1d06e987e69"><td class="mdescLeft">&#160;</td><td class="mdescRight">Assign values to the back of the container.  <br /></td></tr>
 <tr class="separator:a9207adc1c6648914ea3ad1d06e987e69"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a8568c88598c97a5613dd9f4553c541ee" id="r_a8568c88598c97a5613dd9f4553c541ee"><td class="memItemLeft" align="right" valign="top">constexpr bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_span_containers_1_1internal_1_1_push_back_trait.html#a8568c88598c97a5613dd9f4553c541ee">try_push_back_range</a> (Range &amp;&amp;values)</td></tr>
-<tr class="memdesc:a8568c88598c97a5613dd9f4553c541ee"><td class="mdescLeft">&#160;</td><td class="mdescRight">Tries to assign the values to the container.  <br /></td></tr>
-<tr class="separator:a8568c88598c97a5613dd9f4553c541ee"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7ebabab578072fb73f89e91369fa9d0f" id="r_a7ebabab578072fb73f89e91369fa9d0f"><td class="memItemLeft" align="right" valign="top">constexpr bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_span_containers_1_1internal_1_1_push_back_trait.html#a7ebabab578072fb73f89e91369fa9d0f">try_push_back_range</a> (Range &amp;&amp;values)</td></tr>
+<tr class="memdesc:a7ebabab578072fb73f89e91369fa9d0f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Tries to assign the values to the container.  <br /></td></tr>
+<tr class="separator:a7ebabab578072fb73f89e91369fa9d0f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aaa00a89b8272984dd6e65217c4e43c44" id="r_aaa00a89b8272984dd6e65217c4e43c44"><td class="memItemLeft" align="right" valign="top">constexpr std::back_insert_iterator&lt; <a class="el" href="class_span_containers_1_1_span_stack.html">SpanStack</a>&lt; T, Extent &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_span_containers_1_1internal_1_1_push_back_trait.html#aaa00a89b8272984dd6e65217c4e43c44">back_inserter</a> ()</td></tr>
+<tr class="memdesc:aaa00a89b8272984dd6e65217c4e43c44"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets a output iterator that inserts via push_back.  <br /></td></tr>
+<tr class="separator:aaa00a89b8272984dd6e65217c4e43c44"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a635fbe6fc7cfd5aee71c4a58f89ed3a3" id="r_a635fbe6fc7cfd5aee71c4a58f89ed3a3"><td class="memItemLeft" align="right" valign="top">constexpr reference&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_span_containers_1_1internal_1_1_pop_back_trait.html#a635fbe6fc7cfd5aee71c4a58f89ed3a3">back</a> () const noexcept(!UseExceptions)</td></tr>
 <tr class="memdesc:a635fbe6fc7cfd5aee71c4a58f89ed3a3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets a refrence to the item at the back of the container.  <br /></td></tr>
 <tr class="separator:a635fbe6fc7cfd5aee71c4a58f89ed3a3"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -386,6 +389,34 @@ template&lt;typename T , std::size_t Extent&gt; </div>
   </table>
   </dd>
 </dl>
+
+</div>
+</div>
+<a id="aaa00a89b8272984dd6e65217c4e43c44" name="aaa00a89b8272984dd6e65217c4e43c44"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aaa00a89b8272984dd6e65217c4e43c44">&#9670;&#160;</a></span>back_inserter()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::back_insert_iterator&lt; <a class="el" href="class_span_containers_1_1_span_stack.html">SpanStack</a>&lt; T, Extent &gt; &gt; <a class="el" href="struct_span_containers_1_1internal_1_1_push_back_trait.html">SpanContainers::internal::PushBackTrait</a>&lt; <a class="el" href="class_span_containers_1_1_span_stack.html">SpanStack</a>&lt; T, Extent &gt;, T &gt;::back_inserter </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">constexpr</span><span class="mlabel">inherited</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Gets a output iterator that inserts via push_back. </p>
+<dl class="section return"><dt>Returns</dt><dd>An output iterator that inserts via push_back. </dd></dl>
 
 </div>
 </div>
@@ -715,7 +746,7 @@ template&lt;typename T , std::size_t Extent&gt; </div>
 </div><div class="memdoc">
 
 <p>Assign values to the back of the container. </p>
-<p>This method only provides the basic exception gurantee. If range exceeds the capacty of the container, values will be pushed_back until capcity is reached, at which point a <a class="el" href="class_span_containers_1_1_full_container_error.html" title="Represents an error for an operation that would be invalid due to a full container.">FullContainerError</a> exception is thrown. </p><dl class="tparams"><dt>Template Parameters</dt><dd>
+<p>This method only provides the basic exception gurantee. If range exceeds the capacty of the container, values will be pushed until capcity is reached, at which point a <a class="el" href="class_span_containers_1_1_full_container_error.html" title="Represents an error for an operation that would be invalid due to a full container.">FullContainerError</a> exception is thrown. </p><dl class="tparams"><dt>Template Parameters</dt><dd>
   <table class="tparams">
     <tr><td class="paramname">Range</td><td>The type of the range that contains the values. </td></tr>
   </table>
@@ -973,8 +1004,8 @@ requires std::is_lvalue_reference_v&lt;Buffer&amp;&gt; &amp;&amp; std::is_constr
 
 </div>
 </div>
-<a id="a8568c88598c97a5613dd9f4553c541ee" name="a8568c88598c97a5613dd9f4553c541ee"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a8568c88598c97a5613dd9f4553c541ee">&#9670;&#160;</a></span>try_push_back_range()</h2>
+<a id="a7ebabab578072fb73f89e91369fa9d0f" name="a7ebabab578072fb73f89e91369fa9d0f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7ebabab578072fb73f89e91369fa9d0f">&#9670;&#160;</a></span>try_push_back_range()</h2>
 
 <div class="memitem">
 <div class="memproto">

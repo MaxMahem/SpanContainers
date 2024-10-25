@@ -1,18 +1,16 @@
-#include <concepts>
+#pragma once
+
 #include <iterator>
 #include <utility>
 
 namespace SpanContainers {
 
-template <typename Container, typename T>
-concept PushableContainer = requires(Container container, T value) {
-    { container.push(std::forward<T>(value)) };
-};
-
 /// @brief Represents an output iterator that unconditionally inserts into the wrapped container via push.
 /// @tparam Container The type of the wrapped container.
-template <typename Container> requires PushableContainer<Container, typename Container::value_type>
-class push_insert_iterator {
+//template <PushableContainer<Container::value_type> Container>
+template <typename Container>
+class push_insert_iterator
+{
     Container* container;
 
 public:

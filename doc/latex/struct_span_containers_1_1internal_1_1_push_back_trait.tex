@@ -15,11 +15,28 @@ requires std\+::convertible\+\_\+to$<$std\+::ranges\+::range\+\_\+value\+\_\+t$<
 {\footnotesize template$<$std\+::ranges\+::sized\+\_\+range Range = std\+::initializer\+\_\+list$<$\+T$>$$>$ \newline
 requires std\+::convertible\+\_\+to$<$std\+::ranges\+::range\+\_\+value\+\_\+t$<$Range$>$, T$>$}\\constexpr void \mbox{\hyperlink{struct_span_containers_1_1internal_1_1_push_back_trait_a9207adc1c6648914ea3ad1d06e987e69}{push\+\_\+back\+\_\+range}} (Range \&\&values)
 \begin{DoxyCompactList}\small\item\em Assign values to the back of the container. \end{DoxyCompactList}\item 
-{\footnotesize template$<$std\+::ranges\+::sized\+\_\+range Range = std\+::initializer\+\_\+list$<$\+T$>$$>$ }\\constexpr bool \mbox{\hyperlink{struct_span_containers_1_1internal_1_1_push_back_trait_a8568c88598c97a5613dd9f4553c541ee}{try\+\_\+push\+\_\+back\+\_\+range}} (Range \&\&values)
-\begin{DoxyCompactList}\small\item\em Tries to assign the values to the container. \end{DoxyCompactList}\end{DoxyCompactItemize}
+{\footnotesize template$<$std\+::ranges\+::sized\+\_\+range Range = std\+::initializer\+\_\+list$<$\+T$>$$>$ \newline
+requires std\+::convertible\+\_\+to$<$std\+::ranges\+::range\+\_\+value\+\_\+t$<$Range$>$, T$>$}\\constexpr bool \mbox{\hyperlink{struct_span_containers_1_1internal_1_1_push_back_trait_a7ebabab578072fb73f89e91369fa9d0f}{try\+\_\+push\+\_\+back\+\_\+range}} (Range \&\&values)
+\begin{DoxyCompactList}\small\item\em Tries to assign the values to the container. \end{DoxyCompactList}\item 
+constexpr std\+::back\+\_\+insert\+\_\+iterator$<$ Derived $>$ \mbox{\hyperlink{struct_span_containers_1_1internal_1_1_push_back_trait_aaa00a89b8272984dd6e65217c4e43c44}{back\+\_\+inserter}} ()
+\begin{DoxyCompactList}\small\item\em Gets a output iterator that inserts via push\+\_\+back. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
 \doxysubsection{Member Function Documentation}
+\Hypertarget{struct_span_containers_1_1internal_1_1_push_back_trait_aaa00a89b8272984dd6e65217c4e43c44}\index{SpanContainers::internal::PushBackTrait$<$ Derived, T $>$@{SpanContainers::internal::PushBackTrait$<$ Derived, T $>$}!back\_inserter@{back\_inserter}}
+\index{back\_inserter@{back\_inserter}!SpanContainers::internal::PushBackTrait$<$ Derived, T $>$@{SpanContainers::internal::PushBackTrait$<$ Derived, T $>$}}
+\doxysubsubsection{\texorpdfstring{back\_inserter()}{back\_inserter()}}
+{\footnotesize\ttfamily \label{struct_span_containers_1_1internal_1_1_push_back_trait_aaa00a89b8272984dd6e65217c4e43c44} 
+template$<$typename Derived , typename T $>$ \\
+std\+::back\+\_\+insert\+\_\+iterator$<$ Derived $>$ \mbox{\hyperlink{struct_span_containers_1_1internal_1_1_push_back_trait}{Span\+Containers\+::internal\+::\+Push\+Back\+Trait}}$<$ Derived, T $>$\+::back\+\_\+inserter (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [constexpr]}}
+
+
+
+Gets a output iterator that inserts via push\+\_\+back. 
+
+\begin{DoxyReturn}{Returns}
+An output iterator that inserts via push\+\_\+back. 
+\end{DoxyReturn}
 \Hypertarget{struct_span_containers_1_1internal_1_1_push_back_trait_ab65cf64cbab067d61e17f43d781f8ead}\index{SpanContainers::internal::PushBackTrait$<$ Derived, T $>$@{SpanContainers::internal::PushBackTrait$<$ Derived, T $>$}!push\_back@{push\_back}}
 \index{push\_back@{push\_back}!SpanContainers::internal::PushBackTrait$<$ Derived, T $>$@{SpanContainers::internal::PushBackTrait$<$ Derived, T $>$}}
 \doxysubsubsection{\texorpdfstring{push\_back()}{push\_back()}}
@@ -56,7 +73,7 @@ void \mbox{\hyperlink{struct_span_containers_1_1internal_1_1_push_back_trait}{Sp
 
 Assign values to the back of the container. 
 
-This method only provides the basic exception gurantee. If range exceeds the capacty of the container, values will be pushed\+\_\+back until capcity is reached, at which point a \doxylink{class_span_containers_1_1_full_container_error}{Full\+Container\+Error} exception is thrown. 
+This method only provides the basic exception gurantee. If range exceeds the capacty of the container, values will be pushed until capcity is reached, at which point a \doxylink{class_span_containers_1_1_full_container_error}{Full\+Container\+Error} exception is thrown. 
 \begin{DoxyTemplParams}{Template Parameters}
 {\em Range} & The type of the range that contains the values. \\
 \hline
@@ -115,12 +132,13 @@ Tries to assign value at the back of the container.
 \begin{DoxyReturn}{Returns}
 true if value was placed at the back of the container; false otherwise. 
 \end{DoxyReturn}
-\Hypertarget{struct_span_containers_1_1internal_1_1_push_back_trait_a8568c88598c97a5613dd9f4553c541ee}\index{SpanContainers::internal::PushBackTrait$<$ Derived, T $>$@{SpanContainers::internal::PushBackTrait$<$ Derived, T $>$}!try\_push\_back\_range@{try\_push\_back\_range}}
+\Hypertarget{struct_span_containers_1_1internal_1_1_push_back_trait_a7ebabab578072fb73f89e91369fa9d0f}\index{SpanContainers::internal::PushBackTrait$<$ Derived, T $>$@{SpanContainers::internal::PushBackTrait$<$ Derived, T $>$}!try\_push\_back\_range@{try\_push\_back\_range}}
 \index{try\_push\_back\_range@{try\_push\_back\_range}!SpanContainers::internal::PushBackTrait$<$ Derived, T $>$@{SpanContainers::internal::PushBackTrait$<$ Derived, T $>$}}
 \doxysubsubsection{\texorpdfstring{try\_push\_back\_range()}{try\_push\_back\_range()}}
-{\footnotesize\ttfamily \label{struct_span_containers_1_1internal_1_1_push_back_trait_a8568c88598c97a5613dd9f4553c541ee} 
+{\footnotesize\ttfamily \label{struct_span_containers_1_1internal_1_1_push_back_trait_a7ebabab578072fb73f89e91369fa9d0f} 
 template$<$typename Derived , typename T $>$ \\
-template$<$std\+::ranges\+::sized\+\_\+range Range = std\+::initializer\+\_\+list$<$\+T$>$$>$ \\
+template$<$std\+::ranges\+::sized\+\_\+range Range = std\+::initializer\+\_\+list$<$\+T$>$$>$ \newline
+requires std\+::convertible\+\_\+to$<$std\+::ranges\+::range\+\_\+value\+\_\+t$<$Range$>$, T$>$\\
 bool \mbox{\hyperlink{struct_span_containers_1_1internal_1_1_push_back_trait}{Span\+Containers\+::internal\+::\+Push\+Back\+Trait}}$<$ Derived, T $>$\+::try\+\_\+push\+\_\+back\+\_\+range (\begin{DoxyParamCaption}\item[{Range \&\&}]{values}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [constexpr]}}
 
 

@@ -17,10 +17,26 @@ requires std\+::convertible\+\_\+to$<$std\+::ranges\+::range\+\_\+value\+\_\+t$<
 \begin{DoxyCompactList}\small\item\em Assign values to the front of the container. \end{DoxyCompactList}\item 
 {\footnotesize template$<$std\+::ranges\+::sized\+\_\+range Range$>$ \newline
 requires std\+::convertible\+\_\+to$<$std\+::ranges\+::range\+\_\+value\+\_\+t$<$Range$>$, T$>$}\\constexpr bool \mbox{\hyperlink{struct_span_containers_1_1internal_1_1_push_front_trait_aaf8feeb0cff3b57f7c927d3e9148f47d}{try\+\_\+push\+\_\+front\+\_\+range}} (Range \&\&values)
-\begin{DoxyCompactList}\small\item\em Tries to assign values to the front of the container. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Tries to assign values to the front of the container. \end{DoxyCompactList}\item 
+constexpr std\+::front\+\_\+insert\+\_\+iterator$<$ Derived $>$ \mbox{\hyperlink{struct_span_containers_1_1internal_1_1_push_front_trait_a9e8a3e6aad14f41148cc87150c198916}{front\+\_\+inserter}} ()
+\begin{DoxyCompactList}\small\item\em Gets a output iterator that inserts via push\+\_\+front. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
 \doxysubsection{Member Function Documentation}
+\Hypertarget{struct_span_containers_1_1internal_1_1_push_front_trait_a9e8a3e6aad14f41148cc87150c198916}\index{SpanContainers::internal::PushFrontTrait$<$ Derived, T $>$@{SpanContainers::internal::PushFrontTrait$<$ Derived, T $>$}!front\_inserter@{front\_inserter}}
+\index{front\_inserter@{front\_inserter}!SpanContainers::internal::PushFrontTrait$<$ Derived, T $>$@{SpanContainers::internal::PushFrontTrait$<$ Derived, T $>$}}
+\doxysubsubsection{\texorpdfstring{front\_inserter()}{front\_inserter()}}
+{\footnotesize\ttfamily \label{struct_span_containers_1_1internal_1_1_push_front_trait_a9e8a3e6aad14f41148cc87150c198916} 
+template$<$typename Derived , typename T $>$ \\
+std\+::front\+\_\+insert\+\_\+iterator$<$ Derived $>$ \mbox{\hyperlink{struct_span_containers_1_1internal_1_1_push_front_trait}{Span\+Containers\+::internal\+::\+Push\+Front\+Trait}}$<$ Derived, T $>$\+::front\+\_\+inserter (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [constexpr]}}
+
+
+
+Gets a output iterator that inserts via push\+\_\+front. 
+
+\begin{DoxyReturn}{Returns}
+An output iterator that inserts via push\+\_\+front. 
+\end{DoxyReturn}
 \Hypertarget{struct_span_containers_1_1internal_1_1_push_front_trait_a7ef22830daebaf05d080abfa02b2bd8c}\index{SpanContainers::internal::PushFrontTrait$<$ Derived, T $>$@{SpanContainers::internal::PushFrontTrait$<$ Derived, T $>$}!push\_front@{push\_front}}
 \index{push\_front@{push\_front}!SpanContainers::internal::PushFrontTrait$<$ Derived, T $>$@{SpanContainers::internal::PushFrontTrait$<$ Derived, T $>$}}
 \doxysubsubsection{\texorpdfstring{push\_front()}{push\_front()}}
@@ -57,7 +73,7 @@ void \mbox{\hyperlink{struct_span_containers_1_1internal_1_1_push_front_trait}{S
 
 Assign values to the front of the container. 
 
-
+This method only provides the basic exception gurantee. If range exceeds the capacty of the container, values will be pushed until capcity is reached, at which point a \doxylink{class_span_containers_1_1_full_container_error}{Full\+Container\+Error} exception is thrown. 
 \begin{DoxyTemplParams}{Template Parameters}
 {\em Range} & The type of the range that contains the values. \\
 \hline

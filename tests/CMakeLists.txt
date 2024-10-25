@@ -18,21 +18,14 @@ enable_testing()
 add_executable(SpanContainerTests
     "HeapArrayTests.cc"
     "SpanContainerTests.cc"
-    "SpanDequeueTests.cc"
+    "SequentialSpanContainersTests.cc"
     "SpanHeapTests.cc"
-    "SpanStackTests.cc"
-    "SpanQueueTests.cc"
  )
 target_link_libraries(SpanContainerTests GTest::gtest_main GTest::gmock_main)
 target_include_directories(SpanContainerTests PRIVATE "${PROJECT_INCLUDE_DIR}")
 
 
- add_executable(SpanContainerDeathTests
-    "SpanStackDeathTests.cc"
-    "SpanQueueDeathTests.cc"
-    "SpanDequeueDeathTests.cc"
-    "SpanHeapDeathTests.cc"
- )
+add_executable(SpanContainerDeathTests "SequentialSpanContainersDeathTests.cc")
 target_link_libraries(SpanContainerDeathTests GTest::gtest_main GTest::gmock_main)
 target_include_directories(SpanContainerDeathTests PRIVATE "${PROJECT_INCLUDE_DIR}")
 

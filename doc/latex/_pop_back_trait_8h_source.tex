@@ -21,39 +21,39 @@
 \DoxyCodeLine{00017\ \ \ \ \ \textcolor{keyword}{using\ }pointer\ \ \ =\ std::span<T>::pointer;}
 \DoxyCodeLine{00018\ \ \ \ \ \textcolor{keyword}{using\ }size\_type\ =\ std::span<T>::size\_type;}
 \DoxyCodeLine{00019\ }
-\DoxyCodeLine{00020\ \ \ \ \ [[nodiscard]]\ \textcolor{keyword}{constexpr}\ Derived\&\ asDerived()\ \textcolor{keyword}{noexcept}\ \{\ \textcolor{keywordflow}{return}\ \textcolor{keyword}{static\_cast<}Derived\&\textcolor{keyword}{>}(*this);\ \}}
-\DoxyCodeLine{00021\ \ \ \ \ [[nodiscard]]\ \textcolor{keyword}{constexpr}\ \textcolor{keyword}{const}\ Derived\&\ asDerived()\ \textcolor{keyword}{const}\ \textcolor{keyword}{noexcept}\ \{\ \textcolor{keywordflow}{return}\ \textcolor{keyword}{static\_cast<}\textcolor{keyword}{const\ }Derived\&\textcolor{keyword}{>}(*this);\ \}}
+\DoxyCodeLine{00020\ \ \ \ \ [[nodiscard]]\ \textcolor{keyword}{constexpr}\ Derived\&\ AsDerived()\ \textcolor{keyword}{noexcept}\ \{\ \textcolor{keywordflow}{return}\ \textcolor{keyword}{static\_cast<}Derived\&\textcolor{keyword}{>}(*this);\ \}}
+\DoxyCodeLine{00021\ \ \ \ \ [[nodiscard]]\ \textcolor{keyword}{constexpr}\ \textcolor{keyword}{const}\ Derived\&\ AsDerived()\ \textcolor{keyword}{const}\ \textcolor{keyword}{noexcept}\ \{\ \textcolor{keywordflow}{return}\ \textcolor{keyword}{static\_cast<}\textcolor{keyword}{const\ }Derived\&\textcolor{keyword}{>}(*this);\ \}}
 \DoxyCodeLine{00022\ }
 \DoxyCodeLine{00023\ \textcolor{keyword}{public}:}
 \DoxyCodeLine{00027\ \ \ \ \ [[nodiscard]]\ \textcolor{keyword}{constexpr}\ reference\ \mbox{\hyperlink{struct_span_containers_1_1internal_1_1_pop_back_trait_a635fbe6fc7cfd5aee71c4a58f89ed3a3}{back}}()\ const\ noexcept(!UseExceptions)}
 \DoxyCodeLine{00028\ \ \ \ \ \{}
-\DoxyCodeLine{00029\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ \textcolor{keyword}{constexpr}\ (UseExceptions)\ \{\ \mbox{\hyperlink{class_span_containers_1_1_empty_container_error_a19b1a70a5fe4df6529362a4de195052d}{EmptyContainerError::ThrowIfEmpty}}(asDerived());\ \}}
-\DoxyCodeLine{00030\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ asDerived().unsafe\_back();}
+\DoxyCodeLine{00029\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ \textcolor{keyword}{constexpr}\ (UseExceptions)\ \{\ \mbox{\hyperlink{class_span_containers_1_1_empty_container_error_a19b1a70a5fe4df6529362a4de195052d}{EmptyContainerError::ThrowIfEmpty}}(AsDerived());\ \}}
+\DoxyCodeLine{00030\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ AsDerived().unsafe\_back();}
 \DoxyCodeLine{00031\ \ \ \ \ \}}
 \DoxyCodeLine{00032\ }
 \DoxyCodeLine{00035\ \ \ \ \ [[nodiscard]]\ \textcolor{keyword}{constexpr}\ pointer\ \mbox{\hyperlink{struct_span_containers_1_1internal_1_1_pop_back_trait_a1039675e077b05e71a59dd9318d44026}{try\_back}}()\ const\ noexcept}
 \DoxyCodeLine{00036\ \ \ \ \ \{}
-\DoxyCodeLine{00037\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ !asDerived().empty()\ ?\ \&asDerived().unsafe\_back()\ :\ \textcolor{keyword}{nullptr};}
+\DoxyCodeLine{00037\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ !AsDerived().empty()\ ?\ \&AsDerived().unsafe\_back()\ :\ \textcolor{keyword}{nullptr};}
 \DoxyCodeLine{00038\ \ \ \ \ \}}
 \DoxyCodeLine{00039\ }
 \DoxyCodeLine{00043\ \ \ \ \ \textcolor{keyword}{constexpr}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{struct_span_containers_1_1internal_1_1_pop_back_trait_aebbe0044f1d9347ec60ec0fb89cf1ee2}{pop\_back}}()\ noexcept(!UseExceptions)\ }
 \DoxyCodeLine{00044\ \ \ \ \ \{\ }
-\DoxyCodeLine{00045\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ \textcolor{keyword}{constexpr}\ (UseExceptions)\ \{\ \mbox{\hyperlink{class_span_containers_1_1_empty_container_error_a19b1a70a5fe4df6529362a4de195052d}{EmptyContainerError::ThrowIfEmpty}}(asDerived());\ \}}
-\DoxyCodeLine{00046\ \ \ \ \ \ \ \ \ asDerived().unsafe\_pop\_back(1);}
+\DoxyCodeLine{00045\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ \textcolor{keyword}{constexpr}\ (UseExceptions)\ \{\ \mbox{\hyperlink{class_span_containers_1_1_empty_container_error_a19b1a70a5fe4df6529362a4de195052d}{EmptyContainerError::ThrowIfEmpty}}(AsDerived());\ \}}
+\DoxyCodeLine{00046\ \ \ \ \ \ \ \ \ AsDerived().unsafe\_pop\_back(1);}
 \DoxyCodeLine{00047\ \ \ \ \ \}}
 \DoxyCodeLine{00048\ }
 \DoxyCodeLine{00051\ \ \ \ \ \textcolor{keyword}{constexpr}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{struct_span_containers_1_1internal_1_1_pop_back_trait_a1de34d69bef973f750d36e40716ceb32}{pop\_back}}(size\_type\ n)\ \textcolor{keyword}{noexcept}(!UseExceptions)}
 \DoxyCodeLine{00052\ \ \ \ \ \{}
-\DoxyCodeLine{00053\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ \textcolor{keyword}{constexpr}\ (UseExceptions)\ \{\ \mbox{\hyperlink{class_span_containers_1_1_insufficent_items_error_a36160328a1eef80bfd7c242c0a86a1d9}{InsufficentItemsError::ThrowIfInsufficentItems}}(asDerived(),\ n);\ \}}
-\DoxyCodeLine{00054\ \ \ \ \ \ \ \ \ asDerived().unsafe\_pop\_back(n);}
+\DoxyCodeLine{00053\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ \textcolor{keyword}{constexpr}\ (UseExceptions)\ \{\ \mbox{\hyperlink{class_span_containers_1_1_insufficent_items_error_a36160328a1eef80bfd7c242c0a86a1d9}{InsufficentItemsError::ThrowIfInsufficentItems}}(AsDerived(),\ n);\ \}}
+\DoxyCodeLine{00054\ \ \ \ \ \ \ \ \ AsDerived().unsafe\_pop\_back(n);}
 \DoxyCodeLine{00055\ \ \ \ \ \}}
 \DoxyCodeLine{00056\ }
 \DoxyCodeLine{00059\ \ \ \ \ \textcolor{keyword}{constexpr}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{struct_span_containers_1_1internal_1_1_pop_back_trait_a3270221b30d28bd88683e1bb42b0d0d5}{try\_pop\_back}}()\ noexcept\ \{\ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{struct_span_containers_1_1internal_1_1_pop_back_trait_a3270221b30d28bd88683e1bb42b0d0d5}{try\_pop\_back}}(1);\ \}}
 \DoxyCodeLine{00060\ }
 \DoxyCodeLine{00064\ \ \ \ \ \textcolor{keyword}{constexpr}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{struct_span_containers_1_1internal_1_1_pop_back_trait_afac010954c1e67a0b5c0908610e3dbc0}{try\_pop\_back}}(size\_type\ n)\ \textcolor{keyword}{noexcept}}
 \DoxyCodeLine{00065\ \ \ \ \ \{}
-\DoxyCodeLine{00066\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (n\ >\ asDerived().size())\ \{\ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};\ \}}
-\DoxyCodeLine{00067\ \ \ \ \ \ \ \ \ asDerived().unsafe\_pop\_back(n);}
+\DoxyCodeLine{00066\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (n\ >\ AsDerived().size())\ \{\ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};\ \}}
+\DoxyCodeLine{00067\ \ \ \ \ \ \ \ \ AsDerived().unsafe\_pop\_back(n);}
 \DoxyCodeLine{00068\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{true};}
 \DoxyCodeLine{00069\ \ \ \ \ \}}
 \DoxyCodeLine{00070\ \};}

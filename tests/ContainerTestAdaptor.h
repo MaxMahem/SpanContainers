@@ -111,10 +111,4 @@ struct PopFront
     static constexpr auto try_pop_n = [](Container& container, std::size_t n) { return container.try_pop_front(n); };
 };
 
-template <typename Container>
-concept Indexable = requires(Container container, std::size_t index) {
-    { container[index] }    -> std::same_as<int&>;
-    { container.at(index) } -> std::same_as<int*>;
-};
-
 }

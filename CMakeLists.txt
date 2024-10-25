@@ -15,8 +15,7 @@ project(SpanContainers)
 # Set the include directories (shared across components)
 set(PROJECT_INCLUDE_DIR "${CMAKE_SOURCE_DIR}/lib")
 
-# Include subdirectories for demo, tests, and benchmarks
-add_subdirectory(src)
+# Include subdirectories for tests, and benchmarks
 add_subdirectory(tests)
 add_subdirectory(benchmarks)
 

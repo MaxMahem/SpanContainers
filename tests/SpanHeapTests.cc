@@ -8,7 +8,7 @@
 #include "SpanHeap.h"
 
 #include "TypedContainerTests.h"
-#include "ContainerTestTraits.h"
+#include "ContainerTestAdaptor.h"
 
 namespace SpanContainers::Tests {
 

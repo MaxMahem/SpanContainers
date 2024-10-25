@@ -90,6 +90,8 @@ public:
     using SpanContainer::SpanContainer;
     using SpanContainer::operator=;
 
+    using value_type = T;
+
     /// @brief Clears all items from the container.
     constexpr void clear() noexcept { count = 0; }
 

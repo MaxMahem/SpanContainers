@@ -15,7 +15,7 @@ struct PushFrontTrait
     template <typename U> requires std::assignable_from<T&, U&&>
     constexpr void push_front(U&& value) noexcept(std::is_nothrow_assignable<T&, U&&>::value && !UseExceptions)
     {
-        if constexpr (UseExceptions) { if (asDerived().full()) { throw FullContainerError(asDerived()); } }
+        if constexpr (UseExceptions) { FullContainerError::ThrowIfFull(asDerived()); }
         asDerived().unsafe_push_front(std::forward<U>(value));
     }
 

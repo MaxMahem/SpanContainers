@@ -4,6 +4,7 @@
 #include <stdexcept>
 #include <type_traits>
 
+#include "Errors/ExceedsCapacityError.h"
 #include "Errors/FullContainerError.h"
 
 namespace SpanContainers::internal {
@@ -18,7 +19,7 @@ struct PushStraightTrait
     template <typename U> requires std::assignable_from<T&, U&&>
     constexpr void push(U&& value) noexcept(std::is_nothrow_assignable<T&, U&&>::value && !UseExceptions)
     {
-        if constexpr (UseExceptions) { if (asDerived().full()) { throw FullContainerError(asDerived()); } }
+        if constexpr (UseExceptions) { FullContainerError::ThrowIfFull(asDerived()); }
         asDerived().unsafe_push(std::forward<U>(value));
     }
 
@@ -55,8 +56,7 @@ struct PushStraightTrait
     constexpr void push_range(Range&& values)
     {
         const auto rangeSize = std::ranges::size(values);
-        const auto newCount = asDerived().count + rangeSize;
-        if constexpr (UseExceptions) { ThrowIfOutOfRange(newCount); }
+        if constexpr (UseExceptions) { ExceedsCapacityError::ThrowIfExceedsCapcity(asDerived(), rangeSize); }
         asDerived().unsafe_push_sized_range(std::forward<Range>(values), rangeSize);
     }
 
@@ -75,13 +75,6 @@ struct PushStraightTrait
 
 private:
     [[nodiscard]] constexpr Derived& asDerived() noexcept { return static_cast<Derived&>(*this); }
-
-    void ThrowIfOutOfRange(auto newCount)
-    {
-        if (newCount > Derived::extent) {
-            throw std::out_of_range(std::format("Size of values ({}) exceeds '{}' capacity.", newCount - Derived::extent, asDerived()));
-        }
-    }
 };
 
 }

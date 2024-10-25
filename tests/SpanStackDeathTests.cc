@@ -2,7 +2,7 @@
 #include <functional>
 #include <gtest/gtest.h>
 
-#define SPAN_CONTAINERS_USE_EXCEPTIONS false
+#define SC_USE_EXCEPTIONS false
 #include "SpanStack.h"
 
 #include "ContainerTestTraits.h"

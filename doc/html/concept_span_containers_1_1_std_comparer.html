@@ -94,7 +94,7 @@ $(function(){ initResizable(false); });
 <div class="contents">
 <h2 class="groupheader">Concept definition</h2>
 <div class="fragment"><div class="line"><span class="keyword">template</span>&lt;<span class="keyword">typename</span> Compare, <span class="keyword">typename</span> T&gt;</div>
-<div class="line"><span class="keyword">concept </span><a class="code hl_concept" href="concept_span_containers_1_1_std_comparer.html">SpanContainers::StdComparer</a> =  <span class="keyword">requires</span>(T a, T b, Compare comp) {</div>
+<div class="line"><span class="keyword">concept </span><a class="code hl_concept" href="concept_span_containers_1_1_std_comparer.html">SpanContainers::StdComparer</a> =  std::is_empty&lt;Compare&gt;::value &amp;&amp; <span class="keyword">requires</span>(T a, T b, Compare comp) {</div>
 <div class="line">    { comp(a, b) } -&gt; std::convertible_to&lt;bool&gt;;</div>
 <div class="line">}</div>
 <div class="ttc" id="aconcept_span_containers_1_1_std_comparer_html"><div class="ttname"><a href="concept_span_containers_1_1_std_comparer.html">SpanContainers::StdComparer</a></div><div class="ttdef"><b>Definition</b> SpanHeap.h:17</div></div>

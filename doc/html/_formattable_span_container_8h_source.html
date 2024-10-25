@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
 <meta name="generator" content="Doxygen 1.12.0"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>SpanContainers: C:/Users/maxma/source/repos/SpanContainers/lib/internal/FormattableSpanContainer.h Source File</title>
+<title>SpanContainers: C:/Users/maxma/source/repos/SpanContainers/lib/internal/FixedSizeContainer.h Source File</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -89,7 +89,7 @@ $(function(){ initResizable(false); });
 </div><!-- top -->
 <div id="doc-content">
 <div class="header">
-  <div class="headertitle"><div class="title">FormattableSpanContainer.h</div></div>
+  <div class="headertitle"><div class="title">FixedSizeContainer.h</div></div>
 </div><!--header-->
 <div class="contents">
 <div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="preprocessor">#pragma once</span></div>
@@ -99,14 +99,14 @@ $(function(){ initResizable(false); });
 <div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span> </div>
 <div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span><span class="keyword">template</span>&lt;<span class="keyword">typename</span> Container&gt;</div>
 <div class="foldopen" id="foldopen00009" data-start="{" data-end="}">
-<div class="line"><a id="l00009" name="l00009"></a><span class="lineno"><a class="line" href="concept_span_containers_1_1internal_1_1_formattable_span_container.html">    9</a></span><span class="keyword">concept </span><a class="code hl_concept" href="concept_span_containers_1_1internal_1_1_formattable_span_container.html">FormattableSpanContainer</a> = <span class="keyword">requires</span>(Container container) {</div>
+<div class="line"><a id="l00009" name="l00009"></a><span class="lineno"><a class="line" href="concept_span_containers_1_1internal_1_1_formattable_span_container.html">    9</a></span><span class="keyword">concept </span><a class="code hl_concept" href="concept_span_containers_1_1internal_1_1_formattable_span_container.html">FixedSizeContainer</a> = <span class="keyword">requires</span>(Container container) {</div>
 <div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span>    { container.size() } <span class="keyword">noexcept</span> -&gt; std::same_as&lt;typename Container::size_type&gt;;</div>
 <div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span>    { Container::capacity() } <span class="keyword">noexcept</span> -&gt; std::same_as&lt;typename Container::size_type&gt;;</div>
 <div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span>};</div>
 </div>
 <div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span> </div>
 <div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span>}</div>
-<div class="ttc" id="aconcept_span_containers_1_1internal_1_1_formattable_span_container_html"><div class="ttname"><a href="concept_span_containers_1_1internal_1_1_formattable_span_container.html">SpanContainers::internal::FormattableSpanContainer</a></div><div class="ttdoc">Concept for assisting in formatting a SpanContainer.</div><div class="ttdef"><b>Definition</b> FormattableSpanContainer.h:9</div></div>
+<div class="ttc" id="aconcept_span_containers_1_1internal_1_1_formattable_span_container_html"><div class="ttname"><a href="concept_span_containers_1_1internal_1_1_formattable_span_container.html">SpanContainers::FixedSizeContainer</a></div><div class="ttdoc">Concept for assisting in formatting a SpanContainer.</div><div class="ttdef"><b>Definition</b> FixedSizeContainer.h:9</div></div>
 <div class="ttc" id="anamespace_span_containers_1_1internal_html"><div class="ttname"><a href="namespace_span_containers_1_1internal.html">SpanContainers::internal</a></div><div class="ttdoc">Internal namespace for implementation details.</div><div class="ttdef"><b>Definition</b> BufferSelector.h:7</div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->

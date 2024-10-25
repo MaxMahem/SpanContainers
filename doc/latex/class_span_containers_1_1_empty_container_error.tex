@@ -18,27 +18,24 @@ Inheritance diagram for Span\+Containers\+::Empty\+Container\+Error\+:\begin{fig
 \doxysubsubsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\mbox{\hyperlink{class_span_containers_1_1_empty_container_error_ad945e92700318e74e8aa6ea730bd175e}{Empty\+Container\+Error}} (const std\+::string \&message="{}Container is empty."{})
-\begin{DoxyCompactList}\small\item\em constructs a \doxylink{class_span_containers_1_1_empty_container_error}{Empty\+Container\+Error} using message \end{DoxyCompactList}\item 
-{\footnotesize template$<$internal\+::\+Formattable\+Span\+Container Container$>$ }\\\mbox{\hyperlink{class_span_containers_1_1_empty_container_error_a9b9971417deeaaeaa56d244db51c181d}{Empty\+Container\+Error}} (const Container \&container, const std\+::string \&format\+\_\+string="{}Container \textquotesingle{}\{\}\textquotesingle{} is empty."{})
-\begin{DoxyCompactList}\small\item\em Constructs a new \doxylink{class_span_containers_1_1_empty_container_error}{Empty\+Container\+Error} using container and format\+\_\+string. \end{DoxyCompactList}\end{DoxyCompactItemize}
-\doxysubsubsection*{Static Public Attributes}
+\mbox{\hyperlink{class_span_containers_1_1_empty_container_error_ab015d11b41e57207bda2e797508c4d0d}{Empty\+Container\+Error}} (const std\+::string \&message)
+\begin{DoxyCompactList}\small\item\em constructs a \doxylink{class_span_containers_1_1_empty_container_error}{Empty\+Container\+Error} using message \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Static Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\Hypertarget{class_span_containers_1_1_empty_container_error_a5423939750d3901a5fb0ee4e6c271dd3}\label{class_span_containers_1_1_empty_container_error_a5423939750d3901a5fb0ee4e6c271dd3} 
-static constexpr std\+::string\+\_\+view {\bfseries EXCEPTION\+\_\+\+NAME} = "{}Empty\+Container\+Error"{}
-\end{DoxyCompactItemize}
+{\footnotesize template$<$Fixed\+Size\+Container Container$>$ }\\static constexpr void \mbox{\hyperlink{class_span_containers_1_1_empty_container_error_a19b1a70a5fe4df6529362a4de195052d}{Throw\+If\+Empty}} (const Container \&container)
+\begin{DoxyCompactList}\small\item\em Throws a \doxylink{class_span_containers_1_1_empty_container_error}{Empty\+Container\+Error} exception if container is empty. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
 \doxysubsection{Detailed Description}
 Represents an error for an operation that would be invalid due to an empty container. 
 
 \doxysubsection{Constructor \& Destructor Documentation}
-\Hypertarget{class_span_containers_1_1_empty_container_error_ad945e92700318e74e8aa6ea730bd175e}\index{SpanContainers::EmptyContainerError@{SpanContainers::EmptyContainerError}!EmptyContainerError@{EmptyContainerError}}
+\Hypertarget{class_span_containers_1_1_empty_container_error_ab015d11b41e57207bda2e797508c4d0d}\index{SpanContainers::EmptyContainerError@{SpanContainers::EmptyContainerError}!EmptyContainerError@{EmptyContainerError}}
 \index{EmptyContainerError@{EmptyContainerError}!SpanContainers::EmptyContainerError@{SpanContainers::EmptyContainerError}}
-\doxysubsubsection{\texorpdfstring{EmptyContainerError()}{EmptyContainerError()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
-{\footnotesize\ttfamily \label{class_span_containers_1_1_empty_container_error_ad945e92700318e74e8aa6ea730bd175e} 
-Span\+Containers\+::\+Empty\+Container\+Error\+::\+Empty\+Container\+Error (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{message}{ = {\ttfamily "{}Container~is~empty."{}}}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+\doxysubsubsection{\texorpdfstring{EmptyContainerError()}{EmptyContainerError()}}
+{\footnotesize\ttfamily \label{class_span_containers_1_1_empty_container_error_ab015d11b41e57207bda2e797508c4d0d} 
+Span\+Containers\+::\+Empty\+Container\+Error\+::\+Empty\+Container\+Error (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{message}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
 
 
 
@@ -49,27 +46,28 @@ constructs a \doxylink{class_span_containers_1_1_empty_container_error}{Empty\+C
 {\em The} & message to associate with this error. \\
 \hline
 \end{DoxyParams}
-\Hypertarget{class_span_containers_1_1_empty_container_error_a9b9971417deeaaeaa56d244db51c181d}\index{SpanContainers::EmptyContainerError@{SpanContainers::EmptyContainerError}!EmptyContainerError@{EmptyContainerError}}
-\index{EmptyContainerError@{EmptyContainerError}!SpanContainers::EmptyContainerError@{SpanContainers::EmptyContainerError}}
-\doxysubsubsection{\texorpdfstring{EmptyContainerError()}{EmptyContainerError()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
-{\footnotesize\ttfamily \label{class_span_containers_1_1_empty_container_error_a9b9971417deeaaeaa56d244db51c181d} 
-template$<$internal\+::\+Formattable\+Span\+Container Container$>$ \\
-Span\+Containers\+::\+Empty\+Container\+Error\+::\+Empty\+Container\+Error (\begin{DoxyParamCaption}\item[{const Container \&}]{container}{, }\item[{const std\+::string \&}]{format\+\_\+string}{ = {\ttfamily "{}Container~\textquotesingle{}\{\}\textquotesingle{}~is~empty."{}}}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_span_containers_1_1_empty_container_error_a19b1a70a5fe4df6529362a4de195052d}\index{SpanContainers::EmptyContainerError@{SpanContainers::EmptyContainerError}!ThrowIfEmpty@{ThrowIfEmpty}}
+\index{ThrowIfEmpty@{ThrowIfEmpty}!SpanContainers::EmptyContainerError@{SpanContainers::EmptyContainerError}}
+\doxysubsubsection{\texorpdfstring{ThrowIfEmpty()}{ThrowIfEmpty()}}
+{\footnotesize\ttfamily \label{class_span_containers_1_1_empty_container_error_a19b1a70a5fe4df6529362a4de195052d} 
+template$<$Fixed\+Size\+Container Container$>$ \\
+static constexpr void Span\+Containers\+::\+Empty\+Container\+Error\+::\+Throw\+If\+Empty (\begin{DoxyParamCaption}\item[{const Container \&}]{container}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}, {\ttfamily [constexpr]}}
 
 
 
-Constructs a new \doxylink{class_span_containers_1_1_empty_container_error}{Empty\+Container\+Error} using container and format\+\_\+string. 
+Throws a \doxylink{class_span_containers_1_1_empty_container_error}{Empty\+Container\+Error} exception if container is empty. 
 
 
 \begin{DoxyTemplParams}{Template Parameters}
-{\em Container} & the type of the containier, must be formattable. \\
+{\em Container} & A \doxylink{concept_span_containers_1_1_fixed_size_container}{Fixed\+Size\+Container}. \\
 \hline
 \end{DoxyTemplParams}
 
 \begin{DoxyParams}{Parameters}
-{\em container} & The container whose capacity was exceeded. \\
-\hline
-{\em format\+\_\+string} & the format string used to generate the message using container. \\
+{\em container} & The container to check if empty. \\
 \hline
 \end{DoxyParams}
 

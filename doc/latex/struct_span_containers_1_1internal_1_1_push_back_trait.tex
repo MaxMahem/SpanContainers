@@ -4,22 +4,30 @@
 \begin{DoxyCompactItemize}
 \item 
 {\footnotesize template$<$typename U $>$ \newline
-requires std\+::assignable\+\_\+from$<$T\&, U\&\&$>$}\\constexpr void \mbox{\hyperlink{struct_span_containers_1_1internal_1_1_push_back_trait_a8e1cf7d06e78ee535b13e311dc72b148}{push\+\_\+back}} (U \&\&value)
+requires std\+::assignable\+\_\+from$<$T\&, U\&\&$>$}\\constexpr void \mbox{\hyperlink{struct_span_containers_1_1internal_1_1_push_back_trait_ab65cf64cbab067d61e17f43d781f8ead}{push\+\_\+back}} (U \&\&value) noexcept(std\+::is\+\_\+nothrow\+\_\+assignable$<$ T \&, U \&\& $>$\+::value \&\&!Use\+Exceptions)
 \begin{DoxyCompactList}\small\item\em Assigns value to the back of the container. \end{DoxyCompactList}\item 
 {\footnotesize template$<$typename U $>$ \newline
 requires std\+::assignable\+\_\+from$<$T\&, U\&\&$>$}\\constexpr bool \mbox{\hyperlink{struct_span_containers_1_1internal_1_1_push_back_trait_a0806b833c26f08891f2e928b562a986f}{try\+\_\+push\+\_\+back}} (U \&\&value) noexcept(std\+::is\+\_\+nothrow\+\_\+assignable$<$ T \&, U \&\& $>$\+::value)
-\begin{DoxyCompactList}\small\item\em Tries to assign value at the back of the container. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Tries to assign value at the back of the container. \end{DoxyCompactList}\item 
+{\footnotesize template$<$std\+::ranges\+::range Range = std\+::initializer\+\_\+list$<$\+T$>$$>$ \newline
+requires std\+::convertible\+\_\+to$<$std\+::ranges\+::range\+\_\+value\+\_\+t$<$Range$>$, T$>$}\\constexpr void \mbox{\hyperlink{struct_span_containers_1_1internal_1_1_push_back_trait_a9207adc1c6648914ea3ad1d06e987e69}{push\+\_\+back\+\_\+range}} (Range \&\&values)
+\begin{DoxyCompactList}\small\item\em Assign values to the back of the container. \end{DoxyCompactList}\item 
+{\footnotesize template$<$std\+::ranges\+::sized\+\_\+range Range = std\+::initializer\+\_\+list$<$\+T$>$$>$ \newline
+requires std\+::convertible\+\_\+to$<$std\+::ranges\+::range\+\_\+value\+\_\+t$<$Range$>$, T$>$}\\constexpr void \mbox{\hyperlink{struct_span_containers_1_1internal_1_1_push_back_trait_a9207adc1c6648914ea3ad1d06e987e69}{push\+\_\+back\+\_\+range}} (Range \&\&values)
+\begin{DoxyCompactList}\small\item\em Assign values to the back of the container. \end{DoxyCompactList}\item 
+{\footnotesize template$<$std\+::ranges\+::sized\+\_\+range Range = std\+::initializer\+\_\+list$<$\+T$>$$>$ }\\constexpr bool \mbox{\hyperlink{struct_span_containers_1_1internal_1_1_push_back_trait_a8568c88598c97a5613dd9f4553c541ee}{try\+\_\+push\+\_\+back\+\_\+range}} (Range \&\&values)
+\begin{DoxyCompactList}\small\item\em Tries to assign the values to the container. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
 \doxysubsection{Member Function Documentation}
-\Hypertarget{struct_span_containers_1_1internal_1_1_push_back_trait_a8e1cf7d06e78ee535b13e311dc72b148}\index{SpanContainers::internal::PushBackTrait$<$ Derived, T $>$@{SpanContainers::internal::PushBackTrait$<$ Derived, T $>$}!push\_back@{push\_back}}
+\Hypertarget{struct_span_containers_1_1internal_1_1_push_back_trait_ab65cf64cbab067d61e17f43d781f8ead}\index{SpanContainers::internal::PushBackTrait$<$ Derived, T $>$@{SpanContainers::internal::PushBackTrait$<$ Derived, T $>$}!push\_back@{push\_back}}
 \index{push\_back@{push\_back}!SpanContainers::internal::PushBackTrait$<$ Derived, T $>$@{SpanContainers::internal::PushBackTrait$<$ Derived, T $>$}}
 \doxysubsubsection{\texorpdfstring{push\_back()}{push\_back()}}
-{\footnotesize\ttfamily \label{struct_span_containers_1_1internal_1_1_push_back_trait_a8e1cf7d06e78ee535b13e311dc72b148} 
+{\footnotesize\ttfamily \label{struct_span_containers_1_1internal_1_1_push_back_trait_ab65cf64cbab067d61e17f43d781f8ead} 
 template$<$typename Derived , typename T $>$ \\
 template$<$typename U $>$ \newline
 requires std\+::assignable\+\_\+from$<$T\&, U\&\&$>$\\
-void \mbox{\hyperlink{struct_span_containers_1_1internal_1_1_push_back_trait}{Span\+Containers\+::internal\+::\+Push\+Back\+Trait}}$<$ Derived, T $>$\+::push\+\_\+back (\begin{DoxyParamCaption}\item[{U \&\&}]{value}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [constexpr]}}
+void \mbox{\hyperlink{struct_span_containers_1_1internal_1_1_push_back_trait}{Span\+Containers\+::internal\+::\+Push\+Back\+Trait}}$<$ Derived, T $>$\+::push\+\_\+back (\begin{DoxyParamCaption}\item[{U \&\&}]{value}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [constexpr]}, {\ttfamily [noexcept]}}
 
 
 
@@ -32,7 +40,53 @@ Assigns value to the back of the container.
 \end{DoxyParams}
 
 \begin{DoxyExceptions}{Exceptions}
-{\em \doxylink{class_span_containers_1_1_full_container_error}{Full\+Container\+Error}} & if the container capacity is exceeded \\
+{\em \doxylink{class_span_containers_1_1_full_container_error}{Full\+Container\+Error}} & if the container capacity is exceeded and Use\+Exceptions is true. \\
+\hline
+\end{DoxyExceptions}
+\Hypertarget{struct_span_containers_1_1internal_1_1_push_back_trait_a9207adc1c6648914ea3ad1d06e987e69}\index{SpanContainers::internal::PushBackTrait$<$ Derived, T $>$@{SpanContainers::internal::PushBackTrait$<$ Derived, T $>$}!push\_back\_range@{push\_back\_range}}
+\index{push\_back\_range@{push\_back\_range}!SpanContainers::internal::PushBackTrait$<$ Derived, T $>$@{SpanContainers::internal::PushBackTrait$<$ Derived, T $>$}}
+\doxysubsubsection{\texorpdfstring{push\_back\_range()}{push\_back\_range()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily \label{struct_span_containers_1_1internal_1_1_push_back_trait_a9207adc1c6648914ea3ad1d06e987e69} 
+template$<$typename Derived , typename T $>$ \\
+template$<$std\+::ranges\+::range Range = std\+::initializer\+\_\+list$<$\+T$>$$>$ \newline
+requires std\+::convertible\+\_\+to$<$std\+::ranges\+::range\+\_\+value\+\_\+t$<$Range$>$, T$>$\\
+void \mbox{\hyperlink{struct_span_containers_1_1internal_1_1_push_back_trait}{Span\+Containers\+::internal\+::\+Push\+Back\+Trait}}$<$ Derived, T $>$\+::push\+\_\+back\+\_\+range (\begin{DoxyParamCaption}\item[{Range \&\&}]{values}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [constexpr]}}
+
+
+
+Assign values to the back of the container. 
+
+This method only provides the basic exception gurantee. If range exceeds the capacty of the container, values will be pushed\+\_\+back until capcity is reached, at which point a \doxylink{class_span_containers_1_1_full_container_error}{Full\+Container\+Error} exception is thrown. 
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Range} & The type of the range that contains the values. \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em \doxylink{class_span_containers_1_1_full_container_error}{Full\+Container\+Error}} & If the size of the range exceeds the container capacity and Use\+Exceptions is true. \\
+\hline
+\end{DoxyExceptions}
+\Hypertarget{struct_span_containers_1_1internal_1_1_push_back_trait_a9207adc1c6648914ea3ad1d06e987e69}\index{SpanContainers::internal::PushBackTrait$<$ Derived, T $>$@{SpanContainers::internal::PushBackTrait$<$ Derived, T $>$}!push\_back\_range@{push\_back\_range}}
+\index{push\_back\_range@{push\_back\_range}!SpanContainers::internal::PushBackTrait$<$ Derived, T $>$@{SpanContainers::internal::PushBackTrait$<$ Derived, T $>$}}
+\doxysubsubsection{\texorpdfstring{push\_back\_range()}{push\_back\_range()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily \label{struct_span_containers_1_1internal_1_1_push_back_trait_a9207adc1c6648914ea3ad1d06e987e69} 
+template$<$typename Derived , typename T $>$ \\
+template$<$std\+::ranges\+::sized\+\_\+range Range = std\+::initializer\+\_\+list$<$\+T$>$$>$ \newline
+requires std\+::convertible\+\_\+to$<$std\+::ranges\+::range\+\_\+value\+\_\+t$<$Range$>$, T$>$\\
+void \mbox{\hyperlink{struct_span_containers_1_1internal_1_1_push_back_trait}{Span\+Containers\+::internal\+::\+Push\+Back\+Trait}}$<$ Derived, T $>$\+::push\+\_\+back\+\_\+range (\begin{DoxyParamCaption}\item[{Range \&\&}]{values}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [constexpr]}}
+
+
+
+Assign values to the back of the container. 
+
+This method provides a strong exception gurantee. 
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Range} & The type of the range that contains the values. \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em std\+::out\+\_\+of\+\_\+range} & If the size of the range exceeds the container capacity and Use\+Exceptions is true. \\
 \hline
 \end{DoxyExceptions}
 \Hypertarget{struct_span_containers_1_1internal_1_1_push_back_trait_a0806b833c26f08891f2e928b562a986f}\index{SpanContainers::internal::PushBackTrait$<$ Derived, T $>$@{SpanContainers::internal::PushBackTrait$<$ Derived, T $>$}!try\_push\_back@{try\_push\_back}}
@@ -60,6 +114,26 @@ Tries to assign value at the back of the container.
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
 true if value was placed at the back of the container; false otherwise. 
+\end{DoxyReturn}
+\Hypertarget{struct_span_containers_1_1internal_1_1_push_back_trait_a8568c88598c97a5613dd9f4553c541ee}\index{SpanContainers::internal::PushBackTrait$<$ Derived, T $>$@{SpanContainers::internal::PushBackTrait$<$ Derived, T $>$}!try\_push\_back\_range@{try\_push\_back\_range}}
+\index{try\_push\_back\_range@{try\_push\_back\_range}!SpanContainers::internal::PushBackTrait$<$ Derived, T $>$@{SpanContainers::internal::PushBackTrait$<$ Derived, T $>$}}
+\doxysubsubsection{\texorpdfstring{try\_push\_back\_range()}{try\_push\_back\_range()}}
+{\footnotesize\ttfamily \label{struct_span_containers_1_1internal_1_1_push_back_trait_a8568c88598c97a5613dd9f4553c541ee} 
+template$<$typename Derived , typename T $>$ \\
+template$<$std\+::ranges\+::sized\+\_\+range Range = std\+::initializer\+\_\+list$<$\+T$>$$>$ \\
+bool \mbox{\hyperlink{struct_span_containers_1_1internal_1_1_push_back_trait}{Span\+Containers\+::internal\+::\+Push\+Back\+Trait}}$<$ Derived, T $>$\+::try\+\_\+push\+\_\+back\+\_\+range (\begin{DoxyParamCaption}\item[{Range \&\&}]{values}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [constexpr]}}
+
+
+
+Tries to assign the values to the container. 
+
+
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Range} & The type of the range that contains the values. \\
+\hline
+\end{DoxyTemplParams}
+\begin{DoxyReturn}{Returns}
+{\ttfamily true} if values were placed at the back of the container; {\ttfamily false} otherwise. 
 \end{DoxyReturn}
 
 

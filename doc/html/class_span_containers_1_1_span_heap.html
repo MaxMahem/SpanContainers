@@ -94,6 +94,7 @@ $(function(){ initResizable(false); });
 <a href="#pub-methods">Public Member Functions</a> &#124;
 <a href="#pub-static-methods">Static Public Member Functions</a> &#124;
 <a href="#pub-static-attribs">Static Public Attributes</a> &#124;
+<a href="#friends">Friends</a> &#124;
 <a href="class_span_containers_1_1_span_heap-members.html">List of all members</a>  </div>
   <div class="headertitle"><div class="title">SpanContainers::SpanHeap&lt; T, Extent, Comparer &gt; Class Template Reference</div></div>
 </div><!--header-->
@@ -117,34 +118,28 @@ Inheritance diagram for SpanContainers::SpanHeap&lt; T, Extent, Comparer &gt;:</
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-types" name="pub-types"></a>
 Public Types</h2></td></tr>
-<tr class="memitem:ae29fd14361ae3b1c2779d0ec03bb66ab" id="r_ae29fd14361ae3b1c2779d0ec03bb66ab"><td class="memItemLeft" align="right" valign="top"><a id="ae29fd14361ae3b1c2779d0ec03bb66ab" name="ae29fd14361ae3b1c2779d0ec03bb66ab"></a>
+<tr class="memitem:acbf0783599d1034a54f66e1ce270e39f" id="r_acbf0783599d1034a54f66e1ce270e39f"><td class="memItemLeft" align="right" valign="top"><a id="acbf0783599d1034a54f66e1ce270e39f" name="acbf0783599d1034a54f66e1ce270e39f"></a>
 using&#160;</td><td class="memItemRight" valign="bottom"><b>span_type</b> = std::span&lt;T, Extent&gt;</td></tr>
-<tr class="separator:ae29fd14361ae3b1c2779d0ec03bb66ab"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="separator:acbf0783599d1034a54f66e1ce270e39f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a22869b80b5a5ec719f8097bd9d5faaa2" id="r_a22869b80b5a5ec719f8097bd9d5faaa2"><td class="memItemLeft" align="right" valign="top"><a id="a22869b80b5a5ec719f8097bd9d5faaa2" name="a22869b80b5a5ec719f8097bd9d5faaa2"></a>
-using&#160;</td><td class="memItemRight" valign="bottom"><b>element_type</b></td></tr>
+using&#160;</td><td class="memItemRight" valign="bottom"><b>element_type</b> = span_type::element_type</td></tr>
 <tr class="separator:a22869b80b5a5ec719f8097bd9d5faaa2"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a5884bfe0250b794adfc54d7c1e0df70c" id="r_a5884bfe0250b794adfc54d7c1e0df70c"><td class="memItemLeft" align="right" valign="top"><a id="a5884bfe0250b794adfc54d7c1e0df70c" name="a5884bfe0250b794adfc54d7c1e0df70c"></a>
-using&#160;</td><td class="memItemRight" valign="bottom"><b>size_type</b></td></tr>
-<tr class="separator:a5884bfe0250b794adfc54d7c1e0df70c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aeaa664707f34abfa1c5def991d6a2ca0" id="r_aeaa664707f34abfa1c5def991d6a2ca0"><td class="memItemLeft" align="right" valign="top"><a id="aeaa664707f34abfa1c5def991d6a2ca0" name="aeaa664707f34abfa1c5def991d6a2ca0"></a>
-using&#160;</td><td class="memItemRight" valign="bottom"><b>pointer</b></td></tr>
-<tr class="separator:aeaa664707f34abfa1c5def991d6a2ca0"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aae9ff6b9bfea8d03125109afd903b81e" id="r_aae9ff6b9bfea8d03125109afd903b81e"><td class="memItemLeft" align="right" valign="top"><a id="aae9ff6b9bfea8d03125109afd903b81e" name="aae9ff6b9bfea8d03125109afd903b81e"></a>
-using&#160;</td><td class="memItemRight" valign="bottom"><b>const_pointer</b></td></tr>
-<tr class="separator:aae9ff6b9bfea8d03125109afd903b81e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac9edea5dc17ba0270973b9093c5a5f67" id="r_ac9edea5dc17ba0270973b9093c5a5f67"><td class="memItemLeft" align="right" valign="top"><a id="ac9edea5dc17ba0270973b9093c5a5f67" name="ac9edea5dc17ba0270973b9093c5a5f67"></a>
-using&#160;</td><td class="memItemRight" valign="bottom"><b>reference</b></td></tr>
-<tr class="separator:ac9edea5dc17ba0270973b9093c5a5f67"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a64abb80b5fdc009b32d3c1d603fcb8a0" id="r_a64abb80b5fdc009b32d3c1d603fcb8a0"><td class="memItemLeft" align="right" valign="top"><a id="a64abb80b5fdc009b32d3c1d603fcb8a0" name="a64abb80b5fdc009b32d3c1d603fcb8a0"></a>
-using&#160;</td><td class="memItemRight" valign="bottom"><b>const_reference</b></td></tr>
-<tr class="separator:a64abb80b5fdc009b32d3c1d603fcb8a0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a34698b5872c3f13cc4840496c95396bb" id="r_a34698b5872c3f13cc4840496c95396bb"><td class="memItemLeft" align="right" valign="top"><a id="a34698b5872c3f13cc4840496c95396bb" name="a34698b5872c3f13cc4840496c95396bb"></a>
 using&#160;</td><td class="memItemRight" valign="bottom"><b>value_type</b> = span_type::value_type</td></tr>
 <tr class="separator:a34698b5872c3f13cc4840496c95396bb"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a46e4f3e4ed3050a088056fccb00a76aa" id="r_a46e4f3e4ed3050a088056fccb00a76aa"><td class="memTemplParams" colspan="2">template&lt;std::size_t MaxStackSize = 256&gt; </td></tr>
-<tr class="memitem:a46e4f3e4ed3050a088056fccb00a76aa"><td class="memTemplItemLeft" align="right" valign="top">using&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="class_span_containers_1_1internal_1_1_span_container.html#a46e4f3e4ed3050a088056fccb00a76aa">BufferType</a> = BufferSelector&lt;T, Extent&gt;::BufferType&lt;MaxStackSize&gt;</td></tr>
-<tr class="memdesc:a46e4f3e4ed3050a088056fccb00a76aa"><td class="mdescLeft">&#160;</td><td class="mdescRight">Defines an appropriately sized buffer to be allocated on the heap or stack.  <br /></td></tr>
-<tr class="separator:a46e4f3e4ed3050a088056fccb00a76aa"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aeaa664707f34abfa1c5def991d6a2ca0" id="r_aeaa664707f34abfa1c5def991d6a2ca0"><td class="memItemLeft" align="right" valign="top"><a id="aeaa664707f34abfa1c5def991d6a2ca0" name="aeaa664707f34abfa1c5def991d6a2ca0"></a>
+using&#160;</td><td class="memItemRight" valign="bottom"><b>pointer</b> = span_type::pointer</td></tr>
+<tr class="separator:aeaa664707f34abfa1c5def991d6a2ca0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aae9ff6b9bfea8d03125109afd903b81e" id="r_aae9ff6b9bfea8d03125109afd903b81e"><td class="memItemLeft" align="right" valign="top"><a id="aae9ff6b9bfea8d03125109afd903b81e" name="aae9ff6b9bfea8d03125109afd903b81e"></a>
+using&#160;</td><td class="memItemRight" valign="bottom"><b>const_pointer</b> = span_type::const_pointer</td></tr>
+<tr class="separator:aae9ff6b9bfea8d03125109afd903b81e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a64abb80b5fdc009b32d3c1d603fcb8a0" id="r_a64abb80b5fdc009b32d3c1d603fcb8a0"><td class="memItemLeft" align="right" valign="top"><a id="a64abb80b5fdc009b32d3c1d603fcb8a0" name="a64abb80b5fdc009b32d3c1d603fcb8a0"></a>
+using&#160;</td><td class="memItemRight" valign="bottom"><b>const_reference</b> = span_type::const_reference</td></tr>
+<tr class="separator:a64abb80b5fdc009b32d3c1d603fcb8a0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac2cf8a14f79ba4ffcc945694132e4f6b" id="r_ac2cf8a14f79ba4ffcc945694132e4f6b"><td class="memTemplParams" colspan="2">template&lt;std::size_t MaxStackSize = 256&gt; </td></tr>
+<tr class="memitem:ac2cf8a14f79ba4ffcc945694132e4f6b"><td class="memTemplItemLeft" align="right" valign="top">using&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="class_span_containers_1_1internal_1_1_span_container.html#ac2cf8a14f79ba4ffcc945694132e4f6b">BufferType</a></td></tr>
+<tr class="memdesc:ac2cf8a14f79ba4ffcc945694132e4f6b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Defines an appropriately sized buffer to be allocated on the heap or stack.  <br /></td></tr>
+<tr class="separator:ac2cf8a14f79ba4ffcc945694132e4f6b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
@@ -153,22 +148,9 @@ requires std::is_lvalue_reference_v&lt;Buffer&amp;&gt;&amp;&amp; std::is_constru
 <tr class="memitem:a0bf6f71e93b3dc8489bbe678bad23ceb"><td class="memTemplItemLeft" align="right" valign="top">constexpr&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="#a0bf6f71e93b3dc8489bbe678bad23ceb">SpanHeap</a> (Buffer &amp;buffer, Comparer comparer) noexcept</td></tr>
 <tr class="memdesc:a0bf6f71e93b3dc8489bbe678bad23ceb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructs a new <a class="el" href="class_span_containers_1_1_span_heap.html" title="Represents a span-based, fixed size container with heap access.">SpanHeap</a> using comparer and wrapping buffer.  <br /></td></tr>
 <tr class="separator:a0bf6f71e93b3dc8489bbe678bad23ceb"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a256338db73efbbd6f4ab96eb1ad1fda6" id="r_a256338db73efbbd6f4ab96eb1ad1fda6"><td class="memItemLeft" align="right" valign="top">constexpr reference&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a256338db73efbbd6f4ab96eb1ad1fda6">unsafe_back</a> () const noexcept</td></tr>
-<tr class="memdesc:a256338db73efbbd6f4ab96eb1ad1fda6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets a reference to the last item in the container, without bounds check.  <br /></td></tr>
-<tr class="separator:a256338db73efbbd6f4ab96eb1ad1fda6"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac3737379dcd76a66cfc7aaf58c49bbb1" id="r_ac3737379dcd76a66cfc7aaf58c49bbb1"><td class="memTemplParams" colspan="2">template&lt;typename U &gt; <br />
-requires std::assignable_from&lt;T&amp;, U&amp;&amp;&gt;</td></tr>
-<tr class="memitem:ac3737379dcd76a66cfc7aaf58c49bbb1"><td class="memTemplItemLeft" align="right" valign="top">constexpr void&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="#ac3737379dcd76a66cfc7aaf58c49bbb1">unsafe_push</a> (U &amp;&amp;value) noexcept(std::is_nothrow_assignable&lt; T, U &gt;::value)</td></tr>
-<tr class="memdesc:ac3737379dcd76a66cfc7aaf58c49bbb1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Assigns value to an element of the container.  <br /></td></tr>
-<tr class="separator:ac3737379dcd76a66cfc7aaf58c49bbb1"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae61af5f519be55e8cfec0e136a6fcc4d" id="r_ae61af5f519be55e8cfec0e136a6fcc4d"><td class="memTemplParams" colspan="2">template&lt;std::ranges::input_range Range = std::initializer_list&lt;T&gt;&gt; <br />
-requires std::convertible_to&lt;std::ranges::range_value_t&lt;Range&gt;, T&gt;</td></tr>
-<tr class="memitem:ae61af5f519be55e8cfec0e136a6fcc4d"><td class="memTemplItemLeft" align="right" valign="top">constexpr bool&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="#ae61af5f519be55e8cfec0e136a6fcc4d">try_push_range</a> (Range &amp;&amp;values)</td></tr>
-<tr class="memdesc:ae61af5f519be55e8cfec0e136a6fcc4d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Tries to assign the values to the container.  <br /></td></tr>
-<tr class="separator:ae61af5f519be55e8cfec0e136a6fcc4d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a91e2a9e7a646b8029c72c2bc966d35ee" id="r_a91e2a9e7a646b8029c72c2bc966d35ee"><td class="memItemLeft" align="right" valign="top">constexpr void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a91e2a9e7a646b8029c72c2bc966d35ee">unsafe_pop_back</a> (size_type n) noexcept</td></tr>
-<tr class="memdesc:a91e2a9e7a646b8029c72c2bc966d35ee"><td class="mdescLeft">&#160;</td><td class="mdescRight">Removes n items from the back of the container without a bounds check.  <br /></td></tr>
-<tr class="separator:a91e2a9e7a646b8029c72c2bc966d35ee"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a502cfeadaafd4528ef5b97da1bdcd1eb" id="r_a502cfeadaafd4528ef5b97da1bdcd1eb"><td class="memItemLeft" align="right" valign="top">size_type&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a502cfeadaafd4528ef5b97da1bdcd1eb">make_threshold</a> () noexcept</td></tr>
+<tr class="memdesc:a502cfeadaafd4528ef5b97da1bdcd1eb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the threshold at which heap_make will be used over heap_push.  <br /></td></tr>
+<tr class="separator:a502cfeadaafd4528ef5b97da1bdcd1eb"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a798e703f2e7e01e215227a1b2f2baa4b" id="r_a798e703f2e7e01e215227a1b2f2baa4b"><td class="memItemLeft" align="right" valign="top"><a id="a798e703f2e7e01e215227a1b2f2baa4b" name="a798e703f2e7e01e215227a1b2f2baa4b"></a>
 constexpr void&#160;</td><td class="memItemRight" valign="bottom"><b>clear</b> () noexcept</td></tr>
 <tr class="memdesc:a798e703f2e7e01e215227a1b2f2baa4b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Clears all items from the container. <br /></td></tr>
@@ -193,21 +175,31 @@ requires std::is_lvalue_reference_v&lt;Buffer&amp;&gt; &amp;&amp; std::is_constr
 <tr class="memitem:a6adcfa5c633a685bef25e8e8300e2e00" id="r_a6adcfa5c633a685bef25e8e8300e2e00"><td class="memItemLeft" align="right" valign="top">constexpr span_type&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_span_containers_1_1internal_1_1_span_container.html#a6adcfa5c633a685bef25e8e8300e2e00">data</a> () const noexcept</td></tr>
 <tr class="memdesc:a6adcfa5c633a685bef25e8e8300e2e00"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets the underlying span.  <br /></td></tr>
 <tr class="separator:a6adcfa5c633a685bef25e8e8300e2e00"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad76be4db17d2c6463c1ad00d3d334639" id="r_ad76be4db17d2c6463c1ad00d3d334639"><td class="memTemplParams" colspan="2">template&lt;typename U &gt; <br />
+<tr class="memitem:aa121a8ea3f57b455ca2575efd1f1594f" id="r_aa121a8ea3f57b455ca2575efd1f1594f"><td class="memTemplParams" colspan="2">template&lt;typename U &gt; <br />
 requires std::assignable_from&lt;T&amp;, U&amp;&amp;&gt;</td></tr>
-<tr class="memitem:ad76be4db17d2c6463c1ad00d3d334639"><td class="memTemplItemLeft" align="right" valign="top">constexpr void&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="struct_span_containers_1_1internal_1_1_push_straight_trait.html#ad76be4db17d2c6463c1ad00d3d334639">push</a> (U &amp;&amp;value)</td></tr>
-<tr class="memdesc:ad76be4db17d2c6463c1ad00d3d334639"><td class="mdescLeft">&#160;</td><td class="mdescRight">Assigns value to an element of the container.  <br /></td></tr>
-<tr class="separator:ad76be4db17d2c6463c1ad00d3d334639"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa121a8ea3f57b455ca2575efd1f1594f"><td class="memTemplItemLeft" align="right" valign="top">constexpr void&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="struct_span_containers_1_1internal_1_1_push_straight_trait.html#aa121a8ea3f57b455ca2575efd1f1594f">push</a> (U &amp;&amp;value) noexcept(std::is_nothrow_assignable&lt; T &amp;, U &amp;&amp; &gt;::value &amp;&amp;!UseExceptions)</td></tr>
+<tr class="memdesc:aa121a8ea3f57b455ca2575efd1f1594f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Assigns value to an element of the container.  <br /></td></tr>
+<tr class="separator:aa121a8ea3f57b455ca2575efd1f1594f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae5b30d64af7062a02e6c1efffe6d4e79" id="r_ae5b30d64af7062a02e6c1efffe6d4e79"><td class="memTemplParams" colspan="2">template&lt;typename U &gt; <br />
 requires std::assignable_from&lt;T&amp;, U&amp;&amp;&gt;</td></tr>
 <tr class="memitem:ae5b30d64af7062a02e6c1efffe6d4e79"><td class="memTemplItemLeft" align="right" valign="top">constexpr bool&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="struct_span_containers_1_1internal_1_1_push_straight_trait.html#ae5b30d64af7062a02e6c1efffe6d4e79">try_push</a> (U &amp;&amp;value) noexcept(std::is_nothrow_assignable&lt; T &amp;, U &amp;&amp; &gt;::value)</td></tr>
 <tr class="memdesc:ae5b30d64af7062a02e6c1efffe6d4e79"><td class="mdescLeft">&#160;</td><td class="mdescRight">Tries to assign value to an element of the container.  <br /></td></tr>
 <tr class="separator:ae5b30d64af7062a02e6c1efffe6d4e79"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a45d835a02662237925490501f84bd775" id="r_a45d835a02662237925490501f84bd775"><td class="memTemplParams" colspan="2">template&lt;std::ranges::input_range Range = std::initializer_list&lt;T&gt;&gt; <br />
+<tr class="memitem:a45d835a02662237925490501f84bd775" id="r_a45d835a02662237925490501f84bd775"><td class="memTemplParams" colspan="2">template&lt;std::ranges::range Range = std::initializer_list&lt;T&gt;&gt; <br />
 requires std::convertible_to&lt;std::ranges::range_value_t&lt;Range&gt;, T&gt;</td></tr>
 <tr class="memitem:a45d835a02662237925490501f84bd775"><td class="memTemplItemLeft" align="right" valign="top">constexpr void&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="struct_span_containers_1_1internal_1_1_push_straight_trait.html#a45d835a02662237925490501f84bd775">push_range</a> (Range &amp;&amp;values)</td></tr>
-<tr class="memdesc:a45d835a02662237925490501f84bd775"><td class="mdescLeft">&#160;</td><td class="mdescRight">Assigns values to the container.  <br /></td></tr>
+<tr class="memdesc:a45d835a02662237925490501f84bd775"><td class="mdescLeft">&#160;</td><td class="mdescRight">Assign values to the container.  <br /></td></tr>
 <tr class="separator:a45d835a02662237925490501f84bd775"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a45d835a02662237925490501f84bd775" id="r_a45d835a02662237925490501f84bd775"><td class="memTemplParams" colspan="2">template&lt;std::ranges::sized_range Range = std::initializer_list&lt;T&gt;&gt; <br />
+requires std::convertible_to&lt;std::ranges::range_value_t&lt;Range&gt;, T&gt;</td></tr>
+<tr class="memitem:a45d835a02662237925490501f84bd775"><td class="memTemplItemLeft" align="right" valign="top">constexpr void&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="struct_span_containers_1_1internal_1_1_push_straight_trait.html#a45d835a02662237925490501f84bd775">push_range</a> (Range &amp;&amp;values)</td></tr>
+<tr class="memdesc:a45d835a02662237925490501f84bd775"><td class="mdescLeft">&#160;</td><td class="mdescRight">Assign values to the container.  <br /></td></tr>
+<tr class="separator:a45d835a02662237925490501f84bd775"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a247cc2fe0d139a2e56a3cf0d1f4212d9" id="r_a247cc2fe0d139a2e56a3cf0d1f4212d9"><td class="memTemplParams" colspan="2">template&lt;std::ranges::sized_range Range = std::initializer_list&lt;T&gt;&gt; <br />
+requires std::convertible_to&lt;std::ranges::range_value_t&lt;Range&gt;, T&gt;</td></tr>
+<tr class="memitem:a247cc2fe0d139a2e56a3cf0d1f4212d9"><td class="memTemplItemLeft" align="right" valign="top">constexpr bool&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="struct_span_containers_1_1internal_1_1_push_straight_trait.html#a247cc2fe0d139a2e56a3cf0d1f4212d9">try_push_range</a> (Range &amp;&amp;values)</td></tr>
+<tr class="memdesc:a247cc2fe0d139a2e56a3cf0d1f4212d9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Tries to assign the values to the container.  <br /></td></tr>
+<tr class="separator:a247cc2fe0d139a2e56a3cf0d1f4212d9"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a635fbe6fc7cfd5aee71c4a58f89ed3a3" id="r_a635fbe6fc7cfd5aee71c4a58f89ed3a3"><td class="memItemLeft" align="right" valign="top">constexpr reference&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_span_containers_1_1internal_1_1_pop_back_trait.html#a635fbe6fc7cfd5aee71c4a58f89ed3a3">back</a> () const noexcept(!UseExceptions)</td></tr>
 <tr class="memdesc:a635fbe6fc7cfd5aee71c4a58f89ed3a3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets a refrence to the item at the back of the container.  <br /></td></tr>
 <tr class="separator:a635fbe6fc7cfd5aee71c4a58f89ed3a3"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -229,9 +221,12 @@ requires std::convertible_to&lt;std::ranges::range_value_t&lt;Range&gt;, T&gt;</
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-static-methods" name="pub-static-methods"></a>
 Static Public Member Functions</h2></td></tr>
-<tr class="memitem:a4f8d412fd122d11ca3c0f9d3351e5f61" id="r_a4f8d412fd122d11ca3c0f9d3351e5f61"><td class="memItemLeft" align="right" valign="top">static consteval size_type&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_span_containers_1_1internal_1_1_span_container.html#a4f8d412fd122d11ca3c0f9d3351e5f61">capacity</a> () noexcept</td></tr>
-<tr class="memdesc:a4f8d412fd122d11ca3c0f9d3351e5f61"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets the capacity of the container.  <br /></td></tr>
-<tr class="separator:a4f8d412fd122d11ca3c0f9d3351e5f61"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a033f9429b061e25e7163a18f26561753" id="r_a033f9429b061e25e7163a18f26561753"><td class="memItemLeft" align="right" valign="top">static constexpr size_type&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_span_containers_1_1internal_1_1_span_container.html#a033f9429b061e25e7163a18f26561753">capacity</a> () noexcept</td></tr>
+<tr class="memdesc:a033f9429b061e25e7163a18f26561753"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets the capacity of the container.  <br /></td></tr>
+<tr class="separator:a033f9429b061e25e7163a18f26561753"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aab7bfff93b28f07e958ff6e7ac32ef11" id="r_aab7bfff93b28f07e958ff6e7ac32ef11"><td class="memItemLeft" align="right" valign="top">static constexpr size_type&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_span_containers_1_1internal_1_1_span_container.html#aab7bfff93b28f07e958ff6e7ac32ef11">max_size</a> ()</td></tr>
+<tr class="memdesc:aab7bfff93b28f07e958ff6e7ac32ef11"><td class="mdescLeft">&#160;</td><td class="mdescRight">The maximum size of the container.  <br /></td></tr>
+<tr class="separator:aab7bfff93b28f07e958ff6e7ac32ef11"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-static-attribs" name="pub-static-attribs"></a>
 Static Public Attributes</h2></td></tr>
@@ -239,6 +234,19 @@ Static Public Attributes</h2></td></tr>
 static constexpr std::string_view&#160;</td><td class="memItemRight" valign="bottom"><b>TYPE_NAME</b> = &quot;SpanHeap&quot;</td></tr>
 <tr class="memdesc:ae3df9039b665ae2e59eff07fad1d8e07"><td class="mdescLeft">&#160;</td><td class="mdescRight">the name of this type. <br /></td></tr>
 <tr class="separator:ae3df9039b665ae2e59eff07fad1d8e07"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6d01f5cd05d9f4187e02ff491e90391a" id="r_a6d01f5cd05d9f4187e02ff491e90391a"><td class="memItemLeft" align="right" valign="top"><a id="a6d01f5cd05d9f4187e02ff491e90391a" name="a6d01f5cd05d9f4187e02ff491e90391a"></a>
+static constexpr size_type&#160;</td><td class="memItemRight" valign="bottom"><b>extent</b> = Extent</td></tr>
+<tr class="memdesc:a6d01f5cd05d9f4187e02ff491e90391a"><td class="mdescLeft">&#160;</td><td class="mdescRight">The capacity of the container. <br /></td></tr>
+<tr class="separator:a6d01f5cd05d9f4187e02ff491e90391a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="friends" name="friends"></a>
+Friends</h2></td></tr>
+<tr class="memitem:ac0f1d562fc525511ff952858d35f46a7" id="r_ac0f1d562fc525511ff952858d35f46a7"><td class="memItemLeft" align="right" valign="top"><a id="ac0f1d562fc525511ff952858d35f46a7" name="ac0f1d562fc525511ff952858d35f46a7"></a>
+struct&#160;</td><td class="memItemRight" valign="bottom"><b>internal::PushStraightTrait&lt; SpanHeap&lt; T, Extent, Comparer &gt;, T &gt;</b></td></tr>
+<tr class="separator:ac0f1d562fc525511ff952858d35f46a7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a80446d114d76327dc419ab75f3647117" id="r_a80446d114d76327dc419ab75f3647117"><td class="memItemLeft" align="right" valign="top"><a id="a80446d114d76327dc419ab75f3647117" name="a80446d114d76327dc419ab75f3647117"></a>
+struct&#160;</td><td class="memItemRight" valign="bottom"><b>internal::PopBackTrait&lt; SpanHeap&lt; T, Extent, Comparer &gt;, T &gt;</b></td></tr>
+<tr class="separator:a80446d114d76327dc419ab75f3647117"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><div class="compoundTemplParams">template&lt;std::swappable T, std::size_t Extent, StdComparer&lt; T &gt; Comparer = std::less&lt;T&gt;&gt;<br />
@@ -251,8 +259,8 @@ class SpanContainers::SpanHeap&lt; T, Extent, Comparer &gt;</div><p>Represents a
   </dd>
 </dl>
 </div><h2 class="groupheader">Member Typedef Documentation</h2>
-<a id="a46e4f3e4ed3050a088056fccb00a76aa" name="a46e4f3e4ed3050a088056fccb00a76aa"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a46e4f3e4ed3050a088056fccb00a76aa">&#9670;&#160;</a></span>BufferType</h2>
+<a id="ac2cf8a14f79ba4ffcc945694132e4f6b" name="ac2cf8a14f79ba4ffcc945694132e4f6b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac2cf8a14f79ba4ffcc945694132e4f6b">&#9670;&#160;</a></span>BufferType</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -265,7 +273,7 @@ template&lt;std::size_t MaxStackSize = 256&gt; </div>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">using <a class="el" href="class_span_containers_1_1internal_1_1_span_container.html">SpanContainers::internal::SpanContainer</a>&lt; T, Extent &gt;::BufferType = BufferSelector&lt;T, Extent&gt;::BufferType&lt;MaxStackSize&gt;</td>
+          <td class="memname">using <a class="el" href="class_span_containers_1_1internal_1_1_span_container.html">SpanContainers::internal::SpanContainer</a>&lt; T, Extent &gt;::BufferType</td>
         </tr>
       </table>
   </td>
@@ -274,7 +282,9 @@ template&lt;std::size_t MaxStackSize = 256&gt; </div>
   </tr>
 </table>
 </div><div class="memdoc">
-
+<b>Initial value:</b><div class="fragment"><div class="line"> std::conditional_t&lt;Extent * <span class="keyword">sizeof</span>(T) &lt;= MaxStackSize,</div>
+<div class="line">        std::array&lt;T, Extent&gt;, internal::HeapArray&lt;T, Extent&gt;&gt;</div>
+</div><!-- fragment -->
 <p>Defines an appropriately sized buffer to be allocated on the heap or stack. </p>
 <p>If the span would be larger than MaxStackSize, returns a stack allocated std::array; otherwise, returns a structure wrapping a heap allocated std::array. </p><dl class="tparams"><dt>Template Parameters</dt><dd>
   <table class="tparams">
@@ -372,8 +382,8 @@ template&lt;typename Derived , typename T &gt; </div>
 
 </div>
 </div>
-<a id="a4f8d412fd122d11ca3c0f9d3351e5f61" name="a4f8d412fd122d11ca3c0f9d3351e5f61"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a4f8d412fd122d11ca3c0f9d3351e5f61">&#9670;&#160;</a></span>capacity()</h2>
+<a id="a033f9429b061e25e7163a18f26561753" name="a033f9429b061e25e7163a18f26561753"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a033f9429b061e25e7163a18f26561753">&#9670;&#160;</a></span>capacity()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -384,7 +394,7 @@ template&lt;typename T , std::size_t Extent&gt; </div>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">static consteval size_type <a class="el" href="class_span_containers_1_1internal_1_1_span_container.html">SpanContainers::internal::SpanContainer</a>&lt; T, Extent &gt;::capacity </td>
+          <td class="memname">static constexpr size_type <a class="el" href="class_span_containers_1_1internal_1_1_span_container.html">SpanContainers::internal::SpanContainer</a>&lt; T, Extent &gt;::capacity </td>
           <td>(</td>
           <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
           <td></td>
@@ -392,7 +402,7 @@ template&lt;typename T , std::size_t Extent&gt; </div>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">static</span><span class="mlabel">consteval</span><span class="mlabel">noexcept</span><span class="mlabel">inherited</span></span>  </td>
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">static</span><span class="mlabel">constexpr</span><span class="mlabel">noexcept</span><span class="mlabel">inherited</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
@@ -492,6 +502,67 @@ template&lt;typename T , std::size_t Extent&gt; </div>
 
 </div>
 </div>
+<a id="a502cfeadaafd4528ef5b97da1bdcd1eb" name="a502cfeadaafd4528ef5b97da1bdcd1eb"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a502cfeadaafd4528ef5b97da1bdcd1eb">&#9670;&#160;</a></span>make_threshold()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;std::swappable T, std::size_t Extent, StdComparer&lt; T &gt; Comparer = std::less&lt;T&gt;&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">size_type <a class="el" href="class_span_containers_1_1_span_heap.html">SpanContainers::SpanHeap</a>&lt; T, Extent, Comparer &gt;::make_threshold </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">nodiscard</span><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Get the threshold at which heap_make will be used over heap_push. </p>
+<dl class="section return"><dt>Returns</dt><dd>the smallest number of items for which push should be used over make </dd></dl>
+
+</div>
+</div>
+<a id="aab7bfff93b28f07e958ff6e7ac32ef11" name="aab7bfff93b28f07e958ff6e7ac32ef11"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aab7bfff93b28f07e958ff6e7ac32ef11">&#9670;&#160;</a></span>max_size()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename T , std::size_t Extent&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static constexpr size_type <a class="el" href="class_span_containers_1_1internal_1_1_span_container.html">SpanContainers::internal::SpanContainer</a>&lt; T, Extent &gt;::max_size </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">static</span><span class="mlabel">constexpr</span><span class="mlabel">inherited</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>The maximum size of the container. </p>
+<p>This is always equal to extent. <br  />
+ </p>
+
+</div>
+</div>
 <a id="aebbe0044f1d9347ec60ec0fb89cf1ee2" name="aebbe0044f1d9347ec60ec0fb89cf1ee2"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#aebbe0044f1d9347ec60ec0fb89cf1ee2">&#9670;&#160;</a></span>pop_back() <span class="overload">[1/2]</span></h2>
 
@@ -561,15 +632,15 @@ template&lt;typename Derived , typename T &gt; </div>
 <p>Removes n items from the back of the container. </p>
 <dl class="exception"><dt>Exceptions</dt><dd>
   <table class="exception">
-    <tr><td class="paramname">std::out_of_range</td><td>if there are less than n items in the container and UseExceptions is true. </td></tr>
+    <tr><td class="paramname"><a class="el" href="class_span_containers_1_1_insufficent_items_error.html" title="Represents an error that occurs if there would not be enough items for a change.">InsufficentItemsError</a></td><td>if there are less than n items in the container and UseExceptions is true. </td></tr>
   </table>
   </dd>
 </dl>
 
 </div>
 </div>
-<a id="ad76be4db17d2c6463c1ad00d3d334639" name="ad76be4db17d2c6463c1ad00d3d334639"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ad76be4db17d2c6463c1ad00d3d334639">&#9670;&#160;</a></span>push()</h2>
+<a id="aa121a8ea3f57b455ca2575efd1f1594f" name="aa121a8ea3f57b455ca2575efd1f1594f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa121a8ea3f57b455ca2575efd1f1594f">&#9670;&#160;</a></span>push()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -591,7 +662,7 @@ requires std::assignable_from&lt;T&amp;, U&amp;&amp;&gt;</div>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">constexpr</span><span class="mlabel">inherited</span></span>  </td>
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">constexpr</span><span class="mlabel">noexcept</span><span class="mlabel">inherited</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
@@ -611,7 +682,7 @@ requires std::assignable_from&lt;T&amp;, U&amp;&amp;&gt;</div>
 </dl>
 <dl class="exception"><dt>Exceptions</dt><dd>
   <table class="exception">
-    <tr><td class="paramname"><a class="el" href="class_span_containers_1_1_full_container_error.html" title="Represents an error for an operation that would be invalid due to a full container.">FullContainerError</a></td><td>if the container capacity is exceeded </td></tr>
+    <tr><td class="paramname"><a class="el" href="class_span_containers_1_1_full_container_error.html" title="Represents an error for an operation that would be invalid due to a full container.">FullContainerError</a></td><td>if the container capacity is exceeded and UseExceptions is true. </td></tr>
   </table>
   </dd>
 </dl>
@@ -619,14 +690,14 @@ requires std::assignable_from&lt;T&amp;, U&amp;&amp;&gt;</div>
 </div>
 </div>
 <a id="a45d835a02662237925490501f84bd775" name="a45d835a02662237925490501f84bd775"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a45d835a02662237925490501f84bd775">&#9670;&#160;</a></span>push_range()</h2>
+<h2 class="memtitle"><span class="permalink"><a href="#a45d835a02662237925490501f84bd775">&#9670;&#160;</a></span>push_range() <span class="overload">[1/2]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
 template&lt;typename Derived , typename T &gt; </div>
 <div class="memtemplate">
-template&lt;std::ranges::input_range Range = std::initializer_list&lt;T&gt;&gt; <br />
+template&lt;std::ranges::range Range = std::initializer_list&lt;T&gt;&gt; <br />
 requires std::convertible_to&lt;std::ranges::range_value_t&lt;Range&gt;, T&gt;</div>
 <table class="mlabels">
   <tr>
@@ -646,8 +717,8 @@ requires std::convertible_to&lt;std::ranges::range_value_t&lt;Range&gt;, T&gt;</
 </table>
 </div><div class="memdoc">
 
-<p>Assigns values to the container. </p>
-<dl class="tparams"><dt>Template Parameters</dt><dd>
+<p>Assign values to the container. </p>
+<p>This method only provides the basic exception gurantee. If range exceeds the capacty of the container, values will be pushed until capcity is reached, at which point a <a class="el" href="class_span_containers_1_1_full_container_error.html" title="Represents an error for an operation that would be invalid due to a full container.">FullContainerError</a> exception is thrown. </p><dl class="tparams"><dt>Template Parameters</dt><dd>
   <table class="tparams">
     <tr><td class="paramname">Range</td><td>The type of the range that contains the values. </td></tr>
   </table>
@@ -655,7 +726,51 @@ requires std::convertible_to&lt;std::ranges::range_value_t&lt;Range&gt;, T&gt;</
 </dl>
 <dl class="exception"><dt>Exceptions</dt><dd>
   <table class="exception">
-    <tr><td class="paramname">std::out_of_range</td><td>if the container capacity would be exceeded. </td></tr>
+    <tr><td class="paramname"><a class="el" href="class_span_containers_1_1_full_container_error.html" title="Represents an error for an operation that would be invalid due to a full container.">FullContainerError</a></td><td>If the size of the range exceeds the container capacity and UseExceptions is true. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a45d835a02662237925490501f84bd775" name="a45d835a02662237925490501f84bd775"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a45d835a02662237925490501f84bd775">&#9670;&#160;</a></span>push_range() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename Derived , typename T &gt; </div>
+<div class="memtemplate">
+template&lt;std::ranges::sized_range Range = std::initializer_list&lt;T&gt;&gt; <br />
+requires std::convertible_to&lt;std::ranges::range_value_t&lt;Range&gt;, T&gt;</div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void <a class="el" href="struct_span_containers_1_1internal_1_1_push_straight_trait.html">SpanContainers::internal::PushStraightTrait</a>&lt; Derived, T &gt;::push_range </td>
+          <td>(</td>
+          <td class="paramtype">Range &amp;&amp;</td>          <td class="paramname"><span class="paramname"><em>values</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">constexpr</span><span class="mlabel">inherited</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Assign values to the container. </p>
+<p>This method provides a strong exception gurantee. </p><dl class="tparams"><dt>Template Parameters</dt><dd>
+  <table class="tparams">
+    <tr><td class="paramname">Range</td><td>The type of the range that contains the values. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="exception"><dt>Exceptions</dt><dd>
+  <table class="exception">
+    <tr><td class="paramname">std::out_of_range</td><td>If the size of the range exceeds the container capacity and UseExceptions is true. </td></tr>
   </table>
   </dd>
 </dl>
@@ -873,26 +988,26 @@ requires std::assignable_from&lt;T&amp;, U&amp;&amp;&gt;</div>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>true if value was assigned a value within the container; false otherwise. </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd><code>true</code> if value was assigned a value within the container; <code>false</code> otherwise. </dd></dl>
 
 </div>
 </div>
-<a id="ae61af5f519be55e8cfec0e136a6fcc4d" name="ae61af5f519be55e8cfec0e136a6fcc4d"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ae61af5f519be55e8cfec0e136a6fcc4d">&#9670;&#160;</a></span>try_push_range()</h2>
+<a id="a247cc2fe0d139a2e56a3cf0d1f4212d9" name="a247cc2fe0d139a2e56a3cf0d1f4212d9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a247cc2fe0d139a2e56a3cf0d1f4212d9">&#9670;&#160;</a></span>try_push_range()</h2>
 
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;std::swappable T, std::size_t Extent, StdComparer&lt; T &gt; Comparer = std::less&lt;T&gt;&gt; </div>
+template&lt;typename Derived , typename T &gt; </div>
 <div class="memtemplate">
-template&lt;std::ranges::input_range Range = std::initializer_list&lt;T&gt;&gt; <br />
+template&lt;std::ranges::sized_range Range = std::initializer_list&lt;T&gt;&gt; <br />
 requires std::convertible_to&lt;std::ranges::range_value_t&lt;Range&gt;, T&gt;</div>
 <table class="mlabels">
   <tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">bool <a class="el" href="class_span_containers_1_1_span_heap.html">SpanContainers::SpanHeap</a>&lt; T, Extent, Comparer &gt;::try_push_range </td>
+          <td class="memname">bool <a class="el" href="struct_span_containers_1_1internal_1_1_push_straight_trait.html">SpanContainers::internal::PushStraightTrait</a>&lt; Derived, T &gt;::try_push_range </td>
           <td>(</td>
           <td class="paramtype">Range &amp;&amp;</td>          <td class="paramname"><span class="paramname"><em>values</em></span></td><td>)</td>
           <td></td>
@@ -900,7 +1015,7 @@ requires std::convertible_to&lt;std::ranges::range_value_t&lt;Range&gt;, T&gt;</
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">constexpr</span></span>  </td>
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">constexpr</span><span class="mlabel">inherited</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
@@ -912,116 +1027,7 @@ requires std::convertible_to&lt;std::ranges::range_value_t&lt;Range&gt;, T&gt;</
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>true if values were placed at the back of the container; false otherwise. </dd></dl>
-
-</div>
-</div>
-<a id="a256338db73efbbd6f4ab96eb1ad1fda6" name="a256338db73efbbd6f4ab96eb1ad1fda6"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a256338db73efbbd6f4ab96eb1ad1fda6">&#9670;&#160;</a></span>unsafe_back()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<div class="memtemplate">
-template&lt;std::swappable T, std::size_t Extent, StdComparer&lt; T &gt; Comparer = std::less&lt;T&gt;&gt; </div>
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">reference <a class="el" href="class_span_containers_1_1_span_heap.html">SpanContainers::SpanHeap</a>&lt; T, Extent, Comparer &gt;::unsafe_back </td>
-          <td>(</td>
-          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
-          <td> const</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">nodiscard</span><span class="mlabel">constexpr</span><span class="mlabel">noexcept</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>Gets a reference to the last item in the container, without bounds check. </p>
-<dl class="section return"><dt>Returns</dt><dd>A reference to the last item in the container. </dd></dl>
-
-</div>
-</div>
-<a id="a91e2a9e7a646b8029c72c2bc966d35ee" name="a91e2a9e7a646b8029c72c2bc966d35ee"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a91e2a9e7a646b8029c72c2bc966d35ee">&#9670;&#160;</a></span>unsafe_pop_back()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<div class="memtemplate">
-template&lt;std::swappable T, std::size_t Extent, StdComparer&lt; T &gt; Comparer = std::less&lt;T&gt;&gt; </div>
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">void <a class="el" href="class_span_containers_1_1_span_heap.html">SpanContainers::SpanHeap</a>&lt; T, Extent, Comparer &gt;::unsafe_pop_back </td>
-          <td>(</td>
-          <td class="paramtype">size_type</td>          <td class="paramname"><span class="paramname"><em>n</em></span></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">constexpr</span><span class="mlabel">noexcept</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>Removes n items from the back of the container without a bounds check. </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">n</td><td>The number of items to remove from the back of the container. </td></tr>
-  </table>
-  </dd>
-</dl>
-
-</div>
-</div>
-<a id="ac3737379dcd76a66cfc7aaf58c49bbb1" name="ac3737379dcd76a66cfc7aaf58c49bbb1"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ac3737379dcd76a66cfc7aaf58c49bbb1">&#9670;&#160;</a></span>unsafe_push()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<div class="memtemplate">
-template&lt;std::swappable T, std::size_t Extent, StdComparer&lt; T &gt; Comparer = std::less&lt;T&gt;&gt; </div>
-<div class="memtemplate">
-template&lt;typename U &gt; <br />
-requires std::assignable_from&lt;T&amp;, U&amp;&amp;&gt;</div>
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">void <a class="el" href="class_span_containers_1_1_span_heap.html">SpanContainers::SpanHeap</a>&lt; T, Extent, Comparer &gt;::unsafe_push </td>
-          <td>(</td>
-          <td class="paramtype">U &amp;&amp;</td>          <td class="paramname"><span class="paramname"><em>value</em></span></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">constexpr</span><span class="mlabel">noexcept</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>Assigns value to an element of the container. </p>
-<dl class="tparams"><dt>Template Parameters</dt><dd>
-  <table class="tparams">
-    <tr><td class="paramname">U</td><td>the type of the value to assign to the container. Must be assignable to T. </td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">value</td><td>The item to assign to an element of the container. </td></tr>
-  </table>
-  </dd>
-</dl>
+<dl class="section return"><dt>Returns</dt><dd><code>true</code> if values were placed at the back of the container; <code>false</code> otherwise. </dd></dl>
 
 </div>
 </div>

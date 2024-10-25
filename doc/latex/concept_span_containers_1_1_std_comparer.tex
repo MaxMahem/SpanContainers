@@ -4,7 +4,7 @@
 
 \begin{DoxyCode}{0}
 \DoxyCodeLine{\textcolor{keyword}{template}<\textcolor{keyword}{typename}\ Compare,\ \textcolor{keyword}{typename}\ T>}
-\DoxyCodeLine{\textcolor{keyword}{concept\ }\mbox{\hyperlink{concept_span_containers_1_1_std_comparer}{SpanContainers::StdComparer}}\ =\ \ \textcolor{keyword}{requires}(T\ a,\ T\ b,\ Compare\ comp)\ \{}
+\DoxyCodeLine{\textcolor{keyword}{concept\ }\mbox{\hyperlink{concept_span_containers_1_1_std_comparer}{SpanContainers::StdComparer}}\ =\ \ std::is\_empty<Compare>::value\ \&\&\ \textcolor{keyword}{requires}(T\ a,\ T\ b,\ Compare\ comp)\ \{}
 \DoxyCodeLine{\ \ \ \ \{\ comp(a,\ b)\ \}\ -\/>\ std::convertible\_to<bool>;}
 \DoxyCodeLine{\}}
 

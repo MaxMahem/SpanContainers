@@ -18,11 +18,11 @@ namespace SpanContainers {
 /// @brief Represents a span-based, fixed size container with stack/vector like access.
 /// @tparam T The type of the item in the container.
 /// @tparam Extent The size/maximum number of elements in the container.
-template <typename T, std::size_t Extent, bool UseExceptions = true>
-class SpanStack : public internal::SpanContainer<T, Extent>,
-                  public internal::IndexTrait<SpanStack<T, Extent>, T>,
-                  public internal::PushBackTrait<SpanStack<T, Extent>, T>,
-                  public internal::PopBackTrait<SpanStack<T, Extent>, T>
+template <typename T, std::size_t Extent>
+class SC_EMPTY_BASES SpanStack : public internal::SpanContainer<T, Extent>,
+                                 public internal::IndexTrait<SpanStack<T, Extent>, T>,
+                                 public internal::PushBackTrait<SpanStack<T, Extent>, T>,
+                                 public internal::PopBackTrait<SpanStack<T, Extent>, T>
 {
     friend struct internal::IndexTrait<SpanStack<T, Extent>, T>;
     friend struct internal::PushBackTrait<SpanStack<T, Extent>, T>;

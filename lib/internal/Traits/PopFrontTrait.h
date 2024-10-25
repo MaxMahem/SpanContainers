@@ -5,6 +5,7 @@
 
 #include "SpanContainerFormatter.h"
 #include "Errors/EmptyContainerError.h"
+#include "Errors/InsufficentItemsError.h"
 
 namespace SpanContainers::internal {
 
@@ -25,7 +26,7 @@ public:
     /// @throws EmptyContainerError if the container is empty and UseExceptions is true.
     [[nodiscard]] constexpr reference front() const noexcept(!UseExceptions)
     {
-        if constexpr (UseExceptions) { if (asDerived().empty()) { throw EmptyContainerError(); } }
+        if constexpr (UseExceptions) { EmptyContainerError::ThrowIfEmpty(asDerived()); }
         return asDerived().unsafe_front();
     }
 
@@ -41,19 +42,15 @@ public:
     /// @throws EmptyContainerError if the container is empty and UseExceptions is true.
     constexpr void pop_front() noexcept(!UseExceptions) 
     { 
-        if constexpr (UseExceptions) { if (asDerived().empty()) { throw EmptyContainerError(); } }
+        if constexpr (UseExceptions) { EmptyContainerError::ThrowIfEmpty(asDerived()); }
         asDerived().unsafe_pop_front(1);
     }
 
     /// @brief Removes n items from the front of the container.
-    /// @throws std::out_of_range if there are less than n items in the container and UseExceptions is true.
+    /// @throws InsufficentItemsError if there are less than n items in the container and UseExceptions is true.
     constexpr void pop_front(size_type n) noexcept(!UseExceptions)
     {
-        if constexpr (UseExceptions) {
-            if (n > asDerived().size()) {
-                throw std::out_of_range(std::format("Not enough items in container '{}' to pop n ({}) items.", asDerived(), n));
-            }
-        }
+        if constexpr (UseExceptions) { InsufficentItemsError::ThrowIfInsufficentItems(asDerived(), n); }
         asDerived().unsafe_pop_front(n);
     }
 

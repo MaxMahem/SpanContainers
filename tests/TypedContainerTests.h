@@ -31,8 +31,6 @@ protected:
     using Container  = typename Adaptor::Container;
     using PushFuncs  = typename Adaptor::PushFuncs;
     using PopFuncs   = typename Adaptor::PopFuncs;
-    using PopOrder   = typename Adaptor::PopOrder;
-    using IndexOrder = typename Adaptor::IndexOrder;
 
     std::array<int, Container::extent> emptyBuffer{};
     Container emptyContainer{ emptyBuffer };
@@ -40,32 +38,13 @@ protected:
     std::array<int, Container::extent> fullBuffer{};
     Container fullContainer{ fullBuffer };
 
-    static constexpr std::array<int, Container::extent> FILL = []{
-        std::array<int, Container::extent> result{};
-        std::ranges::copy(std::views::iota(1, int{ Container::extent + 1 }), result.begin());
-        return result;
-    }();
-    const std::forward_list<int> FILL_LIST = []{ return std::forward_list<int>(FILL.begin(), FILL.end()); }();
-
-    static constexpr std::array<int, Container::extent> EXPECTED_RESULTS = []{
-        std::array<int, Container::extent> result = FILL;
-        std::ranges::sort(result, PopOrder{});
-        return result;
-    }();
-
-    static constexpr std::array<int, Container::extent> INDEX_RESULTS = []{
-        std::array<int, Container::extent> result = FILL;
-        std::ranges::sort(result, IndexOrder{});
-        return result;
-    }();
-
     TypedContainerTests() : emptyContainer(emptyBuffer), fullContainer(fullBuffer) { }
 
     void SetUp() override
     {
         SCOPED_TRACE(std::format("SetUp: {}", Adaptor::NAME));
 
-        Fill(fullContainer, FILL, PushFuncs::push);
+        Fill(fullContainer, Adaptor::FILL, PushFuncs::push);
         ExpectFull(fullContainer);
         ExpectEmpty(emptyContainer);
     }
@@ -112,13 +91,13 @@ protected:
 
         if constexpr (Indexable<Container>) {
             for (auto index : std::views::iota(std::size_t{ 0 }, Container::extent)) {
-                EXPECT_EQ(container[index],     INDEX_RESULTS[index]);
-                EXPECT_EQ(*container.at(index), INDEX_RESULTS[index]);
+                EXPECT_EQ(container[index],     Adaptor::INDEX_ORDER[index]);
+                EXPECT_EQ(*container.at(index), Adaptor::INDEX_ORDER[index]);
             }
         }
 
-        EXPECT_EQ(PopFuncs::get(container),      EXPECTED_RESULTS[0]);
-        EXPECT_EQ(*PopFuncs::try_get(container), EXPECTED_RESULTS[0]);
+        EXPECT_EQ(PopFuncs::get(container),      Adaptor::PUSHPOP_ORDER[0]);
+        EXPECT_EQ(*PopFuncs::try_get(container), Adaptor::PUSHPOP_ORDER[0]);
     }
 };
 
@@ -158,8 +137,8 @@ TYPED_TEST_P(TypedContainerTests, OutOfRangePushFails)
     auto partialContainerSize = this->emptyContainer.size();
 
     // strong exception gurantee for failure, even if part of the push could succeed.
-    EXPECT_FALSE(TypeParam::PushFuncs::try_push_range(this->fullContainer, TestFixture::FILL));
-    EXPECT_THROW(TypeParam::PushFuncs::push_range(this->emptyContainer, TestFixture::FILL), std::out_of_range);
+    EXPECT_FALSE(TypeParam::PushFuncs::try_push_range(this->fullContainer, TypeParam::FILL));
+    EXPECT_THROW(TypeParam::PushFuncs::push_range(this->emptyContainer,    TypeParam::FILL), std::out_of_range);
 
     // check no mutation occured
     EXPECT_THAT(this->emptyContainer, ::testing::SizeIs(partialContainerSize));
@@ -167,7 +146,7 @@ TYPED_TEST_P(TypedContainerTests, OutOfRangePushFails)
     EXPECT_EQ(*TypeParam::PopFuncs::try_get(this->emptyContainer), -1);
 
     // weak exception gurantee, may mutate state, but should still fail.
-    EXPECT_THROW(TypeParam::PushFuncs::push_range_list(this->fullContainer, TestFixture::FILL_LIST), std::out_of_range);
+    EXPECT_THROW(TypeParam::PushFuncs::push_range_list(this->fullContainer, TypeParam::FILL_LIST), std::out_of_range);
 }
 
 /// @brief Tests that out of range pop fail, and validates exception gurantees.
@@ -211,15 +190,15 @@ TYPED_TEST_P(TypedContainerTests, PopToEmptySucceeds)
     while (this->fullContainer.size() > 0) { EXPECT_NO_THROW(TypeParam::PopFuncs::pop(this->fullContainer)); }
     TestFixture::ExpectEmpty(this->fullContainer);
 
-    TestFixture::Fill(this->fullContainer, TestFixture::FILL, TypeParam::PushFuncs::push);
+    TestFixture::Fill(this->fullContainer, TypeParam::FILL, TypeParam::PushFuncs::push);
     while (this->fullContainer.size() > 0) { EXPECT_TRUE(TypeParam::PopFuncs::try_pop(this->fullContainer)); }
     TestFixture::ExpectEmpty(this->fullContainer);
 
-    TestFixture::Fill(this->fullContainer, TestFixture::FILL, TypeParam::PushFuncs::push);
+    TestFixture::Fill(this->fullContainer, TypeParam::FILL, TypeParam::PushFuncs::push);
     EXPECT_NO_THROW(TypeParam::PopFuncs::pop_n(this->fullContainer, TypeParam::Container::extent));
     TestFixture::ExpectEmpty(this->fullContainer);
 
-    TestFixture::Fill(this->fullContainer, TestFixture::FILL, TypeParam::PushFuncs::push);
+    TestFixture::Fill(this->fullContainer, TypeParam::FILL, TypeParam::PushFuncs::push);
     EXPECT_TRUE(TypeParam::PopFuncs::try_pop_n(this->fullContainer, TypeParam::Container::extent));
     TestFixture::ExpectEmpty(this->fullContainer);
 }
@@ -230,9 +209,9 @@ TYPED_TEST_P(TypedContainerTests, PushPopCorrectOrder)
 
     auto testPushPop = [&](auto push, auto&& container, std::string_view testCase) {
         ASSERT_THAT(container, ::testing::IsEmpty()) << testCase;
-        this->Fill(container, TestFixture::FILL, push);
+        this->Fill(container, TypeParam::FILL, push);
         auto values = this->Empty(container, TypeParam::PopFuncs::get, TypeParam::PopFuncs::pop);
-        EXPECT_THAT(values, ::testing::ElementsAreArray(this->EXPECTED_RESULTS)) << testCase;
+        EXPECT_THAT(values, ::testing::ElementsAreArray(TypeParam::PUSHPOP_ORDER)) << testCase;
     };
 
     testPushPop(TypeParam::PushFuncs::push,     this->emptyContainer, "push");
@@ -240,13 +219,13 @@ TYPED_TEST_P(TypedContainerTests, PushPopCorrectOrder)
 
     // partially fill then clear
     std::size_t partialSize = TypeParam::Container::extent / 2;
-    for (int value : TestFixture::FILL | std::views::take(partialSize)) { TypeParam::PushFuncs::push(this->emptyContainer, value); }
+    for (int value : TypeParam::FILL | std::views::take(partialSize)) { TypeParam::PushFuncs::push(this->emptyContainer, value); }
     this->emptyContainer.clear();
 
     testPushPop(TypeParam::PushFuncs::push, this->emptyContainer, "clear then push");
 
     // partially fill then pop empty, possibly forcing a wrap.
-    for (int value : TestFixture::FILL | std::views::take(partialSize)) { TypeParam::PushFuncs::push(this->emptyContainer, value); }
+    for (int value : TypeParam::FILL | std::views::take(partialSize)) { TypeParam::PushFuncs::push(this->emptyContainer, value); }
     TypeParam::PopFuncs::pop_n(this->emptyContainer, partialSize);
 
     testPushPop(TypeParam::PushFuncs::push, this->emptyContainer, "wrap then push");
@@ -260,12 +239,12 @@ TYPED_TEST_P(TypedContainerTests, PushRangeOrderedCorrect)
         ASSERT_THAT(this->emptyContainer, ::testing::IsEmpty()) << testCase;
         pushRange(this->emptyContainer, fill);
         auto values = this->Empty(this->emptyContainer, TypeParam::PopFuncs::get, TypeParam::PopFuncs::pop);
-        EXPECT_THAT(values, ::testing::ElementsAreArray(this->EXPECTED_RESULTS)) << testCase;
+        EXPECT_THAT(values, ::testing::ElementsAreArray(TypeParam::PUSHPOP_ORDER)) << testCase;
     };
 
-    testPushRange(TypeParam::PushFuncs::push_range,      TestFixture::FILL,      "push_range");
-    testPushRange(TypeParam::PushFuncs::try_push_range,  TestFixture::FILL,      "try_push_range");
-    testPushRange(TypeParam::PushFuncs::push_range_list, TestFixture::FILL_LIST, "push_range_list");
+    testPushRange(TypeParam::PushFuncs::push_range,      TypeParam::FILL,      "push_range");
+    testPushRange(TypeParam::PushFuncs::try_push_range,  TypeParam::FILL,      "try_push_range");
+    testPushRange(TypeParam::PushFuncs::push_range_list, TypeParam::FILL_LIST, "push_range_list");
 }
 
 TYPED_TEST_P(TypedContainerTests, IndexsAreCorrect)
@@ -273,8 +252,8 @@ TYPED_TEST_P(TypedContainerTests, IndexsAreCorrect)
     if constexpr (!Indexable<TypeParam::Container>) { GTEST_SKIP() << "No index methods."; }
     else {
         for (auto index = 0; index < TypeParam::Container::extent; index++) {
-            EXPECT_EQ(this->fullContainer[index],     this->INDEX_RESULTS[index]);
-            EXPECT_EQ(*this->fullContainer.at(index), this->INDEX_RESULTS[index]);
+            EXPECT_EQ(this->fullContainer[index],     TypeParam::INDEX_ORDER[index]);
+            EXPECT_EQ(*this->fullContainer.at(index), TypeParam::INDEX_ORDER[index]);
         }
     }
 }

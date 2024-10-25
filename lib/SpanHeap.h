@@ -14,7 +14,7 @@
 namespace SpanContainers {
 
 template <typename Compare, typename T>
-concept StdComparer = requires(T a, T b, Compare comp) {
+concept StdComparer = std::is_empty<Compare>::value && requires(T a, T b, Compare comp) {
     { comp(a, b) } -> std::convertible_to<bool>;
 };
 
@@ -22,9 +22,9 @@ concept StdComparer = requires(T a, T b, Compare comp) {
 /// @tparam T The type of the item in the container.
 /// @tparam Extent The size/maximum number of elements in the container.
 template <std::swappable T, std::size_t Extent, StdComparer<T> Comparer = std::less<T>>
-class SpanHeap : public internal::SpanContainer<T, Extent>,
-                 public internal::PushStraightTrait<SpanHeap<T, Extent, Comparer>, T>,
-                 public internal::PopBackTrait<SpanHeap<T, Extent, Comparer>, T>
+class SC_EMPTY_BASES SpanHeap : public internal::SpanContainer<T, Extent>,
+                                public internal::PushStraightTrait<SpanHeap<T, Extent, Comparer>, T>,
+                                public internal::PopBackTrait<SpanHeap<T, Extent, Comparer>, T>
 {
     friend struct internal::PushStraightTrait<SpanHeap<T, Extent, Comparer>, T>;
     friend struct internal::PopBackTrait<SpanHeap<T, Extent, Comparer>, T>;
@@ -35,7 +35,7 @@ class SpanHeap : public internal::SpanContainer<T, Extent>,
     using SpanContainer::size_type;
     using SpanContainer::reference;
 
-    Comparer comparer;
+    SC_NO_UNIQUE_ADDRESS Comparer comparer;
 
     /// @brief Gets a reference to the last item in the container, without bounds check.
     /// @return A reference to the last item in the container.
@@ -61,7 +61,7 @@ class SpanHeap : public internal::SpanContainer<T, Extent>,
     constexpr void unsafe_pop_back(size_type n) noexcept
     {
         assert(n <= count && "Not enough items to pop");
-        for (; n > 0; n--) { std::pop_heap(span.begin(), span.begin() + count--, comparer); }
+        while(n-- > 0) { std::pop_heap(span.begin(), span.begin() + count--, comparer); }
     }
 
     /// @brief Tries to assign the values to the container.

@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
 <meta name="generator" content="Doxygen 1.12.0"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>SpanContainers: SpanContainers::internal::FormattableSpanContainer Concept Reference</title>
+<title>SpanContainers: SpanContainers::FixedSizeContainer Concept Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -84,26 +84,26 @@ $(function(){ initResizable(false); });
 
 <div id="nav-path" class="navpath">
   <ul>
-<li class="navelem"><b>SpanContainers</b></li><li class="navelem"><a class="el" href="namespace_span_containers_1_1internal.html">internal</a></li><li class="navelem"><a class="el" href="concept_span_containers_1_1internal_1_1_formattable_span_container.html">FormattableSpanContainer</a></li>  </ul>
+<li class="navelem"><b>SpanContainers</b></li><li class="navelem"><a class="el" href="namespace_span_containers_1_1internal.html">internal</a></li><li class="navelem"><a class="el" href="concept_span_containers_1_1internal_1_1_formattable_span_container.html">FixedSizeContainer</a></li>  </ul>
 </div>
 </div><!-- top -->
 <div id="doc-content">
 <div class="header">
-  <div class="headertitle"><div class="title">SpanContainers::internal::FormattableSpanContainer Concept Reference</div></div>
+  <div class="headertitle"><div class="title">SpanContainers::FixedSizeContainer Concept Reference</div></div>
 </div><!--header-->
 <div class="contents">
 
 <p>Concept for assisting in formatting a SpanContainer.  
 <a href="#details">More...</a></p>
 
-<p><code>#include &lt;<a class="el" href="_formattable_span_container_8h_source.html">FormattableSpanContainer.h</a>&gt;</code></p>
+<p><code>#include &lt;<a class="el" href="_formattable_span_container_8h_source.html">FixedSizeContainer.h</a>&gt;</code></p>
 <h2 class="groupheader">Concept definition</h2>
 <div class="fragment"><div class="line"><span class="keyword">template</span>&lt;<span class="keyword">typename</span> Container&gt;</div>
-<div class="line"><span class="keyword">concept </span><a class="code hl_concept" href="concept_span_containers_1_1internal_1_1_formattable_span_container.html">SpanContainers::internal::FormattableSpanContainer</a> =  <span class="keyword">requires</span>(Container container) {</div>
+<div class="line"><span class="keyword">concept </span><a class="code hl_concept" href="concept_span_containers_1_1internal_1_1_formattable_span_container.html">SpanContainers::FixedSizeContainer</a> =  <span class="keyword">requires</span>(Container container) {</div>
 <div class="line">    { container.size() } <span class="keyword">noexcept</span> -&gt; std::same_as&lt;typename Container::size_type&gt;;</div>
 <div class="line">    { Container::capacity() } <span class="keyword">noexcept</span> -&gt; std::same_as&lt;typename Container::size_type&gt;;</div>
 <div class="line">}</div>
-<div class="ttc" id="aconcept_span_containers_1_1internal_1_1_formattable_span_container_html"><div class="ttname"><a href="concept_span_containers_1_1internal_1_1_formattable_span_container.html">SpanContainers::internal::FormattableSpanContainer</a></div><div class="ttdoc">Concept for assisting in formatting a SpanContainer.</div><div class="ttdef"><b>Definition</b> FormattableSpanContainer.h:9</div></div>
+<div class="ttc" id="aconcept_span_containers_1_1internal_1_1_formattable_span_container_html"><div class="ttname"><a href="concept_span_containers_1_1internal_1_1_formattable_span_container.html">SpanContainers::FixedSizeContainer</a></div><div class="ttdoc">Concept for assisting in formatting a SpanContainer.</div><div class="ttdef"><b>Definition</b> FixedSizeContainer.h:9</div></div>
 </div><!-- fragment --><a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Concept for assisting in formatting a SpanContainer. </p>
 </div></div><!-- contents -->

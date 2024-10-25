@@ -3,11 +3,11 @@
 #include <format>
 #include <string>
 
-#include "internal/FormattableSpanContainer.h"
+#include "internal/FixedSizeContainer.h"
 
 /// @brief A formatter for span containers
 /// @tparam Container The type of the container.
-template <SpanContainers::internal::FormattableSpanContainer Container>
+template <SpanContainers::FixedSizeContainer Container>
 struct std::formatter<Container> : std::formatter<std::string_view>
 {
     /// @brief formats a container

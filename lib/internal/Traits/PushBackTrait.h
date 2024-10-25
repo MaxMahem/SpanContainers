@@ -6,11 +6,6 @@
 
 namespace SpanContainers::internal {
 
-template <typename Derived, typename Range>
-concept HasUnsafePushBackRange = requires(Derived & derived, Range && range, std::size_t size) {
-    { derived.unsafe_push_back_sized_range(std::forward<Range>(range), size) };
-};
-
 template <typename Derived, typename T> 
 struct PushBackTrait
 {
@@ -20,7 +15,7 @@ struct PushBackTrait
     template <typename U> requires std::assignable_from<T&, U&&>
     constexpr void push_back(U&& value) noexcept(std::is_nothrow_assignable<T&, U&&>::value && !UseExceptions)
     {
-        if constexpr (UseExceptions) { if (asDerived().full()) { throw FullContainerError(asDerived()); } }
+        if constexpr (UseExceptions) { FullContainerError::ThrowIfFull(asDerived()); }
         asDerived().unsafe_push_back(std::forward<U>(value));
     }
 
@@ -77,8 +72,9 @@ struct PushBackTrait
 
 private:
     [[nodiscard]] constexpr Derived& asDerived() noexcept { return static_cast<Derived&>(*this); }
+    [[nodiscard]] constexpr const Derived& asDerived() const noexcept { return static_cast<const Derived&>(*this); }
 
-    void ThrowIfOutOfRange(auto newCount) 
+    void ThrowIfOutOfRange(auto newCount) const
     {
         if (newCount > Derived::extent) {
             throw std::out_of_range(std::format("Size of values ({}) exceeds '{}' capacity.", newCount - Derived::extent, asDerived()));

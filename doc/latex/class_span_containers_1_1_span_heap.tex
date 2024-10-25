@@ -18,31 +18,25 @@ Inheritance diagram for Span\+Containers\+::Span\+Heap\texorpdfstring{$<$}{<} T,
 \doxysubsubsection*{Public Types}
 \begin{DoxyCompactItemize}
 \item 
-\Hypertarget{class_span_containers_1_1_span_heap_ae29fd14361ae3b1c2779d0ec03bb66ab}\label{class_span_containers_1_1_span_heap_ae29fd14361ae3b1c2779d0ec03bb66ab} 
+\Hypertarget{class_span_containers_1_1internal_1_1_span_container_acbf0783599d1034a54f66e1ce270e39f}\label{class_span_containers_1_1internal_1_1_span_container_acbf0783599d1034a54f66e1ce270e39f} 
 using {\bfseries span\+\_\+type} = std\+::span$<$T, Extent$>$
 \item 
-\Hypertarget{class_span_containers_1_1_span_heap_a22869b80b5a5ec719f8097bd9d5faaa2}\label{class_span_containers_1_1_span_heap_a22869b80b5a5ec719f8097bd9d5faaa2} 
-using {\bfseries element\+\_\+type}
-\item 
-\Hypertarget{class_span_containers_1_1_span_heap_a5884bfe0250b794adfc54d7c1e0df70c}\label{class_span_containers_1_1_span_heap_a5884bfe0250b794adfc54d7c1e0df70c} 
-using {\bfseries size\+\_\+type}
-\item 
-\Hypertarget{class_span_containers_1_1_span_heap_aeaa664707f34abfa1c5def991d6a2ca0}\label{class_span_containers_1_1_span_heap_aeaa664707f34abfa1c5def991d6a2ca0} 
-using {\bfseries pointer}
-\item 
-\Hypertarget{class_span_containers_1_1_span_heap_aae9ff6b9bfea8d03125109afd903b81e}\label{class_span_containers_1_1_span_heap_aae9ff6b9bfea8d03125109afd903b81e} 
-using {\bfseries const\+\_\+pointer}
-\item 
-\Hypertarget{class_span_containers_1_1_span_heap_ac9edea5dc17ba0270973b9093c5a5f67}\label{class_span_containers_1_1_span_heap_ac9edea5dc17ba0270973b9093c5a5f67} 
-using {\bfseries reference}
-\item 
-\Hypertarget{class_span_containers_1_1_span_heap_a64abb80b5fdc009b32d3c1d603fcb8a0}\label{class_span_containers_1_1_span_heap_a64abb80b5fdc009b32d3c1d603fcb8a0} 
-using {\bfseries const\+\_\+reference}
+\Hypertarget{class_span_containers_1_1internal_1_1_span_container_a22869b80b5a5ec719f8097bd9d5faaa2}\label{class_span_containers_1_1internal_1_1_span_container_a22869b80b5a5ec719f8097bd9d5faaa2} 
+using {\bfseries element\+\_\+type} = span\+\_\+type\+::element\+\_\+type
 \item 
 \Hypertarget{class_span_containers_1_1internal_1_1_span_container_a34698b5872c3f13cc4840496c95396bb}\label{class_span_containers_1_1internal_1_1_span_container_a34698b5872c3f13cc4840496c95396bb} 
 using {\bfseries value\+\_\+type} = span\+\_\+type\+::value\+\_\+type
 \item 
-{\footnotesize template$<$std\+::size\+\_\+t Max\+Stack\+Size = 256$>$ }\\using \mbox{\hyperlink{class_span_containers_1_1internal_1_1_span_container_a46e4f3e4ed3050a088056fccb00a76aa}{Buffer\+Type}} = Buffer\+Selector$<$T, Extent$>$\+::\+Buffer\+Type$<$Max\+Stack\+Size$>$
+\Hypertarget{class_span_containers_1_1internal_1_1_span_container_aeaa664707f34abfa1c5def991d6a2ca0}\label{class_span_containers_1_1internal_1_1_span_container_aeaa664707f34abfa1c5def991d6a2ca0} 
+using {\bfseries pointer} = span\+\_\+type\+::pointer
+\item 
+\Hypertarget{class_span_containers_1_1internal_1_1_span_container_aae9ff6b9bfea8d03125109afd903b81e}\label{class_span_containers_1_1internal_1_1_span_container_aae9ff6b9bfea8d03125109afd903b81e} 
+using {\bfseries const\+\_\+pointer} = span\+\_\+type\+::const\+\_\+pointer
+\item 
+\Hypertarget{class_span_containers_1_1internal_1_1_span_container_a64abb80b5fdc009b32d3c1d603fcb8a0}\label{class_span_containers_1_1internal_1_1_span_container_a64abb80b5fdc009b32d3c1d603fcb8a0} 
+using {\bfseries const\+\_\+reference} = span\+\_\+type\+::const\+\_\+reference
+\item 
+{\footnotesize template$<$std\+::size\+\_\+t Max\+Stack\+Size = 256$>$ }\\using \mbox{\hyperlink{class_span_containers_1_1internal_1_1_span_container_ac2cf8a14f79ba4ffcc945694132e4f6b}{Buffer\+Type}}
 \begin{DoxyCompactList}\small\item\em Defines an appropriately sized buffer to be allocated on the heap or stack. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsubsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
@@ -50,16 +44,8 @@ using {\bfseries value\+\_\+type} = span\+\_\+type\+::value\+\_\+type
 {\footnotesize template$<$typename Buffer $>$ \newline
 requires std\+::is\+\_\+lvalue\+\_\+reference\+\_\+v$<$Buffer\&$>$\&\& std\+::is\+\_\+constructible\+\_\+v$<$span\+\_\+type, Buffer\&$>$}\\constexpr \mbox{\hyperlink{class_span_containers_1_1_span_heap_a0bf6f71e93b3dc8489bbe678bad23ceb}{Span\+Heap}} (Buffer \&buffer, Comparer comparer) noexcept
 \begin{DoxyCompactList}\small\item\em Constructs a new \doxylink{class_span_containers_1_1_span_heap}{Span\+Heap} using comparer and wrapping buffer. \end{DoxyCompactList}\item 
-constexpr reference \mbox{\hyperlink{class_span_containers_1_1_span_heap_a256338db73efbbd6f4ab96eb1ad1fda6}{unsafe\+\_\+back}} () const noexcept
-\begin{DoxyCompactList}\small\item\em Gets a reference to the last item in the container, without bounds check. \end{DoxyCompactList}\item 
-{\footnotesize template$<$typename U $>$ \newline
-requires std\+::assignable\+\_\+from$<$T\&, U\&\&$>$}\\constexpr void \mbox{\hyperlink{class_span_containers_1_1_span_heap_ac3737379dcd76a66cfc7aaf58c49bbb1}{unsafe\+\_\+push}} (U \&\&value) noexcept(std\+::is\+\_\+nothrow\+\_\+assignable$<$ T, U $>$\+::value)
-\begin{DoxyCompactList}\small\item\em Assigns value to an element of the container. \end{DoxyCompactList}\item 
-{\footnotesize template$<$std\+::ranges\+::input\+\_\+range Range = std\+::initializer\+\_\+list$<$\+T$>$$>$ \newline
-requires std\+::convertible\+\_\+to$<$std\+::ranges\+::range\+\_\+value\+\_\+t$<$Range$>$, T$>$}\\constexpr bool \mbox{\hyperlink{class_span_containers_1_1_span_heap_ae61af5f519be55e8cfec0e136a6fcc4d}{try\+\_\+push\+\_\+range}} (Range \&\&values)
-\begin{DoxyCompactList}\small\item\em Tries to assign the values to the container. \end{DoxyCompactList}\item 
-constexpr void \mbox{\hyperlink{class_span_containers_1_1_span_heap_a91e2a9e7a646b8029c72c2bc966d35ee}{unsafe\+\_\+pop\+\_\+back}} (size\+\_\+type n) noexcept
-\begin{DoxyCompactList}\small\item\em Removes n items from the back of the container without a bounds check. \end{DoxyCompactList}\item 
+size\+\_\+type \mbox{\hyperlink{class_span_containers_1_1_span_heap_a502cfeadaafd4528ef5b97da1bdcd1eb}{make\+\_\+threshold}} () noexcept
+\begin{DoxyCompactList}\small\item\em Get the threshold at which heap\+\_\+make will be used over heap\+\_\+push. \end{DoxyCompactList}\item 
 \Hypertarget{class_span_containers_1_1_span_heap_a798e703f2e7e01e215227a1b2f2baa4b}\label{class_span_containers_1_1_span_heap_a798e703f2e7e01e215227a1b2f2baa4b} 
 constexpr void {\bfseries clear} () noexcept
 \begin{DoxyCompactList}\small\item\em Clears all items from the container. \end{DoxyCompactList}\item 
@@ -78,14 +64,20 @@ constexpr bool \mbox{\hyperlink{class_span_containers_1_1internal_1_1_span_conta
 constexpr span\+\_\+type \mbox{\hyperlink{class_span_containers_1_1internal_1_1_span_container_a6adcfa5c633a685bef25e8e8300e2e00}{data}} () const noexcept
 \begin{DoxyCompactList}\small\item\em Gets the underlying span. \end{DoxyCompactList}\item 
 {\footnotesize template$<$typename U $>$ \newline
-requires std\+::assignable\+\_\+from$<$T\&, U\&\&$>$}\\constexpr void \mbox{\hyperlink{struct_span_containers_1_1internal_1_1_push_straight_trait_ad76be4db17d2c6463c1ad00d3d334639}{push}} (U \&\&value)
+requires std\+::assignable\+\_\+from$<$T\&, U\&\&$>$}\\constexpr void \mbox{\hyperlink{struct_span_containers_1_1internal_1_1_push_straight_trait_aa121a8ea3f57b455ca2575efd1f1594f}{push}} (U \&\&value) noexcept(std\+::is\+\_\+nothrow\+\_\+assignable$<$ T \&, U \&\& $>$\+::value \&\&!Use\+Exceptions)
 \begin{DoxyCompactList}\small\item\em Assigns value to an element of the container. \end{DoxyCompactList}\item 
 {\footnotesize template$<$typename U $>$ \newline
 requires std\+::assignable\+\_\+from$<$T\&, U\&\&$>$}\\constexpr bool \mbox{\hyperlink{struct_span_containers_1_1internal_1_1_push_straight_trait_ae5b30d64af7062a02e6c1efffe6d4e79}{try\+\_\+push}} (U \&\&value) noexcept(std\+::is\+\_\+nothrow\+\_\+assignable$<$ T \&, U \&\& $>$\+::value)
 \begin{DoxyCompactList}\small\item\em Tries to assign value to an element of the container. \end{DoxyCompactList}\item 
-{\footnotesize template$<$std\+::ranges\+::input\+\_\+range Range = std\+::initializer\+\_\+list$<$\+T$>$$>$ \newline
+{\footnotesize template$<$std\+::ranges\+::range Range = std\+::initializer\+\_\+list$<$\+T$>$$>$ \newline
 requires std\+::convertible\+\_\+to$<$std\+::ranges\+::range\+\_\+value\+\_\+t$<$Range$>$, T$>$}\\constexpr void \mbox{\hyperlink{struct_span_containers_1_1internal_1_1_push_straight_trait_a45d835a02662237925490501f84bd775}{push\+\_\+range}} (Range \&\&values)
-\begin{DoxyCompactList}\small\item\em Assigns values to the container. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Assign values to the container. \end{DoxyCompactList}\item 
+{\footnotesize template$<$std\+::ranges\+::sized\+\_\+range Range = std\+::initializer\+\_\+list$<$\+T$>$$>$ \newline
+requires std\+::convertible\+\_\+to$<$std\+::ranges\+::range\+\_\+value\+\_\+t$<$Range$>$, T$>$}\\constexpr void \mbox{\hyperlink{struct_span_containers_1_1internal_1_1_push_straight_trait_a45d835a02662237925490501f84bd775}{push\+\_\+range}} (Range \&\&values)
+\begin{DoxyCompactList}\small\item\em Assign values to the container. \end{DoxyCompactList}\item 
+{\footnotesize template$<$std\+::ranges\+::sized\+\_\+range Range = std\+::initializer\+\_\+list$<$\+T$>$$>$ \newline
+requires std\+::convertible\+\_\+to$<$std\+::ranges\+::range\+\_\+value\+\_\+t$<$Range$>$, T$>$}\\constexpr bool \mbox{\hyperlink{struct_span_containers_1_1internal_1_1_push_straight_trait_a247cc2fe0d139a2e56a3cf0d1f4212d9}{try\+\_\+push\+\_\+range}} (Range \&\&values)
+\begin{DoxyCompactList}\small\item\em Tries to assign the values to the container. \end{DoxyCompactList}\item 
 constexpr reference \mbox{\hyperlink{struct_span_containers_1_1internal_1_1_pop_back_trait_a635fbe6fc7cfd5aee71c4a58f89ed3a3}{back}} () const noexcept(!Use\+Exceptions)
 \begin{DoxyCompactList}\small\item\em Gets a refrence to the item at the back of the container. \end{DoxyCompactList}\item 
 constexpr pointer \mbox{\hyperlink{struct_span_containers_1_1internal_1_1_pop_back_trait_a1039675e077b05e71a59dd9318d44026}{try\+\_\+back}} () const noexcept
@@ -101,14 +93,28 @@ constexpr bool \mbox{\hyperlink{struct_span_containers_1_1internal_1_1_pop_back_
 \doxysubsubsection*{Static Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-static consteval size\+\_\+type \mbox{\hyperlink{class_span_containers_1_1internal_1_1_span_container_a4f8d412fd122d11ca3c0f9d3351e5f61}{capacity}} () noexcept
-\begin{DoxyCompactList}\small\item\em Gets the capacity of the container. \end{DoxyCompactList}\end{DoxyCompactItemize}
+static constexpr size\+\_\+type \mbox{\hyperlink{class_span_containers_1_1internal_1_1_span_container_a033f9429b061e25e7163a18f26561753}{capacity}} () noexcept
+\begin{DoxyCompactList}\small\item\em Gets the capacity of the container. \end{DoxyCompactList}\item 
+static constexpr size\+\_\+type \mbox{\hyperlink{class_span_containers_1_1internal_1_1_span_container_aab7bfff93b28f07e958ff6e7ac32ef11}{max\+\_\+size}} ()
+\begin{DoxyCompactList}\small\item\em The maximum size of the container. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsubsection*{Static Public Attributes}
 \begin{DoxyCompactItemize}
 \item 
 \Hypertarget{class_span_containers_1_1_span_heap_ae3df9039b665ae2e59eff07fad1d8e07}\label{class_span_containers_1_1_span_heap_ae3df9039b665ae2e59eff07fad1d8e07} 
 static constexpr std\+::string\+\_\+view {\bfseries TYPE\+\_\+\+NAME} = "{}Span\+Heap"{}
-\begin{DoxyCompactList}\small\item\em the name of this type. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em the name of this type. \end{DoxyCompactList}\item 
+\Hypertarget{class_span_containers_1_1internal_1_1_span_container_a6d01f5cd05d9f4187e02ff491e90391a}\label{class_span_containers_1_1internal_1_1_span_container_a6d01f5cd05d9f4187e02ff491e90391a} 
+static constexpr size\+\_\+type {\bfseries extent} = Extent
+\begin{DoxyCompactList}\small\item\em The capacity of the container. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Friends}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_span_containers_1_1_span_heap_ac0f1d562fc525511ff952858d35f46a7}\label{class_span_containers_1_1_span_heap_ac0f1d562fc525511ff952858d35f46a7} 
+struct {\bfseries internal\+::\+Push\+Straight\+Trait$<$ Span\+Heap$<$ T, Extent, Comparer $>$, T $>$}
+\item 
+\Hypertarget{class_span_containers_1_1_span_heap_a80446d114d76327dc419ab75f3647117}\label{class_span_containers_1_1_span_heap_a80446d114d76327dc419ab75f3647117} 
+struct {\bfseries internal\+::\+Pop\+Back\+Trait$<$ Span\+Heap$<$ T, Extent, Comparer $>$, T $>$}
+\end{DoxyCompactItemize}
 
 
 \doxysubsection{Detailed Description}
@@ -126,14 +132,20 @@ Represents a span-\/based, fixed size container with heap access.
 
 
 \doxysubsection{Member Typedef Documentation}
-\Hypertarget{class_span_containers_1_1internal_1_1_span_container_a46e4f3e4ed3050a088056fccb00a76aa}\index{SpanContainers::SpanHeap$<$ T, Extent, Comparer $>$@{SpanContainers::SpanHeap$<$ T, Extent, Comparer $>$}!BufferType@{BufferType}}
+\Hypertarget{class_span_containers_1_1internal_1_1_span_container_ac2cf8a14f79ba4ffcc945694132e4f6b}\index{SpanContainers::SpanHeap$<$ T, Extent, Comparer $>$@{SpanContainers::SpanHeap$<$ T, Extent, Comparer $>$}!BufferType@{BufferType}}
 \index{BufferType@{BufferType}!SpanContainers::SpanHeap$<$ T, Extent, Comparer $>$@{SpanContainers::SpanHeap$<$ T, Extent, Comparer $>$}}
 \doxysubsubsection{\texorpdfstring{BufferType}{BufferType}}
-{\footnotesize\ttfamily \label{class_span_containers_1_1internal_1_1_span_container_a46e4f3e4ed3050a088056fccb00a76aa} 
+{\footnotesize\ttfamily \label{class_span_containers_1_1internal_1_1_span_container_ac2cf8a14f79ba4ffcc945694132e4f6b} 
 template$<$typename T , std\+::size\+\_\+t Extent$>$ \\
 template$<$std\+::size\+\_\+t Max\+Stack\+Size = 256$>$ \\
-using \mbox{\hyperlink{class_span_containers_1_1internal_1_1_span_container}{Span\+Containers\+::internal\+::\+Span\+Container}}$<$ T, Extent $>$\+::\+Buffer\+Type = Buffer\+Selector$<$T, Extent$>$\+::\+Buffer\+Type$<$Max\+Stack\+Size$>$\hspace{0.3cm}{\ttfamily [inherited]}}
+using \mbox{\hyperlink{class_span_containers_1_1internal_1_1_span_container}{Span\+Containers\+::internal\+::\+Span\+Container}}$<$ T, Extent $>$\+::\+Buffer\+Type\hspace{0.3cm}{\ttfamily [inherited]}}
 
+{\bfseries Initial value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\ std::conditional\_t<Extent\ *\ \textcolor{keyword}{sizeof}(T)\ <=\ MaxStackSize,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ std::array<T,\ Extent>,\ internal::HeapArray<T,\ Extent>>}
+
+\end{DoxyCode}
 
 
 Defines an appropriately sized buffer to be allocated on the heap or stack. 
@@ -193,12 +205,12 @@ A refrence to the item at the back of the container.
 {\em \doxylink{class_span_containers_1_1_empty_container_error}{Empty\+Container\+Error}} & if the container is empty and Use\+Exceptions is true. \\
 \hline
 \end{DoxyExceptions}
-\Hypertarget{class_span_containers_1_1internal_1_1_span_container_a4f8d412fd122d11ca3c0f9d3351e5f61}\index{SpanContainers::SpanHeap$<$ T, Extent, Comparer $>$@{SpanContainers::SpanHeap$<$ T, Extent, Comparer $>$}!capacity@{capacity}}
+\Hypertarget{class_span_containers_1_1internal_1_1_span_container_a033f9429b061e25e7163a18f26561753}\index{SpanContainers::SpanHeap$<$ T, Extent, Comparer $>$@{SpanContainers::SpanHeap$<$ T, Extent, Comparer $>$}!capacity@{capacity}}
 \index{capacity@{capacity}!SpanContainers::SpanHeap$<$ T, Extent, Comparer $>$@{SpanContainers::SpanHeap$<$ T, Extent, Comparer $>$}}
 \doxysubsubsection{\texorpdfstring{capacity()}{capacity()}}
-{\footnotesize\ttfamily \label{class_span_containers_1_1internal_1_1_span_container_a4f8d412fd122d11ca3c0f9d3351e5f61} 
+{\footnotesize\ttfamily \label{class_span_containers_1_1internal_1_1_span_container_a033f9429b061e25e7163a18f26561753} 
 template$<$typename T , std\+::size\+\_\+t Extent$>$ \\
-static consteval size\+\_\+type \mbox{\hyperlink{class_span_containers_1_1internal_1_1_span_container}{Span\+Containers\+::internal\+::\+Span\+Container}}$<$ T, Extent $>$\+::capacity (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}, {\ttfamily [consteval]}, {\ttfamily [noexcept]}, {\ttfamily [inherited]}}
+static constexpr size\+\_\+type \mbox{\hyperlink{class_span_containers_1_1internal_1_1_span_container}{Span\+Containers\+::internal\+::\+Span\+Container}}$<$ T, Extent $>$\+::capacity (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}, {\ttfamily [constexpr]}, {\ttfamily [noexcept]}, {\ttfamily [inherited]}}
 
 
 
@@ -249,7 +261,33 @@ Gets if the container is full or not.
 \begin{DoxyReturn}{Returns}
 true if the container is full; false otherwise. 
 \end{DoxyReturn}
-\Hypertarget{struct_span_containers_1_1internal_1_1_pop_back_trait_aebbe0044f1d9347ec60ec0fb89cf1ee2}\index{SpanContainers::SpanHeap$<$ T, Extent, Comparer $>$@{SpanContainers::SpanHeap$<$ T, Extent, Comparer $>$}!pop\_back@{pop\_back}}
+\Hypertarget{class_span_containers_1_1_span_heap_a502cfeadaafd4528ef5b97da1bdcd1eb}\index{SpanContainers::SpanHeap$<$ T, Extent, Comparer $>$@{SpanContainers::SpanHeap$<$ T, Extent, Comparer $>$}!make\_threshold@{make\_threshold}}
+\index{make\_threshold@{make\_threshold}!SpanContainers::SpanHeap$<$ T, Extent, Comparer $>$@{SpanContainers::SpanHeap$<$ T, Extent, Comparer $>$}}
+\doxysubsubsection{\texorpdfstring{make\_threshold()}{make\_threshold()}}
+{\footnotesize\ttfamily \label{class_span_containers_1_1_span_heap_a502cfeadaafd4528ef5b97da1bdcd1eb} 
+template$<$std\+::swappable T, std\+::size\+\_\+t Extent, Std\+Comparer$<$ T $>$ Comparer = std\+::less$<$\+T$>$$>$ \\
+size\+\_\+type \mbox{\hyperlink{class_span_containers_1_1_span_heap}{Span\+Containers\+::\+Span\+Heap}}$<$ T, Extent, Comparer $>$\+::make\+\_\+threshold (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [nodiscard]}, {\ttfamily [noexcept]}}
+
+
+
+Get the threshold at which heap\+\_\+make will be used over heap\+\_\+push. 
+
+\begin{DoxyReturn}{Returns}
+the smallest number of items for which push should be used over make 
+\end{DoxyReturn}
+\Hypertarget{class_span_containers_1_1internal_1_1_span_container_aab7bfff93b28f07e958ff6e7ac32ef11}\index{SpanContainers::SpanHeap$<$ T, Extent, Comparer $>$@{SpanContainers::SpanHeap$<$ T, Extent, Comparer $>$}!max\_size@{max\_size}}
+\index{max\_size@{max\_size}!SpanContainers::SpanHeap$<$ T, Extent, Comparer $>$@{SpanContainers::SpanHeap$<$ T, Extent, Comparer $>$}}
+\doxysubsubsection{\texorpdfstring{max\_size()}{max\_size()}}
+{\footnotesize\ttfamily \label{class_span_containers_1_1internal_1_1_span_container_aab7bfff93b28f07e958ff6e7ac32ef11} 
+template$<$typename T , std\+::size\+\_\+t Extent$>$ \\
+static constexpr size\+\_\+type \mbox{\hyperlink{class_span_containers_1_1internal_1_1_span_container}{Span\+Containers\+::internal\+::\+Span\+Container}}$<$ T, Extent $>$\+::max\+\_\+size (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}, {\ttfamily [constexpr]}, {\ttfamily [inherited]}}
+
+
+
+The maximum size of the container. 
+
+This is always equal to extent. ~\newline
+ \Hypertarget{struct_span_containers_1_1internal_1_1_pop_back_trait_aebbe0044f1d9347ec60ec0fb89cf1ee2}\index{SpanContainers::SpanHeap$<$ T, Extent, Comparer $>$@{SpanContainers::SpanHeap$<$ T, Extent, Comparer $>$}!pop\_back@{pop\_back}}
 \index{pop\_back@{pop\_back}!SpanContainers::SpanHeap$<$ T, Extent, Comparer $>$@{SpanContainers::SpanHeap$<$ T, Extent, Comparer $>$}}
 \doxysubsubsection{\texorpdfstring{pop\_back()}{pop\_back()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
 {\footnotesize\ttfamily \label{struct_span_containers_1_1internal_1_1_pop_back_trait_aebbe0044f1d9347ec60ec0fb89cf1ee2} 
@@ -283,17 +321,17 @@ Removes n items from the back of the container.
 
 
 \begin{DoxyExceptions}{Exceptions}
-{\em std\+::out\+\_\+of\+\_\+range} & if there are less than n items in the container and Use\+Exceptions is true. \\
+{\em \doxylink{class_span_containers_1_1_insufficent_items_error}{Insufficent\+Items\+Error}} & if there are less than n items in the container and Use\+Exceptions is true. \\
 \hline
 \end{DoxyExceptions}
-\Hypertarget{struct_span_containers_1_1internal_1_1_push_straight_trait_ad76be4db17d2c6463c1ad00d3d334639}\index{SpanContainers::SpanHeap$<$ T, Extent, Comparer $>$@{SpanContainers::SpanHeap$<$ T, Extent, Comparer $>$}!push@{push}}
+\Hypertarget{struct_span_containers_1_1internal_1_1_push_straight_trait_aa121a8ea3f57b455ca2575efd1f1594f}\index{SpanContainers::SpanHeap$<$ T, Extent, Comparer $>$@{SpanContainers::SpanHeap$<$ T, Extent, Comparer $>$}!push@{push}}
 \index{push@{push}!SpanContainers::SpanHeap$<$ T, Extent, Comparer $>$@{SpanContainers::SpanHeap$<$ T, Extent, Comparer $>$}}
 \doxysubsubsection{\texorpdfstring{push()}{push()}}
-{\footnotesize\ttfamily \label{struct_span_containers_1_1internal_1_1_push_straight_trait_ad76be4db17d2c6463c1ad00d3d334639} 
+{\footnotesize\ttfamily \label{struct_span_containers_1_1internal_1_1_push_straight_trait_aa121a8ea3f57b455ca2575efd1f1594f} 
 template$<$typename Derived , typename T $>$ \\
 template$<$typename U $>$ \newline
 requires std\+::assignable\+\_\+from$<$T\&, U\&\&$>$\\
-void \mbox{\hyperlink{struct_span_containers_1_1internal_1_1_push_straight_trait}{Span\+Containers\+::internal\+::\+Push\+Straight\+Trait}}$<$ Derived, T $>$\+::push (\begin{DoxyParamCaption}\item[{U \&\&}]{value}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [constexpr]}, {\ttfamily [inherited]}}
+void \mbox{\hyperlink{struct_span_containers_1_1internal_1_1_push_straight_trait}{Span\+Containers\+::internal\+::\+Push\+Straight\+Trait}}$<$ Derived, T $>$\+::push (\begin{DoxyParamCaption}\item[{U \&\&}]{value}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [constexpr]}, {\ttfamily [noexcept]}, {\ttfamily [inherited]}}
 
 
 
@@ -311,30 +349,53 @@ Assigns value to an element of the container.
 \end{DoxyParams}
 
 \begin{DoxyExceptions}{Exceptions}
-{\em \doxylink{class_span_containers_1_1_full_container_error}{Full\+Container\+Error}} & if the container capacity is exceeded \\
+{\em \doxylink{class_span_containers_1_1_full_container_error}{Full\+Container\+Error}} & if the container capacity is exceeded and Use\+Exceptions is true. \\
 \hline
 \end{DoxyExceptions}
 \Hypertarget{struct_span_containers_1_1internal_1_1_push_straight_trait_a45d835a02662237925490501f84bd775}\index{SpanContainers::SpanHeap$<$ T, Extent, Comparer $>$@{SpanContainers::SpanHeap$<$ T, Extent, Comparer $>$}!push\_range@{push\_range}}
 \index{push\_range@{push\_range}!SpanContainers::SpanHeap$<$ T, Extent, Comparer $>$@{SpanContainers::SpanHeap$<$ T, Extent, Comparer $>$}}
-\doxysubsubsection{\texorpdfstring{push\_range()}{push\_range()}}
+\doxysubsubsection{\texorpdfstring{push\_range()}{push\_range()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
 {\footnotesize\ttfamily \label{struct_span_containers_1_1internal_1_1_push_straight_trait_a45d835a02662237925490501f84bd775} 
 template$<$typename Derived , typename T $>$ \\
-template$<$std\+::ranges\+::input\+\_\+range Range = std\+::initializer\+\_\+list$<$\+T$>$$>$ \newline
+template$<$std\+::ranges\+::range Range = std\+::initializer\+\_\+list$<$\+T$>$$>$ \newline
 requires std\+::convertible\+\_\+to$<$std\+::ranges\+::range\+\_\+value\+\_\+t$<$Range$>$, T$>$\\
 void \mbox{\hyperlink{struct_span_containers_1_1internal_1_1_push_straight_trait}{Span\+Containers\+::internal\+::\+Push\+Straight\+Trait}}$<$ Derived, T $>$\+::push\+\_\+range (\begin{DoxyParamCaption}\item[{Range \&\&}]{values}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [constexpr]}, {\ttfamily [inherited]}}
 
 
 
-Assigns values to the container. 
+Assign values to the container. 
 
-
+This method only provides the basic exception gurantee. If range exceeds the capacty of the container, values will be pushed until capcity is reached, at which point a \doxylink{class_span_containers_1_1_full_container_error}{Full\+Container\+Error} exception is thrown. 
 \begin{DoxyTemplParams}{Template Parameters}
 {\em Range} & The type of the range that contains the values. \\
 \hline
 \end{DoxyTemplParams}
 
 \begin{DoxyExceptions}{Exceptions}
-{\em std\+::out\+\_\+of\+\_\+range} & if the container capacity would be exceeded. \\
+{\em \doxylink{class_span_containers_1_1_full_container_error}{Full\+Container\+Error}} & If the size of the range exceeds the container capacity and Use\+Exceptions is true. \\
+\hline
+\end{DoxyExceptions}
+\Hypertarget{struct_span_containers_1_1internal_1_1_push_straight_trait_a45d835a02662237925490501f84bd775}\index{SpanContainers::SpanHeap$<$ T, Extent, Comparer $>$@{SpanContainers::SpanHeap$<$ T, Extent, Comparer $>$}!push\_range@{push\_range}}
+\index{push\_range@{push\_range}!SpanContainers::SpanHeap$<$ T, Extent, Comparer $>$@{SpanContainers::SpanHeap$<$ T, Extent, Comparer $>$}}
+\doxysubsubsection{\texorpdfstring{push\_range()}{push\_range()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily \label{struct_span_containers_1_1internal_1_1_push_straight_trait_a45d835a02662237925490501f84bd775} 
+template$<$typename Derived , typename T $>$ \\
+template$<$std\+::ranges\+::sized\+\_\+range Range = std\+::initializer\+\_\+list$<$\+T$>$$>$ \newline
+requires std\+::convertible\+\_\+to$<$std\+::ranges\+::range\+\_\+value\+\_\+t$<$Range$>$, T$>$\\
+void \mbox{\hyperlink{struct_span_containers_1_1internal_1_1_push_straight_trait}{Span\+Containers\+::internal\+::\+Push\+Straight\+Trait}}$<$ Derived, T $>$\+::push\+\_\+range (\begin{DoxyParamCaption}\item[{Range \&\&}]{values}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [constexpr]}, {\ttfamily [inherited]}}
+
+
+
+Assign values to the container. 
+
+This method provides a strong exception gurantee. 
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Range} & The type of the range that contains the values. \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em std\+::out\+\_\+of\+\_\+range} & If the size of the range exceeds the container capacity and Use\+Exceptions is true. \\
 \hline
 \end{DoxyExceptions}
 \Hypertarget{class_span_containers_1_1internal_1_1_span_container_a137e5e887756180fad653799515b225b}\index{SpanContainers::SpanHeap$<$ T, Extent, Comparer $>$@{SpanContainers::SpanHeap$<$ T, Extent, Comparer $>$}!size@{size}}
@@ -445,16 +506,16 @@ Tries to assign value to an element of the container.
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
-true if value was assigned a value within the container; false otherwise. 
+{\ttfamily true} if value was assigned a value within the container; {\ttfamily false} otherwise. 
 \end{DoxyReturn}
-\Hypertarget{class_span_containers_1_1_span_heap_ae61af5f519be55e8cfec0e136a6fcc4d}\index{SpanContainers::SpanHeap$<$ T, Extent, Comparer $>$@{SpanContainers::SpanHeap$<$ T, Extent, Comparer $>$}!try\_push\_range@{try\_push\_range}}
+\Hypertarget{struct_span_containers_1_1internal_1_1_push_straight_trait_a247cc2fe0d139a2e56a3cf0d1f4212d9}\index{SpanContainers::SpanHeap$<$ T, Extent, Comparer $>$@{SpanContainers::SpanHeap$<$ T, Extent, Comparer $>$}!try\_push\_range@{try\_push\_range}}
 \index{try\_push\_range@{try\_push\_range}!SpanContainers::SpanHeap$<$ T, Extent, Comparer $>$@{SpanContainers::SpanHeap$<$ T, Extent, Comparer $>$}}
 \doxysubsubsection{\texorpdfstring{try\_push\_range()}{try\_push\_range()}}
-{\footnotesize\ttfamily \label{class_span_containers_1_1_span_heap_ae61af5f519be55e8cfec0e136a6fcc4d} 
-template$<$std\+::swappable T, std\+::size\+\_\+t Extent, Std\+Comparer$<$ T $>$ Comparer = std\+::less$<$\+T$>$$>$ \\
-template$<$std\+::ranges\+::input\+\_\+range Range = std\+::initializer\+\_\+list$<$\+T$>$$>$ \newline
+{\footnotesize\ttfamily \label{struct_span_containers_1_1internal_1_1_push_straight_trait_a247cc2fe0d139a2e56a3cf0d1f4212d9} 
+template$<$typename Derived , typename T $>$ \\
+template$<$std\+::ranges\+::sized\+\_\+range Range = std\+::initializer\+\_\+list$<$\+T$>$$>$ \newline
 requires std\+::convertible\+\_\+to$<$std\+::ranges\+::range\+\_\+value\+\_\+t$<$Range$>$, T$>$\\
-bool \mbox{\hyperlink{class_span_containers_1_1_span_heap}{Span\+Containers\+::\+Span\+Heap}}$<$ T, Extent, Comparer $>$\+::try\+\_\+push\+\_\+range (\begin{DoxyParamCaption}\item[{Range \&\&}]{values}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [constexpr]}}
+bool \mbox{\hyperlink{struct_span_containers_1_1internal_1_1_push_straight_trait}{Span\+Containers\+::internal\+::\+Push\+Straight\+Trait}}$<$ Derived, T $>$\+::try\+\_\+push\+\_\+range (\begin{DoxyParamCaption}\item[{Range \&\&}]{values}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [constexpr]}, {\ttfamily [inherited]}}
 
 
 
@@ -466,61 +527,8 @@ Tries to assign the values to the container.
 \hline
 \end{DoxyTemplParams}
 \begin{DoxyReturn}{Returns}
-true if values were placed at the back of the container; false otherwise. 
+{\ttfamily true} if values were placed at the back of the container; {\ttfamily false} otherwise. 
 \end{DoxyReturn}
-\Hypertarget{class_span_containers_1_1_span_heap_a256338db73efbbd6f4ab96eb1ad1fda6}\index{SpanContainers::SpanHeap$<$ T, Extent, Comparer $>$@{SpanContainers::SpanHeap$<$ T, Extent, Comparer $>$}!unsafe\_back@{unsafe\_back}}
-\index{unsafe\_back@{unsafe\_back}!SpanContainers::SpanHeap$<$ T, Extent, Comparer $>$@{SpanContainers::SpanHeap$<$ T, Extent, Comparer $>$}}
-\doxysubsubsection{\texorpdfstring{unsafe\_back()}{unsafe\_back()}}
-{\footnotesize\ttfamily \label{class_span_containers_1_1_span_heap_a256338db73efbbd6f4ab96eb1ad1fda6} 
-template$<$std\+::swappable T, std\+::size\+\_\+t Extent, Std\+Comparer$<$ T $>$ Comparer = std\+::less$<$\+T$>$$>$ \\
-reference \mbox{\hyperlink{class_span_containers_1_1_span_heap}{Span\+Containers\+::\+Span\+Heap}}$<$ T, Extent, Comparer $>$\+::unsafe\+\_\+back (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [nodiscard]}, {\ttfamily [constexpr]}, {\ttfamily [noexcept]}}
-
-
-
-Gets a reference to the last item in the container, without bounds check. 
-
-\begin{DoxyReturn}{Returns}
-A reference to the last item in the container. 
-\end{DoxyReturn}
-\Hypertarget{class_span_containers_1_1_span_heap_a91e2a9e7a646b8029c72c2bc966d35ee}\index{SpanContainers::SpanHeap$<$ T, Extent, Comparer $>$@{SpanContainers::SpanHeap$<$ T, Extent, Comparer $>$}!unsafe\_pop\_back@{unsafe\_pop\_back}}
-\index{unsafe\_pop\_back@{unsafe\_pop\_back}!SpanContainers::SpanHeap$<$ T, Extent, Comparer $>$@{SpanContainers::SpanHeap$<$ T, Extent, Comparer $>$}}
-\doxysubsubsection{\texorpdfstring{unsafe\_pop\_back()}{unsafe\_pop\_back()}}
-{\footnotesize\ttfamily \label{class_span_containers_1_1_span_heap_a91e2a9e7a646b8029c72c2bc966d35ee} 
-template$<$std\+::swappable T, std\+::size\+\_\+t Extent, Std\+Comparer$<$ T $>$ Comparer = std\+::less$<$\+T$>$$>$ \\
-void \mbox{\hyperlink{class_span_containers_1_1_span_heap}{Span\+Containers\+::\+Span\+Heap}}$<$ T, Extent, Comparer $>$\+::unsafe\+\_\+pop\+\_\+back (\begin{DoxyParamCaption}\item[{size\+\_\+type}]{n}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [constexpr]}, {\ttfamily [noexcept]}}
-
-
-
-Removes n items from the back of the container without a bounds check. 
-
-
-\begin{DoxyParams}{Parameters}
-{\em n} & The number of items to remove from the back of the container. \\
-\hline
-\end{DoxyParams}
-\Hypertarget{class_span_containers_1_1_span_heap_ac3737379dcd76a66cfc7aaf58c49bbb1}\index{SpanContainers::SpanHeap$<$ T, Extent, Comparer $>$@{SpanContainers::SpanHeap$<$ T, Extent, Comparer $>$}!unsafe\_push@{unsafe\_push}}
-\index{unsafe\_push@{unsafe\_push}!SpanContainers::SpanHeap$<$ T, Extent, Comparer $>$@{SpanContainers::SpanHeap$<$ T, Extent, Comparer $>$}}
-\doxysubsubsection{\texorpdfstring{unsafe\_push()}{unsafe\_push()}}
-{\footnotesize\ttfamily \label{class_span_containers_1_1_span_heap_ac3737379dcd76a66cfc7aaf58c49bbb1} 
-template$<$std\+::swappable T, std\+::size\+\_\+t Extent, Std\+Comparer$<$ T $>$ Comparer = std\+::less$<$\+T$>$$>$ \\
-template$<$typename U $>$ \newline
-requires std\+::assignable\+\_\+from$<$T\&, U\&\&$>$\\
-void \mbox{\hyperlink{class_span_containers_1_1_span_heap}{Span\+Containers\+::\+Span\+Heap}}$<$ T, Extent, Comparer $>$\+::unsafe\+\_\+push (\begin{DoxyParamCaption}\item[{U \&\&}]{value}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [constexpr]}, {\ttfamily [noexcept]}}
-
-
-
-Assigns value to an element of the container. 
-
-
-\begin{DoxyTemplParams}{Template Parameters}
-{\em U} & the type of the value to assign to the container. Must be assignable to T. \\
-\hline
-\end{DoxyTemplParams}
-
-\begin{DoxyParams}{Parameters}
-{\em value} & The item to assign to an element of the container. \\
-\hline
-\end{DoxyParams}
 
 
 The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}

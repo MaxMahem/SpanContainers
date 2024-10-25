@@ -95,7 +95,7 @@ $(function(){ initResizable(false); });
 <div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="preprocessor">#pragma once</span></div>
 <div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span> </div>
 <div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span><span class="preprocessor">#include &lt;span&gt;</span></div>
-<div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span><span class="preprocessor">#include &lt;stdexcept&gt;</span></div>
+<div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span><span class="preprocessor">#include &quot;Errors/IndexOutOfRangeError.h&quot;</span></div>
 <div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span> </div>
 <div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span><span class="keyword">namespace </span><a class="code hl_namespace" href="namespace_span_containers_1_1internal.html">SpanContainers::internal</a> {</div>
 <div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span> </div>
@@ -114,7 +114,7 @@ $(function(){ initResizable(false); });
 <div class="foldopen" id="foldopen00026" data-start="{" data-end="}">
 <div class="line"><a id="l00026" name="l00026"></a><span class="lineno"><a class="line" href="struct_span_containers_1_1internal_1_1_index_trait.html#ada06eabb7b7e3fc9ec94b0f28b42aed5">   26</a></span>    [[nodiscard]] <span class="keyword">constexpr</span> reference <a class="code hl_function" href="struct_span_containers_1_1internal_1_1_index_trait.html#ada06eabb7b7e3fc9ec94b0f28b42aed5">operator[]</a>(size_type index)<span class="keyword"> const</span></div>
 <div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span><span class="keyword">    </span>{</div>
-<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span>        <span class="keywordflow">if</span> <span class="keyword">constexpr</span> (UseExceptions) { <span class="keywordflow">if</span> (index &gt;= asDerived().size()) { <span class="keywordflow">throw</span> std::out_of_range(<span class="stringliteral">&quot;Index out of range.&quot;</span>); } }</div>
+<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span>        <span class="keywordflow">if</span> <span class="keyword">constexpr</span> (UseExceptions) { <a class="code hl_function" href="class_span_containers_1_1_index_out_of_range_error.html#a264607f2129a30372811f14293003bf0">IndexOutOfRangeError::ThrowIfOutOfRange</a>(asDerived(), index); }</div>
 <div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span>        <span class="keywordflow">return</span> asDerived().unsafe_at(index);</div>
 <div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span>    }</div>
 </div>
@@ -129,6 +129,7 @@ $(function(){ initResizable(false); });
 </div>
 <div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span> </div>
 <div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span>}</div>
+<div class="ttc" id="aclass_span_containers_1_1_index_out_of_range_error_html_a264607f2129a30372811f14293003bf0"><div class="ttname"><a href="class_span_containers_1_1_index_out_of_range_error.html#a264607f2129a30372811f14293003bf0">SpanContainers::IndexOutOfRangeError::ThrowIfOutOfRange</a></div><div class="ttdeci">static void ThrowIfOutOfRange(const Container &amp;container, typename decltype(container.size()) index)</div><div class="ttdoc">Throws a IndexOutOfRangeError if index is out of range for container.</div><div class="ttdef"><b>Definition</b> IndexOutOfRangeError.h:24</div></div>
 <div class="ttc" id="anamespace_span_containers_1_1internal_html"><div class="ttname"><a href="namespace_span_containers_1_1internal.html">SpanContainers::internal</a></div><div class="ttdoc">Internal namespace for implementation details.</div><div class="ttdef"><b>Definition</b> BufferSelector.h:7</div></div>
 <div class="ttc" id="astruct_span_containers_1_1internal_1_1_index_trait_html"><div class="ttname"><a href="struct_span_containers_1_1internal_1_1_index_trait.html">SpanContainers::internal::IndexTrait</a></div><div class="ttdoc">Represents the ability of a container to access elements via index.</div><div class="ttdef"><b>Definition</b> IndexTrait.h:13</div></div>
 <div class="ttc" id="astruct_span_containers_1_1internal_1_1_index_trait_html_a2d79a1361803416b85bc31c09a2d013a"><div class="ttname"><a href="struct_span_containers_1_1internal_1_1_index_trait.html#a2d79a1361803416b85bc31c09a2d013a">SpanContainers::internal::IndexTrait::at</a></div><div class="ttdeci">constexpr pointer at(size_type index) const noexcept</div><div class="ttdoc">Gets a pointer to the element at index.</div><div class="ttdef"><b>Definition</b> IndexTrait.h:35</div></div>

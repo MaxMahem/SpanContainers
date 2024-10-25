@@ -19,7 +19,7 @@ from `std::logic_error`) but provide a universal way to gracefully fail if a bou
 mode, since in the authors opinion, guarding against incorrect behavior is more important than performance in virtually 
 all situtations. 
 
-If you feel different, these methods throwing exceptions by defineing `SPAN_CONTAINERS_USE_EXCEPTIONS` false, at which
+If you feel different, these methods throwing exceptions by defineing `SC_USE_EXCEPTIONS` false, at which
 point bounds will only be guarded by assertions.
 
 `push_back`/`push_front` and `back`/`front` were used over `top` or `enque` when either set of semantics would be 

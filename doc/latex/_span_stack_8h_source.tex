@@ -19,72 +19,70 @@
 \DoxyCodeLine{00015\ }
 \DoxyCodeLine{00016\ \textcolor{keyword}{namespace\ }SpanContainers\ \{}
 \DoxyCodeLine{00017\ }
-\DoxyCodeLine{00021\ \textcolor{keyword}{template}\ <\textcolor{keyword}{typename}\ T,\ std::\textcolor{keywordtype}{size\_t}\ Extent,\ \textcolor{keywordtype}{bool}\ UseExceptions\ =\ true>}
-\DoxyCodeLine{00022\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_span_containers_1_1_span_stack}{SpanStack}}\ :\ \textcolor{keyword}{public}\ \mbox{\hyperlink{class_span_containers_1_1internal_1_1_span_container}{internal::SpanContainer}}<T,\ Extent>,}
-\DoxyCodeLine{00023\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{public}\ \mbox{\hyperlink{struct_span_containers_1_1internal_1_1_index_trait}{internal::IndexTrait}}<SpanStack<T,\ Extent>,\ T>,}
-\DoxyCodeLine{00024\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{public}\ \mbox{\hyperlink{struct_span_containers_1_1internal_1_1_push_back_trait}{internal::PushBackTrait}}<SpanStack<T,\ Extent>,\ T>,}
-\DoxyCodeLine{00025\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{public}\ \mbox{\hyperlink{struct_span_containers_1_1internal_1_1_pop_back_trait}{internal::PopBackTrait}}<SpanStack<T,\ Extent>,\ T>}
+\DoxyCodeLine{00021\ \textcolor{keyword}{template}\ <\textcolor{keyword}{typename}\ T,\ std::\textcolor{keywordtype}{size\_t}\ Extent>}
+\DoxyCodeLine{00022\ \textcolor{keyword}{class\ }SC\_EMPTY\_BASES\ \mbox{\hyperlink{class_span_containers_1_1_span_stack}{SpanStack}}\ :\ \textcolor{keyword}{public}\ \mbox{\hyperlink{class_span_containers_1_1internal_1_1_span_container}{internal::SpanContainer}}<T,\ Extent>,}
+\DoxyCodeLine{00023\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{public}\ \mbox{\hyperlink{struct_span_containers_1_1internal_1_1_index_trait}{internal::IndexTrait}}<SpanStack<T,\ Extent>,\ T>,}
+\DoxyCodeLine{00024\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{public}\ \mbox{\hyperlink{struct_span_containers_1_1internal_1_1_push_back_trait}{internal::PushBackTrait}}<SpanStack<T,\ Extent>,\ T>,}
+\DoxyCodeLine{00025\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{public}\ \mbox{\hyperlink{struct_span_containers_1_1internal_1_1_pop_back_trait}{internal::PopBackTrait}}<SpanStack<T,\ Extent>,\ T>}
 \DoxyCodeLine{00026\ \{}
 \DoxyCodeLine{00027\ \ \ \ \ \textcolor{keyword}{friend}\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{struct_span_containers_1_1internal_1_1_index_trait}{internal::IndexTrait}}<\mbox{\hyperlink{class_span_containers_1_1_span_stack}{SpanStack}}<T,\ Extent>,\ T>;}
 \DoxyCodeLine{00028\ \ \ \ \ \textcolor{keyword}{friend}\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{struct_span_containers_1_1internal_1_1_push_back_trait}{internal::PushBackTrait}}<\mbox{\hyperlink{class_span_containers_1_1_span_stack}{SpanStack}}<T,\ Extent>,\ T>;}
 \DoxyCodeLine{00029\ \ \ \ \ \textcolor{keyword}{friend}\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{struct_span_containers_1_1internal_1_1_pop_back_trait}{internal::PopBackTrait}}<\mbox{\hyperlink{class_span_containers_1_1_span_stack}{SpanStack}}<T,\ Extent>,\ T>;}
 \DoxyCodeLine{00030\ }
 \DoxyCodeLine{00031\ \ \ \ \ \textcolor{keyword}{using\ }\mbox{\hyperlink{class_span_containers_1_1internal_1_1_span_container}{SpanContainer}}\ =\ \mbox{\hyperlink{class_span_containers_1_1internal_1_1_span_container}{internal::SpanContainer<T,\ Extent>}};}
-\DoxyCodeLine{00032\ \ \ \ \ \textcolor{keyword}{using\ }\mbox{\hyperlink{class_span_containers_1_1internal_1_1_span_container_a0e264b02900eed12541aa0e6d794bfd5}{SpanContainer::span}};}
-\DoxyCodeLine{00033\ \ \ \ \ \textcolor{keyword}{using\ }\mbox{\hyperlink{class_span_containers_1_1internal_1_1_span_container_a14bbacf4b0597e3f514a05971b483cad}{SpanContainer::count}};}
+\DoxyCodeLine{00032\ \ \ \ \ \textcolor{keyword}{using\ }SpanContainer::span;}
+\DoxyCodeLine{00033\ \ \ \ \ \textcolor{keyword}{using\ }SpanContainer::count;}
 \DoxyCodeLine{00034\ \ \ \ \ \textcolor{keyword}{using\ }SpanContainer::size\_type;}
 \DoxyCodeLine{00035\ \ \ \ \ \textcolor{keyword}{using\ }SpanContainer::reference;}
 \DoxyCodeLine{00036\ }
 \DoxyCodeLine{00039\ \ \ \ \ [[nodiscard]]\ \textcolor{keyword}{constexpr}\ reference\ unsafe\_back()\ \textcolor{keyword}{const}\ \textcolor{keyword}{noexcept}\ }
 \DoxyCodeLine{00040\ \ \ \ \ \{\ }
-\DoxyCodeLine{00041\ \ \ \ \ \ \ \ \ assert(count\ >\ 0\ \&\&\ \textcolor{stringliteral}{"{}Container\ is\ empty."{}});}
+\DoxyCodeLine{00041\ \ \ \ \ \ \ \ \ assert(count\ >\ 0\ \&\&\ \textcolor{stringliteral}{"{}Container\ is\ empty"{}});}
 \DoxyCodeLine{00042\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ span[count\ -\/\ 1];\ }
 \DoxyCodeLine{00043\ \ \ \ \ \}}
 \DoxyCodeLine{00044\ }
 \DoxyCodeLine{00048\ \ \ \ \ [[nodiscard]]\ \textcolor{keyword}{constexpr}\ reference\ unsafe\_at(size\_type\ index)\ \textcolor{keyword}{const}\ \textcolor{keyword}{noexcept}}
 \DoxyCodeLine{00049\ \ \ \ \ \{}
-\DoxyCodeLine{00050\ \ \ \ \ \ \ \ \ assert(index\ <\ count\ \&\&\ \textcolor{stringliteral}{"{}Index\ out\ of\ range."{}});}
-\DoxyCodeLine{00051\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ span[index];}
+\DoxyCodeLine{00050\ \ \ \ \ \ \ \ \ assert(index\ <\ count\ \&\&\ \textcolor{stringliteral}{"{}Index\ out\ of\ range"{}});}
+\DoxyCodeLine{00051\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ span[count\ -\/\ 1\ -\/\ index];}
 \DoxyCodeLine{00052\ \ \ \ \ \}}
 \DoxyCodeLine{00053\ }
 \DoxyCodeLine{00057\ \ \ \ \ \textcolor{keyword}{template}\ <\textcolor{keyword}{typename}\ U>\ \textcolor{keyword}{requires}\ std::assignable\_from<T\&,\ U\&\&>}
 \DoxyCodeLine{00058\ \ \ \ \ \textcolor{keyword}{constexpr}\ \textcolor{keywordtype}{void}\ unsafe\_push\_back(U\&\&\ value)\ \textcolor{keyword}{noexcept}(std::is\_nothrow\_assignable<T\&,\ U\&\&>::value)}
 \DoxyCodeLine{00059\ \ \ \ \ \{}
-\DoxyCodeLine{00060\ \ \ \ \ \ \ \ \ assert(count\ <\ Extent\ \&\&\ \textcolor{stringliteral}{"{}Container\ is\ full."{}});}
+\DoxyCodeLine{00060\ \ \ \ \ \ \ \ \ assert(count\ <\ Extent\ \&\&\ \textcolor{stringliteral}{"{}Container\ is\ full"{}});}
 \DoxyCodeLine{00061\ \ \ \ \ \ \ \ \ span[count++]\ =\ std::forward<U>(value);}
 \DoxyCodeLine{00062\ \ \ \ \ \}}
 \DoxyCodeLine{00063\ }
-\DoxyCodeLine{00067\ \ \ \ \ \textcolor{keyword}{template}<std::ranges::input\_range\ Range\ =\ std::initializer\_list<T>>}
-\DoxyCodeLine{00068\ \ \ \ \ \textcolor{keyword}{constexpr}\ \textcolor{keywordtype}{bool}\ try\_push\_back\_range(Range\&\&\ values)\ \textcolor{keyword}{requires}\ std::convertible\_to<std::ranges::range\_value\_t<Range>,\ T>}
+\DoxyCodeLine{00066\ \ \ \ \ \textcolor{keyword}{template}<std::ranges::range\ Range\ =\ std::initializer\_list<T>>\ }
+\DoxyCodeLine{00067\ \ \ \ \ \ \ \ \ \textcolor{keyword}{requires}\ std::convertible\_to<std::ranges::range\_value\_t<Range>,\ T>}
+\DoxyCodeLine{00068\ \ \ \ \ \textcolor{keyword}{constexpr}\ \textcolor{keywordtype}{void}\ unsafe\_push\_back\_sized\_range(Range\&\&\ values,\ size\_type\ rangeSize)\ }
 \DoxyCodeLine{00069\ \ \ \ \ \{}
-\DoxyCodeLine{00070\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keyword}{auto}\ newCount\ =\ count\ +\ std::ranges::size(values);}
-\DoxyCodeLine{00071\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (newCount\ >\ Extent)\ \{\ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};\ \}}
+\DoxyCodeLine{00070\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keyword}{auto}\ newCount\ =\ count\ +\ rangeSize;}
+\DoxyCodeLine{00071\ \ \ \ \ \ \ \ \ assert(newCount\ <=\ Extent\ \&\&\ \textcolor{stringliteral}{"{}Range\ is\ to\ large\ for\ span."{}});}
 \DoxyCodeLine{00072\ }
-\DoxyCodeLine{00073\ \ \ \ \ \ \ \ \ \textcolor{keyword}{constexpr}\ \textcolor{keywordtype}{bool}\ isRvalue\ =\ std::is\_rvalue\_reference<Range\&\&>::value;}
-\DoxyCodeLine{00074\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ \textcolor{keyword}{constexpr}\ (isRvalue)\ \{\ std::ranges::move(values,\ span.begin()\ +\ count);\ \}}
-\DoxyCodeLine{00075\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{\ std::ranges::copy(values,\ span.begin()\ +\ count);\ \}}
-\DoxyCodeLine{00076\ }
-\DoxyCodeLine{00077\ \ \ \ \ \ \ \ \ count\ =\ newCount;\ \ \ \ }
-\DoxyCodeLine{00078\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{true};}
-\DoxyCodeLine{00079\ \ \ \ \ \}}
-\DoxyCodeLine{00080\ }
-\DoxyCodeLine{00083\ \ \ \ \ \textcolor{keyword}{constexpr}\ \textcolor{keywordtype}{void}\ unsafe\_pop\_back(size\_type\ n)\ \textcolor{keyword}{noexcept}\ }
-\DoxyCodeLine{00084\ \ \ \ \ \{\ }
-\DoxyCodeLine{00085\ \ \ \ \ \ \ \ \ assert(n\ <=\ count\ \&\&\ \textcolor{stringliteral}{"{}Not\ enough\ items\ to\ pop."{}});}
-\DoxyCodeLine{00086\ \ \ \ \ \ \ \ \ count\ -\/=\ n;\ }
-\DoxyCodeLine{00087\ \ \ \ \ \}}
-\DoxyCodeLine{00088\ }
-\DoxyCodeLine{00089\ \textcolor{keyword}{public}:}
-\DoxyCodeLine{00091\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{constexpr}\ std::string\_view\ \mbox{\hyperlink{class_span_containers_1_1_span_stack_a48fa5cb6b022a517631e9fe0d6231948}{TYPE\_NAME}}\ =\ \textcolor{stringliteral}{"{}SpanStack"{}};}
+\DoxyCodeLine{00073\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ \textcolor{keyword}{constexpr}\ (std::is\_rvalue\_reference<Range\&\&>::value)\ \{\ std::ranges::move(values,\ span.begin()\ +\ count);\ \}}
+\DoxyCodeLine{00074\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{\ std::ranges::copy(values,\ span.begin()\ +\ count);\ \}}
+\DoxyCodeLine{00075\ \ \ \ \ \ \ \ \ count\ =\ newCount;}
+\DoxyCodeLine{00076\ \ \ \ \ \}}
+\DoxyCodeLine{00077\ }
+\DoxyCodeLine{00080\ \ \ \ \ \textcolor{keyword}{constexpr}\ \textcolor{keywordtype}{void}\ unsafe\_pop\_back(size\_type\ n)\ \textcolor{keyword}{noexcept}\ }
+\DoxyCodeLine{00081\ \ \ \ \ \{\ }
+\DoxyCodeLine{00082\ \ \ \ \ \ \ \ \ assert(n\ <=\ count\ \&\&\ \textcolor{stringliteral}{"{}Not\ enough\ items\ to\ pop"{}});}
+\DoxyCodeLine{00083\ \ \ \ \ \ \ \ \ count\ -\/=\ n;\ }
+\DoxyCodeLine{00084\ \ \ \ \ \}}
+\DoxyCodeLine{00085\ }
+\DoxyCodeLine{00086\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00088\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{constexpr}\ std::string\_view\ TYPE\_NAME\ =\ \textcolor{stringliteral}{"{}SpanStack"{}};}
+\DoxyCodeLine{00089\ }
+\DoxyCodeLine{00090\ \ \ \ \ \textcolor{keyword}{using\ }SpanContainer::SpanContainer;}
+\DoxyCodeLine{00091\ \ \ \ \ \textcolor{keyword}{using\ }SpanContainer::operator=;}
 \DoxyCodeLine{00092\ }
-\DoxyCodeLine{00093\ \ \ \ \ \textcolor{keyword}{using\ }\mbox{\hyperlink{class_span_containers_1_1internal_1_1_span_container_ac31b9adb4f213f8f12f5dd58e8dffaeb}{SpanContainer::SpanContainer}};}
-\DoxyCodeLine{00094\ \ \ \ \ \textcolor{keyword}{using\ }SpanContainer::operator=;}
+\DoxyCodeLine{00094\ \ \ \ \ \textcolor{keyword}{constexpr}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_span_containers_1_1_span_stack_a6b553ec2842093ef30a5a755ca51dec3}{clear}}()\ noexcept\ \{\ count\ =\ 0;\ \}}
 \DoxyCodeLine{00095\ }
-\DoxyCodeLine{00097\ \ \ \ \ \textcolor{keyword}{constexpr}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_span_containers_1_1_span_stack_a115fa21f14a98aad5ea8cd7d4c450df1}{clear}}()\ noexcept\ \{\ count\ =\ 0;\ \}}
-\DoxyCodeLine{00098\ }
-\DoxyCodeLine{00101\ \ \ \ \ \textcolor{keyword}{constexpr}\ \textcolor{keyword}{auto}\ \mbox{\hyperlink{class_span_containers_1_1_span_stack_a412987c6ff9f916821feaf2e6bae3bbc}{as\_span}}()\ const\ noexcept\ \{\ \textcolor{keywordflow}{return}\ span.first(count);\ \}}
-\DoxyCodeLine{00102\ \};}
-\DoxyCodeLine{00103\ }
-\DoxyCodeLine{00104\ \}}
+\DoxyCodeLine{00098\ \ \ \ \ \textcolor{keyword}{constexpr}\ \textcolor{keyword}{auto}\ \mbox{\hyperlink{class_span_containers_1_1_span_stack_ae1ac2ccb847e2be28786bf4a89522713}{as\_span}}()\ const\ noexcept\ \{\ \textcolor{keywordflow}{return}\ span.first(count);\ \}}
+\DoxyCodeLine{00099\ \};}
+\DoxyCodeLine{00100\ }
+\DoxyCodeLine{00101\ \}}
 
 \end{DoxyCode}

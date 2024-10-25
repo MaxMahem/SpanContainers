@@ -1,0 +1,30 @@
+\doxysection{Insufficent\+Items\+Error.\+h}
+\hypertarget{_insufficent_items_error_8h_source}{}\label{_insufficent_items_error_8h_source}\index{C:/Users/maxma/source/repos/SpanContainers/lib/Errors/InsufficentItemsError.h@{C:/Users/maxma/source/repos/SpanContainers/lib/Errors/InsufficentItemsError.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00002\ }
+\DoxyCodeLine{00003\ \textcolor{preprocessor}{\#include\ <concepts>}}
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ <format>}}
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ <stdexcept>}}
+\DoxyCodeLine{00006\ }
+\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#include\ "{}internal/FixedSizeContainer.h"{}}}
+\DoxyCodeLine{00008\ }
+\DoxyCodeLine{00009\ \textcolor{keyword}{namespace\ }SpanContainers\ \{}
+\DoxyCodeLine{00010\ }
+\DoxyCodeLine{00012\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_span_containers_1_1_insufficent_items_error}{InsufficentItemsError}}\ :\ \textcolor{keyword}{public}\ std::out\_of\_range}
+\DoxyCodeLine{00013\ \{}
+\DoxyCodeLine{00014\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00017\ \ \ \ \ \mbox{\hyperlink{class_span_containers_1_1_insufficent_items_error_abe1491daaf32036927d72b35dd5101d8}{InsufficentItemsError}}(\textcolor{keyword}{const}\ std::string\&\ message\ =\ \textcolor{stringliteral}{"{}Insufficent\ items\ for\ change."{}})\ :\ std::out\_of\_range(message)\ \{\}}
+\DoxyCodeLine{00018\ }
+\DoxyCodeLine{00024\ \ \ \ \ \textcolor{keyword}{template}\ <FixedSizeContainer\ Container>}
+\DoxyCodeLine{00025\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_span_containers_1_1_insufficent_items_error_a36160328a1eef80bfd7c242c0a86a1d9}{ThrowIfInsufficentItems}}(\textcolor{keyword}{const}\ Container\&\ container,\ \textcolor{keyword}{typename}\ \textcolor{keyword}{decltype}(container.size())\ decrease)}
+\DoxyCodeLine{00026\ \ \ \ \ \{}
+\DoxyCodeLine{00027\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (decrease\ <=\ container.size())\ \{\ \textcolor{keywordflow}{return};\ \}}
+\DoxyCodeLine{00028\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{throw}\ \mbox{\hyperlink{class_span_containers_1_1_insufficent_items_error_abe1491daaf32036927d72b35dd5101d8}{InsufficentItemsError}}(std::format(\textcolor{stringliteral}{"{}Not\ enough\ items\ in\ '\{\}'\ to\ remove\ (\{\})\ items."{}},\ container,\ decrease));}
+\DoxyCodeLine{00029\ \ \ \ \ \}}
+\DoxyCodeLine{00030\ \};}
+\DoxyCodeLine{00031\ }
+\DoxyCodeLine{00032\ \}}
+
+\end{DoxyCode}

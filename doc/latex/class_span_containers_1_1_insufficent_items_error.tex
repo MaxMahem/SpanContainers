@@ -1,0 +1,81 @@
+\doxysection{Span\+Containers\+::Insufficent\+Items\+Error Class Reference}
+\hypertarget{class_span_containers_1_1_insufficent_items_error}{}\label{class_span_containers_1_1_insufficent_items_error}\index{SpanContainers::InsufficentItemsError@{SpanContainers::InsufficentItemsError}}
+
+
+Represents an error that occurs if there would not be enough items for a change.  
+
+
+
+
+{\ttfamily \#include $<$Insufficent\+Items\+Error.\+h$>$}
+
+Inheritance diagram for Span\+Containers\+::Insufficent\+Items\+Error\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=4.000000cm]{class_span_containers_1_1_insufficent_items_error}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_span_containers_1_1_insufficent_items_error_abe1491daaf32036927d72b35dd5101d8}{Insufficent\+Items\+Error}} (const std\+::string \&message="{}Insufficent items for change."{})
+\begin{DoxyCompactList}\small\item\em Constructs a new \doxylink{class_span_containers_1_1_insufficent_items_error}{Insufficent\+Items\+Error}. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+{\footnotesize template$<$Fixed\+Size\+Container Container$>$ }\\static void \mbox{\hyperlink{class_span_containers_1_1_insufficent_items_error_a36160328a1eef80bfd7c242c0a86a1d9}{Throw\+If\+Insufficent\+Items}} (const Container \&container, typename decltype(container.\+size()) decrease)
+\begin{DoxyCompactList}\small\item\em Throws a \doxylink{class_span_containers_1_1_insufficent_items_error}{Insufficent\+Items\+Error} exception if container does not have enough items to remove decrease items. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Represents an error that occurs if there would not be enough items for a change. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{class_span_containers_1_1_insufficent_items_error_abe1491daaf32036927d72b35dd5101d8}\index{SpanContainers::InsufficentItemsError@{SpanContainers::InsufficentItemsError}!InsufficentItemsError@{InsufficentItemsError}}
+\index{InsufficentItemsError@{InsufficentItemsError}!SpanContainers::InsufficentItemsError@{SpanContainers::InsufficentItemsError}}
+\doxysubsubsection{\texorpdfstring{InsufficentItemsError()}{InsufficentItemsError()}}
+{\footnotesize\ttfamily \label{class_span_containers_1_1_insufficent_items_error_abe1491daaf32036927d72b35dd5101d8} 
+Span\+Containers\+::\+Insufficent\+Items\+Error\+::\+Insufficent\+Items\+Error (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{message}{ = {\ttfamily "{}Insufficent~items~for~change."{}}}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Constructs a new \doxylink{class_span_containers_1_1_insufficent_items_error}{Insufficent\+Items\+Error}. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em The} & message to associate with this error. \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_span_containers_1_1_insufficent_items_error_a36160328a1eef80bfd7c242c0a86a1d9}\index{SpanContainers::InsufficentItemsError@{SpanContainers::InsufficentItemsError}!ThrowIfInsufficentItems@{ThrowIfInsufficentItems}}
+\index{ThrowIfInsufficentItems@{ThrowIfInsufficentItems}!SpanContainers::InsufficentItemsError@{SpanContainers::InsufficentItemsError}}
+\doxysubsubsection{\texorpdfstring{ThrowIfInsufficentItems()}{ThrowIfInsufficentItems()}}
+{\footnotesize\ttfamily \label{class_span_containers_1_1_insufficent_items_error_a36160328a1eef80bfd7c242c0a86a1d9} 
+template$<$Fixed\+Size\+Container Container$>$ \\
+static void Span\+Containers\+::\+Insufficent\+Items\+Error\+::\+Throw\+If\+Insufficent\+Items (\begin{DoxyParamCaption}\item[{const Container \&}]{container}{, }\item[{typename decltype(container.\+size())}]{decrease}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}
+
+
+
+Throws a \doxylink{class_span_containers_1_1_insufficent_items_error}{Insufficent\+Items\+Error} exception if container does not have enough items to remove decrease items. 
+
+
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Container} & The type of the container, a formattable span container. \\
+\hline
+{\em Integer} & An integer \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}{Parameters}
+{\em container} & The container to check. \\
+\hline
+{\em decrease} & The count of items to check if there is capacity to remove. \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/\+Users/maxma/source/repos/\+Span\+Containers/lib/\+Errors/Insufficent\+Items\+Error.\+h\end{DoxyCompactItemize}

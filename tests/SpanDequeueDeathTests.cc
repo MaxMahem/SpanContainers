@@ -3,7 +3,7 @@
 
 #include <gtest/gtest.h>
 
-#define SPAN_CONTAINERS_USE_EXCEPTIONS false
+#define SC_USE_EXCEPTIONS false
 #include "SpanDequeue.h"
 
 #include "TypedContainerDeathTests.h"

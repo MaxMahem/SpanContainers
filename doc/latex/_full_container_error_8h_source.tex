@@ -6,26 +6,22 @@
 \DoxyCodeLine{00002\ \textcolor{preprocessor}{\#include\ <format>}}
 \DoxyCodeLine{00003\ \textcolor{preprocessor}{\#include\ <stdexcept>}}
 \DoxyCodeLine{00004\ }
-\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ "{}internal/FormattableSpanContainer.h"{}}}
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ "{}internal/FixedSizeContainer.h"{}}}
 \DoxyCodeLine{00006\ }
 \DoxyCodeLine{00007\ \textcolor{keyword}{namespace\ }SpanContainers\ \{}
 \DoxyCodeLine{00008\ }
 \DoxyCodeLine{00010\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_span_containers_1_1_full_container_error}{FullContainerError}}\ :\ \textcolor{keyword}{public}\ std::out\_of\_range}
 \DoxyCodeLine{00011\ \{}
 \DoxyCodeLine{00012\ \textcolor{keyword}{public}:}
-\DoxyCodeLine{00013\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{constexpr}\ std::string\_view\ EXCEPTION\_NAME\ =\ \textcolor{stringliteral}{"{}FullContainerError"{}};}
-\DoxyCodeLine{00014\ }
-\DoxyCodeLine{00017\ \ \ \ \ \mbox{\hyperlink{class_span_containers_1_1_full_container_error_ab54968b3fb5676af10badbdb8609cf31}{FullContainerError}}(\textcolor{keyword}{const}\ std::string\&\ message\ =\ \textcolor{stringliteral}{"{}Container\ is\ full."{}})\ :\ std::out\_of\_range(message)\ \{\}}
-\DoxyCodeLine{00018\ }
-\DoxyCodeLine{00023\ \ \ \ \ \textcolor{keyword}{template}<std::\textcolor{keywordtype}{int}egral\ Integer>}
-\DoxyCodeLine{00024\ \ \ \ \ \mbox{\hyperlink{class_span_containers_1_1_full_container_error_a92f51a9f550e36e4c56f2f54a9286d2c}{FullContainerError}}(Integer\ capacity,\ \textcolor{keyword}{const}\ std::string\&\ format\_string\ =\ \textcolor{stringliteral}{"{}Container\ capacity\ (\{\})\ exceeded."{}})}
-\DoxyCodeLine{00025\ \ \ \ \ \ \ \ \ :\ std::out\_of\_range(std::vformat(format\_string,\ std::make\_format\_args(capacity)))\ \{\}}
+\DoxyCodeLine{00015\ \ \ \ \ \mbox{\hyperlink{class_span_containers_1_1_full_container_error_ab54968b3fb5676af10badbdb8609cf31}{FullContainerError}}(\textcolor{keyword}{const}\ std::string\&\ message\ =\ \textcolor{stringliteral}{"{}Container\ is\ full."{}})\ :\ std::out\_of\_range(message)\ \{\}}
+\DoxyCodeLine{00016\ }
+\DoxyCodeLine{00020\ \ \ \ \ \textcolor{keyword}{template}<FixedSizeContainer\ Container>}
+\DoxyCodeLine{00021\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{constexpr}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_span_containers_1_1_full_container_error_a8447c91bbb12f335727eef3c410d9c13}{ThrowIfFull}}(\textcolor{keyword}{const}\ Container\&\ container)\ }
+\DoxyCodeLine{00022\ \ \ \ \ \{}
+\DoxyCodeLine{00023\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (container.full())\ \{\ \textcolor{keywordflow}{throw}\ \mbox{\hyperlink{class_span_containers_1_1_full_container_error_ab54968b3fb5676af10badbdb8609cf31}{FullContainerError}}(std::format(\textcolor{stringliteral}{"{}Container\ '\{\}'\ is\ full."{}},\ container));\ \}}
+\DoxyCodeLine{00024\ \ \ \ \ \}}
+\DoxyCodeLine{00025\ \};}
 \DoxyCodeLine{00026\ }
-\DoxyCodeLine{00031\ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keywordtype}{int}ernal::FormattableSpanContainer\ Container>}
-\DoxyCodeLine{00032\ \ \ \ \ \mbox{\hyperlink{class_span_containers_1_1_full_container_error_ae1674dc46ff155c965d634931e5bb2fa}{FullContainerError}}(\textcolor{keyword}{const}\ Container\&\ container,\ \textcolor{keyword}{const}\ std::string\&\ format\_string\ =\ \textcolor{stringliteral}{"{}Container\ '\{\}'\ capacity\ exceeded."{}})}
-\DoxyCodeLine{00033\ \ \ \ \ \ \ \ \ :\ std::out\_of\_range(std::vformat(format\_string,\ std::make\_format\_args(container)))\ \{\}}
-\DoxyCodeLine{00034\ \};}
-\DoxyCodeLine{00035\ }
-\DoxyCodeLine{00036\ \}}
+\DoxyCodeLine{00027\ \}}
 
 \end{DoxyCode}

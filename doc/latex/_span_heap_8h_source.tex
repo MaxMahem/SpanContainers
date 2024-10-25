@@ -18,95 +18,78 @@
 \DoxyCodeLine{00014\ \textcolor{keyword}{namespace\ }SpanContainers\ \{}
 \DoxyCodeLine{00015\ }
 \DoxyCodeLine{00016\ \textcolor{keyword}{template}\ <\textcolor{keyword}{typename}\ Compare,\ \textcolor{keyword}{typename}\ T>}
-\DoxyCodeLine{00017\ \textcolor{keyword}{concept\ }\mbox{\hyperlink{concept_span_containers_1_1_std_comparer}{StdComparer}}\ =\ \textcolor{keyword}{requires}(T\ a,\ T\ b,\ Compare\ comp)\ \{}
+\DoxyCodeLine{00017\ \textcolor{keyword}{concept\ }\mbox{\hyperlink{concept_span_containers_1_1_std_comparer}{StdComparer}}\ =\ std::is\_empty<Compare>::value\ \&\&\ \textcolor{keyword}{requires}(T\ a,\ T\ b,\ Compare\ comp)\ \{}
 \DoxyCodeLine{00018\ \ \ \ \ \{\ comp(a,\ b)\ \}\ -\/>\ std::convertible\_to<bool>;}
 \DoxyCodeLine{00019\ \};}
 \DoxyCodeLine{00020\ }
 \DoxyCodeLine{00024\ \textcolor{keyword}{template}\ <std::swappable\ T,\ std::\textcolor{keywordtype}{size\_t}\ Extent,\ StdComparer<T>\ Comparer\ =\ std::less<T>>}
-\DoxyCodeLine{00025\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_span_containers_1_1_span_heap}{SpanHeap}}\ :\ \textcolor{keyword}{public}\ \mbox{\hyperlink{class_span_containers_1_1internal_1_1_span_container}{internal::SpanContainer}}<T,\ Extent>,}
-\DoxyCodeLine{00026\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{public}\ \mbox{\hyperlink{struct_span_containers_1_1internal_1_1_push_straight_trait}{internal::PushStraightTrait}}<SpanHeap<T,\ Extent,\ Comparer>,\ T>,}
-\DoxyCodeLine{00027\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{public}\ \mbox{\hyperlink{struct_span_containers_1_1internal_1_1_pop_back_trait}{internal::PopBackTrait}}<SpanHeap<T,\ Extent,\ Comparer>,\ T>}
+\DoxyCodeLine{00025\ \textcolor{keyword}{class\ }SC\_EMPTY\_BASES\ \mbox{\hyperlink{class_span_containers_1_1_span_heap}{SpanHeap}}\ :\ \textcolor{keyword}{public}\ \mbox{\hyperlink{class_span_containers_1_1internal_1_1_span_container}{internal::SpanContainer}}<T,\ Extent>,}
+\DoxyCodeLine{00026\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{public}\ \mbox{\hyperlink{struct_span_containers_1_1internal_1_1_push_straight_trait}{internal::PushStraightTrait}}<SpanHeap<T,\ Extent,\ Comparer>,\ T>,}
+\DoxyCodeLine{00027\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{public}\ \mbox{\hyperlink{struct_span_containers_1_1internal_1_1_pop_back_trait}{internal::PopBackTrait}}<SpanHeap<T,\ Extent,\ Comparer>,\ T>}
 \DoxyCodeLine{00028\ \{}
-\DoxyCodeLine{00029\ \ \ \ \ \textcolor{keyword}{using\ }\mbox{\hyperlink{class_span_containers_1_1internal_1_1_span_container}{SpanContainer}}\ =\ \mbox{\hyperlink{class_span_containers_1_1internal_1_1_span_container}{internal::SpanContainer<T,\ Extent>}};}
-\DoxyCodeLine{00030\ }
-\DoxyCodeLine{00031\ \ \ \ \ \textcolor{keyword}{using\ }\mbox{\hyperlink{class_span_containers_1_1internal_1_1_span_container_a0e264b02900eed12541aa0e6d794bfd5}{SpanContainer::span}};}
-\DoxyCodeLine{00032\ \ \ \ \ \textcolor{keyword}{using\ }\mbox{\hyperlink{class_span_containers_1_1internal_1_1_span_container_a14bbacf4b0597e3f514a05971b483cad}{SpanContainer::count}};}
-\DoxyCodeLine{00033\ }
-\DoxyCodeLine{00034\ \ \ \ \ Comparer\ comparer;}
-\DoxyCodeLine{00035\ }
-\DoxyCodeLine{00038\ \ \ \ \ \textcolor{keyword}{auto}\ CalculateMakeThreshold()\{\ \textcolor{keywordflow}{return}\ count\ /\ std::max(1,\ std::bit\_width(count)\ -\/\ 1);\ \}}
+\DoxyCodeLine{00029\ \ \ \ \ \textcolor{keyword}{friend}\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{struct_span_containers_1_1internal_1_1_push_straight_trait}{internal::PushStraightTrait}}<\mbox{\hyperlink{class_span_containers_1_1_span_heap}{SpanHeap}}<T,\ Extent,\ Comparer>,\ T>;}
+\DoxyCodeLine{00030\ \ \ \ \ \textcolor{keyword}{friend}\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{struct_span_containers_1_1internal_1_1_pop_back_trait}{internal::PopBackTrait}}<\mbox{\hyperlink{class_span_containers_1_1_span_heap}{SpanHeap}}<T,\ Extent,\ Comparer>,\ T>;}
+\DoxyCodeLine{00031\ }
+\DoxyCodeLine{00032\ \ \ \ \ \textcolor{keyword}{using\ }\mbox{\hyperlink{class_span_containers_1_1internal_1_1_span_container}{SpanContainer}}\ =\ \mbox{\hyperlink{class_span_containers_1_1internal_1_1_span_container}{internal::SpanContainer<T,\ Extent>}};}
+\DoxyCodeLine{00033\ \ \ \ \ \textcolor{keyword}{using\ }SpanContainer::span;}
+\DoxyCodeLine{00034\ \ \ \ \ \textcolor{keyword}{using\ }SpanContainer::count;}
+\DoxyCodeLine{00035\ \ \ \ \ \textcolor{keyword}{using\ }SpanContainer::size\_type;}
+\DoxyCodeLine{00036\ \ \ \ \ \textcolor{keyword}{using\ }SpanContainer::reference;}
+\DoxyCodeLine{00037\ }
+\DoxyCodeLine{00038\ \ \ \ \ SC\_NO\_UNIQUE\_ADDRESS\ Comparer\ comparer;}
 \DoxyCodeLine{00039\ }
-\DoxyCodeLine{00040\ \textcolor{keyword}{public}:}
-\DoxyCodeLine{00041\ \ \ \ \ \textcolor{keyword}{using\ }span\_type\ =\ std::span<T,\ Extent>;}
-\DoxyCodeLine{00042\ \ \ \ \ \textcolor{keyword}{using\ }SpanContainer::element\_type;}
-\DoxyCodeLine{00043\ \ \ \ \ \textcolor{keyword}{using\ }SpanContainer::size\_type;}
-\DoxyCodeLine{00044\ \ \ \ \ \textcolor{keyword}{using\ }SpanContainer::pointer;}
-\DoxyCodeLine{00045\ \ \ \ \ \textcolor{keyword}{using\ }SpanContainer::const\_pointer;}
-\DoxyCodeLine{00046\ \ \ \ \ \textcolor{keyword}{using\ }SpanContainer::reference;}
-\DoxyCodeLine{00047\ \ \ \ \ \textcolor{keyword}{using\ }SpanContainer::const\_reference;}
-\DoxyCodeLine{00048\ }
-\DoxyCodeLine{00050\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{constexpr}\ std::string\_view\ \mbox{\hyperlink{class_span_containers_1_1_span_heap_ae3df9039b665ae2e59eff07fad1d8e07}{TYPE\_NAME}}\ =\ \textcolor{stringliteral}{"{}SpanHeap"{}};}
-\DoxyCodeLine{00051\ }
-\DoxyCodeLine{00052\ \ \ \ \ \textcolor{keyword}{using\ }\mbox{\hyperlink{class_span_containers_1_1internal_1_1_span_container_ac31b9adb4f213f8f12f5dd58e8dffaeb}{SpanContainer::SpanContainer}};}
-\DoxyCodeLine{00053\ \ \ \ \ \textcolor{keyword}{using\ }SpanContainer::operator=;}
-\DoxyCodeLine{00054\ }
-\DoxyCodeLine{00059\ \ \ \ \ \textcolor{keyword}{template}\ <\textcolor{keyword}{typename}\ Buffer>}
-\DoxyCodeLine{00060\ \ \ \ \ \textcolor{keyword}{requires}\ std::is\_lvalue\_reference\_v<Buffer\&>\&\&\ std::is\_constructible\_v<span\_type,\ Buffer\&>}
-\DoxyCodeLine{00061\ \ \ \ \ \textcolor{keyword}{constexpr}\ \mbox{\hyperlink{class_span_containers_1_1_span_heap_a0bf6f71e93b3dc8489bbe678bad23ceb}{SpanHeap}}(Buffer\&\ buffer,\ Comparer\ comparer)\ noexcept\ :\ span(buffer),\ comparer(comparer)\ \{\ \}}
-\DoxyCodeLine{00062\ }
-\DoxyCodeLine{00065\ \ \ \ \ [[nodiscard]]\ \textcolor{keyword}{constexpr}\ reference\ \mbox{\hyperlink{class_span_containers_1_1_span_heap_a256338db73efbbd6f4ab96eb1ad1fda6}{unsafe\_back}}()\ const\ noexcept\ }
-\DoxyCodeLine{00066\ \ \ \ \ \{}
-\DoxyCodeLine{00067\ \ \ \ \ \ \ \ \ assert(count\ >\ 0\ \&\&\ \textcolor{stringliteral}{"{}Container\ is\ empty."{}});}
-\DoxyCodeLine{00068\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ span[0];\ }
-\DoxyCodeLine{00069\ \ \ \ \ \}}
-\DoxyCodeLine{00070\ }
-\DoxyCodeLine{00074\ \ \ \ \ \textcolor{keyword}{template}\ <\textcolor{keyword}{typename}\ U>\ \textcolor{keyword}{requires}\ std::assignable\_from<T\&,\ U\&\&>}
-\DoxyCodeLine{00075\ \ \ \ \ \textcolor{keyword}{constexpr}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_span_containers_1_1_span_heap_ac3737379dcd76a66cfc7aaf58c49bbb1}{unsafe\_push}}(U\&\&\ value)\ \textcolor{keyword}{noexcept}(std::is\_nothrow\_assignable<T,\ U>::value)}
-\DoxyCodeLine{00076\ \ \ \ \ \{}
-\DoxyCodeLine{00077\ \ \ \ \ \ \ \ \ assert(count\ <\ Extent\ \&\&\ \textcolor{stringliteral}{"{}Container\ is\ full."{}});}
-\DoxyCodeLine{00078\ \ \ \ \ \ \ \ \ span[count++]\ =\ std::forward<U>(value);}
-\DoxyCodeLine{00079\ \ \ \ \ \ \ \ \ std::push\_heap(span.begin(),\ span.begin()\ +\ count,\ comparer);}
-\DoxyCodeLine{00080\ \ \ \ \ \}}
-\DoxyCodeLine{00081\ }
-\DoxyCodeLine{00085\ \ \ \ \ \textcolor{keyword}{template}<std::ranges::input\_range\ Range\ =\ std::initializer\_list<T>>}
-\DoxyCodeLine{00086\ \ \ \ \ \textcolor{keyword}{constexpr}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_span_containers_1_1_span_heap_ae61af5f519be55e8cfec0e136a6fcc4d}{try\_push\_range}}(Range\&\&\ values)\ \textcolor{keyword}{requires}\ std::convertible\_to<std::ranges::range\_value\_t<Range>,\ T>}
-\DoxyCodeLine{00087\ \ \ \ \ \{}
-\DoxyCodeLine{00088\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keyword}{auto}\ rangeSize\ =\ std::ranges::size(values);}
-\DoxyCodeLine{00089\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keyword}{auto}\ newCount\ =\ count\ +\ rangeSize;}
-\DoxyCodeLine{00090\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (newCount\ >\ Extent)\ \{\ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};\ \}}
-\DoxyCodeLine{00091\ \ \ \ \ \ \ \ \ \textcolor{keyword}{constexpr}\ \textcolor{keywordtype}{bool}\ isRvalue\ =\ std::is\_rvalue\_reference<Range\&\&>::value;}
+\DoxyCodeLine{00042\ \ \ \ \ [[nodiscard]]\ \textcolor{keyword}{constexpr}\ reference\ unsafe\_back()\ \textcolor{keyword}{const}\ \textcolor{keyword}{noexcept}\ }
+\DoxyCodeLine{00043\ \ \ \ \ \{}
+\DoxyCodeLine{00044\ \ \ \ \ \ \ \ \ assert(count\ >\ 0\ \&\&\ \textcolor{stringliteral}{"{}Container\ is\ empty"{}});}
+\DoxyCodeLine{00045\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ span[0];\ }
+\DoxyCodeLine{00046\ \ \ \ \ \}}
+\DoxyCodeLine{00047\ }
+\DoxyCodeLine{00051\ \ \ \ \ \textcolor{keyword}{template}\ <\textcolor{keyword}{typename}\ U>\ \textcolor{keyword}{requires}\ std::assignable\_from<T\&,\ U\&\&>}
+\DoxyCodeLine{00052\ \ \ \ \ \textcolor{keyword}{constexpr}\ \textcolor{keywordtype}{void}\ unsafe\_push(U\&\&\ value)\ \textcolor{keyword}{noexcept}(std::is\_nothrow\_assignable<T,\ U>::value)}
+\DoxyCodeLine{00053\ \ \ \ \ \{}
+\DoxyCodeLine{00054\ \ \ \ \ \ \ \ \ assert(count\ <\ Extent\ \&\&\ \textcolor{stringliteral}{"{}Container\ is\ full"{}});}
+\DoxyCodeLine{00055\ \ \ \ \ \ \ \ \ span[count++]\ =\ std::forward<U>(value);}
+\DoxyCodeLine{00056\ \ \ \ \ \ \ \ \ std::push\_heap(span.begin(),\ span.begin()\ +\ count,\ comparer);}
+\DoxyCodeLine{00057\ \ \ \ \ \}}
+\DoxyCodeLine{00058\ }
+\DoxyCodeLine{00061\ \ \ \ \ \textcolor{keyword}{constexpr}\ \textcolor{keywordtype}{void}\ unsafe\_pop\_back(size\_type\ n)\ \textcolor{keyword}{noexcept}}
+\DoxyCodeLine{00062\ \ \ \ \ \{}
+\DoxyCodeLine{00063\ \ \ \ \ \ \ \ \ assert(n\ <=\ count\ \&\&\ \textcolor{stringliteral}{"{}Not\ enough\ items\ to\ pop"{}});}
+\DoxyCodeLine{00064\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{while}(n-\/-\/\ >\ 0)\ \{\ std::pop\_heap(span.begin(),\ span.begin()\ +\ count-\/-\/,\ comparer);\ \}}
+\DoxyCodeLine{00065\ \ \ \ \ \}}
+\DoxyCodeLine{00066\ }
+\DoxyCodeLine{00069\ \ \ \ \ \textcolor{keyword}{template}<std::ranges::sized\_range\ Range\ =\ std::initializer\_list<T>>}
+\DoxyCodeLine{00070\ \ \ \ \ \textcolor{keyword}{constexpr}\ \textcolor{keywordtype}{void}\ unsafe\_push\_sized\_range(Range\&\&\ values,\ size\_type\ rangeSize)\ \textcolor{keyword}{requires}\ std::convertible\_to<std::ranges::range\_value\_t<Range>,\ T>}
+\DoxyCodeLine{00071\ \ \ \ \ \{}
+\DoxyCodeLine{00072\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keyword}{auto}\ newCount\ =\ count\ +\ rangeSize;}
+\DoxyCodeLine{00073\ \ \ \ \ \ \ \ \ assert(newCount\ <=\ Extent\ \&\&\ \textcolor{stringliteral}{"{}Range\ is\ to\ large\ for\ span."{}});}
+\DoxyCodeLine{00074\ }
+\DoxyCodeLine{00075\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (rangeSize\ >\ make\_threshold())\ \{}
+\DoxyCodeLine{00076\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ \textcolor{keyword}{constexpr}\ (std::is\_rvalue\_reference<Range\&\&>::value)\ \{\ std::ranges::move(values,\ span.begin()\ +\ count);\ \}}
+\DoxyCodeLine{00077\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{\ std::ranges::copy(values,\ span.begin()\ +\ count);\ \}}
+\DoxyCodeLine{00078\ \ \ \ \ \ \ \ \ \ \ \ \ count\ =\ newCount;}
+\DoxyCodeLine{00079\ \ \ \ \ \ \ \ \ \ \ \ \ std::make\_heap(span.begin(),\ span.begin()\ +\ count,\ comparer);}
+\DoxyCodeLine{00080\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00081\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}\ \{}
+\DoxyCodeLine{00082\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{auto}\&\&\ value\ :\ values)\ \{\ unsafe\_push(value);\ \}}
+\DoxyCodeLine{00083\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00084\ \ \ \ \ \}}
+\DoxyCodeLine{00085\ }
+\DoxyCodeLine{00086\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00088\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{constexpr}\ std::string\_view\ TYPE\_NAME\ =\ \textcolor{stringliteral}{"{}SpanHeap"{}};}
+\DoxyCodeLine{00089\ }
+\DoxyCodeLine{00090\ \ \ \ \ \textcolor{keyword}{using\ }SpanContainer::SpanContainer;}
+\DoxyCodeLine{00091\ \ \ \ \ \textcolor{keyword}{using\ }SpanContainer::operator=;}
 \DoxyCodeLine{00092\ }
-\DoxyCodeLine{00093\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (rangeSize\ >\ CalculateMakeThreshold())\ \{}
-\DoxyCodeLine{00094\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ \textcolor{keyword}{constexpr}\ (isRvalue)\ \{\ std::ranges::move(values,\ span.begin()\ +\ count);\ \}}
-\DoxyCodeLine{00095\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{\ std::ranges::copy(values,\ span.begin()\ +\ count);\ \}}
-\DoxyCodeLine{00096\ \ \ \ \ \ \ \ \ \ \ \ \ count\ =\ newCount;}
-\DoxyCodeLine{00097\ \ \ \ \ \ \ \ \ \ \ \ \ std::make\_heap(span.begin(),\ span.begin()\ +\ count,\ comparer);}
-\DoxyCodeLine{00098\ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{00099\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}\ \{}
-\DoxyCodeLine{00100\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{auto}\&\&\ value\ :\ values)\ \{}
-\DoxyCodeLine{00101\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ \textcolor{keyword}{constexpr}\ (isRvalue)\ \{\ span[count++]\ =\ std::move(value);\ \}}
-\DoxyCodeLine{00102\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{\ span[count++]\ =\ value;\ \}}
-\DoxyCodeLine{00103\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::push\_heap(span.begin(),\ span.begin()\ +\ count,\ comparer);}
-\DoxyCodeLine{00104\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{00105\ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{00106\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{true};}
-\DoxyCodeLine{00107\ \ \ \ \ \}}
+\DoxyCodeLine{00097\ \ \ \ \ \textcolor{keyword}{template}\ <\textcolor{keyword}{typename}\ Buffer>}
+\DoxyCodeLine{00098\ \ \ \ \ \ \ \ \ \textcolor{keyword}{requires}\ std::is\_lvalue\_reference\_v<Buffer\&>\&\&\ std::is\_constructible\_v<span\_type,\ Buffer\&>}
+\DoxyCodeLine{00099\ \ \ \ \ \textcolor{keyword}{constexpr}\ \mbox{\hyperlink{class_span_containers_1_1_span_heap_a0bf6f71e93b3dc8489bbe678bad23ceb}{SpanHeap}}(Buffer\&\ buffer,\ Comparer\ comparer)\ noexcept\ :\ span(buffer),\ comparer(comparer)\ \{\ \}}
+\DoxyCodeLine{00100\ }
+\DoxyCodeLine{00103\ \ \ \ \ [[nodiscard]]\ size\_type\ \mbox{\hyperlink{class_span_containers_1_1_span_heap_a502cfeadaafd4528ef5b97da1bdcd1eb}{make\_threshold}}()\ noexcept\ \{\ \textcolor{keywordflow}{return}\ count\ /\ std::max(1,\ std::bit\_width(count)\ -\/\ 1);\ \}}
+\DoxyCodeLine{00104\ }
+\DoxyCodeLine{00106\ \ \ \ \ \textcolor{keyword}{constexpr}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_span_containers_1_1_span_heap_a798e703f2e7e01e215227a1b2f2baa4b}{clear}}()\ noexcept\ \{\ count\ =\ 0;\ \}}
+\DoxyCodeLine{00107\ \};}
 \DoxyCodeLine{00108\ }
-\DoxyCodeLine{00111\ \ \ \ \ \textcolor{keyword}{constexpr}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_span_containers_1_1_span_heap_a91e2a9e7a646b8029c72c2bc966d35ee}{unsafe\_pop\_back}}(size\_type\ n)\ \textcolor{keyword}{noexcept}}
-\DoxyCodeLine{00112\ \ \ \ \ \{}
-\DoxyCodeLine{00113\ \ \ \ \ \ \ \ \ assert(n\ <=\ count\ \&\&\ \textcolor{stringliteral}{"{}Not\ enough\ items\ to\ pop."{}});}
-\DoxyCodeLine{00114\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (n\ >\ CalculateMakeThreshold())\ \{}
-\DoxyCodeLine{00115\ \ \ \ \ \ \ \ \ \ \ \ \ std::make\_heap(span.begin(),\ span.begin()\ +\ count,\ comparer);}
-\DoxyCodeLine{00116\ \ \ \ \ \ \ \ \ \ \ \ \ count\ -\/=\ n;}
-\DoxyCodeLine{00117\ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{00118\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}\ \{}
-\DoxyCodeLine{00119\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (;\ n\ >\ 0;\ n-\/-\/)\ \{\ std::pop\_heap(span.begin(),\ span.begin()\ +\ count-\/-\/,\ comparer);\ \}}
-\DoxyCodeLine{00120\ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{00121\ \ \ \ \ \}}
-\DoxyCodeLine{00122\ }
-\DoxyCodeLine{00124\ \ \ \ \ \textcolor{keyword}{constexpr}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_span_containers_1_1_span_heap_a798e703f2e7e01e215227a1b2f2baa4b}{clear}}()\ noexcept\ \{\ count\ =\ 0;\ \}}
-\DoxyCodeLine{00125\ \};}
-\DoxyCodeLine{00126\ }
-\DoxyCodeLine{00127\ \}}
+\DoxyCodeLine{00109\ \}}
 
 \end{DoxyCode}

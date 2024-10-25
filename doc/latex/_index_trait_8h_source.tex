@@ -5,7 +5,7 @@
 \DoxyCodeLine{00001\ \textcolor{preprocessor}{\#pragma\ once}}
 \DoxyCodeLine{00002\ }
 \DoxyCodeLine{00003\ \textcolor{preprocessor}{\#include\ <span>}}
-\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ <stdexcept>}}
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ "{}Errors/IndexOutOfRangeError.h"{}}}
 \DoxyCodeLine{00005\ }
 \DoxyCodeLine{00006\ \textcolor{keyword}{namespace\ }\mbox{\hyperlink{namespace_span_containers_1_1internal}{SpanContainers::internal}}\ \{}
 \DoxyCodeLine{00007\ }
@@ -22,7 +22,7 @@
 \DoxyCodeLine{00021\ \textcolor{keyword}{public}:}
 \DoxyCodeLine{00026\ \ \ \ \ [[nodiscard]]\ \textcolor{keyword}{constexpr}\ reference\ \mbox{\hyperlink{struct_span_containers_1_1internal_1_1_index_trait_ada06eabb7b7e3fc9ec94b0f28b42aed5}{operator[]}}(size\_type\ index)\textcolor{keyword}{\ const}}
 \DoxyCodeLine{00027\ \textcolor{keyword}{\ \ \ \ }\{}
-\DoxyCodeLine{00028\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ \textcolor{keyword}{constexpr}\ (UseExceptions)\ \{\ \textcolor{keywordflow}{if}\ (index\ >=\ asDerived().size())\ \{\ \textcolor{keywordflow}{throw}\ std::out\_of\_range(\textcolor{stringliteral}{"{}Index\ out\ of\ range."{}});\ \}\ \}}
+\DoxyCodeLine{00028\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ \textcolor{keyword}{constexpr}\ (UseExceptions)\ \{\ \mbox{\hyperlink{class_span_containers_1_1_index_out_of_range_error_a264607f2129a30372811f14293003bf0}{IndexOutOfRangeError::ThrowIfOutOfRange}}(asDerived(),\ index);\ \}}
 \DoxyCodeLine{00029\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ asDerived().unsafe\_at(index);}
 \DoxyCodeLine{00030\ \ \ \ \ \}}
 \DoxyCodeLine{00031\ }

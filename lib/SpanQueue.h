@@ -19,10 +19,10 @@ namespace SpanContainers {
 /// @tparam T The type of the item in the container.
 /// @tparam Extent The size/maximum number of elements in the container.
 template <typename T, std::size_t Extent>
-class SpanQueue : public internal::SpanContainer<T, Extent>,
-                  public internal::IndexTrait<SpanQueue<T, Extent>, T>,
-                  public internal::PushBackTrait<SpanQueue<T, Extent>, T>,
-                  public internal::PopFrontTrait<SpanQueue<T, Extent>, T>
+class SC_EMPTY_BASES SpanQueue : public internal::SpanContainer<T, Extent>,
+                                 public internal::IndexTrait<SpanQueue<T, Extent>, T>,
+                                 public internal::PushBackTrait<SpanQueue<T, Extent>, T>,
+                                 public internal::PopFrontTrait<SpanQueue<T, Extent>, T>
 {
     friend struct internal::IndexTrait<SpanQueue<T, Extent>, T>;
     friend struct internal::PushBackTrait<SpanQueue<T, Extent>, T>;
@@ -107,7 +107,6 @@ protected:
     SpanContainer::size_type write = 0;
 
 public:
-
     /// @brief the name of this type.
     static constexpr std::string_view TYPE_NAME = "SpanQueue";
 

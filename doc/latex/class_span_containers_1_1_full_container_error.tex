@@ -19,17 +19,12 @@ Inheritance diagram for Span\+Containers\+::Full\+Container\+Error\+:\begin{figu
 \begin{DoxyCompactItemize}
 \item 
 \mbox{\hyperlink{class_span_containers_1_1_full_container_error_ab54968b3fb5676af10badbdb8609cf31}{Full\+Container\+Error}} (const std\+::string \&message="{}Container is full."{})
-\begin{DoxyCompactList}\small\item\em Constructs a \doxylink{class_span_containers_1_1_full_container_error}{Full\+Container\+Error} using message. \end{DoxyCompactList}\item 
-{\footnotesize template$<$std\+::integral Integer$>$ }\\\mbox{\hyperlink{class_span_containers_1_1_full_container_error_a92f51a9f550e36e4c56f2f54a9286d2c}{Full\+Container\+Error}} (Integer capacity, const std\+::string \&format\+\_\+string="{}Container capacity (\{\}) exceeded."{})
-\begin{DoxyCompactList}\small\item\em Constructs a new \doxylink{class_span_containers_1_1_full_container_error}{Full\+Container\+Error} using capacity and format\+\_\+string. \end{DoxyCompactList}\item 
-{\footnotesize template$<$internal\+::\+Formattable\+Span\+Container Container$>$ }\\\mbox{\hyperlink{class_span_containers_1_1_full_container_error_ae1674dc46ff155c965d634931e5bb2fa}{Full\+Container\+Error}} (const Container \&container, const std\+::string \&format\+\_\+string="{}Container \textquotesingle{}\{\}\textquotesingle{} capacity exceeded."{})
-\begin{DoxyCompactList}\small\item\em Constructs a new \doxylink{class_span_containers_1_1_full_container_error}{Full\+Container\+Error} using container and format\+\_\+string. \end{DoxyCompactList}\end{DoxyCompactItemize}
-\doxysubsubsection*{Static Public Attributes}
+\begin{DoxyCompactList}\small\item\em Constructs a \doxylink{class_span_containers_1_1_full_container_error}{Full\+Container\+Error} using message. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Static Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\Hypertarget{class_span_containers_1_1_full_container_error_a90dfac557d0443063cf5eaf6e630c363}\label{class_span_containers_1_1_full_container_error_a90dfac557d0443063cf5eaf6e630c363} 
-static constexpr std\+::string\+\_\+view {\bfseries EXCEPTION\+\_\+\+NAME} = "{}Full\+Container\+Error"{}
-\end{DoxyCompactItemize}
+{\footnotesize template$<$Fixed\+Size\+Container Container$>$ }\\static constexpr void \mbox{\hyperlink{class_span_containers_1_1_full_container_error_a8447c91bbb12f335727eef3c410d9c13}{Throw\+If\+Full}} (const Container \&container)
+\begin{DoxyCompactList}\small\item\em Throws an exception if container is full. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
 \doxysubsection{Detailed Description}
@@ -38,7 +33,7 @@ Represents an error for an operation that would be invalid due to a full contain
 \doxysubsection{Constructor \& Destructor Documentation}
 \Hypertarget{class_span_containers_1_1_full_container_error_ab54968b3fb5676af10badbdb8609cf31}\index{SpanContainers::FullContainerError@{SpanContainers::FullContainerError}!FullContainerError@{FullContainerError}}
 \index{FullContainerError@{FullContainerError}!SpanContainers::FullContainerError@{SpanContainers::FullContainerError}}
-\doxysubsubsection{\texorpdfstring{FullContainerError()}{FullContainerError()}\hspace{0.1cm}{\footnotesize\ttfamily [1/3]}}
+\doxysubsubsection{\texorpdfstring{FullContainerError()}{FullContainerError()}}
 {\footnotesize\ttfamily \label{class_span_containers_1_1_full_container_error_ab54968b3fb5676af10badbdb8609cf31} 
 Span\+Containers\+::\+Full\+Container\+Error\+::\+Full\+Container\+Error (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{message}{ = {\ttfamily "{}Container~is~full."{}}}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
 
@@ -51,50 +46,28 @@ Constructs a \doxylink{class_span_containers_1_1_full_container_error}{Full\+Con
 {\em The} & message to associate with this error. \\
 \hline
 \end{DoxyParams}
-\Hypertarget{class_span_containers_1_1_full_container_error_a92f51a9f550e36e4c56f2f54a9286d2c}\index{SpanContainers::FullContainerError@{SpanContainers::FullContainerError}!FullContainerError@{FullContainerError}}
-\index{FullContainerError@{FullContainerError}!SpanContainers::FullContainerError@{SpanContainers::FullContainerError}}
-\doxysubsubsection{\texorpdfstring{FullContainerError()}{FullContainerError()}\hspace{0.1cm}{\footnotesize\ttfamily [2/3]}}
-{\footnotesize\ttfamily \label{class_span_containers_1_1_full_container_error_a92f51a9f550e36e4c56f2f54a9286d2c} 
-template$<$std\+::integral Integer$>$ \\
-Span\+Containers\+::\+Full\+Container\+Error\+::\+Full\+Container\+Error (\begin{DoxyParamCaption}\item[{Integer}]{capacity}{, }\item[{const std\+::string \&}]{format\+\_\+string}{ = {\ttfamily "{}Container~capacity~(\{\})~exceeded."{}}}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_span_containers_1_1_full_container_error_a8447c91bbb12f335727eef3c410d9c13}\index{SpanContainers::FullContainerError@{SpanContainers::FullContainerError}!ThrowIfFull@{ThrowIfFull}}
+\index{ThrowIfFull@{ThrowIfFull}!SpanContainers::FullContainerError@{SpanContainers::FullContainerError}}
+\doxysubsubsection{\texorpdfstring{ThrowIfFull()}{ThrowIfFull()}}
+{\footnotesize\ttfamily \label{class_span_containers_1_1_full_container_error_a8447c91bbb12f335727eef3c410d9c13} 
+template$<$Fixed\+Size\+Container Container$>$ \\
+static constexpr void Span\+Containers\+::\+Full\+Container\+Error\+::\+Throw\+If\+Full (\begin{DoxyParamCaption}\item[{const Container \&}]{container}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}, {\ttfamily [constexpr]}}
 
 
 
-Constructs a new \doxylink{class_span_containers_1_1_full_container_error}{Full\+Container\+Error} using capacity and format\+\_\+string. 
+Throws an exception if container is full. 
 
 
 \begin{DoxyTemplParams}{Template Parameters}
-{\em Integer} & the type of the capacity. Must be a formattable integral. \\
+{\em Container} & A formattable container. \\
 \hline
 \end{DoxyTemplParams}
 
 \begin{DoxyParams}{Parameters}
-{\em Capacity} & the capacity of the container that was exceeded \\
-\hline
-{\em format\+\_\+string} & the format string used to generate the message using capacity. \\
-\hline
-\end{DoxyParams}
-\Hypertarget{class_span_containers_1_1_full_container_error_ae1674dc46ff155c965d634931e5bb2fa}\index{SpanContainers::FullContainerError@{SpanContainers::FullContainerError}!FullContainerError@{FullContainerError}}
-\index{FullContainerError@{FullContainerError}!SpanContainers::FullContainerError@{SpanContainers::FullContainerError}}
-\doxysubsubsection{\texorpdfstring{FullContainerError()}{FullContainerError()}\hspace{0.1cm}{\footnotesize\ttfamily [3/3]}}
-{\footnotesize\ttfamily \label{class_span_containers_1_1_full_container_error_ae1674dc46ff155c965d634931e5bb2fa} 
-template$<$internal\+::\+Formattable\+Span\+Container Container$>$ \\
-Span\+Containers\+::\+Full\+Container\+Error\+::\+Full\+Container\+Error (\begin{DoxyParamCaption}\item[{const Container \&}]{container}{, }\item[{const std\+::string \&}]{format\+\_\+string}{ = {\ttfamily "{}Container~\textquotesingle{}\{\}\textquotesingle{}~capacity~exceeded."{}}}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
-
-
-
-Constructs a new \doxylink{class_span_containers_1_1_full_container_error}{Full\+Container\+Error} using container and format\+\_\+string. 
-
-
-\begin{DoxyTemplParams}{Template Parameters}
-{\em Container} & the type of the containier, must be formattable. \\
-\hline
-\end{DoxyTemplParams}
-
-\begin{DoxyParams}{Parameters}
-{\em container} & The container whose capacity was exceeded. \\
-\hline
-{\em format\+\_\+string} & the format string used to generate the message using container. \\
+{\em container} & The container to check. \\
 \hline
 \end{DoxyParams}
 

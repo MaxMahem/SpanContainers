@@ -1,0 +1,30 @@
+\doxysection{Index\+Out\+Of\+Range\+Error.\+h}
+\hypertarget{_index_out_of_range_error_8h_source}{}\label{_index_out_of_range_error_8h_source}\index{C:/Users/maxma/source/repos/SpanContainers/lib/Errors/IndexOutOfRangeError.h@{C:/Users/maxma/source/repos/SpanContainers/lib/Errors/IndexOutOfRangeError.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00002\ }
+\DoxyCodeLine{00003\ \textcolor{preprocessor}{\#include\ <concepts>}}
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ <format>}}
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ <stdexcept>}}
+\DoxyCodeLine{00006\ }
+\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#include\ "{}internal/FixedSizeContainer.h"{}}}
+\DoxyCodeLine{00008\ }
+\DoxyCodeLine{00009\ \textcolor{keyword}{namespace\ }SpanContainers\ \{}
+\DoxyCodeLine{00010\ }
+\DoxyCodeLine{00012\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_span_containers_1_1_index_out_of_range_error}{IndexOutOfRangeError}}\ :\ \textcolor{keyword}{public}\ std::out\_of\_range\ }
+\DoxyCodeLine{00013\ \{}
+\DoxyCodeLine{00014\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00017\ \ \ \ \ \mbox{\hyperlink{class_span_containers_1_1_index_out_of_range_error_a73856cef424d6d36e60c92d1e3614c72}{IndexOutOfRangeError}}(\textcolor{keyword}{const}\ std::string\&\ message)\ :\ std::out\_of\_range(message)\ \{\}}
+\DoxyCodeLine{00018\ }
+\DoxyCodeLine{00023\ \ \ \ \ \textcolor{keyword}{template}\ <FixedSizeContainer\ Container>}
+\DoxyCodeLine{00024\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_span_containers_1_1_index_out_of_range_error_a264607f2129a30372811f14293003bf0}{ThrowIfOutOfRange}}(\textcolor{keyword}{const}\ Container\&\ container,\ \textcolor{keyword}{typename}\ \textcolor{keyword}{decltype}(container.size())\ index)}
+\DoxyCodeLine{00025\ \ \ \ \ \{}
+\DoxyCodeLine{00026\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (index\ <\ container.size())\ \{\ \textcolor{keywordflow}{return};\ \}}
+\DoxyCodeLine{00027\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{throw}\ \mbox{\hyperlink{class_span_containers_1_1_index_out_of_range_error_a73856cef424d6d36e60c92d1e3614c72}{IndexOutOfRangeError}}(std::format(\textcolor{stringliteral}{"{}Index\ (\{\})\ is\ out\ of\ range\ for\ '\{\}'."{}},\ index,\ container));}
+\DoxyCodeLine{00028\ \ \ \ \ \}}
+\DoxyCodeLine{00029\ \};}
+\DoxyCodeLine{00030\ }
+\DoxyCodeLine{00031\ \}}
+
+\end{DoxyCode}

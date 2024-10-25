@@ -1,0 +1,79 @@
+\doxysection{Span\+Containers\+::Index\+Out\+Of\+Range\+Error Class Reference}
+\hypertarget{class_span_containers_1_1_index_out_of_range_error}{}\label{class_span_containers_1_1_index_out_of_range_error}\index{SpanContainers::IndexOutOfRangeError@{SpanContainers::IndexOutOfRangeError}}
+
+
+Represents an error that occurs if a given index is out of range for a container.  
+
+
+
+
+{\ttfamily \#include $<$Index\+Out\+Of\+Range\+Error.\+h$>$}
+
+Inheritance diagram for Span\+Containers\+::Index\+Out\+Of\+Range\+Error\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=4.000000cm]{class_span_containers_1_1_index_out_of_range_error}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_span_containers_1_1_index_out_of_range_error_a73856cef424d6d36e60c92d1e3614c72}{Index\+Out\+Of\+Range\+Error}} (const std\+::string \&message)
+\begin{DoxyCompactList}\small\item\em Constructs a new \doxylink{class_span_containers_1_1_index_out_of_range_error}{Index\+Out\+Of\+Range\+Error}. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+{\footnotesize template$<$Fixed\+Size\+Container Container$>$ }\\static void \mbox{\hyperlink{class_span_containers_1_1_index_out_of_range_error_a264607f2129a30372811f14293003bf0}{Throw\+If\+Out\+Of\+Range}} (const Container \&container, typename decltype(container.\+size()) index)
+\begin{DoxyCompactList}\small\item\em Throws a \doxylink{class_span_containers_1_1_index_out_of_range_error}{Index\+Out\+Of\+Range\+Error} if index is out of range for container. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Represents an error that occurs if a given index is out of range for a container. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{class_span_containers_1_1_index_out_of_range_error_a73856cef424d6d36e60c92d1e3614c72}\index{SpanContainers::IndexOutOfRangeError@{SpanContainers::IndexOutOfRangeError}!IndexOutOfRangeError@{IndexOutOfRangeError}}
+\index{IndexOutOfRangeError@{IndexOutOfRangeError}!SpanContainers::IndexOutOfRangeError@{SpanContainers::IndexOutOfRangeError}}
+\doxysubsubsection{\texorpdfstring{IndexOutOfRangeError()}{IndexOutOfRangeError()}}
+{\footnotesize\ttfamily \label{class_span_containers_1_1_index_out_of_range_error_a73856cef424d6d36e60c92d1e3614c72} 
+Span\+Containers\+::\+Index\+Out\+Of\+Range\+Error\+::\+Index\+Out\+Of\+Range\+Error (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{message}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Constructs a new \doxylink{class_span_containers_1_1_index_out_of_range_error}{Index\+Out\+Of\+Range\+Error}. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em The} & message to associate with this error. \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_span_containers_1_1_index_out_of_range_error_a264607f2129a30372811f14293003bf0}\index{SpanContainers::IndexOutOfRangeError@{SpanContainers::IndexOutOfRangeError}!ThrowIfOutOfRange@{ThrowIfOutOfRange}}
+\index{ThrowIfOutOfRange@{ThrowIfOutOfRange}!SpanContainers::IndexOutOfRangeError@{SpanContainers::IndexOutOfRangeError}}
+\doxysubsubsection{\texorpdfstring{ThrowIfOutOfRange()}{ThrowIfOutOfRange()}}
+{\footnotesize\ttfamily \label{class_span_containers_1_1_index_out_of_range_error_a264607f2129a30372811f14293003bf0} 
+template$<$Fixed\+Size\+Container Container$>$ \\
+static void Span\+Containers\+::\+Index\+Out\+Of\+Range\+Error\+::\+Throw\+If\+Out\+Of\+Range (\begin{DoxyParamCaption}\item[{const Container \&}]{container}{, }\item[{typename decltype(container.\+size())}]{index}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}
+
+
+
+Throws a \doxylink{class_span_containers_1_1_index_out_of_range_error}{Index\+Out\+Of\+Range\+Error} if index is out of range for container. 
+
+
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Container} & A \doxylink{concept_span_containers_1_1_fixed_size_container}{Fixed\+Size\+Container}. \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}{Parameters}
+{\em container} & The container to check the range of index on. \\
+\hline
+{\em index} & The index to check. \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/\+Users/maxma/source/repos/\+Span\+Containers/lib/\+Errors/Index\+Out\+Of\+Range\+Error.\+h\end{DoxyCompactItemize}

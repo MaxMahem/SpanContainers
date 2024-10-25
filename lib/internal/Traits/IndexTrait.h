@@ -1,7 +1,7 @@
 #pragma once
 
 #include <span>
-#include <stdexcept>
+#include "Errors/IndexOutOfRangeError.h"
 
 namespace SpanContainers::internal {
 
@@ -25,7 +25,7 @@ public:
     /// @throws std::out_of_range If index is out of range and UseExceptions is true.
     [[nodiscard]] constexpr reference operator[](size_type index) const
     {
-        if constexpr (UseExceptions) { if (index >= asDerived().size()) { throw std::out_of_range("Index out of range."); } }
+        if constexpr (UseExceptions) { IndexOutOfRangeError::ThrowIfOutOfRange(asDerived(), index); }
         return asDerived().unsafe_at(index);
     }
 

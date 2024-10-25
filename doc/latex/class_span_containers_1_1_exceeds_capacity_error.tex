@@ -1,0 +1,79 @@
+\doxysection{Span\+Containers\+::Exceeds\+Capacity\+Error Class Reference}
+\hypertarget{class_span_containers_1_1_exceeds_capacity_error}{}\label{class_span_containers_1_1_exceeds_capacity_error}\index{SpanContainers::ExceedsCapacityError@{SpanContainers::ExceedsCapacityError}}
+
+
+Represents an error that occurs if a change in items would exceed the capacity of a container.  
+
+
+
+
+{\ttfamily \#include $<$Exceeds\+Capacity\+Error.\+h$>$}
+
+Inheritance diagram for Span\+Containers\+::Exceeds\+Capacity\+Error\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=4.000000cm]{class_span_containers_1_1_exceeds_capacity_error}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_span_containers_1_1_exceeds_capacity_error_a46fb6d93733eefa0060c1635a4c132e5}{Exceeds\+Capacity\+Error}} (const std\+::string \&message)
+\begin{DoxyCompactList}\small\item\em Constructs a new \doxylink{class_span_containers_1_1_exceeds_capacity_error}{Exceeds\+Capacity\+Error}. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+{\footnotesize template$<$Fixed\+Size\+Container Container$>$ }\\static void \mbox{\hyperlink{class_span_containers_1_1_exceeds_capacity_error_abcec0af91fca0d9545a0590695048985}{Throw\+If\+Exceeds\+Capcity}} (const Container \&container, typename decltype(container.\+max\+\_\+size()) increase)
+\begin{DoxyCompactList}\small\item\em Throws a \doxylink{class_span_containers_1_1_exceeds_capacity_error}{Exceeds\+Capacity\+Error} exception if an increase of increase would exceed the capacity of container. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Represents an error that occurs if a change in items would exceed the capacity of a container. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{class_span_containers_1_1_exceeds_capacity_error_a46fb6d93733eefa0060c1635a4c132e5}\index{SpanContainers::ExceedsCapacityError@{SpanContainers::ExceedsCapacityError}!ExceedsCapacityError@{ExceedsCapacityError}}
+\index{ExceedsCapacityError@{ExceedsCapacityError}!SpanContainers::ExceedsCapacityError@{SpanContainers::ExceedsCapacityError}}
+\doxysubsubsection{\texorpdfstring{ExceedsCapacityError()}{ExceedsCapacityError()}}
+{\footnotesize\ttfamily \label{class_span_containers_1_1_exceeds_capacity_error_a46fb6d93733eefa0060c1635a4c132e5} 
+Span\+Containers\+::\+Exceeds\+Capacity\+Error\+::\+Exceeds\+Capacity\+Error (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{message}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Constructs a new \doxylink{class_span_containers_1_1_exceeds_capacity_error}{Exceeds\+Capacity\+Error}. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em The} & message to associate with this error. \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_span_containers_1_1_exceeds_capacity_error_abcec0af91fca0d9545a0590695048985}\index{SpanContainers::ExceedsCapacityError@{SpanContainers::ExceedsCapacityError}!ThrowIfExceedsCapcity@{ThrowIfExceedsCapcity}}
+\index{ThrowIfExceedsCapcity@{ThrowIfExceedsCapcity}!SpanContainers::ExceedsCapacityError@{SpanContainers::ExceedsCapacityError}}
+\doxysubsubsection{\texorpdfstring{ThrowIfExceedsCapcity()}{ThrowIfExceedsCapcity()}}
+{\footnotesize\ttfamily \label{class_span_containers_1_1_exceeds_capacity_error_abcec0af91fca0d9545a0590695048985} 
+template$<$Fixed\+Size\+Container Container$>$ \\
+static void Span\+Containers\+::\+Exceeds\+Capacity\+Error\+::\+Throw\+If\+Exceeds\+Capcity (\begin{DoxyParamCaption}\item[{const Container \&}]{container}{, }\item[{typename decltype(container.\+max\+\_\+size())}]{increase}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}
+
+
+
+Throws a \doxylink{class_span_containers_1_1_exceeds_capacity_error}{Exceeds\+Capacity\+Error} exception if an increase of increase would exceed the capacity of container. 
+
+
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Container} & A \doxylink{concept_span_containers_1_1_fixed_size_container}{Fixed\+Size\+Container}. \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}{Parameters}
+{\em container} & The container to check the capcity of. \\
+\hline
+{\em increase} & The amount of additional space to check capacity for. \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/\+Users/maxma/source/repos/\+Span\+Containers/lib/\+Errors/Exceeds\+Capacity\+Error.\+h\end{DoxyCompactItemize}

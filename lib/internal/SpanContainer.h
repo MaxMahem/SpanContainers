@@ -1,11 +1,9 @@
 #pragma once
+
+#include "SpanContainerMacros.h"
 #include "BufferSelector.h"
 
-#ifndef SPAN_CONTAINERS_USE_EXCEPTIONS
-#define SPAN_CONTAINERS_USE_EXCEPTIONS true
-#endif
-
-namespace SpanContainers { constexpr bool UseExceptions = SPAN_CONTAINERS_USE_EXCEPTIONS; }
+namespace SpanContainers { constexpr bool UseExceptions = SC_USE_EXCEPTIONS; }
 
 /// @brief Internal namespace for implementation details.
 namespace SpanContainers::internal {
@@ -63,6 +61,10 @@ public:
 
     /// @brief The capacity of the container.
     static constexpr size_type extent = Extent;
+
+    /// @brief The maximum size of the container.
+    /// @details This is always equal to extent. 
+    static constexpr size_type max_size() { return Extent; }
 
     /// @brief Gets if the container is empty or not.
     /// @return true if the container is empty; false otherwise.

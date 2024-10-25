@@ -19,9 +19,9 @@ namespace SpanContainers {
 /// @tparam T The type of the item in the container.
 /// @tparam Extent The size/maximum number of elements in the container.
 template <typename T, std::size_t Extent>
-class SpanDequeue : public SpanQueue<T, Extent>,
-                    public internal::PushFrontTrait<SpanDequeue<T, Extent>, T>,
-                    public internal::PopBackTrait<SpanDequeue<T, Extent>, T>
+class SC_EMPTY_BASES SpanDequeue : public SpanQueue<T, Extent>,
+                                   public internal::PushFrontTrait<SpanDequeue<T, Extent>, T>,
+                                   public internal::PopBackTrait<SpanDequeue<T, Extent>, T>
 {
     friend struct internal::IndexTrait<SpanDequeue<T, Extent>, T>;
     friend struct internal::PushFrontTrait<SpanDequeue<T, Extent>, T>;

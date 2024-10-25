@@ -98,20 +98,35 @@ $(function(){ initResizable(false); });
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a15e3f53e4c19cf6cdbbcfe3e24210d97" id="r_a15e3f53e4c19cf6cdbbcfe3e24210d97"><td class="memTemplParams" colspan="2">template&lt;typename U &gt; <br />
+<tr class="memitem:a7ef22830daebaf05d080abfa02b2bd8c" id="r_a7ef22830daebaf05d080abfa02b2bd8c"><td class="memTemplParams" colspan="2">template&lt;typename U &gt; <br />
 requires std::assignable_from&lt;T&amp;, U&amp;&amp;&gt;</td></tr>
-<tr class="memitem:a15e3f53e4c19cf6cdbbcfe3e24210d97"><td class="memTemplItemLeft" align="right" valign="top">constexpr void&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="#a15e3f53e4c19cf6cdbbcfe3e24210d97">push_front</a> (U &amp;&amp;value)</td></tr>
-<tr class="memdesc:a15e3f53e4c19cf6cdbbcfe3e24210d97"><td class="mdescLeft">&#160;</td><td class="mdescRight">Assigns value to the front of the container.  <br /></td></tr>
-<tr class="separator:a15e3f53e4c19cf6cdbbcfe3e24210d97"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7ef22830daebaf05d080abfa02b2bd8c"><td class="memTemplItemLeft" align="right" valign="top">constexpr void&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="#a7ef22830daebaf05d080abfa02b2bd8c">push_front</a> (U &amp;&amp;value) noexcept(std::is_nothrow_assignable&lt; T &amp;, U &amp;&amp; &gt;::value &amp;&amp;!UseExceptions)</td></tr>
+<tr class="memdesc:a7ef22830daebaf05d080abfa02b2bd8c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Assigns value to the front of the container.  <br /></td></tr>
+<tr class="separator:a7ef22830daebaf05d080abfa02b2bd8c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a519d4ddae9ccac8cccf22277c6998389" id="r_a519d4ddae9ccac8cccf22277c6998389"><td class="memTemplParams" colspan="2">template&lt;typename U &gt; <br />
 requires std::assignable_from&lt;T&amp;, U&amp;&amp;&gt;</td></tr>
 <tr class="memitem:a519d4ddae9ccac8cccf22277c6998389"><td class="memTemplItemLeft" align="right" valign="top">constexpr bool&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="#a519d4ddae9ccac8cccf22277c6998389">try_push_front</a> (U &amp;&amp;value) noexcept(std::is_nothrow_assignable&lt; T &amp;, U &amp;&amp; &gt;::value)</td></tr>
 <tr class="memdesc:a519d4ddae9ccac8cccf22277c6998389"><td class="mdescLeft">&#160;</td><td class="mdescRight">Tries to assign value at the front of the container.  <br /></td></tr>
 <tr class="separator:a519d4ddae9ccac8cccf22277c6998389"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0709044e01fc27789e2cb9bf94e0bf42" id="r_a0709044e01fc27789e2cb9bf94e0bf42"><td class="memTemplParams" colspan="2">template&lt;std::ranges::range Range = std::initializer_list&lt;T&gt;&gt; <br />
+requires std::convertible_to&lt;std::ranges::range_value_t&lt;Range&gt;, T&gt;</td></tr>
+<tr class="memitem:a0709044e01fc27789e2cb9bf94e0bf42"><td class="memTemplItemLeft" align="right" valign="top">constexpr void&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="#a0709044e01fc27789e2cb9bf94e0bf42">push_front_range</a> (Range &amp;&amp;values)</td></tr>
+<tr class="memdesc:a0709044e01fc27789e2cb9bf94e0bf42"><td class="mdescLeft">&#160;</td><td class="mdescRight">Assign values to the front of the container.  <br /></td></tr>
+<tr class="separator:a0709044e01fc27789e2cb9bf94e0bf42"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0709044e01fc27789e2cb9bf94e0bf42" id="r_a0709044e01fc27789e2cb9bf94e0bf42"><td class="memTemplParams" colspan="2">template&lt;std::ranges::sized_range Range = std::initializer_list&lt;T&gt;&gt; <br />
+requires std::convertible_to&lt;std::ranges::range_value_t&lt;Range&gt;, T&gt;</td></tr>
+<tr class="memitem:a0709044e01fc27789e2cb9bf94e0bf42"><td class="memTemplItemLeft" align="right" valign="top">constexpr void&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="#a0709044e01fc27789e2cb9bf94e0bf42">push_front_range</a> (Range &amp;&amp;values)</td></tr>
+<tr class="memdesc:a0709044e01fc27789e2cb9bf94e0bf42"><td class="mdescLeft">&#160;</td><td class="mdescRight">Assign values to the front of the container.  <br /></td></tr>
+<tr class="separator:a0709044e01fc27789e2cb9bf94e0bf42"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aaf8feeb0cff3b57f7c927d3e9148f47d" id="r_aaf8feeb0cff3b57f7c927d3e9148f47d"><td class="memTemplParams" colspan="2">template&lt;std::ranges::sized_range Range&gt; <br />
+requires std::convertible_to&lt;std::ranges::range_value_t&lt;Range&gt;, T&gt;</td></tr>
+<tr class="memitem:aaf8feeb0cff3b57f7c927d3e9148f47d"><td class="memTemplItemLeft" align="right" valign="top">constexpr bool&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="#aaf8feeb0cff3b57f7c927d3e9148f47d">try_push_front_range</a> (Range &amp;&amp;values)</td></tr>
+<tr class="memdesc:aaf8feeb0cff3b57f7c927d3e9148f47d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Tries to assign values to the front of the container.  <br /></td></tr>
+<tr class="separator:aaf8feeb0cff3b57f7c927d3e9148f47d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Member Function Documentation</h2>
-<a id="a15e3f53e4c19cf6cdbbcfe3e24210d97" name="a15e3f53e4c19cf6cdbbcfe3e24210d97"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a15e3f53e4c19cf6cdbbcfe3e24210d97">&#9670;&#160;</a></span>push_front()</h2>
+<a id="a7ef22830daebaf05d080abfa02b2bd8c" name="a7ef22830daebaf05d080abfa02b2bd8c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7ef22830daebaf05d080abfa02b2bd8c">&#9670;&#160;</a></span>push_front()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -133,7 +148,7 @@ requires std::assignable_from&lt;T&amp;, U&amp;&amp;&gt;</div>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">constexpr</span></span>  </td>
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">constexpr</span><span class="mlabel">noexcept</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
@@ -147,7 +162,95 @@ requires std::assignable_from&lt;T&amp;, U&amp;&amp;&gt;</div>
 </dl>
 <dl class="exception"><dt>Exceptions</dt><dd>
   <table class="exception">
-    <tr><td class="paramname"><a class="el" href="class_span_containers_1_1_full_container_error.html" title="Represents an error for an operation that would be invalid due to a full container.">FullContainerError</a></td><td>if the container capacity is exceeded </td></tr>
+    <tr><td class="paramname"><a class="el" href="class_span_containers_1_1_full_container_error.html" title="Represents an error for an operation that would be invalid due to a full container.">FullContainerError</a></td><td>if the container capacity is exceeded and UseExceptions is true. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a0709044e01fc27789e2cb9bf94e0bf42" name="a0709044e01fc27789e2cb9bf94e0bf42"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0709044e01fc27789e2cb9bf94e0bf42">&#9670;&#160;</a></span>push_front_range() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename Derived , typename T &gt; </div>
+<div class="memtemplate">
+template&lt;std::ranges::range Range = std::initializer_list&lt;T&gt;&gt; <br />
+requires std::convertible_to&lt;std::ranges::range_value_t&lt;Range&gt;, T&gt;</div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void <a class="el" href="struct_span_containers_1_1internal_1_1_push_front_trait.html">SpanContainers::internal::PushFrontTrait</a>&lt; Derived, T &gt;::push_front_range </td>
+          <td>(</td>
+          <td class="paramtype">Range &amp;&amp;</td>          <td class="paramname"><span class="paramname"><em>values</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">constexpr</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Assign values to the front of the container. </p>
+<dl class="tparams"><dt>Template Parameters</dt><dd>
+  <table class="tparams">
+    <tr><td class="paramname">Range</td><td>The type of the range that contains the values. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="exception"><dt>Exceptions</dt><dd>
+  <table class="exception">
+    <tr><td class="paramname">std::out_of_range</td><td>If the size of the range exceeds the container capacity and UseExceptions is true. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a0709044e01fc27789e2cb9bf94e0bf42" name="a0709044e01fc27789e2cb9bf94e0bf42"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0709044e01fc27789e2cb9bf94e0bf42">&#9670;&#160;</a></span>push_front_range() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename Derived , typename T &gt; </div>
+<div class="memtemplate">
+template&lt;std::ranges::sized_range Range = std::initializer_list&lt;T&gt;&gt; <br />
+requires std::convertible_to&lt;std::ranges::range_value_t&lt;Range&gt;, T&gt;</div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void <a class="el" href="struct_span_containers_1_1internal_1_1_push_front_trait.html">SpanContainers::internal::PushFrontTrait</a>&lt; Derived, T &gt;::push_front_range </td>
+          <td>(</td>
+          <td class="paramtype">Range &amp;&amp;</td>          <td class="paramname"><span class="paramname"><em>values</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">constexpr</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Assign values to the front of the container. </p>
+<p>This method provides a strong exception gurantee. </p><dl class="tparams"><dt>Template Parameters</dt><dd>
+  <table class="tparams">
+    <tr><td class="paramname">Range</td><td>The type of the range that contains the values. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="exception"><dt>Exceptions</dt><dd>
+  <table class="exception">
+    <tr><td class="paramname">std::out_of_range</td><td>If the size of the range exceeds the container capacity and UseExceptions is true. </td></tr>
   </table>
   </dd>
 </dl>
@@ -196,6 +299,45 @@ requires std::assignable_from&lt;T&amp;, U&amp;&amp;&gt;</div>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>true if value was placed at the front of the container; false otherwise. </dd></dl>
+
+</div>
+</div>
+<a id="aaf8feeb0cff3b57f7c927d3e9148f47d" name="aaf8feeb0cff3b57f7c927d3e9148f47d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aaf8feeb0cff3b57f7c927d3e9148f47d">&#9670;&#160;</a></span>try_push_front_range()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename Derived , typename T &gt; </div>
+<div class="memtemplate">
+template&lt;std::ranges::sized_range Range&gt; <br />
+requires std::convertible_to&lt;std::ranges::range_value_t&lt;Range&gt;, T&gt;</div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool <a class="el" href="struct_span_containers_1_1internal_1_1_push_front_trait.html">SpanContainers::internal::PushFrontTrait</a>&lt; Derived, T &gt;::try_push_front_range </td>
+          <td>(</td>
+          <td class="paramtype">Range &amp;&amp;</td>          <td class="paramname"><span class="paramname"><em>values</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">constexpr</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Tries to assign values to the front of the container. </p>
+<dl class="tparams"><dt>Template Parameters</dt><dd>
+  <table class="tparams">
+    <tr><td class="paramname">Range</td><td>The type of the range that contains the values. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd><code>true</code> if values were placed at the front of the container; <code>false</code> otherwise. </dd></dl>
 
 </div>
 </div>

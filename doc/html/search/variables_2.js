@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['read_0',['read',['../class_span_containers_1_1_span_queue.html#a488dc1251f3992392df90289255a0684',1,'SpanContainers::SpanQueue']]]
+  ['ptr_0',['ptr',['../struct_span_containers_1_1internal_1_1_heap_array.html#a70f419c1ad4504f6b78109791a83cf2f',1,'SpanContainers::internal::HeapArray']]]
 ];

@@ -1,5 +1,5 @@
 \doxysection{Span\+Containers\+::Formattable\+Span\+Container Concept Reference}
-\hypertarget{concept_span_containers_1_1_formattable_span_container}{}\label{concept_span_containers_1_1_formattable_span_container}\index{SpanContainers::FormattableSpanContainer@{SpanContainers::FormattableSpanContainer}}
+\hypertarget{concept_span_containers_1_1_formattable_span_container}{}\label{concept_span_containers_1_1_formattable_span_container}\index{SpanContainers::FixedSizeContainer@{SpanContainers::FixedSizeContainer}}
 
 
 Represents a container type that has the properties necessary for formatting.  
@@ -13,7 +13,7 @@ Represents a container type that has the properties necessary for formatting.
 
 \begin{DoxyCode}{0}
 \DoxyCodeLine{\textcolor{keyword}{template}<\textcolor{keyword}{typename}\ Container>}
-\DoxyCodeLine{\textcolor{keyword}{concept\ }\mbox{\hyperlink{concept_span_containers_1_1_formattable_span_container}{SpanContainers::FormattableSpanContainer}}\ =\ \ \textcolor{keyword}{requires}(Container\ container)\ \{}
+\DoxyCodeLine{\textcolor{keyword}{concept\ }\mbox{\hyperlink{concept_span_containers_1_1_formattable_span_container}{SpanContainers::FixedSizeContainer}}\ =\ \ \textcolor{keyword}{requires}(Container\ container)\ \{}
 \DoxyCodeLine{\ \ \ \ \{\ Container::TYPE\_NAME\ \}\ -\/>\ std::convertible\_to<std::string\_view>;}
 \DoxyCodeLine{\ \ \ \ \{\ container.size()\ \}\ -\/>\ std::integral;}
 \DoxyCodeLine{\ \ \ \ \{\ container.capacity()\ \}\ -\/>\ std::integral;}

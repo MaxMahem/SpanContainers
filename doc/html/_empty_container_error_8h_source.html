@@ -96,31 +96,32 @@ $(function(){ initResizable(false); });
 <div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span> </div>
 <div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span><span class="preprocessor">#include &lt;format&gt;</span></div>
 <div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span><span class="preprocessor">#include &lt;stdexcept&gt;</span></div>
-<div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span> </div>
-<div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span><span class="preprocessor">#include &quot;internal/FormattableSpanContainer.h&quot;</span></div>
-<div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span> </div>
-<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span><span class="keyword">namespace </span>SpanContainers {</div>
-<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span> </div>
-<div class="foldopen" id="foldopen00011" data-start="{" data-end="};">
-<div class="line"><a id="l00011" name="l00011"></a><span class="lineno"><a class="line" href="class_span_containers_1_1_empty_container_error.html">   11</a></span><span class="keyword">class </span><a class="code hl_class" href="class_span_containers_1_1_empty_container_error.html">EmptyContainerError</a> : <span class="keyword">public</span> std::out_of_range</div>
-<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span>{</div>
-<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span><span class="keyword">public</span>:</div>
-<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span>    <span class="keyword">static</span> <span class="keyword">constexpr</span> std::string_view EXCEPTION_NAME = <span class="stringliteral">&quot;EmptyContainerError&quot;</span>;</div>
-<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span> </div>
-<div class="line"><a id="l00018" name="l00018"></a><span class="lineno"><a class="line" href="class_span_containers_1_1_empty_container_error.html#ad945e92700318e74e8aa6ea730bd175e">   18</a></span>    <a class="code hl_function" href="class_span_containers_1_1_empty_container_error.html#ad945e92700318e74e8aa6ea730bd175e">EmptyContainerError</a>(<span class="keyword">const</span> std::string&amp; message = <span class="stringliteral">&quot;Container is empty.&quot;</span>) : std::out_of_range(message) {}</div>
-<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span> </div>
-<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span>    <span class="keyword">template</span>&lt;<span class="keywordtype">int</span>ernal::FormattableSpanContainer Container&gt;</div>
-<div class="foldopen" id="foldopen00025" data-start="{" data-end="}">
-<div class="line"><a id="l00025" name="l00025"></a><span class="lineno"><a class="line" href="class_span_containers_1_1_empty_container_error.html#a9b9971417deeaaeaa56d244db51c181d">   25</a></span>    <a class="code hl_function" href="class_span_containers_1_1_empty_container_error.html#a9b9971417deeaaeaa56d244db51c181d">EmptyContainerError</a>(<span class="keyword">const</span> Container&amp; container, <span class="keyword">const</span> std::string&amp; format_string = <span class="stringliteral">&quot;Container &#39;{}&#39; is empty.&quot;</span>)</div>
-<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span>        : std::out_of_range(std::vformat(format_string, std::make_format_args(container))) {}</div>
+<div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span><span class="preprocessor">#include &lt;string_view&gt;</span></div>
+<div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span> </div>
+<div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span><span class="preprocessor">#include &quot;internal/FixedSizeContainer.h&quot;</span></div>
+<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span> </div>
+<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span><span class="keyword">namespace </span>SpanContainers {</div>
+<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span> </div>
+<div class="foldopen" id="foldopen00012" data-start="{" data-end="};">
+<div class="line"><a id="l00012" name="l00012"></a><span class="lineno"><a class="line" href="class_span_containers_1_1_empty_container_error.html">   12</a></span><span class="keyword">class </span><a class="code hl_class" href="class_span_containers_1_1_empty_container_error.html">EmptyContainerError</a> : <span class="keyword">public</span> std::out_of_range</div>
+<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span>{</div>
+<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span><span class="keyword">public</span>:</div>
+<div class="line"><a id="l00017" name="l00017"></a><span class="lineno"><a class="line" href="class_span_containers_1_1_empty_container_error.html#ab015d11b41e57207bda2e797508c4d0d">   17</a></span>    <a class="code hl_function" href="class_span_containers_1_1_empty_container_error.html#ab015d11b41e57207bda2e797508c4d0d">EmptyContainerError</a>(<span class="keyword">const</span> std::string&amp; message) : std::out_of_range(message) {}</div>
+<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span> </div>
+<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span>    <span class="keyword">template</span>&lt;FixedSizeContainer Container&gt;</div>
+<div class="foldopen" id="foldopen00023" data-start="{" data-end="}">
+<div class="line"><a id="l00023" name="l00023"></a><span class="lineno"><a class="line" href="class_span_containers_1_1_empty_container_error.html#a19b1a70a5fe4df6529362a4de195052d">   23</a></span>    <span class="keyword">static</span> <span class="keyword">constexpr</span> <span class="keywordtype">void</span> <a class="code hl_function" href="class_span_containers_1_1_empty_container_error.html#a19b1a70a5fe4df6529362a4de195052d">ThrowIfEmpty</a>(<span class="keyword">const</span> Container&amp; container)</div>
+<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span>    {</div>
+<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span>        <span class="keywordflow">if</span> (container.empty()) { <span class="keywordflow">throw</span> <a class="code hl_function" href="class_span_containers_1_1_empty_container_error.html#ab015d11b41e57207bda2e797508c4d0d">EmptyContainerError</a>(std::format(<span class="stringliteral">&quot;Container &#39;{}&#39; is empty.&quot;</span>, container)); }</div>
+<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span>    }   </div>
 </div>
 <div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span>};</div>
 </div>
 <div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span> </div>
 <div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span>}</div>
-<div class="ttc" id="aclass_span_containers_1_1_empty_container_error_html"><div class="ttname"><a href="class_span_containers_1_1_empty_container_error.html">SpanContainers::EmptyContainerError</a></div><div class="ttdoc">Represents an error for an operation that would be invalid due to an empty container.</div><div class="ttdef"><b>Definition</b> EmptyContainerError.h:12</div></div>
-<div class="ttc" id="aclass_span_containers_1_1_empty_container_error_html_a9b9971417deeaaeaa56d244db51c181d"><div class="ttname"><a href="class_span_containers_1_1_empty_container_error.html#a9b9971417deeaaeaa56d244db51c181d">SpanContainers::EmptyContainerError::EmptyContainerError</a></div><div class="ttdeci">EmptyContainerError(const Container &amp;container, const std::string &amp;format_string=&quot;Container '{}' is empty.&quot;)</div><div class="ttdoc">Constructs a new EmptyContainerError using container and format_string.</div><div class="ttdef"><b>Definition</b> EmptyContainerError.h:25</div></div>
-<div class="ttc" id="aclass_span_containers_1_1_empty_container_error_html_ad945e92700318e74e8aa6ea730bd175e"><div class="ttname"><a href="class_span_containers_1_1_empty_container_error.html#ad945e92700318e74e8aa6ea730bd175e">SpanContainers::EmptyContainerError::EmptyContainerError</a></div><div class="ttdeci">EmptyContainerError(const std::string &amp;message=&quot;Container is empty.&quot;)</div><div class="ttdoc">constructs a EmptyContainerError using message</div><div class="ttdef"><b>Definition</b> EmptyContainerError.h:18</div></div>
+<div class="ttc" id="aclass_span_containers_1_1_empty_container_error_html"><div class="ttname"><a href="class_span_containers_1_1_empty_container_error.html">SpanContainers::EmptyContainerError</a></div><div class="ttdoc">Represents an error for an operation that would be invalid due to an empty container.</div><div class="ttdef"><b>Definition</b> EmptyContainerError.h:13</div></div>
+<div class="ttc" id="aclass_span_containers_1_1_empty_container_error_html_a19b1a70a5fe4df6529362a4de195052d"><div class="ttname"><a href="class_span_containers_1_1_empty_container_error.html#a19b1a70a5fe4df6529362a4de195052d">SpanContainers::EmptyContainerError::ThrowIfEmpty</a></div><div class="ttdeci">static constexpr void ThrowIfEmpty(const Container &amp;container)</div><div class="ttdoc">Throws a EmptyContainerError exception if container is empty.</div><div class="ttdef"><b>Definition</b> EmptyContainerError.h:23</div></div>
+<div class="ttc" id="aclass_span_containers_1_1_empty_container_error_html_ab015d11b41e57207bda2e797508c4d0d"><div class="ttname"><a href="class_span_containers_1_1_empty_container_error.html#ab015d11b41e57207bda2e797508c4d0d">SpanContainers::EmptyContainerError::EmptyContainerError</a></div><div class="ttdeci">EmptyContainerError(const std::string &amp;message)</div><div class="ttdoc">constructs a EmptyContainerError using message</div><div class="ttdef"><b>Definition</b> EmptyContainerError.h:17</div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>

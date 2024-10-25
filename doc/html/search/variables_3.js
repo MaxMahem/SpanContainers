@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['span_0',['span',['../class_span_containers_1_1internal_1_1_span_container.html#a0e264b02900eed12541aa0e6d794bfd5',1,'SpanContainers::internal::SpanContainer']]]
+  ['read_0',['read',['../class_span_containers_1_1_span_queue.html#a488dc1251f3992392df90289255a0684',1,'SpanContainers::SpanQueue']]]
 ];

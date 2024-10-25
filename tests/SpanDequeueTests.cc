@@ -11,10 +11,10 @@
 namespace SpanContainers::Tests {
 
 using Dequeue = SpanDequeue<int, 5>;
-using DequePushBackPopFrontTestAdaptor  = ContainerTestAdaptor<Dequeue, PushBack<Dequeue>,  PopFront<Dequeue>, FIFO, std::less<int>>;
-using DequePushBackPopBackTestAdaptor   = ContainerTestAdaptor<Dequeue, PushBack<Dequeue>,  PopBack<Dequeue>,  LIFO, std::less<int>>;
-using DequePushFrontPopFrontTestAdaptor = ContainerTestAdaptor<Dequeue, PushFront<Dequeue>, PopFront<Dequeue>, LIFO, std::greater<int>>;
-using DequePushFrontPopBackTestAdaptor  = ContainerTestAdaptor<Dequeue, PushFront<Dequeue>, PopBack<Dequeue>,  FIFO, std::greater<int>>;
+using DequePushBackPopFrontTestAdaptor  = ContainerTestAdaptor<Dequeue, PushBack<Dequeue>,  PopFront<Dequeue>, FIFO, Ascending>;
+using DequePushBackPopBackTestAdaptor   = ContainerTestAdaptor<Dequeue, PushBack<Dequeue>,  PopBack<Dequeue>,  LIFO, Ascending>;
+using DequePushFrontPopFrontTestAdaptor = ContainerTestAdaptor<Dequeue, PushFront<Dequeue>, PopFront<Dequeue>, LIFO, Descending>;
+using DequePushFrontPopBackTestAdaptor  = ContainerTestAdaptor<Dequeue, PushFront<Dequeue>, PopBack<Dequeue>,  FIFO, Descending>;
 
 using DequeTestTypes = testing::Types<
     DequePushBackPopFrontTestAdaptor, 

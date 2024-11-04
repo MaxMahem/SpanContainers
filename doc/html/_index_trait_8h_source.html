@@ -115,14 +115,14 @@ $(function(){ initResizable(false); });
 <div class="line"><a id="l00026" name="l00026"></a><span class="lineno"><a class="line" href="struct_span_containers_1_1internal_1_1_index_trait.html#ada06eabb7b7e3fc9ec94b0f28b42aed5">   26</a></span>    [[nodiscard]] <span class="keyword">constexpr</span> reference <a class="code hl_function" href="struct_span_containers_1_1internal_1_1_index_trait.html#ada06eabb7b7e3fc9ec94b0f28b42aed5">operator[]</a>(size_type index)<span class="keyword"> const</span></div>
 <div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span><span class="keyword">    </span>{</div>
 <div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span>        <span class="keywordflow">if</span> <span class="keyword">constexpr</span> (UseExceptions) { <a class="code hl_function" href="class_span_containers_1_1_index_out_of_range_error.html#a264607f2129a30372811f14293003bf0">IndexOutOfRangeError::ThrowIfOutOfRange</a>(AsDerived(), index); }</div>
-<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span>        <span class="keywordflow">return</span> AsDerived().unsafe_at(index);</div>
+<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span>        <span class="keywordflow">return</span> AsDerived().UnsafeAt(index);</div>
 <div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span>    }</div>
 </div>
 <div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span> </div>
 <div class="foldopen" id="foldopen00035" data-start="{" data-end="}">
 <div class="line"><a id="l00035" name="l00035"></a><span class="lineno"><a class="line" href="struct_span_containers_1_1internal_1_1_index_trait.html#a2d79a1361803416b85bc31c09a2d013a">   35</a></span>    [[nodiscard]] <span class="keyword">constexpr</span> pointer <a class="code hl_function" href="struct_span_containers_1_1internal_1_1_index_trait.html#a2d79a1361803416b85bc31c09a2d013a">at</a>(size_type index) <span class="keyword">const</span> <span class="keyword">noexcept</span></div>
 <div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span>    {</div>
-<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span>        <span class="keywordflow">return</span> index &gt;= AsDerived().size() ? nullptr : &amp;AsDerived().unsafe_at(index);</div>
+<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span>        <span class="keywordflow">return</span> index &gt;= AsDerived().size() ? nullptr : &amp;AsDerived().UnsafeAt(index);</div>
 <div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span>    }</div>
 </div>
 <div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span>};</div>

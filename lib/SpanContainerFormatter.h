@@ -18,6 +18,6 @@ struct std::formatter<Container> : std::formatter<std::string_view>
     template <typename FormatContext>
     auto format(const Container& container, FormatContext& ctx) const
     {
-        return std::format_to(ctx.out(), "{}[{}/{}]", Container::TYPE_NAME, container.size(), container.capacity());
+        return std::format_to(ctx.out(), "{}[{}/{}]", Container::TYPE_NAME, container.size(), container.max_size());
     }
 };

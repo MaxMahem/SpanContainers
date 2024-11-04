@@ -120,14 +120,14 @@ $(function(){ initResizable(false); });
 <div class="line"><a id="l00027" name="l00027"></a><span class="lineno"><a class="line" href="struct_span_containers_1_1internal_1_1_pop_front_trait.html#a8a6942dd58acb8c267623801169f10bf">   27</a></span>    [[nodiscard]] <span class="keyword">constexpr</span> reference <a class="code hl_function" href="struct_span_containers_1_1internal_1_1_pop_front_trait.html#a8a6942dd58acb8c267623801169f10bf">front</a>() const noexcept(!UseExceptions)</div>
 <div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span>    {</div>
 <div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span>        <span class="keywordflow">if</span> <span class="keyword">constexpr</span> (UseExceptions) { <a class="code hl_function" href="class_span_containers_1_1_empty_container_error.html#a19b1a70a5fe4df6529362a4de195052d">EmptyContainerError::ThrowIfEmpty</a>(AsDerived()); }</div>
-<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span>        <span class="keywordflow">return</span> AsDerived().unsafe_front();</div>
+<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span>        <span class="keywordflow">return</span> AsDerived().UnsafeFront();</div>
 <div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span>    }</div>
 </div>
 <div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span> </div>
 <div class="foldopen" id="foldopen00035" data-start="{" data-end="}">
 <div class="line"><a id="l00035" name="l00035"></a><span class="lineno"><a class="line" href="struct_span_containers_1_1internal_1_1_pop_front_trait.html#a22d92c40c0f449b35900cf2b008a6bf2">   35</a></span>    [[nodiscard]] <span class="keyword">constexpr</span> pointer <a class="code hl_function" href="struct_span_containers_1_1internal_1_1_pop_front_trait.html#a22d92c40c0f449b35900cf2b008a6bf2">try_front</a>() const noexcept</div>
 <div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span>    {</div>
-<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span>        <span class="keywordflow">return</span> !AsDerived().empty() ? &amp;AsDerived().unsafe_front() : <span class="keyword">nullptr</span>;</div>
+<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span>        <span class="keywordflow">return</span> !AsDerived().empty() ? &amp;AsDerived().UnsafeFront() : <span class="keyword">nullptr</span>;</div>
 <div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span>    }</div>
 </div>
 <div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span> </div>
@@ -135,7 +135,7 @@ $(function(){ initResizable(false); });
 <div class="line"><a id="l00043" name="l00043"></a><span class="lineno"><a class="line" href="struct_span_containers_1_1internal_1_1_pop_front_trait.html#a59ac33b41e19abaa75abcc16a5a5d7b7">   43</a></span>    <span class="keyword">constexpr</span> <span class="keywordtype">void</span> <a class="code hl_function" href="struct_span_containers_1_1internal_1_1_pop_front_trait.html#a59ac33b41e19abaa75abcc16a5a5d7b7">pop_front</a>() noexcept(!UseExceptions) </div>
 <div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span>    { </div>
 <div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span>        <span class="keywordflow">if</span> <span class="keyword">constexpr</span> (UseExceptions) { <a class="code hl_function" href="class_span_containers_1_1_empty_container_error.html#a19b1a70a5fe4df6529362a4de195052d">EmptyContainerError::ThrowIfEmpty</a>(AsDerived()); }</div>
-<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span>        AsDerived().unsafe_pop_front(1);</div>
+<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span>        AsDerived().UnsafePopFront(1);</div>
 <div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span>    }</div>
 </div>
 <div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span> </div>
@@ -143,7 +143,7 @@ $(function(){ initResizable(false); });
 <div class="line"><a id="l00051" name="l00051"></a><span class="lineno"><a class="line" href="struct_span_containers_1_1internal_1_1_pop_front_trait.html#af723ce2656f66557c43e76be176dd843">   51</a></span>    <span class="keyword">constexpr</span> <span class="keywordtype">void</span> <a class="code hl_function" href="struct_span_containers_1_1internal_1_1_pop_front_trait.html#af723ce2656f66557c43e76be176dd843">pop_front</a>(size_type n) <span class="keyword">noexcept</span>(!UseExceptions)</div>
 <div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span>    {</div>
 <div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span>        <span class="keywordflow">if</span> <span class="keyword">constexpr</span> (UseExceptions) { <a class="code hl_function" href="class_span_containers_1_1_insufficent_items_error.html#a36160328a1eef80bfd7c242c0a86a1d9">InsufficentItemsError::ThrowIfInsufficentItems</a>(AsDerived(), n); }</div>
-<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span>        AsDerived().unsafe_pop_front(n);</div>
+<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span>        AsDerived().UnsafePopFront(n);</div>
 <div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span>    }</div>
 </div>
 <div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span> </div>
@@ -153,7 +153,7 @@ $(function(){ initResizable(false); });
 <div class="line"><a id="l00064" name="l00064"></a><span class="lineno"><a class="line" href="struct_span_containers_1_1internal_1_1_pop_front_trait.html#a144e0b01ca125fe61203b43b626ecd8c">   64</a></span>    <span class="keyword">constexpr</span> <span class="keywordtype">bool</span> <a class="code hl_function" href="struct_span_containers_1_1internal_1_1_pop_front_trait.html#a144e0b01ca125fe61203b43b626ecd8c">try_pop_front</a>(size_type n) <span class="keyword">noexcept</span></div>
 <div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span>    {</div>
 <div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span>        <span class="keywordflow">if</span> (n &gt; AsDerived().size()) { <span class="keywordflow">return</span> <span class="keyword">false</span>; }</div>
-<div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span>        AsDerived().unsafe_pop_front(n);</div>
+<div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span>        AsDerived().UnsafePopFront(n);</div>
 <div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span>        <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
 <div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span>    }</div>
 </div>

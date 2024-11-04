@@ -17,7 +17,7 @@ struct PushBackTrait
     constexpr void push_back(U&& value) noexcept(std::is_nothrow_assignable<T&, U&&>::value && !UseExceptions)
     {
         if constexpr (UseExceptions) { FullContainerError::ThrowIfFull(AsDerived()); }
-        AsDerived().unsafe_push_back(std::forward<U>(value));
+        AsDerived().UnsafePushBack(std::forward<U>(value));
     }
 
     /// @brief Tries to assign value at the back of the container.
@@ -28,7 +28,7 @@ struct PushBackTrait
     constexpr bool try_push_back(U&& value) noexcept(std::is_nothrow_assignable<T&, U&&>::value)
     {
         if (AsDerived().full()) { return false; }
-        AsDerived().unsafe_push_back(std::forward<U>(value));
+        AsDerived().UnsafePushBack(std::forward<U>(value));
         return true;
     }
 
@@ -37,7 +37,7 @@ struct PushBackTrait
     /// values will be pushed until capcity is reached, at which point a FullContainerError exception is thrown.
     /// @tparam Range The type of the range that contains the values.
     /// @throws FullContainerError If the size of the range exceeds the container capacity and UseExceptions is true.
-    template<std::ranges::range Range = std::initializer_list<T>>
+    template<std::ranges::range Range>
         requires std::convertible_to<std::ranges::range_value_t<Range>, T>
     constexpr void push_back_range(Range&& values) { std::ranges::copy(values, back_inserter()); }
 
@@ -51,7 +51,7 @@ struct PushBackTrait
     {
         const auto rangeSize = std::ranges::size(values);
         if constexpr (UseExceptions) { ExceedsCapacityError::ThrowIfExceedsCapcity(AsDerived(), rangeSize); }
-        AsDerived().unsafe_push_back_sized_range(std::forward<Range>(values), rangeSize);
+        AsDerived().UnsafePushBackRange(std::forward<Range>(values), rangeSize);
     }
 
     /// @brief Tries to assign the values to the container.
@@ -64,7 +64,7 @@ struct PushBackTrait
         const auto rangeSize = std::ranges::size(values);
         const auto newCount = AsDerived().count + rangeSize;
         if (newCount > AsDerived().max_size()) { return false; }
-        AsDerived().unsafe_push_back_sized_range(std::forward<Range>(values), rangeSize);
+        AsDerived().UnsafePushBackRange(std::forward<Range>(values), rangeSize);
         return true;
     }
 

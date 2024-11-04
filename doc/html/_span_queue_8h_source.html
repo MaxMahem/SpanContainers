@@ -126,20 +126,20 @@ $(function(){ initResizable(false); });
 <div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span>    <span class="keyword">using </span>SpanContainer::size_type;</div>
 <div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span>    <span class="keyword">using </span>SpanContainer::reference;</div>
 <div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span> </div>
-<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span>    [[nodiscard]] <span class="keyword">constexpr</span> reference unsafe_front() <span class="keyword">const</span> <span class="keyword">noexcept</span> </div>
+<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span>    [[nodiscard]] <span class="keyword">constexpr</span> reference UnsafeFront() <span class="keyword">const</span> <span class="keyword">noexcept</span> </div>
 <div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span>    {</div>
 <div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span>        assert(count &gt; 0 &amp;&amp; <span class="stringliteral">&quot;Container is empty&quot;</span>);</div>
 <div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span>        <span class="keywordflow">return</span> span[read]; </div>
 <div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span>    }</div>
 <div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span> </div>
-<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span>    [[nodiscard]] <span class="keyword">constexpr</span> reference unsafe_at(size_type index) <span class="keyword">const</span> <span class="keyword">noexcept</span></div>
+<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span>    [[nodiscard]] <span class="keyword">constexpr</span> reference UnsafeAt(size_type index) <span class="keyword">const</span> <span class="keyword">noexcept</span></div>
 <div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span>    {</div>
 <div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span>        assert(index &lt; count &amp;&amp; <span class="stringliteral">&quot;Index out of range&quot;</span>);</div>
 <div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span>        <span class="keywordflow">return</span> span[(read + index) % Extent];</div>
 <div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span>    }</div>
 <div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span> </div>
 <div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span>    <span class="keyword">template</span> &lt;<span class="keyword">typename</span> U&gt; <span class="keyword">requires</span> std::assignable_from&lt;T&amp;, U&amp;&amp;&gt;</div>
-<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span>    <span class="keyword">constexpr</span> <span class="keywordtype">void</span> unsafe_push_back(U&amp;&amp; value) <span class="keyword">noexcept</span>(std::is_nothrow_assignable&lt;T&amp;, U&amp;&amp;&gt;::value)</div>
+<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span>    <span class="keyword">constexpr</span> <span class="keywordtype">void</span> UnsafePushBack(U&amp;&amp; value) <span class="keyword">noexcept</span>(std::is_nothrow_assignable&lt;T&amp;, U&amp;&amp;&gt;::value)</div>
 <div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span>    {</div>
 <div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span>        assert(count &lt; Extent &amp;&amp; <span class="stringliteral">&quot;Container is full&quot;</span>);</div>
 <div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span>        span[write] = std::forward&lt;U&gt;(value);</div>
@@ -149,7 +149,7 @@ $(function(){ initResizable(false); });
 <div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span> </div>
 <div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span>    <span class="keyword">template</span>&lt;std::ranges::random_access_range Range = std::initializer_list&lt;T&gt;&gt;</div>
 <div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span>        <span class="keyword">requires</span> std::convertible_to&lt;std::ranges::range_value_t&lt;Range&gt;, T&gt;</div>
-<div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span>    <span class="keyword">constexpr</span> <span class="keywordtype">void</span> unsafe_push_back_sized_range(Range&amp;&amp; values, size_type rangeSize) </div>
+<div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span>    <span class="keyword">constexpr</span> <span class="keywordtype">void</span> UnsafePushBackRange(Range&amp;&amp; values, size_type rangeSize) </div>
 <div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span>    {</div>
 <div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span>        <span class="keyword">const</span> <span class="keyword">auto</span> newCount = count + rangeSize;</div>
 <div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span>        assert(newCount &lt;= Extent &amp;&amp; <span class="stringliteral">&quot;Range is to large for span.&quot;</span>);</div>
@@ -169,13 +169,13 @@ $(function(){ initResizable(false); });
 <div class="line"><a id="l00085" name="l00085"></a><span class="lineno">   85</span> </div>
 <div class="line"><a id="l00086" name="l00086"></a><span class="lineno">   86</span>    <span class="keyword">template</span>&lt;std::ranges::range Range = std::initializer_list&lt;T&gt;&gt;</div>
 <div class="line"><a id="l00087" name="l00087"></a><span class="lineno">   87</span>        <span class="keyword">requires</span> std::convertible_to&lt;std::ranges::range_value_t&lt;Range&gt;, T&gt;</div>
-<div class="line"><a id="l00088" name="l00088"></a><span class="lineno">   88</span>    <span class="keyword">constexpr</span> <span class="keywordtype">void</span> unsafe_push_back_sized_range(Range&amp;&amp; values, size_type rangeSize)</div>
+<div class="line"><a id="l00088" name="l00088"></a><span class="lineno">   88</span>    <span class="keyword">constexpr</span> <span class="keywordtype">void</span> UnsafePushBackRange(Range&amp;&amp; values, size_type rangeSize)</div>
 <div class="line"><a id="l00089" name="l00089"></a><span class="lineno">   89</span>    {</div>
 <div class="line"><a id="l00090" name="l00090"></a><span class="lineno">   90</span>        assert(count + rangeSize &lt;= Extent &amp;&amp; <span class="stringliteral">&quot;Range is to large for span.&quot;</span>);</div>
-<div class="line"><a id="l00091" name="l00091"></a><span class="lineno">   91</span>        <span class="keywordflow">for</span> (<span class="keyword">auto</span>&amp;&amp; value : values) { unsafe_push_back(std::forward&lt;<span class="keyword">decltype</span>(value)&gt;(value)); }</div>
+<div class="line"><a id="l00091" name="l00091"></a><span class="lineno">   91</span>        <span class="keywordflow">for</span> (<span class="keyword">auto</span>&amp;&amp; value : values) { UnsafePushBack(std::forward&lt;<span class="keyword">decltype</span>(value)&gt;(value)); }</div>
 <div class="line"><a id="l00092" name="l00092"></a><span class="lineno">   92</span>    }</div>
 <div class="line"><a id="l00093" name="l00093"></a><span class="lineno">   93</span> </div>
-<div class="line"><a id="l00095" name="l00095"></a><span class="lineno">   95</span>    <span class="keyword">constexpr</span> <span class="keywordtype">void</span> unsafe_pop_front(size_type n) <span class="keyword">noexcept</span></div>
+<div class="line"><a id="l00095" name="l00095"></a><span class="lineno">   95</span>    <span class="keyword">constexpr</span> <span class="keywordtype">void</span> UnsafePopFront(size_type n) <span class="keyword">noexcept</span></div>
 <div class="line"><a id="l00096" name="l00096"></a><span class="lineno">   96</span>    {</div>
 <div class="line"><a id="l00097" name="l00097"></a><span class="lineno">   97</span>        assert(n &lt;= count &amp;&amp; <span class="stringliteral">&quot;Not enough items to pop&quot;</span>);</div>
 <div class="line"><a id="l00098" name="l00098"></a><span class="lineno">   98</span>        count -= n;</div>

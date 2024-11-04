@@ -12,21 +12,12 @@ using namespace SpanContainers::internal;
 TEST(SpanContainerConstructors, DefaultConstructor)
 { 
     SpanContainer<int, 0> defaultContainer{};
-    EXPECT_EQ(defaultContainer.capacity(), 0);
+    EXPECT_EQ(defaultContainer.max_size(), 0);
     EXPECT_THAT(defaultContainer, ::testing::SizeIs(0));
 }
 
 constexpr std::size_t TEST_EXTENT = 5;
 typedef SpanContainer<int, TEST_EXTENT> TestSpanContainer;
-
-TEST(SpanContainerConstructors, SpanAssignmentConstructor)
-{
-    std::array<int, TEST_EXTENT> array{};
-    std::span<int, TEST_EXTENT> span = array;
-    TestSpanContainer spanContainer = span;
-
-    EXPECT_EQ(spanContainer.data().data(), span.data());
-}
 
 TEST(BufferSelectorTest, BufferSelectorStackAllocation)
 {

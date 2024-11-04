@@ -55,10 +55,6 @@ public:
     /// @return The current size of the container.
     constexpr size_type size() const noexcept { return count; }
 
-    /// @brief Gets the capacity of the container.
-    /// @return The capcity of the container.
-    static constexpr size_type capacity() noexcept { return Extent; }
-
     /// @brief The capacity of the container.
     static constexpr size_type extent = Extent;
 

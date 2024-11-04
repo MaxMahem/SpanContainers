@@ -15,32 +15,13 @@ namespace SpanContainers::Tests {
 template <typename ContainerT, typename PushFuncsT, typename PopFuncsT, typename PopOrderT, typename IndexOrderT = PopOrderT>
 struct ContainerTestAdaptor
 {
-    using Container  = ContainerT;
-    using PushFuncs  = PushFuncsT;
-    using PopFuncs   = PopFuncsT;
-    using PopOrder   = PopOrderT;
-    using IndexOrder = IndexOrderT;
+    using Container = ContainerT;
+    using PushFuncs = PushFuncsT;
+    using PopFuncs  = PopFuncsT;
+    using PopOrder  = PopOrderT;
+    using PushOrder = IndexOrderT;
 
     inline static const std::string NAME = std::format("{}: Push {}, Pop {}", Container::TYPE_NAME, PushFuncs::ORDER, PopFuncs::ORDER);
-
-    static constexpr std::array<int, Container::extent> FILL = []{
-        std::array<int, Container::extent> result{};
-        std::iota(result.begin(), result.end(), 1);
-        return result;
-    }();
-    inline static const std::forward_list<int> FILL_LIST = []{ return std::forward_list<int>(FILL.begin(), FILL.end()); }();
-
-    static constexpr std::array<int, Container::extent> PUSHPOP_ORDER = [] {
-        std::array<int, Container::extent> result = FILL;
-        std::ranges::sort(result, PopOrder{});
-        return result;
-    }();
-
-    static constexpr std::array<int, Container::extent> INDEX_ORDER = [] {
-        std::array<int, Container::extent> result = FILL;
-        std::ranges::sort(result, IndexOrder{});
-        return result;
-    }();
 };
 
 using LIFO = std::greater<int>;
@@ -90,7 +71,7 @@ struct PopBack
 {
     static constexpr std::string_view ORDER = "BACK";
 
-    static constexpr auto get     = [](Container& container) { return container.back(); };
+    static constexpr auto get     = [](Container& container) -> auto& { return container.back(); };
     static constexpr auto try_get = [](Container& container) { return container.try_back(); };
     static constexpr auto pop     = [](Container& container) { container.pop_back(); };
     static constexpr auto try_pop = [](Container& container) { return container.try_pop_back(); };
@@ -103,7 +84,7 @@ struct PopFront
 {
     static constexpr std::string_view ORDER = "FRONT";
 
-    static constexpr auto get     = [](Container& container) { return container.front(); };
+    static constexpr auto get     = [](Container& container) -> auto& { return container.front(); };
     static constexpr auto try_get = [](Container& container) { return container.try_front(); };
     static constexpr auto pop     = [](Container& container) { container.pop_front(); };
     static constexpr auto try_pop = [](Container& container) { return container.try_pop_front(); };

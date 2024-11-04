@@ -1,8 +1,8 @@
 #pragma once
 
-#include <concepts>
 #include <format>
 #include <stdexcept>
+#include <string>
 
 #include "internal/FixedSizeContainer.h"
 

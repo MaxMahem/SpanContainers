@@ -34,22 +34,31 @@ class SC_EMPTY_BASES SpanHeap : public internal::SpanContainer<T, Extent>,
     using SpanContainer::count;
     using SpanContainer::size_type;
     using SpanContainer::reference;
+    using SpanContainer::const_reference;
 
     SC_NO_UNIQUE_ADDRESS Comparer comparer;
 
     /// @brief Gets a reference to the last item in the container, without bounds check.
     /// @return A reference to the last item in the container.
-    [[nodiscard]] constexpr reference unsafe_back() const noexcept 
+    [[nodiscard]] constexpr reference UnsafeBack() noexcept 
     {
         assert(count > 0 && "Container is empty");
         return span[0]; 
+    }
+
+    /// @brief Gets a const reference to the last item in the container, without bounds check.
+    /// @return A const reference to the last item in the container.
+    [[nodiscard]] constexpr const_reference UnsafeBack() const noexcept
+    {
+        assert(count > 0 && "Container is empty");
+        return span[0];
     }
 
     /// @brief Assigns value to an element of the container.
     /// @tparam U the type of the value to assign to the container. Must be assignable to T.
     /// @param value The item to assign to an element of the container.
     template <typename U> requires std::assignable_from<T&, U&&>
-    constexpr void unsafe_push(U&& value) noexcept(std::is_nothrow_assignable<T, U>::value)
+    constexpr void UnsafePush(U&& value) noexcept(std::is_nothrow_assignable<T, U>::value)
     {
         assert(count < Extent && "Container is full");
         span[count++] = std::forward<U>(value);
@@ -58,7 +67,7 @@ class SC_EMPTY_BASES SpanHeap : public internal::SpanContainer<T, Extent>,
 
     /// @brief Removes n items from the back of the container without a bounds check.
     /// @param n The number of items to remove from the back of the container.
-    constexpr void unsafe_pop_back(size_type n) noexcept
+    constexpr void UnsafePopBack(size_type n) noexcept
     {
         assert(n <= count && "Not enough items to pop");
         while(n-- > 0) { std::pop_heap(span.begin(), span.begin() + count--, comparer); }
@@ -67,7 +76,7 @@ class SC_EMPTY_BASES SpanHeap : public internal::SpanContainer<T, Extent>,
     /// @brief Tries to assign the values to the container.
     /// @tparam Range The type of the range that contains the values.
     template<std::ranges::sized_range Range = std::initializer_list<T>>
-    constexpr void unsafe_push_sized_range(Range&& values, size_type rangeSize) requires std::convertible_to<std::ranges::range_value_t<Range>, T>
+    constexpr void UnsafePushRange(Range&& values, size_type rangeSize) requires std::convertible_to<std::ranges::range_value_t<Range>, T>
     {
         const auto newCount = count + rangeSize;
         assert(newCount <= Extent && "Range is to large for span.");
@@ -79,7 +88,7 @@ class SC_EMPTY_BASES SpanHeap : public internal::SpanContainer<T, Extent>,
             std::make_heap(span.begin(), span.begin() + count, comparer);
         }
         else {
-            for (auto&& value : values) { unsafe_push(value); }
+            for (auto&& value : values) { UnsafePush(value); }
         }
     }
 
@@ -90,17 +99,9 @@ public:
     using SpanContainer::SpanContainer;
     using SpanContainer::operator=;
 
-    /// @brief Constructs a new SpanHeap using comparer and wrapping buffer.
-    /// @tparam Buffer the type of the underlying buffer to use. Must be an lvalue able to construct a std::span 
-    /// @param buffer The underlying buffer to wrap.
-    /// @param comparer The comparer to use when comparing elements. Defaults to std::less.
-    template <typename Buffer>
-        requires std::is_lvalue_reference_v<Buffer&>&& std::is_constructible_v<span_type, Buffer&>
-    constexpr SpanHeap(Buffer& buffer, Comparer comparer) noexcept : span(buffer), comparer(comparer) { }
-
     /// @brief Get the threshold at which heap_make will be used over heap_push
     /// @return the smallest number of items for which push should be used over make
-    [[nodiscard]] size_type make_threshold() noexcept { return count / std::max(1, std::bit_width(count) - 1); }
+    [[nodiscard]] size_type make_threshold() const noexcept { return count / std::max(1, std::bit_width(count) - 1); }
 
     /// @brief Clears all items from the container.
     constexpr void clear() noexcept { count = 0; }

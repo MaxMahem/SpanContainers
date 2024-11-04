@@ -7,18 +7,25 @@ include(FetchContent)
 #)
 #FetchContent_MakeAvailable(Benchmark)
 
-FetchContent_Declare(Benchmark
+FetchContent_Declare(SpanContainerBenchmarks
     URL https://github.com/google/benchmark/archive/refs/tags/v1.9.0.tar.gz
     DOWNLOAD_EXTRACT_TIMESTAMP true
 )
-FetchContent_MakeAvailable(Benchmark)
-add_executable(Benchmarks "Benchmarks.cpp")
+set(BENCHMARK_ENABLE_TESTING OFF) # Disable building tests
+FetchContent_MakeAvailable(SpanContainerBenchmarks)
+add_executable(SpanContainerBenchmarks "Benchmarks.cpp")
 
 # Link to Google Benchmark
-target_link_libraries(Benchmarks benchmark::benchmark)
-target_include_directories(Benchmarks PRIVATE "${PROJECT_INCLUDE_DIR}")
+target_link_libraries(SpanContainerBenchmarks benchmark::benchmark)
+target_include_directories(SpanContainerBenchmarks PRIVATE "${PROJECT_INCLUDE_DIR}")
 
 set(CMAKE_CXX_STANDARD 20)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
+set_property(TARGET SpanContainerBenchmarks PROPERTY CXX_STANDARD 20)
 
-set_property(TARGET Benchmarks PROPERTY CXX_STANDARD 20)
+add_custom_target(run
+    COMMAND $<TARGET_FILE:SpanContainerBenchmarks> --benchmark_out=benchmarks.json
+    DEPENDS SpanContainerBenchmarks
+    WORKING_DIRECTORY ${CMAKE_PROJECT_DIR}
+    COMMENT "Running SpanContainerBenchmarks with custom arguments"
+)

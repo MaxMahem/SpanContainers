@@ -37,14 +37,16 @@ class LargeHeapTest : public TypedContainerTests<LargeHeapTestAdaptor> { };
 TEST_F(LargeHeapTest, PushLargeAndSmallRange)
 {
     // test the large value path (calls std::make_heap)
-    ASSERT_GT(LARGE_TEST_SPLIT, this->emptyContainer.make_threshold());
-    this->emptyContainer.try_push_range(LargeHeapTestAdaptor::FILL | std::views::drop(LARGE_TEST_SPLIT));
-    // test the small value path (calls std::push_heap)
-    ASSERT_LE(LARGE_TEST_SPLIT, this->emptyContainer.make_threshold());
-    this->emptyContainer.try_push_range(LargeHeapTestAdaptor::FILL | std::views::take(LARGE_TEST_SPLIT));
+    LargeHeapTest::Container largeContaner = this->EmptyContainer;
+    ASSERT_GT(LARGE_TEST_SPLIT, largeContaner.make_threshold());
+    largeContaner.try_push_range(LargeHeapTest::IOTA | std::views::drop(LARGE_TEST_SPLIT));
 
-    std::vector<int> values = this->Empty(this->emptyContainer, LargeHeapTest::PopFuncs::get, LargeHeapTest::PopFuncs::pop);
-    EXPECT_THAT(values, ::testing::ElementsAreArray(LargeHeapTestAdaptor::PUSHPOP_ORDER));
+    // test the small value path (calls std::push_heap)
+    ASSERT_LE(LARGE_TEST_SPLIT, largeContaner.make_threshold());
+    largeContaner.try_push_range(LargeHeapTest::IOTA | std::views::take(LARGE_TEST_SPLIT));
+
+    std::vector<int> values = this->Empty(largeContaner, LargeHeapTestAdaptor::PopFuncs::get, LargeHeapTestAdaptor::PopFuncs::pop);
+    EXPECT_THAT(values, ::testing::ElementsAreArray(LargeHeapTest::PUSHPOP_ORDER));
 }
 
 }

@@ -33,51 +33,84 @@ class SC_EMPTY_BASES SpanStack : public internal::SpanContainer<T, Extent>,
     using SpanContainer::count;
     using SpanContainer::size_type;
     using SpanContainer::reference;
+    using SpanContainer::const_reference;
 
     /// @brief Gets a reference to the last item in the container without a bounds check.
     /// @return A reference to the last item in the container.
-    [[nodiscard]] constexpr reference unsafe_back() const noexcept 
+    [[nodiscard]] constexpr reference UnsafeBack() noexcept 
     { 
         assert(count > 0 && "Container is empty");
         return span[count - 1]; 
     }
 
+    /// @brief Gets a const reference to the last item in the container without a bounds check.
+    /// @return A const reference to the last item in the container.
+    [[nodiscard]] constexpr const_reference UnsafeBack() const noexcept
+    {
+        assert(count > 0 && "Container is empty");
+        return span[count - 1];
+    }
+
     /// @brief Gets a reference to the element at index, without a bounds check.
     /// @param index The index of the element to get.
     /// @return A reference to the element at index.
-    [[nodiscard]] constexpr reference unsafe_at(size_type index) const noexcept
+    [[nodiscard]] constexpr reference UnsafeAt(size_type index) noexcept
     {
         assert(index < count && "Index out of range");
-        return span[count - 1 - index];
+        return span[index];
     }
 
-    /// @brief Assigns value to the back of the container, without bounds checks.
-    /// @tparam U The type of the value.
-    /// @param value The item to assign.
+    /// @brief Gets a const reference to the element at index, without a bounds check.
+    /// @param index The index of the element to get.
+    /// @return A const reference to the element at index.
+    [[nodiscard]] constexpr const_reference UnsafeAt(size_type index) const noexcept
+    {
+        assert(index < count && "Index out of range");
+        return span[index];
+    }
+
+    /// @brief Assigns item to the back of the container, without bounds checks.
+    /// @tparam U The type of the item.
+    /// @param item The item to assign.
     template <typename U> requires std::assignable_from<T&, U&&>
-    constexpr void unsafe_push_back(U&& value) noexcept(std::is_nothrow_assignable<T&, U&&>::value)
+    constexpr void UnsafePushBack(U&& item) noexcept(std::is_nothrow_assignable<T&, U&&>::value)
     {
         assert(count < Extent && "Container is full");
-        span[count++] = std::forward<U>(value);
+        span[count++] = std::forward<U>(item);
     }
 
-    /// @brief Tries to assign values to the back of the container.
-    /// @tparam Range The type of the range that contains the values.
+    /// @brief Tries to assign items to the back of the container.
+    /// @tparam Range The type of the range that contains the items.
     template<std::ranges::range Range = std::initializer_list<T>> 
         requires std::convertible_to<std::ranges::range_value_t<Range>, T>
-    constexpr void unsafe_push_back_sized_range(Range&& values, size_type rangeSize) 
+    constexpr void UnsafePushBackRange(Range&& items, size_type rangeSize) 
     {
         const auto newCount = count + rangeSize;
         assert(newCount <= Extent && "Range is to large for span.");
 
-        if constexpr (std::is_rvalue_reference<Range&&>::value) { std::ranges::move(values, span.begin() + count); }
-        else                                                    { std::ranges::copy(values, span.begin() + count); }
+        if constexpr (std::is_rvalue_reference<Range&&>::value) { std::ranges::move(items, span.begin() + count); }
+        else                                                    { std::ranges::copy(items, span.begin() + count); }
         count = newCount;
+    }
+
+    /// @brief Inserts item before index U.
+    /// @tparam U The type of the item.
+    /// @param index The index to assign the item before.
+    /// @param item The item to assign.
+    template <typename U> requires std::assignable_from<T&, U&&>
+    void UnsafeInsert(size_type index, U&& item)
+    {
+        assert(index <= count && "Index out of range");
+        assert(count < Extent && "Container is full");
+
+        std::shift_right(span.begin() + index, span.begin() + count + 1, 1);
+        span[index] = std::forward<U>(item);
+        count++;
     }
 
     /// @brief Removes n items from the back of the container without a bounds check.
     /// @param n the number of items to remove.
-    constexpr void unsafe_pop_back(size_type n) noexcept 
+    constexpr void UnsafePopBack(size_type n) noexcept 
     { 
         assert(n <= count && "Not enough items to pop");
         count -= n; 
@@ -90,14 +123,18 @@ public:
     using SpanContainer::SpanContainer;
     using SpanContainer::operator=;
 
-    using value_type = T;
+    using item_type = T;
 
     /// @brief Clears all items from the container.
     constexpr void clear() noexcept { count = 0; }
 
+    /// @brief Gets the current items in the container as a const span. 
+    /// @return The current items in the container as a const span.
+    constexpr auto as_span() const noexcept { return span.first(count); }
+
     /// @brief Gets the current items in the container as a span. 
     /// @return The current items in the container as a span.
-    constexpr auto as_span() const noexcept { return span.first(count); }
+    constexpr const auto as_span() noexcept { return span.first(count); }
 };
 
 }
